@@ -1,31 +1,188 @@
-<!-- 成員切換標籤 -->
-<nav class="member-tabs">
-    <button class="tab-btn active">殷志源 (Eun Ji Won)</button>
-    <button class="tab-btn">高志溶 (Ko Ji Yong)</button>
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SECHSKIES 台灣行程地圖</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+<!-- 備註：本頁一定要是完整 HTML 文件（含 head 與 style.css），
+ 否則會變成瀏覽器的「片段模式」，樣式常常吃不到或跑版。 -->
+<header class="map-archive-header">
+    <div class="header-inner">
+        <h1 class="main-title">台灣行程列表</h1>
+        <div class="subtitle-wrap">
+            <span class="sub-title">SECHSKIES TAIWAN ARCHIVE</span>
+        </div>
+    </div>
+</header>
+
+<nav class="member-tabs" aria-label="成員篩選">
+    <button class="tab-btn active" data-member="all" aria-pressed="true">全部行程</button>
+    <button class="tab-btn" data-member="eun" aria-pressed="false">殷志源來台灣</button>
+    <button class="tab-btn" data-member="ko" aria-pressed="false">高志溶來台灣</button>
 </nav>
 
-<main class="content-container">
-    <!-- 左側固定地圖 -->
+<main class="content-container map-layout">
+    <!-- 備註：地圖區固定使用你的 Google My Maps iframe。
+     這裡不改地圖資料來源，右側列表只負責敘事與導覽。 -->
     <section class="map-sticky">
-        <iframe src="https://www.google.com/maps/d/embed?mid=1xpAsSoO8gNmMiW4x2sfkndISFTtjMQDw&hl=zh-TW&ehbc=2E312F"
-            width="100%" height="450"></iframe>
+        <h2 class="map-title">水晶男孩台灣行程地圖</h2>
+        <iframe id="member-map" title="SECHSKIES 踩點地圖" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps/d/embed?mid=1xpAsSoO8gNmMiW4x2sfkndISFTtjMQDw&hl=zh-TW&ehbc=2E312F">
+        </iframe>
+        <a id="open-map-link" class="map-link" target="_blank"
+            href="https://www.google.com/maps/d/u/0/viewer?mid=1xpAsSoO8gNmMiW4x2sfkndISFTtjMQDw">
+            在 Google My Maps 開啟完整地圖
+        </a>
     </section>
 
-    <!-- 右側拍立得清單 -->
     <section class="itinerary-list">
-        <!-- 拍立得卡片 -->
-        <article class="polaroid-card">
+        <!-- 備註：每張卡的 data-* 是「細節面板的資料來源」。
+         你只要改 data-date/title/desc/quote/tag/link 和圖片，就會同步更新下方介紹。 -->
+        <article class="polaroid-card active" data-member="eun" data-date="2024.05.07" data-title="松山文創園區"
+            data-desc="節目中先從文創園區開始散步，邊走邊聊當年活動與舞台記憶，畫面節奏偏溫暖。" data-quote="這種慢慢走的行程，反而最像真正的旅行。" data-tag="#殷志源 #散步 #文創"
+            data-link="https://maps.google.com/?q=25.0441,121.5600">
             <div class="photo-frame">
-                <img src="節目截圖.jpg" alt="景點名稱">
+                <img src="https://picsum.photos/seed/eun-songshan/640/420" alt="殷志源台灣行程節目截圖-松山文創園區">
             </div>
             <div class="card-content">
                 <span class="date">2024.05.07</span>
-                <h3>景點名稱（如：台北101）</h3>
-                <p class="description">這裡可以放入節目的細節介紹，例如在那裡做了什麼、說了什麼話...</p>
-                <div class="tag">#踩點成功</div>
+                <h3>松山文創園區</h3>
+                <p class="description">台灣行程 Day 1 開場站。</p>
+                <div class="tag">#殷志源 #散步</div>
             </div>
         </article>
 
-        <!-- 更多卡片... -->
+        <article class="polaroid-card" data-member="eun" data-date="2024.05.07" data-title="西門町"
+            data-desc="晚上切到人潮密集區，街訪片段和店家互動比較多，節目情緒從安靜轉為熱鬧。" data-quote="台北晚上真的很有自己的節奏。" data-tag="#殷志源 #西門町 #夜晚"
+            data-link="https://maps.google.com/?q=25.0422,121.5082">
+            <div class="photo-frame">
+                <img src="https://picsum.photos/seed/eun-ximen/640/420" alt="殷志源台灣行程節目截圖-西門町">
+            </div>
+            <div class="card-content">
+                <span class="date">2024.05.08</span>
+                <h3>西門町</h3>
+                <p class="description">台灣行程 Day 1 晚間站。</p>
+                <div class="tag">#殷志源 #街拍</div>
+            </div>
+        </article>
+
+        <article class="polaroid-card" data-member="ko" data-date="2024.05.09" data-title="大稻埕"
+            data-desc="以老街與街屋景觀為主，搭配市場片段，節目內容著重生活感和在地氛圍。" data-quote="這裡很像可以慢慢逛一整天。" data-tag="#高志溶 #老街 #在地"
+            data-link="https://maps.google.com/?q=25.0560,121.5095">
+            <div class="photo-frame">
+                <img src="https://picsum.photos/seed/ko-dadaocheng/640/420" alt="高志溶台灣行程節目截圖-大稻埕">
+            </div>
+            <div class="card-content">
+                <span class="date">2024.05.09</span>
+                <h3>大稻埕</h3>
+                <p class="description">高志溶台灣行程主線起點。</p>
+                <div class="tag">#高志溶 #老街</div>
+            </div>
+        </article>
+
+        <article class="polaroid-card" data-member="ko" data-date="2024.05.10" data-title="信義商圈"
+            data-desc="晚間景觀和商圈路線交錯，補足都市感，和大稻埕形成新舊對比。" data-quote="白天走舊城，晚上看新城，剛剛好。" data-tag="#高志溶 #信義 #都會"
+            data-link="https://maps.google.com/?q=25.0339,121.5654">
+            <div class="photo-frame">
+                <img src="https://picsum.photos/seed/ko-xinyi/640/420" alt="高志溶台灣行程節目截圖-信義商圈">
+            </div>
+            <div class="card-content">
+                <span class="date">2024.05.10</span>
+                <h3>信義商圈</h3>
+                <p class="description">高志溶台灣行程晚間收尾站。</p>
+                <div class="tag">#高志溶 #都會</div>
+            </div>
+        </article>
+
+        <article class="detail-panel" id="detail-panel" aria-live="polite">
+            <div class="detail-photo">
+                <img id="detail-image" src="https://picsum.photos/seed/eun-songshan/900/520" alt="行程節目截圖">
+            </div>
+            <div class="detail-content">
+                <span id="detail-date" class="date">2024.05.07</span>
+                <h3 id="detail-title">松山文創園區</h3>
+                <p id="detail-desc">節目中先從文創園區開始散步，邊走邊聊當年活動與舞台記憶，畫面節奏偏溫暖。</p>
+                <blockquote id="detail-quote">「這種慢慢走的行程，反而最像真正的旅行。」</blockquote>
+                <div id="detail-tag" class="tag">#殷志源 #散步 #文創</div>
+                <a id="detail-link" class="detail-link" target="_blank"
+                    href="https://maps.google.com/?q=25.0441,121.5600">查看此地點</a>
+            </div>
+        </article>
     </section>
 </main>
+
+<script>
+    (function () {
+        // 備註：tab 控制「顯示哪些卡片」，card 控制「細節面板顯示哪一筆」。
+        const tabs = Array.from(document.querySelectorAll(".tab-btn"));
+        const cards = Array.from(document.querySelectorAll(".polaroid-card"));
+        const detailDate = document.getElementById("detail-date");
+        const detailTitle = document.getElementById("detail-title");
+        const detailDesc = document.getElementById("detail-desc");
+        const detailQuote = document.getElementById("detail-quote");
+        const detailTag = document.getElementById("detail-tag");
+        const detailLink = document.getElementById("detail-link");
+        const detailImage = document.getElementById("detail-image");
+
+        function setActiveCard(card) {
+            cards.forEach((item) => item.classList.remove("active"));
+            card.classList.add("active");
+
+            // 備註：把卡片 data-* 內容灌到 detail-panel。
+            detailDate.textContent = card.dataset.date || "";
+            detailTitle.textContent = card.dataset.title || "";
+            detailDesc.textContent = card.dataset.desc || "";
+            detailQuote.textContent = "「" + (card.dataset.quote || "") + "」";
+            detailTag.textContent = card.dataset.tag || "";
+            detailLink.href = card.dataset.link || "#";
+            detailImage.src = card.querySelector("img").src;
+            detailImage.alt = "節目截圖 - " + (card.dataset.title || "行程地點");
+        }
+
+        function applyFilter(member) {
+            let firstVisible = null;
+            cards.forEach((card) => {
+                const matched = member === "all" || card.dataset.member === member;
+                card.style.display = matched ? "" : "none";
+                if (matched && !firstVisible) firstVisible = card;
+            });
+            // 備註：切換成員後，自動選中第一張可見卡，避免細節區停留在舊資料。
+            if (firstVisible) setActiveCard(firstVisible);
+        }
+
+        tabs.forEach((tab) => {
+            tab.addEventListener("click", () => {
+                tabs.forEach((item) => {
+                    item.classList.remove("active");
+                    item.setAttribute("aria-pressed", "false");
+                });
+                tab.classList.add("active");
+                tab.setAttribute("aria-pressed", "true");
+                applyFilter(tab.dataset.member);
+            });
+        });
+
+        cards.forEach((card) => {
+            card.addEventListener("click", () => {
+                setActiveCard(card);
+                if (window.innerWidth < 920) {
+                    const detail = document.getElementById("detail-panel");
+                    detail.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+            });
+        });
+
+        const firstVisibleCard = cards.find((card) => card.style.display !== "none");
+        if (firstVisibleCard) setActiveCard(firstVisibleCard);
+    })();
+</script>
+
+</body>
+
+</html>
