@@ -23,9 +23,11 @@
 
 <nav class="member-tabs" aria-label="成員篩選">
     <button class="tab-btn active" data-member="all" aria-pressed="true">全部行程</button>
-    <button class="tab-btn" data-member="eun" aria-pressed="false">殷志源來台灣</button>
-    <button class="tab-btn" data-member="ko" aria-pressed="false">高志溶來台灣</button>
+    <button class="tab-btn" data-member="kogo" aria-pressed="false">高高父子遊台灣</button>
 </nav>
+
+<input id="itinerary-search" type="search" aria-label="行程搜尋"
+    placeholder="搜尋地點、描述、標籤（例如：九份、夜市、Day 2）">
 
 <main class="content-container map-layout">
     <!-- 備註：地圖區固定使用你的 Google My Maps iframe。
@@ -44,74 +46,288 @@
     <section class="itinerary-list">
         <!-- 備註：每張卡的 data-* 是「細節面板的資料來源」。
          你只要改 data-date/title/desc/quote/tag/link 和圖片，就會同步更新下方介紹。 -->
-        <article class="polaroid-card active" data-member="eun" data-date="2024.05.07" data-title="松山文創園區"
-            data-desc="節目中先從文創園區開始散步，邊走邊聊當年活動與舞台記憶，畫面節奏偏溫暖。" data-quote="這種慢慢走的行程，反而最像真正的旅行。" data-tag="#殷志源 #散步 #文創"
-            data-link="https://maps.google.com/?q=25.0441,121.5600">
+        <article class="polaroid-card active" data-member="kogo" data-date="Day 1" data-title="臺灣桃園國際機場"
+            data-desc="高高父子遊台灣 Day 1 首站，從桃園機場正式開啟三天行程。"
+            data-quote="旅程從落地那一刻就開始了。" data-tag="#高高父子遊台灣 #Day1 #機場"
+            data-link="https://maps.google.com/?q=臺灣桃園國際機場">
             <div class="photo-frame">
-                <img src="https://picsum.photos/seed/eun-songshan/640/420" alt="殷志源台灣行程節目截圖-松山文創園區">
+                <img src="https://picsum.photos/seed/day1-airport/640/420" alt="高高父子遊台灣節目截圖-臺灣桃園國際機場">
             </div>
             <div class="card-content">
-                <span class="date">2024.05.07</span>
-                <h3>松山文創園區</h3>
-                <p class="description">台灣行程 Day 1 開場站。</p>
-                <div class="tag">#殷志源 #散步</div>
+                <span class="date">Day 1</span>
+                <h3>臺灣桃園國際機場</h3>
+                <p class="description">高高父子遊台灣 Day 1 第一站。</p>
+                <div class="tag">#高高父子遊台灣 #Day1</div>
             </div>
         </article>
 
-        <article class="polaroid-card" data-member="eun" data-date="2024.05.07" data-title="西門町"
-            data-desc="晚上切到人潮密集區，街訪片段和店家互動比較多，節目情緒從安靜轉為熱鬧。" data-quote="台北晚上真的很有自己的節奏。" data-tag="#殷志源 #西門町 #夜晚"
-            data-link="https://maps.google.com/?q=25.0422,121.5082">
+        <article class="polaroid-card" data-member="kogo" data-date="Day 1" data-title="捷運西門站"
+            data-desc="進入市區後前往西門站，接續 Day 1 的街區行程。"
+            data-quote="從這裡開始感受台北節奏。" data-tag="#高高父子遊台灣 #Day1 #西門"
+            data-link="https://maps.google.com/?q=捷運西門站">
             <div class="photo-frame">
-                <img src="https://picsum.photos/seed/eun-ximen/640/420" alt="殷志源台灣行程節目截圖-西門町">
+                <img src="https://picsum.photos/seed/day1-ximen-mrt/640/420" alt="高高父子遊台灣節目截圖-捷運西門站">
             </div>
             <div class="card-content">
-                <span class="date">2024.05.08</span>
-                <h3>西門町</h3>
-                <p class="description">台灣行程 Day 1 晚間站。</p>
-                <div class="tag">#殷志源 #街拍</div>
+                <span class="date">Day 1</span>
+                <h3>捷運西門站</h3>
+                <p class="description">高高父子遊台灣 Day 1 第二站。</p>
+                <div class="tag">#高高父子遊台灣 #Day1</div>
             </div>
         </article>
 
-        <article class="polaroid-card" data-member="ko" data-date="2024.05.09" data-title="大稻埕"
-            data-desc="以老街與街屋景觀為主，搭配市場片段，節目內容著重生活感和在地氛圍。" data-quote="這裡很像可以慢慢逛一整天。" data-tag="#高志溶 #老街 #在地"
-            data-link="https://maps.google.com/?q=25.0560,121.5095">
+        <article class="polaroid-card" data-member="kogo" data-date="Day 1" data-title="老山東牛肉麺"
+            data-desc="Day 1 用餐站，安排在市區動線中，補充體力後繼續跑點。"
+            data-quote="旅程裡一定要有一餐記得住的味道。" data-tag="#高高父子遊台灣 #Day1 #美食"
+            data-link="https://maps.google.com/?q=老山東牛肉麺">
             <div class="photo-frame">
-                <img src="https://picsum.photos/seed/ko-dadaocheng/640/420" alt="高志溶台灣行程節目截圖-大稻埕">
+                <img src="https://picsum.photos/seed/day1-noodle/640/420" alt="高高父子遊台灣節目截圖-老山東牛肉麺">
             </div>
             <div class="card-content">
-                <span class="date">2024.05.09</span>
-                <h3>大稻埕</h3>
-                <p class="description">高志溶台灣行程主線起點。</p>
-                <div class="tag">#高志溶 #老街</div>
+                <span class="date">Day 1</span>
+                <h3>老山東牛肉麺</h3>
+                <p class="description">高高父子遊台灣 Day 1 第三站。</p>
+                <div class="tag">#高高父子遊台灣 #Day1</div>
             </div>
         </article>
 
-        <article class="polaroid-card" data-member="ko" data-date="2024.05.10" data-title="信義商圈"
-            data-desc="晚間景觀和商圈路線交錯，補足都市感，和大稻埕形成新舊對比。" data-quote="白天走舊城，晚上看新城，剛剛好。" data-tag="#高志溶 #信義 #都會"
-            data-link="https://maps.google.com/?q=25.0339,121.5654">
+        <article class="polaroid-card" data-member="kogo" data-date="Day 1" data-title="町記憶旅店"
+            data-desc="Day 1 入住據點，方便串接西門和夜市行程。"
+            data-quote="住進行程核心區，晚上才跑得動。" data-tag="#高高父子遊台灣 #Day1 #住宿"
+            data-link="https://maps.google.com/?q=町記憶旅店">
             <div class="photo-frame">
-                <img src="https://picsum.photos/seed/ko-xinyi/640/420" alt="高志溶台灣行程節目截圖-信義商圈">
+                <img src="https://picsum.photos/seed/day1-hotel/640/420" alt="高高父子遊台灣節目截圖-町記憶旅店">
             </div>
             <div class="card-content">
-                <span class="date">2024.05.10</span>
-                <h3>信義商圈</h3>
-                <p class="description">高志溶台灣行程晚間收尾站。</p>
-                <div class="tag">#高志溶 #都會</div>
+                <span class="date">Day 1</span>
+                <h3>町記憶旅店</h3>
+                <p class="description">高高父子遊台灣 Day 1 第四站。</p>
+                <div class="tag">#高高父子遊台灣 #Day1</div>
+            </div>
+        </article>
+
+        <article class="polaroid-card" data-member="kogo" data-date="Day 1" data-title="士林夜市"
+            data-desc="Day 1 晚間重點，夜市小吃與逛街片段集中在這裡。"
+            data-quote="台灣夜市是不能錯過的必修行程。" data-tag="#高高父子遊台灣 #Day1 #夜市"
+            data-link="https://maps.google.com/?q=士林夜市">
+            <div class="photo-frame">
+                <img src="https://picsum.photos/seed/day1-nightmarket/640/420" alt="高高父子遊台灣節目截圖-士林夜市">
+            </div>
+            <div class="card-content">
+                <span class="date">Day 1</span>
+                <h3>士林夜市</h3>
+                <p class="description">高高父子遊台灣 Day 1 第五站。</p>
+                <div class="tag">#高高父子遊台灣 #Day1</div>
+            </div>
+        </article>
+
+        <article class="polaroid-card" data-member="kogo" data-date="Day 1" data-title="家鄉碳烤香雞排"
+            data-desc="夜市美食支線，捕捉在地小吃的重點片段。"
+            data-quote="熱騰騰的香氣，最有旅行感。" data-tag="#高高父子遊台灣 #Day1 #小吃"
+            data-link="https://maps.google.com/?q=家鄉碳烤香雞排">
+            <div class="photo-frame">
+                <img src="https://picsum.photos/seed/day1-chicken/640/420" alt="高高父子遊台灣節目截圖-家鄉碳烤香雞排">
+            </div>
+            <div class="card-content">
+                <span class="date">Day 1</span>
+                <h3>家鄉碳烤香雞排</h3>
+                <p class="description">高高父子遊台灣 Day 1 第六站。</p>
+                <div class="tag">#高高父子遊台灣 #Day1</div>
+            </div>
+        </article>
+
+        <article class="polaroid-card" data-member="kogo" data-date="Day 1" data-title="多田家"
+            data-desc="Day 1 收尾站，整理當天行程內容與心得。"
+            data-quote="第一天收得好，第二天才走得遠。" data-tag="#高高父子遊台灣 #Day1"
+            data-link="https://maps.google.com/?q=多田家">
+            <div class="photo-frame">
+                <img src="https://picsum.photos/seed/day1-laststop/640/420" alt="高高父子遊台灣節目截圖-多田家">
+            </div>
+            <div class="card-content">
+                <span class="date">Day 1</span>
+                <h3>多田家</h3>
+                <p class="description">高高父子遊台灣 Day 1 第七站。</p>
+                <div class="tag">#高高父子遊台灣 #Day1</div>
+            </div>
+        </article>
+
+        <article class="polaroid-card" data-member="kogo" data-date="Day 2" data-title="臺灣師範大學"
+            data-desc="Day 2 從校園與周邊商圈展開，節奏偏生活感。"
+            data-quote="第二天從白天的城市日常開始。" data-tag="#高高父子遊台灣 #Day2 #校園"
+            data-link="https://maps.google.com/?q=臺灣師範大學">
+            <div class="photo-frame">
+                <img src="https://picsum.photos/seed/day2-ntnu/640/420" alt="高高父子遊台灣節目截圖-臺灣師範大學">
+            </div>
+            <div class="card-content">
+                <span class="date">Day 2</span>
+                <h3>臺灣師範大學</h3>
+                <p class="description">高高父子遊台灣 Day 2 第一站。</p>
+                <div class="tag">#高高父子遊台灣 #Day2</div>
+            </div>
+        </article>
+
+        <article class="polaroid-card" data-member="kogo" data-date="Day 2" data-title="陳三鼎黑糖青蛙鮮奶創始店"
+            data-desc="人氣飲料站點，作為 Day 2 的輕食補給。"
+            data-quote="來到台北，怎麼能少一杯黑糖鮮奶。" data-tag="#高高父子遊台灣 #Day2 #飲料"
+            data-link="https://maps.google.com/?q=陳三鼎黑糖青蛙鮮奶創始店">
+            <div class="photo-frame">
+                <img src="https://picsum.photos/seed/day2-boba/640/420" alt="高高父子遊台灣節目截圖-陳三鼎黑糖青蛙鮮奶創始店">
+            </div>
+            <div class="card-content">
+                <span class="date">Day 2</span>
+                <h3>陳三鼎黑糖青蛙鮮奶創始店</h3>
+                <p class="description">高高父子遊台灣 Day 2 第二站。</p>
+                <div class="tag">#高高父子遊台灣 #Day2</div>
+            </div>
+        </article>
+
+        <article class="polaroid-card" data-member="kogo" data-date="Day 2" data-title="九份老街"
+            data-desc="Day 2 山城主線，老街景觀與觀光美食集中。"
+            data-quote="九份是會讓人想慢慢走慢慢看的地方。" data-tag="#高高父子遊台灣 #Day2 #九份"
+            data-link="https://maps.google.com/?q=九份老街">
+            <div class="photo-frame">
+                <img src="https://picsum.photos/seed/day2-jiufen/640/420" alt="高高父子遊台灣節目截圖-九份老街">
+            </div>
+            <div class="card-content">
+                <span class="date">Day 2</span>
+                <h3>九份老街</h3>
+                <p class="description">高高父子遊台灣 Day 2 第三站。</p>
+                <div class="tag">#高高父子遊台灣 #Day2</div>
+            </div>
+        </article>
+
+        <article class="polaroid-card" data-member="kogo" data-date="Day 2" data-title="九份第一家現烤臭豆腐"
+            data-desc="九份美食支線，節目中可搭配試吃反應與街邊互動。"
+            data-quote="有些味道，就是旅行記憶點。" data-tag="#高高父子遊台灣 #Day2 #美食"
+            data-link="https://maps.google.com/?q=九份第一家現烤臭豆腐">
+            <div class="photo-frame">
+                <img src="https://picsum.photos/seed/day2-tofu/640/420" alt="高高父子遊台灣節目截圖-九份第一家現烤臭豆腐">
+            </div>
+            <div class="card-content">
+                <span class="date">Day 2</span>
+                <h3>九份第一家現烤臭豆腐</h3>
+                <p class="description">高高父子遊台灣 Day 2 第四站。</p>
+                <div class="tag">#高高父子遊台灣 #Day2</div>
+            </div>
+        </article>
+
+        <article class="polaroid-card" data-member="kogo" data-date="Day 2" data-title="泥人吳"
+            data-desc="Day 2 收尾點，可放手作或店家互動片段。"
+            data-quote="旅程最後，留一個可以帶走的記憶。" data-tag="#高高父子遊台灣 #Day2"
+            data-link="https://maps.google.com/?q=泥人吳">
+            <div class="photo-frame">
+                <img src="https://picsum.photos/seed/day2-clay/640/420" alt="高高父子遊台灣節目截圖-泥人吳">
+            </div>
+            <div class="card-content">
+                <span class="date">Day 2</span>
+                <h3>泥人吳</h3>
+                <p class="description">高高父子遊台灣 Day 2 第五站。</p>
+                <div class="tag">#高高父子遊台灣 #Day2</div>
+            </div>
+        </article>
+
+        <article class="polaroid-card" data-member="kogo" data-date="Day 3" data-title="北投公園露天溫泉"
+            data-desc="Day 3 先走北投溫泉段落，行程氛圍轉為放鬆。"
+            data-quote="第三天就用溫泉感把節奏放慢。" data-tag="#高高父子遊台灣 #Day3 #北投"
+            data-link="https://maps.google.com/?q=北投公園露天溫泉">
+            <div class="photo-frame">
+                <img src="https://picsum.photos/seed/day3-hotspring/640/420" alt="高高父子遊台灣節目截圖-北投公園露天溫泉">
+            </div>
+            <div class="card-content">
+                <span class="date">Day 3</span>
+                <h3>北投公園露天溫泉</h3>
+                <p class="description">高高父子遊台灣 Day 3 第一站。</p>
+                <div class="tag">#高高父子遊台灣 #Day3</div>
+            </div>
+        </article>
+
+        <article class="polaroid-card" data-member="kogo" data-date="Day 3" data-title="靜安吊橋"
+            data-desc="山線移動路段，可搭配景色鏡頭與步行片段。"
+            data-quote="在橋上看風景，旅程也會變慢。" data-tag="#高高父子遊台灣 #Day3"
+            data-link="https://maps.google.com/?q=靜安吊橋">
+            <div class="photo-frame">
+                <img src="https://picsum.photos/seed/day3-bridge/640/420" alt="高高父子遊台灣節目截圖-靜安吊橋">
+            </div>
+            <div class="card-content">
+                <span class="date">Day 3</span>
+                <h3>靜安吊橋</h3>
+                <p class="description">高高父子遊台灣 Day 3 第二站。</p>
+                <div class="tag">#高高父子遊台灣 #Day3</div>
+            </div>
+        </article>
+
+        <article class="polaroid-card" data-member="kogo" data-date="Day 3" data-title="十分老街"
+            data-desc="Day 3 核心站，老街與鐵道周邊畫面密集。"
+            data-quote="十分的氛圍，跟平溪線一樣有故事感。" data-tag="#高高父子遊台灣 #Day3 #十分"
+            data-link="https://maps.google.com/?q=十分老街">
+            <div class="photo-frame">
+                <img src="https://picsum.photos/seed/day3-shifen/640/420" alt="高高父子遊台灣節目截圖-十分老街">
+            </div>
+            <div class="card-content">
+                <span class="date">Day 3</span>
+                <h3>十分老街</h3>
+                <p class="description">高高父子遊台灣 Day 3 第三站。</p>
+                <div class="tag">#高高父子遊台灣 #Day3</div>
+            </div>
+        </article>
+
+        <article class="polaroid-card" data-member="kogo" data-date="Day 3" data-title="溜哥燒烤雞翅包飯"
+            data-desc="老街美食支線，適合放試吃與街邊互動鏡頭。"
+            data-quote="邊走邊吃，才是老街玩法。" data-tag="#高高父子遊台灣 #Day3 #小吃"
+            data-link="https://maps.google.com/?q=溜哥燒烤雞翅包飯">
+            <div class="photo-frame">
+                <img src="https://picsum.photos/seed/day3-wingrice/640/420" alt="高高父子遊台灣節目截圖-溜哥燒烤雞翅包飯">
+            </div>
+            <div class="card-content">
+                <span class="date">Day 3</span>
+                <h3>溜哥燒烤雞翅包飯</h3>
+                <p class="description">高高父子遊台灣 Day 3 第四站。</p>
+                <div class="tag">#高高父子遊台灣 #Day3</div>
+            </div>
+        </article>
+
+        <article class="polaroid-card" data-member="kogo" data-date="Day 3" data-title="十分幸福 花生捲冰淇淋"
+            data-desc="甜點站補強節奏變化，和前一站鹹食形成對比。"
+            data-quote="最後一定要來點甜的，才算完整。" data-tag="#高高父子遊台灣 #Day3 #甜點"
+            data-link="https://maps.google.com/?q=十分幸福 花生捲冰淇淋">
+            <div class="photo-frame">
+                <img src="https://picsum.photos/seed/day3-icecream/640/420" alt="高高父子遊台灣節目截圖-十分幸福花生捲冰淇淋">
+            </div>
+            <div class="card-content">
+                <span class="date">Day 3</span>
+                <h3>十分幸福 花生捲冰淇淋</h3>
+                <p class="description">高高父子遊台灣 Day 3 第五站。</p>
+                <div class="tag">#高高父子遊台灣 #Day3</div>
+            </div>
+        </article>
+
+        <article class="polaroid-card" data-member="kogo" data-date="Day 3" data-title="胡家天燈"
+            data-desc="三天行程最終站，收在十分天燈段落。"
+            data-quote="把願望寫上天燈，這趟旅程就有了句點。" data-tag="#高高父子遊台灣 #Day3 #天燈"
+            data-link="https://maps.google.com/?q=胡家天燈">
+            <div class="photo-frame">
+                <img src="https://picsum.photos/seed/day3-sky-lantern/640/420" alt="高高父子遊台灣節目截圖-胡家天燈">
+            </div>
+            <div class="card-content">
+                <span class="date">Day 3</span>
+                <h3>胡家天燈</h3>
+                <p class="description">高高父子遊台灣 Day 3 第六站。</p>
+                <div class="tag">#高高父子遊台灣 #Day3</div>
             </div>
         </article>
 
         <article class="detail-panel" id="detail-panel" aria-live="polite">
             <div class="detail-photo">
-                <img id="detail-image" src="https://picsum.photos/seed/eun-songshan/900/520" alt="行程節目截圖">
+                <img id="detail-image" src="https://picsum.photos/seed/day1-airport/900/520" alt="行程節目截圖">
             </div>
             <div class="detail-content">
-                <span id="detail-date" class="date">2024.05.07</span>
-                <h3 id="detail-title">松山文創園區</h3>
-                <p id="detail-desc">節目中先從文創園區開始散步，邊走邊聊當年活動與舞台記憶，畫面節奏偏溫暖。</p>
-                <blockquote id="detail-quote">「這種慢慢走的行程，反而最像真正的旅行。」</blockquote>
-                <div id="detail-tag" class="tag">#殷志源 #散步 #文創</div>
+                <span id="detail-date" class="date">Day 1</span>
+                <h3 id="detail-title">臺灣桃園國際機場</h3>
+                <p id="detail-desc">高高父子遊台灣 Day 1 首站，從桃園機場正式開啟三天行程。</p>
+                <blockquote id="detail-quote">「旅程從落地那一刻就開始了。」</blockquote>
+                <div id="detail-tag" class="tag">#高高父子遊台灣 #Day1 #機場</div>
                 <a id="detail-link" class="detail-link" target="_blank"
-                    href="https://maps.google.com/?q=25.0441,121.5600">查看此地點</a>
+                    href="https://maps.google.com/?q=臺灣桃園國際機場">查看此地點</a>
             </div>
         </article>
     </section>
@@ -119,9 +335,11 @@
 
 <script>
     (function () {
-        // 備註：tab 控制「顯示哪些卡片」，card 控制「細節面板顯示哪一筆」。
         const tabs = Array.from(document.querySelectorAll(".tab-btn"));
         const cards = Array.from(document.querySelectorAll(".polaroid-card"));
+        const searchInput = document.getElementById("itinerary-search");
+        const itineraryList = document.querySelector(".itinerary-list");
+        const detailPanel = document.getElementById("detail-panel");
         const detailDate = document.getElementById("detail-date");
         const detailTitle = document.getElementById("detail-title");
         const detailDesc = document.getElementById("detail-desc");
@@ -129,12 +347,80 @@
         const detailTag = document.getElementById("detail-tag");
         const detailLink = document.getElementById("detail-link");
         const detailImage = document.getElementById("detail-image");
+        const dayGroups = new Map();
 
-        function setActiveCard(card) {
+        let currentMember = "all";
+        let currentKeyword = "";
+
+        function getCardSearchText(card) {
+            return [
+                card.dataset.date || "",
+                card.dataset.title || "",
+                card.dataset.desc || "",
+                card.dataset.tag || "",
+            ].join(" ").toLowerCase();
+        }
+
+        function createDayGroup(dayLabel) {
+            const group = document.createElement("section");
+            group.className = "day-group";
+            group.dataset.day = dayLabel;
+
+            const toggle = document.createElement("button");
+            toggle.type = "button";
+            toggle.className = "day-toggle";
+            toggle.setAttribute("aria-expanded", "false");
+            toggle.innerHTML = "<span>" + dayLabel + "</span><i class='fa-solid fa-chevron-down'></i>";
+
+            const body = document.createElement("div");
+            body.className = "day-cards";
+            body.style.display = "none";
+
+            group.appendChild(toggle);
+            group.appendChild(body);
+            itineraryList.insertBefore(group, detailPanel);
+            dayGroups.set(dayLabel, { group, toggle, body });
+            return dayGroups.get(dayLabel);
+        }
+
+        function setDayExpanded(dayGroup, shouldExpand) {
+            dayGroup.toggle.setAttribute("aria-expanded", shouldExpand ? "true" : "false");
+            dayGroup.body.style.display = shouldExpand ? "grid" : "none";
+            dayGroup.group.classList.toggle("expanded", shouldExpand);
+        }
+
+        function initializeDayGroups() {
+            cards.forEach((card) => {
+                const dayLabel = card.dataset.date || "未分類";
+                const dayGroup = dayGroups.get(dayLabel) || createDayGroup(dayLabel);
+                dayGroup.body.appendChild(card);
+            });
+        }
+
+        function updateDayGroupVisibility() {
+            dayGroups.forEach(({ group, body, toggle }) => {
+                const visibleCards = Array.from(body.querySelectorAll(".polaroid-card")).filter((card) => card.style.display !== "none");
+                group.style.display = visibleCards.length ? "" : "none";
+                if (!visibleCards.length) {
+                    setDayExpanded({ group, toggle, body }, false);
+                }
+            });
+        }
+
+        function ensureExpandedForCard(card) {
+            const dayGroup = dayGroups.get(card.dataset.date || "未分類");
+            if (!dayGroup) return;
+            setDayExpanded(dayGroup, true);
+        }
+
+        function setActiveCard(card, options = {}) {
+            const { expandDay = true } = options;
             cards.forEach((item) => item.classList.remove("active"));
             card.classList.add("active");
+            if (expandDay) {
+                ensureExpandedForCard(card);
+            }
 
-            // 備註：把卡片 data-* 內容灌到 detail-panel。
             detailDate.textContent = card.dataset.date || "";
             detailTitle.textContent = card.dataset.title || "";
             detailDesc.textContent = card.dataset.desc || "";
@@ -145,15 +431,22 @@
             detailImage.alt = "節目截圖 - " + (card.dataset.title || "行程地點");
         }
 
-        function applyFilter(member) {
+        function applyFilter() {
             let firstVisible = null;
             cards.forEach((card) => {
-                const matched = member === "all" || card.dataset.member === member;
+                const matchedMember = currentMember === "all" || card.dataset.member === currentMember;
+                const matchedKeyword = !currentKeyword || getCardSearchText(card).includes(currentKeyword);
+                const matched = matchedMember && matchedKeyword;
                 card.style.display = matched ? "" : "none";
                 if (matched && !firstVisible) firstVisible = card;
             });
-            // 備註：切換成員後，自動選中第一張可見卡，避免細節區停留在舊資料。
-            if (firstVisible) setActiveCard(firstVisible);
+            updateDayGroupVisibility();
+            const activeVisibleCard = cards.find((card) => card.classList.contains("active") && card.style.display !== "none");
+            const fallbackCard = activeVisibleCard || firstVisible;
+            if (fallbackCard) {
+                // 保持預設收合：篩選/初始化時只更新細節，不主動展開 Day 群組。
+                setActiveCard(fallbackCard, { expandDay: false });
+            }
         }
 
         tabs.forEach((tab) => {
@@ -164,22 +457,40 @@
                 });
                 tab.classList.add("active");
                 tab.setAttribute("aria-pressed", "true");
-                applyFilter(tab.dataset.member);
+                currentMember = tab.dataset.member;
+                applyFilter();
             });
+        });
+
+        if (searchInput) {
+            searchInput.addEventListener("input", (event) => {
+                currentKeyword = event.target.value.trim().toLowerCase();
+                applyFilter();
+            });
+        }
+
+        itineraryList.addEventListener("click", (event) => {
+            const toggle = event.target.closest(".day-toggle");
+            if (!toggle) return;
+            const group = toggle.closest(".day-group");
+            if (!group) return;
+            const dayGroup = dayGroups.get(group.dataset.day);
+            if (!dayGroup) return;
+            const isExpanded = dayGroup.toggle.getAttribute("aria-expanded") === "true";
+            setDayExpanded(dayGroup, !isExpanded);
         });
 
         cards.forEach((card) => {
             card.addEventListener("click", () => {
-                setActiveCard(card);
+                setActiveCard(card, { expandDay: true });
                 if (window.innerWidth < 920) {
-                    const detail = document.getElementById("detail-panel");
-                    detail.scrollIntoView({ behavior: "smooth", block: "start" });
+                    detailPanel.scrollIntoView({ behavior: "smooth", block: "start" });
                 }
             });
         });
 
-        const firstVisibleCard = cards.find((card) => card.style.display !== "none");
-        if (firstVisibleCard) setActiveCard(firstVisibleCard);
+        initializeDayGroups();
+        applyFilter();
     })();
 </script>
 
