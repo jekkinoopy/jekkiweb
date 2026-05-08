@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
-<body>
+<body class="map-page">
 <!-- 備註：本頁一定要是完整 HTML 文件（含 head 與 style.css），
  否則會變成瀏覽器的「片段模式」，樣式常常吃不到或跑版。 -->
 <header class="map-archive-header">
@@ -21,24 +21,76 @@
     </div>
 </header>
 
-<nav class="member-tabs" aria-label="成員篩選">
-    <button class="tab-btn active" data-member="all" aria-pressed="true">全部行程</button>
-    <button class="tab-btn" data-member="kogo" aria-pressed="false">高高父子遊台灣</button>
+<nav class="portal-nav" aria-label="水晶男孩推廣部導覽">
+    <a class="logo" href="index.html"><img src="./img/logov.svg" alt="SECHSKIES Logo"></a>
+    <ul>
+        <li><a href="index.html#intro">淪陷瞬間</a>
+            <ul class="portal-submenu">
+                <li><a href="index.html#mission">成立的初衷</a></li>
+                <li><a href="index.html#current">跨時空軌跡</a></li>
+                <li><a href="index.html#story">好奇的代價</a></li>
+            </ul>
+        </li>
+        <li><a href="chronicle.html">十六年約定</a>
+            <ul class="portal-submenu">
+                <li><a href="chronicle.html#challenge">無限挑戰</a></li>
+                <li><a href="chronicle.html#ssg2">六六歌第二季</a></li>
+                <li><a href="chronicle.html#sechskies-profile">水晶男孩</a></li>
+                <li><a href="chronicle.html#gather">召集</a></li>
+                <li><a href="chronicle.html#negotiate">正式交涉</a></li>
+                <li><a href="chronicle.html#variables">變數</a></li>
+                <li><a href="chronicle.html#surprise">驚喜</a></li>
+                <li><a href="chronicle.html#final-stage">登場</a></li>
+            </ul>
+        </li>
+        <li><a href="index.html#archive">黃色留聲機</a>
+            <ul class="portal-submenu">
+                <li><a href="classic.html">輝煌全盛期</a></li>
+                <li><a href="index.html#new">啟動新篇章</a></li>
+            </ul>
+        </li>
+        <li><a href="concert.html">現場的悸動</a>
+            <ul class="portal-submenu">
+                <li><a href="concert.html#classic-stage" data-coming-soon="true" aria-disabled="true">燦爛的最初</a></li>
+                <li><a href="concert.html#reunion-stage">永恆的重逢</a></li>
+            </ul>
+        </li>
+        <li class="coming-soon"><a href="variety.html" data-coming-soon="true" aria-disabled="true">綜藝熱播中</a>
+            <ul class="portal-submenu">
+                <li><a href="variety.html#jiwon" data-coming-soon="true" aria-disabled="true">瘋子與天才</a></li>
+                <li><a href="variety.html#group" data-coming-soon="true" aria-disabled="true">舞台外真實</a></li>
+            </ul>
+        </li>
+        <li><a href="map.html">聖地巡禮</a>
+            <ul class="portal-submenu">
+                <li><a href="map.html#taiwan">台灣聖地</a></li>
+                <li><a href="map.html#global">海外遠征</a></li>
+            </ul>
+        </li>
+    </ul>
 </nav>
+
+<div class="member-tabs" aria-label="成員篩選">
+    <button class="tab-btn active" data-member="all" aria-pressed="true">全部行程</button>
+    <button class="tab-btn" data-member="ko" aria-pressed="false">高高父子遊台灣</button>
+    <button class="tab-btn" data-member="eun" aria-pressed="false">殷空少搭飛機去台灣高雄</button>
+</div>
+
+<canvas id="particles"></canvas>
 
 <input id="itinerary-search" type="search" aria-label="行程搜尋"
     placeholder="搜尋地點、描述、標籤（例如：九份、夜市、Day 2）">
 
-<main class="content-container map-layout">
+<main id="taiwan" class="content-container map-layout">
     <!-- 備註：地圖區固定使用你的 Google My Maps iframe。
      這裡不改地圖資料來源，右側列表只負責敘事與導覽。 -->
     <section class="map-sticky">
         <h2 class="map-title">水晶男孩台灣行程地圖</h2>
         <iframe id="member-map" title="SECHSKIES 踩點地圖" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps/d/embed?mid=1xpAsSoO8gNmMiW4x2sfkndISFTtjMQDw&hl=zh-TW&ehbc=2E312F">
+            src="https://www.google.com/maps/d/embed?mid=1VGZ76SPPjm3NWCBQe-hkm08oe5WPRJI&ehbc=2E312F">
         </iframe>
         <a id="open-map-link" class="map-link" target="_blank"
-            href="https://www.google.com/maps/d/u/0/viewer?mid=1xpAsSoO8gNmMiW4x2sfkndISFTtjMQDw">
+            href="https://www.google.com/maps/d/u/0/viewer?mid=1VGZ76SPPjm3NWCBQe-hkm08oe5WPRJI">
             在 Google My Maps 開啟完整地圖
         </a>
     </section>
@@ -46,7 +98,141 @@
     <section class="itinerary-list">
         <!-- 備註：每張卡的 data-* 是「細節面板的資料來源」。
          你只要改 data-date/title/desc/quote/tag/link 和圖片，就會同步更新下方介紹。 -->
-        <article class="polaroid-card active" data-member="kogo" data-date="Day 1" data-title="臺灣桃園國際機場"
+        <article class="polaroid-card active" data-member="eun" data-date="殷志源 Day 1" data-title="仁川國際機場"
+            data-desc="殷空少搭飛機去台灣高雄 Day 1 起點，從仁川出發。"
+            data-quote="高雄，我們來了。" data-tag="#殷志源 #Day1 #出發"
+            data-link="https://maps.google.com/?q=仁川國際機場">
+            <div class="photo-frame">
+                <img src="https://picsum.photos/seed/eun-khh-day1-1/640/420" alt="殷志源高雄行程節目截圖-仁川國際機場">
+            </div>
+            <div class="card-content">
+                <span class="date">殷志源 Day 1</span>
+                <h3>仁川國際機場</h3>
+                <p class="description">殷志源高雄行程第一站。</p>
+                <div class="tag">#殷志源 #Day1</div>
+            </div>
+        </article>
+        <article class="polaroid-card" data-member="eun" data-date="殷志源 Day 1" data-title="高雄國際機場"
+            data-desc="抵達高雄，正式開始在地行程。"
+            data-quote="落地就是旅行模式開啟。" data-tag="#殷志源 #Day1 #高雄"
+            data-link="https://maps.google.com/?q=高雄國際機場">
+            <div class="photo-frame"><img src="https://picsum.photos/seed/eun-khh-day1-2/640/420" alt="殷志源高雄行程節目截圖-高雄國際機場"></div>
+            <div class="card-content"><span class="date">殷志源 Day 1</span><h3>高雄國際機場</h3><p class="description">殷志源高雄行程第二站。</p><div class="tag">#殷志源 #Day1</div></div>
+        </article>
+        <article class="polaroid-card" data-member="eun" data-date="殷志源 Day 1" data-title="星巴克小港國際站門市"
+            data-desc="機場周邊補給點，為 Day 1 暖身。"
+            data-quote="先來一杯，狀態就到位。" data-tag="#殷志源 #Day1 #咖啡"
+            data-link="https://maps.google.com/?q=星巴克小港國際站門市">
+            <div class="photo-frame"><img src="https://picsum.photos/seed/eun-khh-day1-3/640/420" alt="殷志源高雄行程節目截圖-星巴克小港國際站門市"></div>
+            <div class="card-content"><span class="date">殷志源 Day 1</span><h3>星巴克小港國際站門市</h3><p class="description">殷志源高雄行程第三站。</p><div class="tag">#殷志源 #Day1</div></div>
+        </article>
+        <article class="polaroid-card" data-member="eun" data-date="殷志源 Day 1" data-title="元帝廟北極亭"
+            data-desc="在地信仰文化路線，感受高雄生活節奏。"
+            data-quote="走進廟埕，城市的日常就有了溫度。" data-tag="#殷志源 #Day1 #文化"
+            data-link="https://maps.google.com/?q=元帝廟北極亭">
+            <div class="photo-frame"><img src="https://picsum.photos/seed/eun-khh-day1-4/640/420" alt="殷志源高雄行程節目截圖-元帝廟北極亭"></div>
+            <div class="card-content"><span class="date">殷志源 Day 1</span><h3>元帝廟北極亭</h3><p class="description">殷志源高雄行程第四站。</p><div class="tag">#殷志源 #Day1</div></div>
+        </article>
+        <article class="polaroid-card" data-member="eun" data-date="殷志源 Day 1" data-title="桃子園餐廳"
+            data-desc="Day 1 用餐點，銜接下一天行程。"
+            data-quote="每一站都要有好吃的收尾。" data-tag="#殷志源 #Day1 #美食"
+            data-link="https://maps.google.com/?q=桃子園餐廳">
+            <div class="photo-frame"><img src="https://picsum.photos/seed/eun-khh-day1-5/640/420" alt="殷志源高雄行程節目截圖-桃子園餐廳"></div>
+            <div class="card-content"><span class="date">殷志源 Day 1</span><h3>桃子園餐廳</h3><p class="description">殷志源高雄行程第五站。</p><div class="tag">#殷志源 #Day1</div></div>
+        </article>
+        <article class="polaroid-card" data-member="eun" data-date="殷志源 Day 2" data-title="哈囉市場"
+            data-desc="Day 2 從市場開始，走進高雄在地日常。"
+            data-quote="市場最能看見一座城市的生活感。" data-tag="#殷志源 #Day2 #市場"
+            data-link="https://maps.google.com/?q=哈囉市場">
+            <div class="photo-frame"><img src="https://picsum.photos/seed/eun-khh-day2-1/640/420" alt="殷志源高雄行程節目截圖-哈囉市場"></div>
+            <div class="card-content"><span class="date">殷志源 Day 2</span><h3>哈囉市場</h3><p class="description">殷志源高雄行程 Day 2 第一站。</p><div class="tag">#殷志源 #Day2</div></div>
+        </article>
+        <article class="polaroid-card" data-member="eun" data-date="殷志源 Day 2" data-title="蓮池潭"
+            data-desc="高雄經典景點，白天景色與步行路線都很適合取景。"
+            data-quote="每一步都有風景可以拍。" data-tag="#殷志源 #Day2 #景點"
+            data-link="https://maps.google.com/?q=蓮池潭">
+            <div class="photo-frame"><img src="https://picsum.photos/seed/eun-khh-day2-2/640/420" alt="殷志源高雄行程節目截圖-蓮池潭"></div>
+            <div class="card-content"><span class="date">殷志源 Day 2</span><h3>蓮池潭</h3><p class="description">殷志源高雄行程 Day 2 第二站。</p><div class="tag">#殷志源 #Day2</div></div>
+        </article>
+        <article class="polaroid-card" data-member="eun" data-date="殷志源 Day 2" data-title="龍虎塔"
+            data-desc="蓮池潭代表地標，適合搭配導覽與拍照段落。"
+            data-quote="高雄的經典場景之一。" data-tag="#殷志源 #Day2 #地標"
+            data-link="https://maps.google.com/?q=龍虎塔">
+            <div class="photo-frame"><img src="https://picsum.photos/seed/eun-khh-day2-3/640/420" alt="殷志源高雄行程節目截圖-龍虎塔"></div>
+            <div class="card-content"><span class="date">殷志源 Day 2</span><h3>龍虎塔</h3><p class="description">殷志源高雄行程 Day 2 第三站。</p><div class="tag">#殷志源 #Day2</div></div>
+        </article>
+        <article class="polaroid-card" data-member="eun" data-date="殷志源 Day 2" data-title="輕軌高雄展覽館站(新光碼頭)"
+            data-desc="港區路線轉乘點，串接後續海線行程。"
+            data-quote="搭上輕軌，城市風景一路展開。" data-tag="#殷志源 #Day2 #輕軌"
+            data-link="https://maps.google.com/?q=輕軌高雄展覽館站(新光碼頭)">
+            <div class="photo-frame"><img src="https://picsum.photos/seed/eun-khh-day2-4/640/420" alt="殷志源高雄行程節目截圖-輕軌高雄展覽館站"></div>
+            <div class="card-content"><span class="date">殷志源 Day 2</span><h3>輕軌高雄展覽館站(新光碼頭)</h3><p class="description">殷志源高雄行程 Day 2 第四站。</p><div class="tag">#殷志源 #Day2</div></div>
+        </article>
+        <article class="polaroid-card" data-member="eun" data-date="殷志源 Day 2" data-title="捷運哈瑪星站(輕軌哈瑪星站)"
+            data-desc="山海交界的人氣轉運點，步行動線完整。"
+            data-quote="到了哈瑪星，海港味就很濃。" data-tag="#殷志源 #Day2 #捷運"
+            data-link="https://maps.google.com/?q=捷運哈瑪星站">
+            <div class="photo-frame"><img src="https://picsum.photos/seed/eun-khh-day2-5/640/420" alt="殷志源高雄行程節目截圖-捷運哈瑪星站"></div>
+            <div class="card-content"><span class="date">殷志源 Day 2</span><h3>捷運哈瑪星站(輕軌哈瑪星站)</h3><p class="description">殷志源高雄行程 Day 2 第五站。</p><div class="tag">#殷志源 #Day2</div></div>
+        </article>
+        <article class="polaroid-card" data-member="eun" data-date="殷志源 Day 2" data-title="仁武烤鴨"
+            data-desc="高雄人氣美食站，安排在中段補給。"
+            data-quote="好吃到會想直接再外帶一份。" data-tag="#殷志源 #Day2 #美食"
+            data-link="https://maps.google.com/?q=仁武烤鴨">
+            <div class="photo-frame"><img src="https://picsum.photos/seed/eun-khh-day2-6/640/420" alt="殷志源高雄行程節目截圖-仁武烤鴨"></div>
+            <div class="card-content"><span class="date">殷志源 Day 2</span><h3>仁武烤鴨</h3><p class="description">殷志源高雄行程 Day 2 第六站。</p><div class="tag">#殷志源 #Day2</div></div>
+        </article>
+        <article class="polaroid-card" data-member="eun" data-date="殷志源 Day 2" data-title="握咖啡西子灣店(總店)"
+            data-desc="海邊咖啡節奏，適合休息和訪談。"
+            data-quote="在西子灣，時間會慢下來。" data-tag="#殷志源 #Day2 #咖啡"
+            data-link="https://maps.google.com/?q=握咖啡西子灣店(總店)">
+            <div class="photo-frame"><img src="https://picsum.photos/seed/eun-khh-day2-7/640/420" alt="殷志源高雄行程節目截圖-握咖啡西子灣店"></div>
+            <div class="card-content"><span class="date">殷志源 Day 2</span><h3>握咖啡西子灣店(總店)</h3><p class="description">殷志源高雄行程 Day 2 第七站。</p><div class="tag">#殷志源 #Day2</div></div>
+        </article>
+        <article class="polaroid-card" data-member="eun" data-date="殷志源 Day 2" data-title="鼓山輪渡站"
+            data-desc="前往旗津的重要交通節點。"
+            data-quote="坐上渡輪，旅程感直接拉滿。" data-tag="#殷志源 #Day2 #輪渡"
+            data-link="https://maps.google.com/?q=鼓山輪渡站">
+            <div class="photo-frame"><img src="https://picsum.photos/seed/eun-khh-day2-8/640/420" alt="殷志源高雄行程節目截圖-鼓山輪渡站"></div>
+            <div class="card-content"><span class="date">殷志源 Day 2</span><h3>鼓山輪渡站</h3><p class="description">殷志源高雄行程 Day 2 第八站。</p><div class="tag">#殷志源 #Day2</div></div>
+        </article>
+        <article class="polaroid-card" data-member="eun" data-date="殷志源 Day 2" data-title="旗津輪渡站"
+            data-desc="抵達旗津，展開海岸線路段。"
+            data-quote="到了旗津，風都不一樣。" data-tag="#殷志源 #Day2 #旗津"
+            data-link="https://maps.google.com/?q=旗津輪渡站">
+            <div class="photo-frame"><img src="https://picsum.photos/seed/eun-khh-day2-9/640/420" alt="殷志源高雄行程節目截圖-旗津輪渡站"></div>
+            <div class="card-content"><span class="date">殷志源 Day 2</span><h3>旗津輪渡站</h3><p class="description">殷志源高雄行程 Day 2 第九站。</p><div class="tag">#殷志源 #Day2</div></div>
+        </article>
+        <article class="polaroid-card" data-member="eun" data-date="殷志源 Day 2" data-title="樂騎腳踏車、電動車、遊園車（旗津）"
+            data-desc="旗津移動工具租借點（和隔壁不是同一間）。"
+            data-quote="騎上車，海邊路線更完整。" data-tag="#殷志源 #Day2 #旗津"
+            data-link="https://maps.google.com/?q=樂騎腳踏車 旗津">
+            <div class="photo-frame"><img src="https://picsum.photos/seed/eun-khh-day2-10/640/420" alt="殷志源高雄行程節目截圖-樂騎腳踏車"></div>
+            <div class="card-content"><span class="date">殷志源 Day 2</span><h3>樂騎腳踏車、電動車、遊園車（旗津）</h3><p class="description">殷志源高雄行程 Day 2 第十站。</p><div class="tag">#殷志源 #Day2</div></div>
+        </article>
+        <article class="polaroid-card" data-member="eun" data-date="殷志源 Day 2" data-title="旗津彩虹教堂"
+            data-desc="旗津拍照地標之一。"
+            data-quote="彩虹教堂是旗津必拍清單。" data-tag="#殷志源 #Day2 #旗津"
+            data-link="https://maps.google.com/?q=旗津彩虹教堂">
+            <div class="photo-frame"><img src="https://picsum.photos/seed/eun-khh-day2-11/640/420" alt="殷志源高雄行程節目截圖-旗津彩虹教堂"></div>
+            <div class="card-content"><span class="date">殷志源 Day 2</span><h3>旗津彩虹教堂</h3><p class="description">殷志源高雄行程 Day 2 第十一站。</p><div class="tag">#殷志源 #Day2</div></div>
+        </article>
+        <article class="polaroid-card" data-member="eun" data-date="殷志源 Day 2" data-title="旗津貝殼館"
+            data-desc="旗津主題展點，補足海線內容。"
+            data-quote="一站一站把海線故事拼起來。" data-tag="#殷志源 #Day2 #旗津"
+            data-link="https://maps.google.com/?q=旗津貝殼館">
+            <div class="photo-frame"><img src="https://picsum.photos/seed/eun-khh-day2-12/640/420" alt="殷志源高雄行程節目截圖-旗津貝殼館"></div>
+            <div class="card-content"><span class="date">殷志源 Day 2</span><h3>旗津貝殼館</h3><p class="description">殷志源高雄行程 Day 2 第十二站。</p><div class="tag">#殷志源 #Day2</div></div>
+        </article>
+        <article class="polaroid-card" data-member="eun" data-date="殷志源 Day 2" data-title="海忠寶活海產店"
+            data-desc="高雄海線行程收尾美食站。"
+            data-quote="最後用海鮮把今天完美收尾。" data-tag="#殷志源 #Day2 #美食"
+            data-link="https://maps.google.com/?q=海忠寶活海產店">
+            <div class="photo-frame"><img src="https://picsum.photos/seed/eun-khh-day2-13/640/420" alt="殷志源高雄行程節目截圖-海忠寶活海產店"></div>
+            <div class="card-content"><span class="date">殷志源 Day 2</span><h3>海忠寶活海產店</h3><p class="description">殷志源高雄行程 Day 2 第十三站。</p><div class="tag">#殷志源 #Day2</div></div>
+        </article>
+
+        <article class="polaroid-card" data-member="kogo" data-date="高志溶 Day 1" data-title="臺灣桃園國際機場"
             data-desc="高高父子遊台灣 Day 1 首站，從桃園機場正式開啟三天行程。"
             data-quote="旅程從落地那一刻就開始了。" data-tag="#高高父子遊台灣 #Day1 #機場"
             data-link="https://maps.google.com/?q=臺灣桃園國際機場">
@@ -54,7 +240,7 @@
                 <img src="https://picsum.photos/seed/day1-airport/640/420" alt="高高父子遊台灣節目截圖-臺灣桃園國際機場">
             </div>
             <div class="card-content">
-                <span class="date">Day 1</span>
+                <span class="date">高志溶 Day 1</span>
                 <h3>臺灣桃園國際機場</h3>
                 <p class="description">高高父子遊台灣 Day 1 第一站。</p>
                 <div class="tag">#高高父子遊台灣 #Day1</div>
@@ -332,167 +518,16 @@
         </article>
     </section>
 </main>
+<footer id="contact">
+    <div id="global"></div>
+    <p>SECHSKIES Fanpage &copy; 2026 - 黃色氣球永遠飄揚</p>
+    <a href="https://jekkinoopy.github.io/Portfolio/" class="studio-link" target="_blank">
+        Design by <strong>Jekkinoopy Studio</strong>
+    </a>
+</footer>
 
-<script>
-    (function () {
-        const tabs = Array.from(document.querySelectorAll(".tab-btn"));
-        const cards = Array.from(document.querySelectorAll(".polaroid-card"));
-        const searchInput = document.getElementById("itinerary-search");
-        const itineraryList = document.querySelector(".itinerary-list");
-        const detailPanel = document.getElementById("detail-panel");
-        const detailDate = document.getElementById("detail-date");
-        const detailTitle = document.getElementById("detail-title");
-        const detailDesc = document.getElementById("detail-desc");
-        const detailQuote = document.getElementById("detail-quote");
-        const detailTag = document.getElementById("detail-tag");
-        const detailLink = document.getElementById("detail-link");
-        const detailImage = document.getElementById("detail-image");
-        const dayGroups = new Map();
-
-        let currentMember = "all";
-        let currentKeyword = "";
-
-        function getCardSearchText(card) {
-            return [
-                card.dataset.date || "",
-                card.dataset.title || "",
-                card.dataset.desc || "",
-                card.dataset.tag || "",
-            ].join(" ").toLowerCase();
-        }
-
-        function createDayGroup(dayLabel) {
-            const group = document.createElement("section");
-            group.className = "day-group";
-            group.dataset.day = dayLabel;
-
-            const toggle = document.createElement("button");
-            toggle.type = "button";
-            toggle.className = "day-toggle";
-            toggle.setAttribute("aria-expanded", "false");
-            toggle.innerHTML = "<span>" + dayLabel + "</span><i class='fa-solid fa-chevron-down'></i>";
-
-            const body = document.createElement("div");
-            body.className = "day-cards";
-            body.style.display = "none";
-
-            group.appendChild(toggle);
-            group.appendChild(body);
-            itineraryList.insertBefore(group, detailPanel);
-            dayGroups.set(dayLabel, { group, toggle, body });
-            return dayGroups.get(dayLabel);
-        }
-
-        function setDayExpanded(dayGroup, shouldExpand) {
-            dayGroup.toggle.setAttribute("aria-expanded", shouldExpand ? "true" : "false");
-            dayGroup.body.style.display = shouldExpand ? "grid" : "none";
-            dayGroup.group.classList.toggle("expanded", shouldExpand);
-        }
-
-        function initializeDayGroups() {
-            cards.forEach((card) => {
-                const dayLabel = card.dataset.date || "未分類";
-                const dayGroup = dayGroups.get(dayLabel) || createDayGroup(dayLabel);
-                dayGroup.body.appendChild(card);
-            });
-        }
-
-        function updateDayGroupVisibility() {
-            dayGroups.forEach(({ group, body, toggle }) => {
-                const visibleCards = Array.from(body.querySelectorAll(".polaroid-card")).filter((card) => card.style.display !== "none");
-                group.style.display = visibleCards.length ? "" : "none";
-                if (!visibleCards.length) {
-                    setDayExpanded({ group, toggle, body }, false);
-                }
-            });
-        }
-
-        function ensureExpandedForCard(card) {
-            const dayGroup = dayGroups.get(card.dataset.date || "未分類");
-            if (!dayGroup) return;
-            setDayExpanded(dayGroup, true);
-        }
-
-        function setActiveCard(card, options = {}) {
-            const { expandDay = true } = options;
-            cards.forEach((item) => item.classList.remove("active"));
-            card.classList.add("active");
-            if (expandDay) {
-                ensureExpandedForCard(card);
-            }
-
-            detailDate.textContent = card.dataset.date || "";
-            detailTitle.textContent = card.dataset.title || "";
-            detailDesc.textContent = card.dataset.desc || "";
-            detailQuote.textContent = "「" + (card.dataset.quote || "") + "」";
-            detailTag.textContent = card.dataset.tag || "";
-            detailLink.href = card.dataset.link || "#";
-            detailImage.src = card.querySelector("img").src;
-            detailImage.alt = "節目截圖 - " + (card.dataset.title || "行程地點");
-        }
-
-        function applyFilter() {
-            let firstVisible = null;
-            cards.forEach((card) => {
-                const matchedMember = currentMember === "all" || card.dataset.member === currentMember;
-                const matchedKeyword = !currentKeyword || getCardSearchText(card).includes(currentKeyword);
-                const matched = matchedMember && matchedKeyword;
-                card.style.display = matched ? "" : "none";
-                if (matched && !firstVisible) firstVisible = card;
-            });
-            updateDayGroupVisibility();
-            const activeVisibleCard = cards.find((card) => card.classList.contains("active") && card.style.display !== "none");
-            const fallbackCard = activeVisibleCard || firstVisible;
-            if (fallbackCard) {
-                // 保持預設收合：篩選/初始化時只更新細節，不主動展開 Day 群組。
-                setActiveCard(fallbackCard, { expandDay: false });
-            }
-        }
-
-        tabs.forEach((tab) => {
-            tab.addEventListener("click", () => {
-                tabs.forEach((item) => {
-                    item.classList.remove("active");
-                    item.setAttribute("aria-pressed", "false");
-                });
-                tab.classList.add("active");
-                tab.setAttribute("aria-pressed", "true");
-                currentMember = tab.dataset.member;
-                applyFilter();
-            });
-        });
-
-        if (searchInput) {
-            searchInput.addEventListener("input", (event) => {
-                currentKeyword = event.target.value.trim().toLowerCase();
-                applyFilter();
-            });
-        }
-
-        itineraryList.addEventListener("click", (event) => {
-            const toggle = event.target.closest(".day-toggle");
-            if (!toggle) return;
-            const group = toggle.closest(".day-group");
-            if (!group) return;
-            const dayGroup = dayGroups.get(group.dataset.day);
-            if (!dayGroup) return;
-            const isExpanded = dayGroup.toggle.getAttribute("aria-expanded") === "true";
-            setDayExpanded(dayGroup, !isExpanded);
-        });
-
-        cards.forEach((card) => {
-            card.addEventListener("click", () => {
-                setActiveCard(card, { expandDay: true });
-                if (window.innerWidth < 920) {
-                    detailPanel.scrollIntoView({ behavior: "smooth", block: "start" });
-                }
-            });
-        });
-
-        initializeDayGroups();
-        applyFilter();
-    })();
-</script>
+<script src="map.js"></script>
+<script src="portal-nav.js"></script>
 
 </body>
 

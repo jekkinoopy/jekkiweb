@@ -1,13 +1,16 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SECHSKIES Concert Archive</title>
     <link rel="stylesheet" href="concert.css">
-    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
-<body>
+<body class="concert-page">
     <!-- HTML 結構 -->
     <header class="concert-archive-header">
         <div class="header-inner">
@@ -17,13 +20,62 @@
             </div>
         </div>
     </header>
+    <nav class="portal-nav" aria-label="水晶男孩推廣部導覽">
+        <a class="logo" href="index.html"><img src="./img/logov.svg" alt="SECHSKIES Logo"></a>
+        <ul>
+            <li><a href="index.html#intro">淪陷瞬間</a>
+                <ul class="portal-submenu">
+                    <li><a href="index.html#mission">成立的初衷</a></li>
+                    <li><a href="index.html#current">跨時空軌跡</a></li>
+                    <li><a href="index.html#story">好奇的代價</a></li>
+                </ul>
+            </li>
+            <li><a href="chronicle.html">十六年約定</a>
+                <ul class="portal-submenu">
+                    <li><a href="chronicle.html#challenge">無限挑戰</a></li>
+                    <li><a href="chronicle.html#ssg2">六六歌第二季</a></li>
+                    <li><a href="chronicle.html#sechskies-profile">水晶男孩</a></li>
+                    <li><a href="chronicle.html#gather">召集</a></li>
+                    <li><a href="chronicle.html#negotiate">正式交涉</a></li>
+                    <li><a href="chronicle.html#variables">變數</a></li>
+                    <li><a href="chronicle.html#surprise">驚喜</a></li>
+                    <li><a href="chronicle.html#final-stage">登場</a></li>
+                </ul>
+            </li>
+            <li><a href="index.html#archive">黃色留聲機</a>
+                <ul class="portal-submenu">
+                    <li><a href="classic.html">輝煌全盛期</a></li>
+                    <li><a href="index.html#new">啟動新篇章</a></li>
+                </ul>
+            </li>
+            <li><a href="concert.html">現場的悸動</a>
+                <ul class="portal-submenu">
+                    <li><a href="concert.html#classic-stage" data-coming-soon="true" aria-disabled="true">燦爛的最初</a></li>
+                    <li><a href="concert.html#reunion-stage">永恆的重逢</a></li>
+                </ul>
+            </li>
+            <li class="coming-soon"><a href="variety.html" data-coming-soon="true" aria-disabled="true">綜藝熱播中</a>
+                <ul class="portal-submenu">
+                    <li><a href="variety.html#jiwon" data-coming-soon="true" aria-disabled="true">瘋子與天才</a></li>
+                    <li><a href="variety.html#group" data-coming-soon="true" aria-disabled="true">舞台外真實</a></li>
+                </ul>
+            </li>
+            <li><a href="map.html">聖地巡禮</a>
+                <ul class="portal-submenu">
+                    <li><a href="map.html#taiwan">台灣聖地</a></li>
+                    <li><a href="map.html#global">海外遠征</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <canvas id="particles"></canvas>
     <div class="search-section">
         <input type="text" class="search-input" placeholder="搜尋曲目或場次...">
     </div>
     <div class="concert-container">
 
         <!-- 演唱會 con-$ -->
-        <div class="con-1" data-tour="YELLOW NOTE">
+        <div id="classic-stage" class="con-1" data-tour="YELLOW NOTE">
             <span class="title">2016&nbsp;&nbsp;|&nbsp;&nbsp; YELLOW NOTE</span>
             <img src="img/concert/2016.jpg" alt="">
             <!-- 地點 con-$-$ -->
@@ -151,7 +203,7 @@
             </div>
         </div>
         <!-- 演唱會 02 -->
-        <div class="con-2" data-tour="20TH ANNIV.">
+        <div id="reunion-stage" class="con-2" data-tour="20TH ANNIV.">
             <span class="title">2017-2018&nbsp;&nbsp;|&nbsp;&nbsp;20TH ANNIVERSARY</span>
             <img src="img/concert/2017.jpg" alt="">
 
@@ -399,7 +451,69 @@
         </div>
     </div>
     </div>
+    <footer>
+        <p>SECHSKIES Fanpage &copy; 2026 - 黃色氣球永遠飄揚</p>
+        <a href="https://jekkinoopy.github.io/Portfolio/" class="studio-link" target="_blank">
+            Design by <strong>Jekkinoopy Studio</strong>
+        </a>
+    </footer>
+    <script>
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
 
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        resizeCanvas();
+
+        let particles = [];
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 4 + 1;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * 0.5 + 0.2;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.y > canvas.height) this.y = 0;
+            }
+            draw() {
+                ctx.fillStyle = '#FFDD00';
+                ctx.globalAlpha = 0.6;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            particles = [];
+            for (let i = 0; i < 80; i++) particles.push(new Particle());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (const p of particles) {
+                p.update();
+                p.draw();
+            }
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            init();
+        });
+
+        init();
+        animate();
+    </script>
+    <script src="portal-nav.js"></script>
 </body>
 
 </html>
