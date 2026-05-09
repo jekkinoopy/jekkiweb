@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="concert.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="tablet.css">
 </head>
 
 <body class="concert-page">
@@ -23,46 +24,40 @@
     <nav class="portal-nav" aria-label="水晶男孩推廣部導覽">
         <a class="logo" href="index.html"><img src="./img/logov.svg" alt="SECHSKIES Logo"></a>
         <ul>
-            <li><a href="index.html#intro">淪陷瞬間</a>
+            <li><a href="index.html#origin">淪陷瞬間</a>
                 <ul class="portal-submenu">
                     <li><a href="index.html#mission">成立的初衷</a></li>
-                    <li><a href="index.html#current">跨時空軌跡</a></li>
-                    <li><a href="index.html#story">好奇的代價</a></li>
+                    <li><a href="index.html#timeline">跨時空軌跡</a></li>
+                    <li><a href="index.html#start">好奇的開端</a></li>
                 </ul>
             </li>
-            <li><a href="chronicle.html">十六年約定</a>
+            <li><a href="jiwon.html">瘋子與天才</a>
                 <ul class="portal-submenu">
-                    <li><a href="chronicle.html#challenge">無限挑戰</a></li>
-                    <li><a href="chronicle.html#ssg2">六六歌第二季</a></li>
-                    <li><a href="chronicle.html#sechskies-profile">水晶男孩</a></li>
-                    <li><a href="chronicle.html#gather">召集</a></li>
-                    <li><a href="chronicle.html#negotiate">正式交涉</a></li>
-                    <li><a href="chronicle.html#variables">變數</a></li>
-                    <li><a href="chronicle.html#surprise">驚喜</a></li>
-                    <li><a href="chronicle.html#final-stage">登場</a></li>
+                    <li><a href="jiwon.html#variety">瘋狂出演中</a></li>
+                    <li><a href="jiwon.html#stage">隊長的氣場</a></li>
                 </ul>
             </li>
-            <li><a href="index.html#archive">黃色留聲機</a>
+            <li><a href="sunghoon.html">消失的真相</a>
                 <ul class="portal-submenu">
-                    <li><a href="classic.html">輝煌全盛期</a></li>
-                    <li><a href="index.html#new">啟動新篇章</a></li>
+                    <li><a href="sunghoon.html#truth">還原那場雨</a></li>
+                    <li><a href="sunghoon.html#voice">被掩蓋的主唱</a></li>
                 </ul>
             </li>
-            <li><a href="concert.html">現場的悸動</a>
+            <li><a href="concert.html">現場的震撼</a>
                 <ul class="portal-submenu">
-                    <li><a href="concert.html#classic-stage" data-coming-soon="true" aria-disabled="true">燦爛的最初</a></li>
-                    <li><a href="concert.html#reunion-stage">永恆的重逢</a></li>
+                    <li><a href="concert.html#stage-now">永恆的重逢</a></li>
+                    <li><a href="concert.html#stage-past">燦爛的最初</a></li>
                 </ul>
             </li>
-            <li class="coming-soon"><a href="variety.html" data-coming-soon="true" aria-disabled="true">綜藝熱播中</a>
+            <li><a href="archive.html">黃色留聲機</a>
                 <ul class="portal-submenu">
-                    <li><a href="variety.html#jiwon" data-coming-soon="true" aria-disabled="true">瘋子與天才</a></li>
-                    <li><a href="variety.html#group" data-coming-soon="true" aria-disabled="true">舞台外真實</a></li>
+                    <li><a href="archive.html#new">啟動新篇章</a></li>
+                    <li><a href="archive.html#classic">輝煌全盛期</a></li>
                 </ul>
             </li>
             <li><a href="map.html">聖地巡禮</a>
                 <ul class="portal-submenu">
-                    <li><a href="map.html#taiwan">台灣聖地</a></li>
+                    <li><a href="map.html#taipei">台北聖地</a></li>
                     <li><a href="map.html#global">海外遠征</a></li>
                 </ul>
             </li>
@@ -74,47 +69,48 @@
     </div>
     <div class="concert-container">
 
-        <!-- 演唱會 con-$ -->
-        <div id="classic-stage" class="con-1" data-tour="YELLOW NOTE">
-            <span class="title">2016&nbsp;&nbsp;|&nbsp;&nbsp; YELLOW NOTE</span>
+        <!-- 永恆的重逢：2016 首場回歸演唱會 → 二十週年巡演 -->
+        <section id="stage-now" aria-label="永恆的重逢">
+
+        <div id="yellownote-stage" data-tour="YELLOW NOTE">
+            <span class="title">2016&nbsp;&nbsp;|&nbsp;&nbsp;YELLOW NOTE</span>
+            <p class="yellownote-tagline">首場回歸演唱會</p>
             <img src="img/concert/2016.jpg" alt="">
-            <!-- 地點 con-$-$ -->
-            <div class="con-1-1 attended" data-date1="09.10">
-                <span class="location"> 首爾 | 首爾奧林匹克體操競技場</span>
-                <input type="checkbox" id="expand-con-1-1" class="expand-trigger">
-                <!-- 曲目 con-$-$-$ -->
+            <div class="con-yk-1 attended" data-date1="09.10">
+                <span class="location">首爾 | 首爾奧林匹克體操競技場</span>
+                <input type="checkbox" id="expand-yk-1" class="expand-trigger">
                 <div class="track-list">
-                    <div class="track-item"><span class="track">COM' BACK</div>
-                    <div class="track-item"><span class="track">ROAD FIGHTER</div>
-                    <div class="track-item"><span class="track">폼생폼사 / 品生品死</div>
-                    <div class="track-item"><span class="track">COME TO ME BABY</div>
-                    <div class="track-item"><span class="track">배신감（BAD GIRL）/ 背叛感</div>
-                    <div class="track-item"><span class="track">사랑하는 너에게（DEAR LOVE）/ 給親愛的你</div>
-                    <div class="track-item"><span class="track">예감（GOT A FEELING）/ 預感</div>
-                    <div class="track-item"><span class="track">너를 보내며（LET U GO）/ 送你離開</div>
-                    <div class="track-item"><span class="track">8t. TRUCK － 殷志源</div>
-                    <div class="track-item"><span class="track">DOUBLE J － 李宰鎮</div>
-                    <div class="track-item"><span class="track">A+ － 金在德</div>
-                    <div class="track-item"><span class="track">그대로 멈춰 / 就那樣停止－ BLACKKIES（殷志源、李宰鎮、金在德）</div>
-                    <div class="track-item"><span class="track">SAY － WHITEKIES（姜成勳、張水院）</div>
-                    <div class="track-item"><span class="track">SUDDENLY － 張水院</div>
-                    <div class="track-item"><span class="track">MY GIRL － 姜成勳</div>
-                    <div class="track-item"><span class="track">무모한 사랑（RECKLESS LOVE）/ 不可能的愛</div>
-                    <div class="track-item"><span class="track">연정（HEARTBREAK）/ 戀情</div>
-                    <div class="track-item"><span class="track">커플（COUPLE）/ 戀人</div>
-                    <div class="track-item"><span class="track">기억해줄래 / 請記得好嗎</div>
-                    <div class="track-item"><span class="track">ENCORE：학원별곡（RISE UP）/ 學園別曲</div>
-                    <div class="track-item"><span class="track">기사도 / 騎士道</div>
-                    <div class="track-item"><span class="track">그날까지（TOGETHER FOREVER）/ 直到那一天</div>
-                    <div class="track-item"><span class="track">DOUBLE ENCORE：（2016年9月11日）</div>
-                    <div class="track-item"><span class="track">사랑하는 너에게（DEAR LOVE）/ 給親愛的你</div>
-                    <div class="track-item"><span class="track">커플（COUPLE）/ 戀人</div>
+                    <div class="track-item"><span class="track">COM' BACK</span></div>
+                    <div class="track-item"><span class="track">ROAD FIGHTER</span></div>
+                    <div class="track-item"><span class="track">폼생폼사 / 品生品死</span></div>
+                    <div class="track-item"><span class="track">COME TO ME BABY</span></div>
+                    <div class="track-item"><span class="track">배신감（BAD GIRL）/ 背叛感</span></div>
+                    <div class="track-item"><span class="track">사랑하는 너에게（DEAR LOVE）/ 給親愛的你</span></div>
+                    <div class="track-item"><span class="track">예감（GOT A FEELING）/ 預感</span></div>
+                    <div class="track-item"><span class="track">너를 보내며（LET U GO）/ 送你離開</span></div>
+                    <div class="track-item"><span class="track">8t. TRUCK － 殷志源</span></div>
+                    <div class="track-item"><span class="track">DOUBLE J － 李宰鎮</span></div>
+                    <div class="track-item"><span class="track">A+ － 金在德</span></div>
+                    <div class="track-item"><span class="track">그대로 멈춰 / 就那樣停止－ BLACKKIES（殷志源、李宰鎮、金在德）</span></div>
+                    <div class="track-item"><span class="track">SAY － WHITEKIES（姜成勳、張水院）</span></div>
+                    <div class="track-item"><span class="track">SUDDENLY － 張水院</span></div>
+                    <div class="track-item"><span class="track">MY GIRL － 姜成勳</span></div>
+                    <div class="track-item"><span class="track">무모한 사랑（RECKLESS LOVE）/ 不可能的愛</span></div>
+                    <div class="track-item"><span class="track">연정（HEARTBREAK）/ 戀情</span></div>
+                    <div class="track-item"><span class="track">커플（COUPLE）/ 戀人</span></div>
+                    <div class="track-item"><span class="track">기억해줄래 / 請記得好嗎</span></div>
+                    <div class="track-item"><span class="track">ENCORE：학원별곡（RISE UP）/ 學園別曲</span></div>
+                    <div class="track-item"><span class="track">기사도 / 騎士道</span></div>
+                    <div class="track-item"><span class="track">그날까지（TOGETHER FOREVER）/ 直到那一天</span></div>
+                    <div class="track-item"><span class="track">DOUBLE ENCORE：（2016年9月11日）</span></div>
+                    <div class="track-item"><span class="track">사랑하는 너에게（DEAR LOVE）/ 給親愛的你</span></div>
+                    <div class="track-item"><span class="track">커플（COUPLE）/ 戀人</span></div>
                 </div>
-                <label for="expand-con-1-1" class="expand-btn"></label>
+                <label for="expand-yk-1" class="expand-btn"></label>
             </div>
-            <div class="con-1-2">
+            <div class="con-yk-2">
                 <span class="location">大邱 | 大邱會展中心</span>
-                <input type="checkbox" id="expand-con-1-2" class="expand-trigger">
+                <input type="checkbox" id="expand-yk-2" class="expand-trigger">
                 <div class="track-list">
                     <div class="track-item"><span class="track">COM' BACK</span></div>
                     <div class="track-item"><span class="track">학원별곡（RISE UP）/ 學園別曲</span></div>
@@ -140,11 +136,11 @@
                     <div class="track-item"><span class="track">기억해줄래 / 請記得好嗎</span></div>
                     <div class="track-item"><span class="track">그날까지（TOGETHER FOREVER）/ 直到那一天</span></div>
                 </div>
-                <label for="expand-con-1-2" class="expand-btn"></label>
+                <label for="expand-yk-2" class="expand-btn"></label>
             </div>
-            <div class="con-1-3 attended" data-date1="12.23" data-date2="12.24">
+            <div class="con-yk-3 attended" data-date1="12.23" data-date2="12.24">
                 <span class="location">釜山 | 釜山會展中心</span>
-                <input type="checkbox" id="expand-con-1-3" class="expand-trigger">
+                <input type="checkbox" id="expand-yk-3" class="expand-trigger">
                 <div class="track-list">
                     <div class="track-item"><span class="track">COM' BACK</span></div>
                     <div class="track-item"><span class="track">학원별곡（RISE UP）/ 學園別曲</span></div>
@@ -170,12 +166,11 @@
                     <div class="track-item"><span class="track">기억해줄래 / 請記得好嗎</span></div>
                     <div class="track-item"><span class="track">그날까지（TOGETHER FOREVER）/ 直到那一天</span></div>
                 </div>
-                <label for="expand-con-1-3" class="expand-btn"></label>
+                <label for="expand-yk-3" class="expand-btn"></label>
             </div>
-            <div class="con-1-4">
+            <div class="con-yk-4">
                 <span class="location">首爾 | 蠶室室內體育館</span>
-                <input type="checkbox" id="expand-con-1-4" class="expand-trigger">
-
+                <input type="checkbox" id="expand-yk-4" class="expand-trigger">
                 <div class="track-list">
                     <div class="track-item"><span class="track">학원별곡（RISE UP）/ 學園別曲</span></div>
                     <div class="track-item"><span class="track">COM' BACK</span></div>
@@ -199,11 +194,11 @@
                     <div class="track-item"><span class="track">ROAD FIGHTER</span></div>
                     <div class="track-item"><span class="track">커플（COUPLE）/ 戀人</span></div>
                 </div>
-                <label for="expand-con-1-4" class="expand-btn"></label>
+                <label for="expand-yk-4" class="expand-btn"></label>
             </div>
         </div>
-        <!-- 演唱會 02 -->
-        <div id="reunion-stage" class="con-2" data-tour="20TH ANNIV.">
+
+        <div class="con-2" data-tour="20TH ANNIV.">
             <span class="title">2017-2018&nbsp;&nbsp;|&nbsp;&nbsp;20TH ANNIVERSARY</span>
             <img src="img/concert/2017.jpg" alt="">
 
@@ -384,6 +379,8 @@
                 <label for="expand-con-2-5" class="expand-btn"></label>
             </div>
         </div>
+
+        </section>
         <!-- 演唱會 03 -->
         <div class="con-3" data-tour="NOW・HERE・AGAIN.">
             <span class="title">2018&nbsp;&nbsp;|&nbsp;&nbsp;NOW・HERE・AGAIN</span>
@@ -449,7 +446,167 @@
                 <!-- 移除展開按鈕，因為沒有曲目可展開 -->
             </div>
         </div>
-    </div>
+
+        <!-- 燦爛的最初（九十年代）／錨點 #stage-past -->
+        <section id="stage-past" aria-label="燦爛的最初">
+        <div class="con-1" data-tour="CLASSIC LIVE">
+            <span class="title">九十年代經典巡迴</span>
+
+            <div class="stage-past-era">
+                <span class="tour-era-heading">1997&nbsp;|&nbsp;Sechky的Christmas</span>
+                <div class="con-1-1">
+                    <span class="location">1997.12.21 | 首爾 | 韓國 | 世宗文化會館</span>
+                    <input type="checkbox" id="expand-con-1-1" class="expand-trigger">
+                    <div class="track-list">
+                        <div class="track-item"><span class="track">演出曲順待整理</span></div>
+                    </div>
+                    <label for="expand-con-1-1" class="expand-btn"></label>
+                </div>
+            </div>
+
+            <div class="stage-past-era">
+                <span class="tour-era-heading">1998&nbsp;|&nbsp;Encore Concert</span>
+                <div class="con-1-2">
+                    <span class="location">1998.02.22 | 首爾 | 韓國 | 首爾奧林匹克體操競技場</span>
+                    <input type="checkbox" id="expand-con-1-2" class="expand-trigger">
+                    <div class="track-list">
+                        <div class="track-item"><span class="track">演出曲順待整理</span></div>
+                    </div>
+                    <label for="expand-con-1-2" class="expand-btn"></label>
+                </div>
+            </div>
+
+            <div class="stage-past-era">
+                <span class="tour-era-heading">1998&nbsp;|&nbsp;全國巡迴演唱會</span>
+                <p class="tour-era-meta">1998年2月28日 — 4月5日・韓國・共 6 場</p>
+                <div class="con-1-3">
+                    <span class="location">1998.02.28 | 釜山 | 韓國 | 釜山 KBS Hall</span>
+                    <input type="checkbox" id="expand-con-1-3" class="expand-trigger">
+                    <div class="track-list">
+                        <div class="track-item"><span class="track">演出曲順待整理</span></div>
+                    </div>
+                    <label for="expand-con-1-3" class="expand-btn"></label>
+                </div>
+                <div class="con-1-4">
+                    <span class="location">1998.03.08 | 蔚山 | 韓國 | 蔚山 KBS Hall</span>
+                    <input type="checkbox" id="expand-con-1-4" class="expand-trigger">
+                    <div class="track-list">
+                        <div class="track-item"><span class="track">演出曲順待整理</span></div>
+                    </div>
+                    <label for="expand-con-1-4" class="expand-btn"></label>
+                </div>
+                <div class="con-1-5">
+                    <span class="location">1998.03.14 | 光州 | 韓國 | 光州廣域市綜合體育館</span>
+                    <input type="checkbox" id="expand-con-1-5" class="expand-trigger">
+                    <div class="track-list">
+                        <div class="track-item"><span class="track">演出曲順待整理</span></div>
+                    </div>
+                    <label for="expand-con-1-5" class="expand-btn"></label>
+                </div>
+                <div class="con-1-6">
+                    <span class="location">1998.03.22 | 富川 | 韓國 | 富川室內體育館</span>
+                    <input type="checkbox" id="expand-con-1-6" class="expand-trigger">
+                    <div class="track-list">
+                        <div class="track-item"><span class="track">演出曲順待整理</span></div>
+                    </div>
+                    <label for="expand-con-1-6" class="expand-btn"></label>
+                </div>
+                <div class="con-1-7">
+                    <span class="location">1998.03.28 | 大邱 | 韓國 | E·WORLD</span>
+                    <input type="checkbox" id="expand-con-1-7" class="expand-trigger">
+                    <div class="track-list">
+                        <div class="track-item"><span class="track">演出曲順待整理</span></div>
+                    </div>
+                    <label for="expand-con-1-7" class="expand-btn"></label>
+                </div>
+                <div class="con-1-8">
+                    <span class="location">1998.04.05 | 大田 | 韓國 | CMB Expo Art Hall</span>
+                    <input type="checkbox" id="expand-con-1-8" class="expand-trigger">
+                    <div class="track-list">
+                        <div class="track-item"><span class="track">演出曲順待整理</span></div>
+                    </div>
+                    <label for="expand-con-1-8" class="expand-btn"></label>
+                </div>
+            </div>
+
+            <div class="stage-past-era">
+                <span class="tour-era-heading">1998&nbsp;|&nbsp;Sechky的Christmas Concert</span>
+                <div class="con-1-9">
+                    <span class="location">1998.12.24 | 釜山 | 韓國 | 社稷棒球場</span>
+                    <input type="checkbox" id="expand-con-1-9" class="expand-trigger">
+                    <div class="track-list">
+                        <div class="track-item"><span class="track">演出曲順待整理</span></div>
+                    </div>
+                    <label for="expand-con-1-9" class="expand-btn"></label>
+                </div>
+            </div>
+
+            <div class="stage-past-era">
+                <span class="tour-era-heading">1999&nbsp;|&nbsp;Sechskies Live Concert</span>
+                <p class="tour-era-meta">1999年2月6日 — 2月27日・韓國・共 6 場</p>
+                <div class="con-1-10">
+                    <span class="location">1999.02.06 · 場次 1 | 蔚山 | 韓國 | 蔚山 KBS Hall</span>
+                    <input type="checkbox" id="expand-con-1-10" class="expand-trigger">
+                    <div class="track-list">
+                        <div class="track-item"><span class="track">演出曲順待整理</span></div>
+                    </div>
+                    <label for="expand-con-1-10" class="expand-btn"></label>
+                </div>
+                <div class="con-1-11">
+                    <span class="location">1999.02.06 · 場次 2 | 蔚山 | 韓國 | 蔚山 KBS Hall</span>
+                    <input type="checkbox" id="expand-con-1-11" class="expand-trigger">
+                    <div class="track-list">
+                        <div class="track-item"><span class="track">演出曲順待整理（同日第二場／詳記待考）</span></div>
+                    </div>
+                    <label for="expand-con-1-11" class="expand-btn"></label>
+                </div>
+                <div class="con-1-12">
+                    <span class="location">1999.02.21 | 大邱 | 韓國 | 慶北大學</span>
+                    <input type="checkbox" id="expand-con-1-12" class="expand-trigger">
+                    <div class="track-list">
+                        <div class="track-item"><span class="track">演出曲順待整理</span></div>
+                    </div>
+                    <label for="expand-con-1-12" class="expand-btn"></label>
+                </div>
+                <div class="con-1-13">
+                    <span class="location">1999.02.25 | 首爾 | 韓國 | KBS88 體育館</span>
+                    <input type="checkbox" id="expand-con-1-13" class="expand-trigger">
+                    <div class="track-list">
+                        <div class="track-item"><span class="track">演出曲順待整理</span></div>
+                    </div>
+                    <label for="expand-con-1-13" class="expand-btn"></label>
+                </div>
+                <div class="con-1-14">
+                    <span class="location">1999.02.26 | 首爾 | 韓國 | KBS88 體育館</span>
+                    <input type="checkbox" id="expand-con-1-14" class="expand-trigger">
+                    <div class="track-list">
+                        <div class="track-item"><span class="track">演出曲順待整理</span></div>
+                    </div>
+                    <label for="expand-con-1-14" class="expand-btn"></label>
+                </div>
+                <div class="con-1-15">
+                    <span class="location">1999.02.27 | 首爾 | 韓國 | KBS88 體育館</span>
+                    <input type="checkbox" id="expand-con-1-15" class="expand-trigger">
+                    <div class="track-list">
+                        <div class="track-item"><span class="track">演出曲順待整理</span></div>
+                    </div>
+                    <label for="expand-con-1-15" class="expand-btn"></label>
+                </div>
+            </div>
+
+            <div class="stage-past-era">
+                <span class="tour-era-heading">2000&nbsp;|&nbsp;SECHSKIES 2000 LIVE CONCERT</span>
+                <div class="con-1-16">
+                    <span class="location">2000.02.28 | 首爾 | 韓國 | 首爾奧林匹克體操競技場</span>
+                    <input type="checkbox" id="expand-con-1-16" class="expand-trigger">
+                    <div class="track-list">
+                        <div class="track-item"><span class="track">演出曲順待整理</span></div>
+                    </div>
+                    <label for="expand-con-1-16" class="expand-btn"></label>
+                </div>
+            </div>
+        </div>
+        </section>
     </div>
     <footer>
         <p>SECHSKIES Fanpage &copy; 2026 - 黃色氣球永遠飄揚</p>

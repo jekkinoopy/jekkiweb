@@ -153,7 +153,8 @@ body {
 .con-1,
 .con-2,
 .con-3,
-.con-4 {
+.con-4,
+#yellownote-stage {
     display: flex;
     flex-direction: column;
     background-color: #fff;
@@ -171,6 +172,23 @@ img {
     width: 50%;
     margin: 0 auto;
     align-items: center;
+}
+
+/* 重逢區：大卡垂直堆疊，錨點落在區塊頂端 */
+#stage-now {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+#yellownote-stage .yellownote-tagline {
+    margin: -1.5rem auto 1.75rem;
+    padding: 0 1rem;
+    text-align: center;
+    font-size: clamp(0.9rem, 1.8vw, 1rem);
+    font-weight: 650;
+    color: #555;
+    letter-spacing: 0.04em;
 }
 
 /* 右上角緞帶：改用獨立 div 或確保不被裁切 */
@@ -197,6 +215,34 @@ img {
     margin: 50px;
     text-align: center;
     color: #333;
+}
+
+/* 燦爛的最初：小節標（對齊隔壁「一張大卡＋多個場次列」） */
+#stage-past .stage-past-era {
+    margin-top: 2.25rem;
+}
+
+#stage-past .stage-past-era:first-of-type {
+    margin-top: 0;
+}
+
+#stage-past .tour-era-heading {
+    display: block;
+    margin: 0 0 0.5rem;
+    padding: 0 1rem;
+    font-size: clamp(1rem, 2vw, 1.12rem);
+    font-weight: 800;
+    text-align: center;
+    color: #333;
+}
+
+#stage-past .tour-era-meta {
+    opacity: 0.9;
+    font-size: 0.92rem;
+    margin: 0 0 0.85rem;
+    padding: 0 1rem;
+    text-align: center;
+    color: #555;
 }
 
 /* 第二層：地點區塊 (通用選擇器) */

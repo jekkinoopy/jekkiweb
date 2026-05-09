@@ -8,61 +8,56 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="tablet.css">
 
 </head>
 
 <body>
-    <header>
+    <header id="origin">
         <div class="hero">
             <h1>SECHSKIES<br>水晶男孩</h1>
             <p>六顆永恆的水晶 • 左右命運的傳奇</p>
-            <a href="#story" class="btn">探索他們的故事</a>
+            <a href="#start" class="btn">從這裡開始淪陷</a>
         </div>
     </header>
 
     <nav class="portal-nav" aria-label="水晶男孩推廣部導覽">
-        <a class="logo" href="index.html"><img src="./img/logov.svg" alt=""></a>
+        <a class="logo" href="index.html"><img src="./img/logov.svg" alt="SECHSKIES Logo"></a>
         <ul>
-            <li><a href="index.html#intro">淪陷瞬間</a>
+            <li><a href="index.html#origin">淪陷瞬間</a>
                 <ul class="portal-submenu">
                     <li><a href="index.html#mission">成立的初衷</a></li>
-                    <li><a href="index.html#current">跨時空軌跡</a></li>
-                    <li><a href="index.html#story">好奇的代價</a></li>
+                    <li><a href="index.html#timeline">跨時空軌跡</a></li>
+                    <li><a href="index.html#start">好奇的開端</a></li>
                 </ul>
             </li>
-            <li><a href="chronicle.html">十六年約定</a>
+            <li><a href="jiwon.html">瘋子與天才</a>
                 <ul class="portal-submenu">
-                    <li><a href="chronicle.html#challenge">無限挑戰</a></li>
-                    <li><a href="chronicle.html#ssg2">六六歌第二季</a></li>
-                    <li><a href="chronicle.html#sechskies-profile">水晶男孩</a></li>
-                    <li><a href="chronicle.html#gather">召集</a></li>
-                    <li><a href="chronicle.html#negotiate">正式交涉</a></li>
-                    <li><a href="chronicle.html#variables">變數</a></li>
-                    <li><a href="chronicle.html#surprise">驚喜</a></li>
-                    <li><a href="chronicle.html#final-stage">登場</a></li>
+                    <li><a href="jiwon.html#variety">瘋狂出演中</a></li>
+                    <li><a href="jiwon.html#stage">隊長的氣場</a></li>
                 </ul>
             </li>
-            <li><a href="index.html#archive">黃色留聲機</a>
+            <li><a href="sunghoon.html">消失的真相</a>
                 <ul class="portal-submenu">
-                    <li><a href="classic.html">輝煌全盛期</a></li>
-                    <li><a href="index.html#new">啟動新篇章</a></li>
+                    <li><a href="sunghoon.html#truth">還原那場雨</a></li>
+                    <li><a href="sunghoon.html#voice">被掩蓋的主唱</a></li>
                 </ul>
             </li>
-            <li><a href="concert.html">現場的悸動</a>
+            <li><a href="concert.html">現場的震撼</a>
                 <ul class="portal-submenu">
-                    <li><a href="concert.html#classic-stage" data-coming-soon="true" aria-disabled="true">燦爛的最初</a></li>
-                    <li><a href="concert.html#reunion-stage">永恆的重逢</a></li>
+                    <li><a href="concert.html#stage-now">永恆的重逢</a></li>
+                    <li><a href="concert.html#stage-past">燦爛的最初</a></li>
                 </ul>
             </li>
-            <li class="coming-soon"><a href="variety.html" data-coming-soon="true" aria-disabled="true">綜藝熱播中</a>
+            <li><a href="archive.html">黃色留聲機</a>
                 <ul class="portal-submenu">
-                    <li><a href="variety.html#jiwon" data-coming-soon="true" aria-disabled="true">瘋子與天才</a></li>
-                    <li><a href="variety.html#group" data-coming-soon="true" aria-disabled="true">舞台外真實</a></li>
+                    <li><a href="archive.html#new">啟動新篇章</a></li>
+                    <li><a href="archive.html#classic">輝煌全盛期</a></li>
                 </ul>
             </li>
             <li><a href="map.html">聖地巡禮</a>
                 <ul class="portal-submenu">
-                    <li><a href="map.html#taiwan">台灣聖地</a></li>
+                    <li><a href="map.html#taipei">台北聖地</a></li>
                     <li><a href="map.html#global">海外遠征</a></li>
                 </ul>
             </li>
@@ -72,83 +67,33 @@
     <canvas id="particles"></canvas>
 
     <div class="container">
-        <div id="intro"></div>
-        <div id="mission"></div>
-        <div id="timeline"></div>
-        <div id="story"></div>
-        <div id="archive"></div>
-        <div id="classic"></div>
-        <div id="new"></div>
-        <section id="background">
-            <h2 class="section-title">故事背景</h2>
+        <section id="mission">
+            <h2 class="section-title">成立的初衷</h2>
             <div class="intro-text">
-                <!-- 標題與第一段：點出「新粉」身分與震撼 -->
                 <p class="intro-text">
-                    身為在回歸後才被這場 <span class="highlight">「黃色奇蹟」</span> 擊中的新一代粉絲，我深刻體會那種從好奇觀看到最終徹底淪陷的悸動。
-                </p>
-                <!-- 第二段：強調核心魅力與反差 -->
-                <p class="core-description">
-                    水晶男孩（SECHSKIES）的魔力在於：即便錯過了 90 年代，依然會被他們 <span class="highlight">熱血、真誠且專業</span>
-                    的舞台魅力所感動。這裡不僅是資訊站，更是由熱愛凝聚的空間。從舞台上的職人氣場，到台下如家人般的 <span class="highlight">「反差萌」</span>，他們展現了超越年齡的吸引力。
-                </p>
-                <!-- 結尾：溫馨號召 -->
-                <p class="call-to-action">
-                    經典並非活在過去，而是每個當下都讓人心跳不已。加入我們，一起感受這場 <span class="highlight">仍在續寫的傳奇</span>。
+                    這裡先端出舞台上與綜藝裡最刺眼、也最誠實的魅力，接住每一次「怎麼又帥又好笑」的心跳；你越往深處挖，越容易聽懂那場 <span class="highlight">仍在續寫的傳奇</span>。
                 </p>
             </div>
         </section>
-        <!-- 歷年作品表格區塊 -->
-        <section id="albums">
-            <h2 class="section-title">歷年作品 (精選)</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>年份</th>
-                        <th>專輯/作品</th>
-                        <th>主打歌</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1997</td>
-                        <td>學園別曲</td>
-                        <td>學園別曲 / 男兒之路 (Pom Saeng Pom Sa)</td>
-                    </tr>
-                    <tr>
-                        <td>1998</td>
-                        <td>Road Fighter</td>
-                        <td>Road Fighter / Couple</td>
-                    </tr>
-                    <tr>
-                        <td>1999</td>
-                        <td>Com'Back</td>
-                        <td>Com'Back</td>
-                    </tr>
-                    <tr>
-                        <td>2016</td>
-                        <td>
-                            <a href="lyrics.html">數位單曲</a>
-                        </td>
-                        <td>
-                            <a href="lyrics.html">Three Words (三個詞)</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2017</td>
-                        <td>ANOTHER LIGHT</td>
-                        <td>Something Special / Smile</td>
-                    </tr>
-                    <tr>
-                        <td>2020</td>
-                        <td>ALL FOR YOU</td>
-                        <td>ALL FOR YOU</td>
-                    </tr>
-                </tbody>
-            </table>
+
+        <section id="start">
+            <h2 class="section-title">好奇的開端</h2>
+            <div class="intro-text">
+                <p class="intro-text">
+                    身為在回歸後才被這場 <span class="highlight">「黃色奇蹟」</span> 擊中的新一代粉絲，我深刻體會那種從好奇觀看到最終徹底淪陷的悸動。
+                </p>
+                <p class="core-description">
+                    水晶男孩（SECHSKIES）的魔力在於：即便錯過他們第一次站上大型舞台的年代，依然會被他們 <span class="highlight">熱血、真誠且專業</span>
+                    的魅力所感動。這裡不僅是資訊站，更是由熱愛凝聚的空間。從台上的職人氣場，到台下像家人吵架又像互相撐腰的 <span class="highlight">反差</span>，把「現在入坑」變成一種完全被允許的日常。
+                </p>
+                <p class="call-to-action">
+                    經典不是博物館的玻璃櫃，而是每次重播都讓人想跟著跳的節奏。加入我們，一起把手上的應援色舉高一點。
+                </p>
+            </div>
         </section>
 
-        <section id="current" class="story-archive">
-            <h2 class="section-title">故事線</h2>
+        <section id="timeline" class="story-archive">
+            <h2 class="section-title">跨時空軌跡</h2>
             <div class="subtitle-wrap">
                 <span class="sub-title">SECHSKIES STORY ARCHIVE</span>
             </div>
@@ -182,72 +127,47 @@
             </div>
         </section>
 
+        <section id="story">
+            <h2 class="section-title">傳奇的轉折</h2>
+            <div class="subtitle-wrap">
+                <span class="sub-title">PLOT TWIST</span>
+            </div>
+            <p class="intro-text">
+                像劇情的反轉一樣過癮：這幾個節點，剛好是許多人從「旁觀綜藝」滑進「正式入坑」的轉軌。若想讀對白級細節，隨時可切到完整紀實長文。
+                <a href="chronicle.html">開啟完整紀實篇章</a>
+            </p>
+
+            <article id="special" class="story-node">
+                <h3>六六歌實錄</h3>
+                <p>把懸念、試探與哭點縫在同一條時間軸上；很多人第一次真正把「水晶男孩」打進搜尋框，就是從這種瘋狂的剪輯節奏開始。</p>
+                <p><a href="chronicle.html#ssg2">對照這一段幕後敘事</a></p>
+            </article>
+            <article id="negotiate" class="story-node">
+                <h3>命運的交涉</h3>
+                <p>KTV、游擊演唱會規則、與其說講道理不如說把真心擺上桌面——交涉的不是合約字面，而是還願不願意再一次肩並肩。</p>
+                <p><a href="chronicle.html#negotiate">讀交涉與對話肌理</a></p>
+            </article>
+            <article id="complete" class="story-node">
+                <h3>拼圖的歸位</h3>
+                <p>變數一個個被排除之後，驚喜接上登場段落；缺一角舞台的視覺，終於對齊觀眾席上堅守的那片黃。</p>
+                <p><a href="chronicle.html#gather">從「召集」段開始補這條線</a></p>
+            </article>
+            <article id="past" class="story-node">
+                <h3>巔峰與雨天</h3>
+                <p>急凍、告別、各自的跑道——並不是要你沉浸遺憾，而是讓你懂：後來每一次亮燈，為什麼會更值得尖叫。</p>
+                <p><a href="chronicle.html#sechskies-profile">讀這條脈絡的起點</a></p>
+            </article>
+        </section>
     </div>
+
     <footer>
         <p>SECHSKIES Fanpage &copy; 2026 - 黃色氣球永遠飄揚</p>
-
         <a href="https://jekkinoopy.github.io/Portfolio/" class="studio-link" target="_blank">
             Design by <strong>Jekkinoopy Studio</strong>
         </a>
-    </footer> <!-- 粒子效果 -->
-    <script>
-        const canvas = document.getElementById('particles');
-        const ctx = canvas.getContext('2d');
+    </footer>
 
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-
-        resizeCanvas();
-
-        let particles = [];
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 4 + 1;
-                this.speedX = Math.random() * 0.5 - 0.25;
-                this.speedY = Math.random() * 0.5 + 0.2;
-            }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.y > canvas.height) this.y = 0;
-            }
-            draw() {
-                ctx.fillStyle = '#FFDD00';
-                ctx.globalAlpha = 0.6;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        function init() {
-            particles = [];
-            for (let i = 0; i < 80; i++) {
-                particles.push(new Particle());
-            }
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let p of particles) {
-                p.update();
-                p.draw();
-            }
-            requestAnimationFrame(animate);
-        }
-
-        window.addEventListener('resize', () => {
-            resizeCanvas();
-            init();
-        });
-
-        init();
-        animate();
-    </script>
+    <script src="particles.js"></script>
     <script src="portal-nav.js"></script>
 </body>
 

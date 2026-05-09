@@ -69,7 +69,12 @@
     const detailLink = document.getElementById("detail-link");
     const detailImage = document.getElementById("detail-image");
     const memberMapFrame = document.getElementById("member-map");
+    const mapEmbedSingle = document.getElementById("map-embed-single");
+    const mapEmbedAll = document.getElementById("map-embed-all");
     const openMapLink = document.getElementById("open-map-link");
+    const openMapLinksDual = document.getElementById("open-map-links-dual");
+    const openMapLinkKo = document.getElementById("open-map-link-ko");
+    const openMapLinkEun = document.getElementById("open-map-link-eun");
     const dayGroups = new Map();
 
     let currentMember = "all";
@@ -115,12 +120,31 @@
         return prefix + "_" + date;
     }
 
+    function setDualMapVisible(isAll) {
+        if (mapEmbedSingle && mapEmbedAll) {
+            mapEmbedSingle.hidden = isAll ? true : false;
+            mapEmbedAll.hidden = isAll ? false : true;
+            mapEmbedAll.setAttribute("aria-hidden", isAll ? "false" : "true");
+        }
+        if (openMapLink && openMapLinksDual) {
+            openMapLink.hidden = isAll ? true : false;
+            openMapLinksDual.hidden = isAll ? false : true;
+        }
+    }
+
     function updateMapByMember(member) {
         const normalized = normalizeMember(member);
+        if (normalized === "all") {
+            setDualMapVisible(true);
+            if (openMapLinkKo) openMapLinkKo.href = memberMaps.ko.open;
+            if (openMapLinkEun) openMapLinkEun.href = memberMaps.eun.open;
+            return;
+        }
+        setDualMapVisible(false);
         const mapConfig = memberMaps[normalized];
-        if (!mapConfig) return;
+        if (!mapConfig || !memberMapFrame) return;
         memberMapFrame.src = mapConfig.embed;
-        openMapLink.href = mapConfig.open;
+        if (openMapLink) openMapLink.href = mapConfig.open;
     }
 
     function getCardSearchText(card) {
@@ -202,7 +226,8 @@
         if (expandDay) {
             ensureExpandedForCard(card);
         }
-        updateMapByMember(card.dataset.member || "all");
+        const mapKey = currentMember === "all" ? "all" : currentMember;
+        updateMapByMember(mapKey);
 
         detailDate.textContent = card.dataset.date || "";
         detailTitle.textContent = card.dataset.title || "";
@@ -229,8 +254,8 @@
         const fallbackCard = activeVisibleCard || firstVisible;
         if (fallbackCard) {
             setActiveCard(fallbackCard, { expandDay: false });
-        } else if (currentMember !== "all") {
-            updateMapByMember(currentMember);
+        } else {
+            updateMapByMember(currentMember === "all" ? "all" : currentMember);
         }
     }
 

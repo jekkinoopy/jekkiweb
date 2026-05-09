@@ -4,18 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>水晶男孩｜輝煌全盛期</title>
+    <title>水晶男孩｜黃色留聲機</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="tablet.css">
 </head>
 
 <body>
-    <header>
-        <div class="hero">
-            <h1>輝煌全盛期</h1>
-            <p>全盛期作品與主打脈絡整理</p>
-            <a href="#classic-albums" class="btn">查看專輯清單</a>
+    <header class="map-archive-header">
+        <div class="header-inner">
+            <h1 class="main-title">黃色留聲機</h1>
+            <div class="subtitle-wrap">
+                <span class="sub-title">YELLOW PHONOGRAPH</span>
+            </div>
         </div>
     </header>
 
@@ -65,8 +67,26 @@
     <canvas id="particles"></canvas>
 
     <div class="container">
-        <section id="classic-albums">
-            <h2 class="section-title">輝煌全盛期 (精選)</h2>
+        <section class="archive-intro" aria-label="導語">
+            <p class="intro-text archive-intro-lead">
+                音軌才是與這個名字最直白相遇的方式——以下先收精選年表與深水連結。
+            </p>
+        </section>
+
+        <div id="new" class="archive-block">
+            <h2 class="section-title">啟動新篇章</h2>
+            <p>回歸後的數位單曲與專輯，是現在進行式的聲紋紀錄；耳機調大聲一格，就能把「新篇章」接住。</p>
+            <p><a href="lyrics.html">聽見歌詞細節</a></p>
+        </div>
+
+        <div id="classic" class="archive-block">
+            <h2 class="section-title">輝煌全盛期</h2>
+            <p>主打的記憶點、b-side 的伏筆、舞步與應援口號——想一次收進收藏庫，往這張整理頁走。</p>
+            <p><a href="classic.html">打開輝煌全盛期整理</a></p>
+        </div>
+
+        <section id="albums">
+            <h2 class="section-title">歷年作品 (精選)</h2>
             <table>
                 <thead>
                     <tr>
@@ -91,6 +111,21 @@
                         <td>Com'Back</td>
                         <td>Com'Back</td>
                     </tr>
+                    <tr>
+                        <td>2016</td>
+                        <td><a href="lyrics.html">數位單曲</a></td>
+                        <td><a href="lyrics.html">Three Words (三個詞)</a></td>
+                    </tr>
+                    <tr>
+                        <td>2017</td>
+                        <td>ANOTHER LIGHT</td>
+                        <td>Something Special / Smile</td>
+                    </tr>
+                    <tr>
+                        <td>2020</td>
+                        <td>ALL FOR YOU</td>
+                        <td>ALL FOR YOU</td>
+                    </tr>
                 </tbody>
             </table>
         </section>
@@ -98,64 +133,12 @@
 
     <footer>
         <p>SECHSKIES Fanpage &copy; 2026 - 黃色氣球永遠飄揚</p>
+        <a href="https://jekkinoopy.github.io/Portfolio/" class="studio-link" target="_blank">
+            Design by <strong>Jekkinoopy Studio</strong>
+        </a>
     </footer>
 
-    <script>
-        const canvas = document.getElementById('particles');
-        const ctx = canvas.getContext('2d');
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-
-        resizeCanvas();
-
-        let particles = [];
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 4 + 1;
-                this.speedX = Math.random() * 0.5 - 0.25;
-                this.speedY = Math.random() * 0.5 + 0.2;
-            }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.y > canvas.height) this.y = 0;
-            }
-            draw() {
-                ctx.fillStyle = '#FFDD00';
-                ctx.globalAlpha = 0.6;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        function init() {
-            particles = [];
-            for (let i = 0; i < 80; i++) particles.push(new Particle());
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (const p of particles) {
-                p.update();
-                p.draw();
-            }
-            requestAnimationFrame(animate);
-        }
-
-        window.addEventListener('resize', () => {
-            resizeCanvas();
-            init();
-        });
-
-        init();
-        animate();
-    </script>
+    <script src="particles.js"></script>
     <script src="portal-nav.js"></script>
 </body>
 

@@ -7,6 +7,7 @@
     <title>SECHSKIES 台灣行程地圖</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="tablet.css">
 </head>
 
 <body class="map-page">
@@ -24,46 +25,40 @@
 <nav class="portal-nav" aria-label="水晶男孩推廣部導覽">
     <a class="logo" href="index.html"><img src="./img/logov.svg" alt="SECHSKIES Logo"></a>
     <ul>
-        <li><a href="index.html#intro">淪陷瞬間</a>
+        <li><a href="index.html#origin">淪陷瞬間</a>
             <ul class="portal-submenu">
                 <li><a href="index.html#mission">成立的初衷</a></li>
-                <li><a href="index.html#current">跨時空軌跡</a></li>
-                <li><a href="index.html#story">好奇的代價</a></li>
+                <li><a href="index.html#timeline">跨時空軌跡</a></li>
+                <li><a href="index.html#start">好奇的開端</a></li>
             </ul>
         </li>
-        <li><a href="chronicle.html">十六年約定</a>
+        <li><a href="jiwon.html">瘋子與天才</a>
             <ul class="portal-submenu">
-                <li><a href="chronicle.html#challenge">無限挑戰</a></li>
-                <li><a href="chronicle.html#ssg2">六六歌第二季</a></li>
-                <li><a href="chronicle.html#sechskies-profile">水晶男孩</a></li>
-                <li><a href="chronicle.html#gather">召集</a></li>
-                <li><a href="chronicle.html#negotiate">正式交涉</a></li>
-                <li><a href="chronicle.html#variables">變數</a></li>
-                <li><a href="chronicle.html#surprise">驚喜</a></li>
-                <li><a href="chronicle.html#final-stage">登場</a></li>
+                <li><a href="jiwon.html#variety">瘋狂出演中</a></li>
+                <li><a href="jiwon.html#stage">隊長的氣場</a></li>
             </ul>
         </li>
-        <li><a href="index.html#archive">黃色留聲機</a>
+        <li><a href="sunghoon.html">消失的真相</a>
             <ul class="portal-submenu">
-                <li><a href="classic.html">輝煌全盛期</a></li>
-                <li><a href="index.html#new">啟動新篇章</a></li>
+                <li><a href="sunghoon.html#truth">還原那場雨</a></li>
+                <li><a href="sunghoon.html#voice">被掩蓋的主唱</a></li>
             </ul>
         </li>
-        <li><a href="concert.html">現場的悸動</a>
+        <li><a href="concert.html">現場的震撼</a>
             <ul class="portal-submenu">
-                <li><a href="concert.html#classic-stage" data-coming-soon="true" aria-disabled="true">燦爛的最初</a></li>
-                <li><a href="concert.html#reunion-stage">永恆的重逢</a></li>
+                <li><a href="concert.html#stage-now">永恆的重逢</a></li>
+                <li><a href="concert.html#stage-past">燦爛的最初</a></li>
             </ul>
         </li>
-        <li class="coming-soon"><a href="variety.html" data-coming-soon="true" aria-disabled="true">綜藝熱播中</a>
+        <li><a href="archive.html">黃色留聲機</a>
             <ul class="portal-submenu">
-                <li><a href="variety.html#jiwon" data-coming-soon="true" aria-disabled="true">瘋子與天才</a></li>
-                <li><a href="variety.html#group" data-coming-soon="true" aria-disabled="true">舞台外真實</a></li>
+                <li><a href="archive.html#new">啟動新篇章</a></li>
+                <li><a href="archive.html#classic">輝煌全盛期</a></li>
             </ul>
         </li>
         <li><a href="map.html">聖地巡禮</a>
             <ul class="portal-submenu">
-                <li><a href="map.html#taiwan">台灣聖地</a></li>
+                <li><a href="map.html#taipei">台北聖地</a></li>
                 <li><a href="map.html#global">海外遠征</a></li>
             </ul>
         </li>
@@ -81,18 +76,45 @@
 <input id="itinerary-search" type="search" aria-label="行程搜尋"
     placeholder="搜尋地點、描述、標籤（例如：九份、夜市、Day 2）">
 
-<main id="taiwan" class="content-container map-layout">
-    <!-- 備註：地圖區固定使用你的 Google My Maps iframe。
-     這裡不改地圖資料來源，右側列表只負責敘事與導覽。 -->
+<main id="taipei" class="content-container map-layout">
+    <!-- 備註：Google My Maps 嵌入。「全部行程」並排兩張；單一成員時只顯示對應一張。
+     右側列表為敘事與導覽；地圖與標籤在 map.js 的 memberMaps 設定。 -->
     <section class="map-sticky">
         <h2 class="map-title">水晶男孩台灣行程地圖</h2>
-        <iframe id="member-map" title="SECHSKIES 踩點地圖" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps/d/embed?mid=1VGZ76SPPjm3NWCBQe-hkm08oe5WPRJI&ehbc=2E312F">
-        </iframe>
-        <a id="open-map-link" class="map-link" target="_blank"
-            href="https://www.google.com/maps/d/u/0/viewer?mid=1VGZ76SPPjm3NWCBQe-hkm08oe5WPRJI">
-            在 Google My Maps 開啟完整地圖
-        </a>
+        <div class="map-embed-single" id="map-embed-single" hidden>
+            <iframe id="member-map" class="map-my-maps-frame" title="SECHSKIES 踩點地圖（單一行程）" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps/d/embed?mid=1VGZ76SPPjm3NWCBQe-hkm08oe5WPRJI&ehbc=2E312F">
+            </iframe>
+        </div>
+        <div class="map-embed-all" id="map-embed-all">
+            <div class="map-embed-pair">
+                <p class="map-embed-label">高高父子遊台灣</p>
+                <iframe id="member-map-ko" class="map-my-maps-frame" title="高高父子遊台灣 踩點地圖" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    src="https://www.google.com/maps/d/embed?mid=1xpAsSoO8gNmMiW4x2sfkndISFTtjMQDw&hl=zh-TW&ehbc=2E312F">
+                </iframe>
+            </div>
+            <div class="map-embed-pair">
+                <p class="map-embed-label">殷空少搭飛機去台灣高雄</p>
+                <iframe id="member-map-eun" class="map-my-maps-frame" title="殷志源高雄行程 踩點地圖" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    src="https://www.google.com/maps/d/embed?mid=1VGZ76SPPjm3NWCBQe-hkm08oe5WPRJI&ehbc=2E312F">
+                </iframe>
+            </div>
+        </div>
+        <div class="map-links-wrap">
+            <a id="open-map-link" class="map-link" target="_blank" hidden
+                href="https://www.google.com/maps/d/u/0/viewer?mid=1VGZ76SPPjm3NWCBQe-hkm08oe5WPRJI">
+                在 Google My Maps 開啟完整地圖
+            </a>
+            <div id="open-map-links-dual" class="map-links-dual">
+                <a id="open-map-link-ko" class="map-link" target="_blank"
+                    href="https://www.google.com/maps/d/u/0/viewer?mid=1xpAsSoO8gNmMiW4x2sfkndISFTtjMQDw">開啟「高高父子遊台灣」My Maps</a>
+                <a id="open-map-link-eun" class="map-link" target="_blank"
+                    href="https://www.google.com/maps/d/u/0/viewer?mid=1VGZ76SPPjm3NWCBQe-hkm08oe5WPRJI">開啟「殷空少搭飛機去台灣高雄」My Maps</a>
+            </div>
+        </div>
     </section>
 
     <section class="itinerary-list">
@@ -518,7 +540,7 @@
         </article>
     </section>
 </main>
-<footer id="contact">
+<footer>
     <div id="global"></div>
     <p>SECHSKIES Fanpage &copy; 2026 - 黃色氣球永遠飄揚</p>
     <a href="https://jekkinoopy.github.io/Portfolio/" class="studio-link" target="_blank">

@@ -77,3 +77,33 @@
     color: var(--text-muted);
     line-height: 1.6;
 }
+
+#stage .stage-teaser {
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+#stage .stage-teaser:last-of-type {
+    border-bottom: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+#archive .archive-block {
+    margin: 1.75rem 0;
+}
+
+.landing-intro {
+    text-align: center;
+    padding: 28px 0 48px;
+}
+
+.landing-actions .btn {
+    margin: 8px 6px;
+}
+
+.archive-intro-lead {
+    text-align: center;
+    margin-top: 8px;
+}
