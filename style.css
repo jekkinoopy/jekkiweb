@@ -406,13 +406,13 @@ section {
 
 /* 首頁：成立的初衷 — 標題與全站一致置中；其下雙欄（文 7 : 圖 3） */
 .mission-section>.section-title {
-    margin-bottom: clamp(1.25rem, 3vw, 1.75rem);
+    margin-bottom: 1.5rem;
 }
 
 .mission-section .mission-layout {
     display: grid;
     grid-template-columns: minmax(200px, 3fr) minmax(0, 7fr);
-    gap: clamp(1.5rem, 4vw, 3rem);
+    gap: 2rem;
     align-items: start;
 }
 
@@ -446,7 +446,7 @@ section {
 .mission-section .logo-concept-media-row {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(240px, 46%);
-    gap: clamp(1rem, 3vw, 1.85rem);
+    gap: 1.5rem;
     align-items: start;
 }
 
@@ -478,25 +478,29 @@ section {
 .mission-section .mission-visual .caption,
 .mission-section .mission-moment-wrap .caption {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 0.2rem;
+    justify-content: center;
+    gap: 0.35rem;
     margin-top: 0.65rem;
     font-size: 0.78rem;
     line-height: 1.45;
     color: #6a6a6a;
     max-width: 16rem;
+    text-align: left;
 }
 
 .mission-section .mission-visual .arrow-icon,
 .mission-section .mission-moment-wrap .arrow-icon {
+    flex-shrink: 0;
     font-size: 0.95rem;
     line-height: 1;
     color: var(--primary);
     font-style: normal;
 }
 
-.mission-section .highlight-stage-flash {
+/* 全站：黃色光暈強調（可與 .mark_b 並用） */
+.mark_y {
     letter-spacing: 0.06em;
     font-weight: 800;
     text-shadow:
@@ -505,12 +509,12 @@ section {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-    .mission-section .highlight-stage-flash {
-        animation: mission-stage-flash-pulse 2.8s ease-in-out infinite;
+    .mark_y {
+        animation: mark_y-pulse 2.8s ease-in-out infinite;
     }
 }
 
-@keyframes mission-stage-flash-pulse {
+@keyframes mark_y-pulse {
 
     0%,
     100% {
@@ -527,7 +531,7 @@ section {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .mission-section .highlight-stage-flash {
+    .mark_y {
         animation: none;
     }
 }
@@ -536,7 +540,7 @@ section {
 .mission-section>.quote-box {
     width: 100%;
     max-width: 44rem;
-    margin: clamp(1.75rem, 4vw, 2.5rem) auto 0;
+    margin: 2rem auto 0;
     padding: 1rem 1.25rem;
     background: linear-gradient(135deg, var(--surface-soft) 0%, #fff7da 100%);
     border-left: 4px solid var(--primary);
@@ -849,7 +853,8 @@ footer {
     padding: 50px 0 20px;
 }
 
-.highlight {
+/* 全站：深色字重點（棕黃字色，與 <b> 不同於「顏色」） */
+.mark_b {
     color: var(--dark-yellow);
     font-weight: bold;
 }

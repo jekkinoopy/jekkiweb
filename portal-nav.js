@@ -7,7 +7,13 @@
      *    浮層、title 與該次互動同步；無障礙用語固定為「尚無開放」（避免標籤隨機跳動）。
      * 要調整詞句：改 NAV_SOON_PHRASES 即可。
      */
-    const NAV_SOON_PHRASES = ["奇蹟醞釀中", "感動載入中"];
+    const NAV_SOON_PHRASES = ["奇蹟醞釀中", // 頁面準備中，呼應黃色奇蹟的誕生
+        "感動載入中", // 資料讀取中，連結入坑時的悸動
+        "初心校準中", // 結構調整中，呼應 LOGO 的六人設計核心
+        "黃海漫延中", // 視覺填充中，發想自黃色海洋填滿漆黑的過程
+        "傳奇編排中", // 內容整理中，記錄 1999 年榮譽與歷史軌跡
+        "夢想航行中", // 未來規劃中，期待水晶男孩的下一個十年
+    ];
 
     function pickSoonPhrase() {
         return NAV_SOON_PHRASES[Math.floor(Math.random() * NAV_SOON_PHRASES.length)];
