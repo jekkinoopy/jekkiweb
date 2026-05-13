@@ -1,7 +1,7 @@
 (() => {
     /**
      * ── 導覽「尚未開放」連結 ─────────────────────────────────────────
-     * ① 整個檔案先關：COMING_SOON_PAGES（目前已含長卷／電子書／志源頁／演唱會／典藏／地圖等）。
+     * ① 整個檔案先關：COMING_SOON_PAGES（目前已含志源頁／演唱會／典藏／地圖／視覺進化論等）。
      * ② index.html 細到錨點：INDEX_NAV_OPEN_HASHES。
      * ③ 文案 NAV_SOON_PHRASES：每次「滑過或鍵盤聚焦」連結時隨機擇一句（不交錯只靠重整）。
      *    浮層、title 與該次互動同步；無障礙用語固定為「尚無開放」（避免標籤隨機跳動）。
@@ -27,12 +27,12 @@
     }
 
     const COMING_SOON_PAGES = new Set([
-        "chronicle.html",
-        "ssg2-ebook.html",
         "jiwon.html",
         "concert.html",
         "archive.html",
         "map.html",
+        "minister.html",
+        "minister_ge.html",
     ]);
 
     /** 目前先開：淪陷瞬間 #origin + 子選單三項 #start / #mission / #timeline */
@@ -129,9 +129,6 @@
             <li><a href="index.html#mission">成立的初衷</a></li>
             <li><a href="index.html#timeline">跨時空軌跡</a></li>
             <li><a href="index.html#story">傳奇的轉折</a></li>
-            <li><a href="chronicle.html">傳奇紀實長卷</a></li>
-            <li><a href="ssg2-ebook.html">六六歌2 電子書</a></li>
-            <li><a href="totoga2.html">六六歌2 整合專區</a></li>
         </ul>
     </li>
     <li><a href="jiwon.html">瘋子與天才</a>

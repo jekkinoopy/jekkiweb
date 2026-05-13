@@ -1,0 +1,26 @@
+---
+description: 未經使用者明確交代，不得擅自開放導覽、改連結或擴充需求範圍（本 repo 含全站導覽與 totoga2 等）。
+alwaysApply: true
+---
+
+# 使用者意圖與導覽（sechskies）
+
+## 只做被交代的事
+
+- **不得**在未被使用者**明確要求**的情況下：把導覽連結從「籌備中／尚無開放」改成可點、更換 `href` 成真實頁面、從 `COMING_SOON_PAGES` 移除、或把錨點加入 `INDEX_NAV_OPEN_HASHES`。
+- **不得**因為「內容已搬到某頁」就自行推論「導覽也應該開放」——導覽是否開放**只聽使用者口述**。
+- 若使用者只要求搬內容、刪檔、改站內某段文案，**預設不改** `portal-nav.js` 的開放狀態與連結目標。
+
+## 「傳奇的轉折」導覽（特別記牢）
+
+- 使用者**沒有說要開放**時：導覽上的「傳奇的轉折」必須維持 **尚無開放**（例如維持 `index.html#story` 且 **`#story` 不在 `INDEX_NAV_OPEN_HASHES`**，或等價的籌備中處理）。
+- **禁止**在未獲使用者同意下，將該項改為連到 `totoga2.html` 或其他已上線頁面。
+
+## 實作前自檢
+
+- 若變更會影響 `portal-nav.js`（`PORTAL_NAV_INNER_HTML`、`COMING_SOON_PAGES`、`INDEX_NAV_OPEN_HASHES`）：**對照使用者原句**，確認每一項連結的開／關都有被明確交代。
+
+## 名詞對齊（避免做錯檔）
+
+- **頂部橫列導覽（常稱 navbar）**：`portal-nav.js` 注入的 `<nav class="portal-nav" data-portal-nav>`，每一頁頂端黑底那一條。**備份稿／未公開頁**除非使用者**明講要上這條**，否則不要寫進 `PORTAL_NAV_INNER_HTML`。
+- **全站頁面索引**：`site-guide.html`（自行開網址），用來列檔案與錨點；**不影響**頂欄是否出現該連結。使用者說「留在全站導覽」常指保留在 **site-guide** 或站內說明，**不等於**要掛進頂欄。

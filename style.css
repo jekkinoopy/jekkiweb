@@ -536,21 +536,41 @@ section {
     }
 }
 
-/* 金句：獨立於雙欄之下，全區塊寬度內致中 */
-.mission-section>.quote-box {
+/* 全站：金句 — 語彙對齊 .subtitle-wrap（兩側金線）＋ .sub-title（字距、灰色階） */
+.slogan-quote {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    max-width: 44rem;
+    max-width: 52rem;
     margin: 2rem auto 0;
-    padding: 1rem 1.25rem;
-    background: linear-gradient(135deg, var(--surface-soft) 0%, #fff7da 100%);
-    border-left: 4px solid var(--primary);
-    border-radius: 10px;
-    color: #55420a;
-    font-size: 1.02rem;
-    font-weight: 600;
-    line-height: 1.65;
+    padding: 0;
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+
+.slogan-quote::before,
+.slogan-quote::after {
+    content: "";
+    flex: 1;
+    height: 2px;
+    background-color: var(--primary);
+    max-width: 56px;
+    opacity: 0.7;
+}
+
+.slogan-quote__inner {
+    display: block;
+    margin: 0 18px;
+    max-width: 40rem;
     text-align: center;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    font-size: clamp(0.88rem, 1.65vw, 1.05rem);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    line-height: 1.75;
+    color: #5c5c5c;
+    text-wrap: balance;
 }
 
 .mission-visual {
@@ -806,17 +826,22 @@ a {
     }
 }
 
-.story-node h3 {
+.merged-storyline .story-node h3 {
     color: #303030;
     margin-bottom: 8px;
-    font-size: 1rem;
+    font-size: 1.0625rem;
     line-height: 1.5;
 }
 
-.story-node p {
+.merged-storyline .story-node h3:not(:first-of-type) {
+    margin-top: 1rem;
+}
+
+.merged-storyline .story-node p {
     color: #575757;
-    font-size: 0.9rem;
-    line-height: 1.7;
+    font-size: 1rem;
+    line-height: 1.75;
+    margin: 0 0 10px;
 }
 
 @media (max-width: 900px) {
@@ -857,6 +882,11 @@ footer {
 .mark_b {
     color: var(--dark-yellow);
     font-weight: bold;
+}
+
+/* 深色頁尾內的 mark_b：維持可讀與全站黃色語彙 */
+footer a .mark_b {
+    color: var(--primary);
 }
 
 /* map.html */
@@ -1750,4 +1780,241 @@ body.site-guide-page .site-guide-card code {
     background: rgba(0, 0, 0, 0.06);
     padding: 0.1em 0.35em;
     border-radius: 4px;
+}
+
+/* site-guide：六六歌2 區（單卡寬版、頁面連結為主） */
+body.site-guide-page .site-guide-group--ssg2 .site-guide-grid {
+    grid-template-columns: minmax(0, min(100%, 40rem));
+    justify-content: center;
+}
+
+body.site-guide-page .site-guide-card--totoga2 .site-guide-note {
+    margin-bottom: 1rem;
+}
+
+body.site-guide-page .site-guide-totoga2-panel {
+    margin-top: 0.35rem;
+    padding: 0.85rem 1rem;
+    background: rgba(255, 252, 240, 0.9);
+    border: 1px solid rgba(255, 204, 0, 0.14);
+    border-radius: 10px;
+}
+
+body.site-guide-page .site-guide-totoga2-panel + .site-guide-totoga2-panel {
+    margin-top: 0.75rem;
+}
+
+body.site-guide-page .site-guide-kicker {
+    margin: 0 0 0.55rem;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #888;
+}
+
+body.site-guide-page .site-guide-modes {
+    margin: 0;
+    padding-left: 1.15rem;
+    color: #3a3a3a;
+    font-size: 0.9rem;
+    line-height: 1.65;
+}
+
+body.site-guide-page .site-guide-modes .mark_b {
+    color: #2c2c2c;
+}
+
+body.site-guide-page .site-guide-modes--totoga2 a {
+    font-weight: 800;
+    color: #5c4810;
+    text-decoration: none;
+}
+
+body.site-guide-page .site-guide-modes--totoga2 a:hover {
+    text-decoration: underline;
+}
+
+body.site-guide-page .site-guide-chapter-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+}
+
+body.site-guide-page .site-guide-chapter-nav a {
+    display: inline-block;
+    padding: 0.4rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: #3a3210;
+    text-decoration: none;
+    background: rgba(255, 204, 0, 0.14);
+    border: 1px solid rgba(255, 204, 0, 0.35);
+}
+
+body.site-guide-page .site-guide-chapter-nav a:hover {
+    background: rgba(255, 204, 0, 0.28);
+}
+
+body.site-guide-page .site-guide-fine-print {
+    margin: 1rem 0 0;
+    font-size: 0.78rem;
+    color: #888;
+    line-height: 1.5;
+}
+
+body.site-guide-page .site-guide-fine-print a {
+    color: #6a5710;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+body.site-guide-page .site-guide-fine-print a:hover {
+    text-decoration: underline;
+}
+
+/* minister.html — 主欄底距；頂部引句（minister_ge 已改用首頁 .landing-intro） */
+body.minister-page main {
+    padding-bottom: 48px;
+}
+
+body.minister-page .minister-hero-lead {
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.65;
+    color: #ececec;
+    margin: 0 auto 1.5rem;
+    max-width: 48rem;
+}
+
+body.minister-page .minister-hero-lead .mark_b {
+    color: var(--light-yellow);
+}
+
+body.minister-page .variety-block .intro-text {
+    color: #333;
+    line-height: 1.9;
+    margin: 0 0 10px;
+}
+
+body.minister-page .variety-block .slogan-quote + .intro-text {
+    margin-top: 1rem;
+}
+
+body.minister-page .minister-skill-list {
+    margin: 0.75rem 0 0;
+    padding-left: 1.2rem;
+    color: #333;
+    line-height: 1.75;
+}
+
+body.minister-page .minister-skill-list li {
+    margin-bottom: 0.85rem;
+}
+
+/* hashtag 膠囊：minister.html 與 home-page（minister_ge .hashtag-chip）共用 */
+body.minister-page .minister-hashtag,
+.home-page .hashtag-chip {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    padding: 0.3em 0.78em 0.34em;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: clamp(0.78rem, 1.65vw, 0.9rem);
+    letter-spacing: 0.06em;
+    line-height: 1.2;
+    color: var(--dark-yellow);
+    background: linear-gradient(180deg, rgba(255, 253, 247, 0.98) 0%, var(--surface-soft) 100%);
+    border: 1px solid rgba(255, 204, 0, 0.52);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.88) inset,
+        0 2px 10px rgba(78, 73, 43, 0.07);
+    margin-right: 0.45em;
+    vertical-align: 0.1em;
+}
+
+body.minister-page .minister-hashtag-row,
+.home-page .intro-tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem 0.7rem;
+    margin: 0.25rem auto 1.05rem;
+    max-width: 44rem;
+}
+
+body.minister-page .minister-hashtag-row .minister-hashtag,
+.home-page .intro-tags .hashtag-chip {
+    margin-right: 0;
+}
+
+body.minister-page .minister-journey {
+    margin-top: 0.5rem;
+}
+
+body.minister-page .minister-journey > .section-title {
+    margin-bottom: 0.35rem;
+}
+
+body.minister-page .minister-journey .subtitle-wrap {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+body.minister-page .minister-journey .sub-title {
+    color: #b0b0b0;
+}
+
+body.minister-page .merged-storyline .story-node p.minister-month {
+    font-weight: 800;
+    color: #8a6910;
+    margin: 1rem 0 0.4rem;
+    letter-spacing: 0.02em;
+}
+
+body.minister-page .merged-storyline .story-node h3 + p.minister-month {
+    margin-top: 0.35rem;
+}
+
+body.minister-page .minister-photo {
+    margin: 0.6rem 0 0;
+}
+
+body.minister-page .minister-photo img {
+    display: block;
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 204, 0, 0.28);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.1);
+}
+
+body.minister-page .minister-photo--dual {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: 1fr 1fr;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body.minister-page .minister-photo--dual img {
+    max-width: none;
+    width: 100%;
+}
+
+body.minister-page .minister-back {
+    text-align: center;
+    margin: 2rem 0 0;
+}
+
+@media (max-width: 640px) {
+    body.minister-page .minister-photo--dual {
+        grid-template-columns: 1fr;
+    }
 }

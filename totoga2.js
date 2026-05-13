@@ -76,13 +76,22 @@
     setHubPanel(initialHub);
     setReaderMode("scroll");
 
-    const hash = (location.hash || "").slice(1);
-    if (hash && document.getElementById(hash)) {
-        setHubPanel("reader");
-        setReaderMode("scroll");
-        pager.hidden = true;
-        requestAnimationFrame(() => {
-            document.getElementById(hash)?.scrollIntoView({ behavior: "smooth", block: "start" });
-        });
+    function applyLocationHashNavigation() {
+        const hash = (location.hash || "").slice(1);
+        if (hash === "ebook") {
+            setHubPanel("ebook");
+            return;
+        }
+        if (hash && document.getElementById(hash)) {
+            setHubPanel("reader");
+            setReaderMode("scroll");
+            pager.hidden = true;
+            requestAnimationFrame(() => {
+                document.getElementById(hash)?.scrollIntoView({ behavior: "smooth", block: "start" });
+            });
+        }
     }
+
+    applyLocationHashNavigation();
+    window.addEventListener("hashchange", applyLocationHashNavigation);
 })();

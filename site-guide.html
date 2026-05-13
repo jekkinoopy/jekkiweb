@@ -26,8 +26,8 @@
 
     <main class="content-container site-guide-main">
         <p class="site-guide-lead">
-            以下為本專案目前所有 HTML 頁面：每張卡片含<strong>連結</strong>、瀏覽器分頁上的<strong>標題</strong>（<code>&lt;title&gt;</code>）、以及主要<strong>區塊／錨點</strong>，方便你開發或簡報時一鍵跳轉。
-            <strong>此頁未放入全站導覽列</strong>，僅供你自行書籤或輸入網址（例如 <code>site-guide.html</code>）開啟。
+            以下為本專案目前所有 HTML 頁面：每張卡片含<span class="mark_b">連結</span>、瀏覽器分頁上的<span class="mark_b">標題</span>（<code>&lt;title&gt;</code>）、以及主要<span class="mark_b">區塊／錨點</span>，方便你開發或簡報時一鍵跳轉。
+            <span class="mark_b">此頁未放入全站導覽列</span>，僅供你自行書籤或輸入網址（例如 <code>site-guide.html</code>）開啟。
         </p>
 
         <section class="site-guide-group" aria-labelledby="sg-home">
@@ -48,16 +48,6 @@
                 </article>
 
                 <article class="site-guide-card">
-                    <h3><a href="origin.html">origin.html</a></h3>
-                    <p class="site-guide-meta">標題列：<cite>重新導向…</cite></p>
-                    <p class="site-guide-note">Meta refresh → <code>index.html</code>；保留給舊書籤。</p>
-                    <h4>說明</h4>
-                    <ul>
-                        <li><a href="index.html#origin">index.html#origin</a> — 建議改連到首頁錨點</li>
-                    </ul>
-                </article>
-
-                <article class="site-guide-card">
                     <h3><a href="grok.html">grok.html</a></h3>
                     <p class="site-guide-meta">標題列：<cite>水晶男孩 SECHSKIES | 永恆的六顆水晶</cite></p>
                     <p class="site-guide-note">單頁多區塊版型（實驗／簡報用）。</p>
@@ -72,52 +62,38 @@
             </div>
         </section>
 
-        <section class="site-guide-group" aria-labelledby="sg-ssg2">
+        <section class="site-guide-group site-guide-group--ssg2" aria-labelledby="sg-ssg2">
             <h2 class="section-title" id="sg-ssg2">無限挑戰 · 六六歌 2</h2>
             <div class="site-guide-grid">
-                <article class="site-guide-card">
+                <article class="site-guide-card site-guide-card--totoga2">
                     <h3><a href="totoga2.html">totoga2.html</a></h3>
-                    <p class="site-guide-meta">標題列：<cite>水晶男孩｜無限挑戰六六歌2 — 紀實電子書</cite>（與電子書頁同標題列）</p>
-                    <p class="site-guide-note">整合：影片／電子書／傳奇的轉折＋長卷。章節錨點與 <a href="chronicle.html">chronicle.html</a> 相同（<code>#ssg2</code> 等），網址較短。</p>
-                    <h4>長卷章節（錨點）</h4>
-                    <ul>
-                        <li><a href="totoga2.html#challenge">#challenge</a> — 無限挑戰</li>
-                        <li><a href="totoga2.html#ssg2">#ssg2</a> — 六六歌第二季</li>
-                        <li><a href="totoga2.html#sechskies-profile">#sechskies-profile</a> — 水晶男孩</li>
-                        <li><a href="totoga2.html#gather">#gather</a> — 召集</li>
-                        <li><a href="totoga2.html#negotiate">#negotiate</a> — 正式交涉</li>
-                        <li><a href="totoga2.html#variables">#variables</a> — 變數</li>
-                        <li><a href="totoga2.html#surprise">#surprise</a> — 驚喜</li>
-                        <li><a href="totoga2.html#final-stage">#final-stage</a> — 登場</li>
-                    </ul>
-                </article>
-
-                <article class="site-guide-card">
-                    <h3><a href="ssg2-ebook.html">ssg2-ebook.html</a></h3>
                     <p class="site-guide-meta">標題列：<cite>水晶男孩｜無限挑戰六六歌2 — 紀實電子書</cite></p>
-                    <p class="site-guide-note">FlipHTML5 跨頁電子書全螢幕嵌入。</p>
-                    <h4>結構</h4>
-                    <ul>
-                        <li>標題區 <code>map-archive-header</code></li>
-                        <li>主內容 <code>ebook-main</code> → <code>flip-ebook-shell</code></li>
-                    </ul>
-                </article>
+                    <p class="site-guide-note">單一入口：影片三集、FlipHTML5 電子書、傳奇的轉折時間軸、紀實長文八章（可切網漫／分頁）。</p>
 
-                <article class="site-guide-card">
-                    <h3><a href="chronicle.html">chronicle.html</a></h3>
-                    <p class="site-guide-meta">標題列：<cite>水晶男孩｜傳奇紀實長卷</cite></p>
-                    <p class="site-guide-note">八章長文；<strong>網漫模式</strong>／<strong>分頁模式</strong>。</p>
-                    <h4>章節錨點</h4>
-                    <ul>
-                        <li><a href="chronicle.html#challenge">#challenge</a> — 無限挑戰</li>
-                        <li><a href="chronicle.html#ssg2">#ssg2</a> — 六六歌第二季</li>
-                        <li><a href="chronicle.html#sechskies-profile">#sechskies-profile</a></li>
-                        <li><a href="chronicle.html#gather">#gather</a></li>
-                        <li><a href="chronicle.html#negotiate">#negotiate</a></li>
-                        <li><a href="chronicle.html#variables">#variables</a></li>
-                        <li><a href="chronicle.html#surprise">#surprise</a></li>
-                        <li><a href="chronicle.html#final-stage">#final-stage</a></li>
-                    </ul>
+                    <div class="site-guide-totoga2-panel">
+                        <p class="site-guide-kicker">怎麼開</p>
+                        <ul class="site-guide-modes site-guide-modes--totoga2">
+                            <li><a href="totoga2.html">影片模式</a> — 預設開啟（三集 Bilibili）。</li>
+                            <li><a href="totoga2.html#ebook">電子書模式</a> — 進頁即切到 FlipHTML5 全螢幕。</li>
+                            <li><a href="totoga2.html#challenge">紀實長文</a> — 自「無限挑戰」章進入；亦可從下方任一章捷徑直達。</li>
+                        </ul>
+                    </div>
+
+                    <div class="site-guide-totoga2-panel">
+                        <p class="site-guide-kicker">長文章節捷徑</p>
+                        <nav class="site-guide-chapter-nav" aria-label="totoga2 紀實長文章節">
+                            <a href="totoga2.html#challenge">無限挑戰</a>
+                            <a href="totoga2.html#ssg2">六六歌第二季</a>
+                            <a href="totoga2.html#sechskies-profile">水晶男孩</a>
+                            <a href="totoga2.html#gather">召集</a>
+                            <a href="totoga2.html#negotiate">正式交涉</a>
+                            <a href="totoga2.html#variables">變數</a>
+                            <a href="totoga2.html#surprise">驚喜</a>
+                            <a href="totoga2.html#final-stage">登場</a>
+                        </nav>
+                    </div>
+
+                    <p class="site-guide-fine-print">舊檔 <code>ssg2-ebook.html</code>、<code>chronicle.html</code> 已併入 <a href="totoga2.html">totoga2 整合頁</a>。</p>
                 </article>
             </div>
         </section>
@@ -142,6 +118,41 @@
                     <ul>
                         <li><a href="sunghoon.html#truth">#truth</a></li>
                         <li><a href="sunghoon.html#voice">#voice</a></li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section class="site-guide-group" aria-labelledby="sg-minister">
+            <h2 class="section-title" id="sg-minister">推廣部 · 視覺進化論</h2>
+            <div class="site-guide-grid">
+                <article class="site-guide-card">
+                    <h3><a href="minister.html">minister.html</a></h3>
+                    <p class="site-guide-meta">標題列：<cite>水晶男孩推廣部｜視覺進化論</cite></p>
+                    <p class="site-guide-note">頂欄未開放；僅由此全站導覽索引或書籤開啟。圖檔請放 <code>img/minister/</code>（與頁面內檔名一致）。</p>
+                    <h4>區塊錨點</h4>
+                    <ul>
+                        <li><a href="minister.html#intro">#intro</a> — 跨越時空的開端</li>
+                        <li><a href="minister.html#slant">#slant</a> — 斜槓精神</li>
+                        <li><a href="minister.html#journey">#journey</a> — 成長時間軸</li>
+                        <li><a href="minister.html#journey-2016">#journey-2016</a> — 2016</li>
+                        <li><a href="minister.html#journey-2017">#journey-2017</a> — 2017</li>
+                        <li><a href="minister.html#journey-now">#journey-now</a> — 2018 至今</li>
+                    </ul>
+                </article>
+
+                <article class="site-guide-card">
+                    <h3><a href="minister_ge.html">minister_ge.html</a></h3>
+                    <p class="site-guide-meta">標題列：<cite>水晶男孩推廣部｜視覺進化論：認真魔人的進化之路</cite></p>
+                    <p class="site-guide-note">供 Gemini 等工具改稿用的<span class="mark_b">備份頁</span>；頂欄未開放，請由此索引或書籤開啟。</p>
+                    <h4>區塊錨點</h4>
+                    <ul>
+                        <li><a href="minister_ge.html#intro">#intro</a> — 品牌起源</li>
+                        <li><a href="minister_ge.html#identity">#identity</a> — 斜槓精神</li>
+                        <li><a href="minister_ge.html#evolution">#evolution</a> — 進化里程</li>
+                        <li><a href="minister_ge.html#journey">#journey</a> — 推廣部進化史</li>
+                        <li><a href="minister_ge.html#training">#training</a> — 訓練營</li>
+                        <li><a href="minister_ge.html#tech-stack">#tech-stack</a> — 技術實力</li>
                     </ul>
                 </article>
             </div>
@@ -196,7 +207,7 @@
     <footer>
         <p>SECHSKIES Fanpage &copy; 2026 - 黃色氣球永遠飄揚</p>
         <a href="https://jekkinoopy.github.io/Portfolio/" class="studio-link" target="_blank">
-            Design by <strong>Jekkinoopy Studio</strong>
+            Design by <span class="mark_b">Jekkinoopy Studio</span>
         </a>
     </footer>
 
