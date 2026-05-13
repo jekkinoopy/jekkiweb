@@ -390,13 +390,14 @@ section {
 
 .mission-section .mission-layout {
     display: grid;
-    grid-template-columns: minmax(0, 7fr) minmax(200px, 3fr);
+    grid-template-columns: minmax(200px, 3fr) minmax(0, 7fr);
     gap: clamp(1.5rem, 4vw, 3rem);
     align-items: start;
 }
 
 .mission-content>p,
-.mission-content .logo-concept p {
+.mission-content .logo-concept-media-row>p,
+.mission-content .logo-concept .logo-concept-media-row p {
     color: #4a4a4a;
     font-size: 1rem;
     line-height: 1.6;
@@ -419,6 +420,95 @@ section {
     padding: 0.65rem 0;
     border-top: 2px solid rgba(255, 204, 0, 0.5);
     border-bottom: 2px solid rgba(255, 204, 0, 0.5);
+}
+
+.mission-section .logo-concept-media-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 46%);
+    gap: clamp(1rem, 3vw, 1.85rem);
+    align-items: start;
+}
+
+.mission-section .mission-gif-frame {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 204, 0, 0.28);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+    background: #1a1a1a;
+}
+
+.mission-section .mission-gif-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.mission-section .mission-moment-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-width: 0;
+}
+
+.mission-section .mission-visual .caption,
+.mission-section .mission-moment-wrap .caption {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    margin-top: 0.65rem;
+    font-size: 0.78rem;
+    line-height: 1.45;
+    color: #6a6a6a;
+    max-width: 16rem;
+}
+
+.mission-section .mission-visual .arrow-icon,
+.mission-section .mission-moment-wrap .arrow-icon {
+    font-size: 0.95rem;
+    line-height: 1;
+    color: var(--primary);
+    font-style: normal;
+}
+
+.mission-section .highlight-stage-flash {
+    letter-spacing: 0.06em;
+    font-weight: 800;
+    text-shadow:
+        0 0 10px rgba(255, 210, 64, 0.55),
+        0 0 22px rgba(255, 200, 0, 0.28);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .mission-section .highlight-stage-flash {
+        animation: mission-stage-flash-pulse 2.8s ease-in-out infinite;
+    }
+}
+
+@keyframes mission-stage-flash-pulse {
+
+    0%,
+    100% {
+        text-shadow:
+            0 0 8px rgba(255, 210, 64, 0.45),
+            0 0 18px rgba(255, 200, 0, 0.2);
+    }
+
+    50% {
+        text-shadow:
+            0 0 14px rgba(255, 220, 80, 0.75),
+            0 0 30px rgba(255, 210, 50, 0.35);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mission-section .highlight-stage-flash {
+        animation: none;
+    }
 }
 
 /* 金句：獨立於雙欄之下，全區塊寬度內致中 */
@@ -459,25 +549,6 @@ section {
     object-fit: contain;
 }
 
-.mission-visual .caption {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.2rem;
-    margin-top: 0.65rem;
-    font-size: 0.78rem;
-    line-height: 1.45;
-    color: #6a6a6a;
-    max-width: 14rem;
-}
-
-.mission-visual .arrow-icon {
-    font-size: 0.95rem;
-    line-height: 1;
-    color: var(--primary);
-    font-style: normal;
-}
-
 @media (max-width: 900px) {
     .mission-section .mission-layout {
         grid-template-columns: 1fr;
@@ -490,6 +561,10 @@ section {
 
     .mission-visual .logo-wrapper img {
         max-width: 260px;
+    }
+
+    .mission-section .logo-concept-media-row {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -1447,16 +1522,4 @@ body.ebook-ssg2-page .flip-ebook-aspect iframe {
 body.ebook-ssg2-page .ebook-back-link {
     text-align: center;
     margin: 0 0 2.5rem;
-}
-
-/* classic.html — #classic-albums Spotify 引導 */
-#classic-albums .classic-stream-lead {
-    margin: 0 0 1rem;
-    font-size: 0.95rem;
-    line-height: 1.65;
-    color: #444;
-}
-
-#classic-albums .classic-stream-lead a {
-    font-weight: 700;
 }

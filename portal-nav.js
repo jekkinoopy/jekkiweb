@@ -19,7 +19,6 @@
             <li><a href="jiwon.html#stage">隊長的氣場</a></li>
         </ul>
     </li>
-    <li><a href="classic.html#classic-albums">輝煌全盛期典藏</a></li>
     <li><a href="concert.html">現場的震撼</a>
         <ul class="portal-submenu">
             <li><a href="concert.html#stage-now">永恆的重逢</a></li>

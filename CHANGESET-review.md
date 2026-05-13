@@ -14,7 +14,7 @@
 ### 目的
 
 - 年表區塊（「啟動新篇章」「輝煌全盛期」）每一資料列：**點列上非連結區域**時，於新分頁開對應 **Spotify 專輯**。
-- 列內既有 `<a>`（本站 `lyrics.html`、`concert.html`、`classic.html`）維持原行為。
+- 列內既有 `<a>`（本站 `lyrics.html`、`concert.html`、`archive.html#classic`）維持原行為。
 
 ### 標記與無障礙
 
