@@ -16,6 +16,8 @@
     --text-muted: #888;
     --surface: #fffdf7;
     --surface-soft: #fff9e8;
+    /* 導覽無法進入之提示後備（互動後各連結以 inline 變數覆寫，每次滑過／聚焦重抽） */
+    --portal-nav-soon-msg: "奇蹟醞釀";
 }
 
 /* 1. 先處理 body 和全域，確保沒人亂給外距 */
@@ -124,6 +126,7 @@ nav a:hover {
     background: #ffffff;
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
     z-index: 80;
+    overflow: visible;
 }
 
 .portal-nav .portal-submenu li {
@@ -150,19 +153,19 @@ nav a:hover {
 }
 
 .portal-nav>ul>li.coming-soon>a {
-    cursor: not-allowed;
+    cursor: default;
     opacity: 0.82;
     color: rgba(212, 196, 150, 0.95);
 }
 
 .portal-nav a[data-coming-soon="true"] {
-    cursor: not-allowed;
+    cursor: default;
     opacity: 0.82;
     position: relative;
 }
 
 .portal-nav a[data-coming-soon="true"]::after {
-    content: "(頁面籌備中)";
+    content: var(--portal-nav-soon-msg);
     position: absolute;
     z-index: 120;
     white-space: nowrap;
@@ -185,10 +188,14 @@ nav a:hover {
     transform: translateX(-50%);
 }
 
+/* 子選單：氣泡在列右側外，勿用 top:100% 避免與同列／下一列文字疊在一起 */
 .portal-nav .portal-submenu a[data-coming-soon="true"]::after {
-    left: 50%;
-    top: calc(100% + 2px);
-    transform: translateX(-50%);
+    left: 100%;
+    right: auto;
+    top: 50%;
+    bottom: auto;
+    margin-left: 10px;
+    transform: translateY(-50%);
 }
 
 .portal-nav>ul>li>a[data-coming-soon="true"]:hover,
@@ -931,6 +938,7 @@ footer {
     display: none;
     gap: 6px;
     z-index: 20;
+    overflow: visible;
 }
 
 .map-page .portal-nav>ul>li:hover .portal-submenu,
@@ -961,6 +969,15 @@ footer {
 .map-page .portal-nav .portal-submenu a[data-coming-soon="true"]:focus-visible {
     background-color: transparent;
     color: #5f5f5f;
+}
+
+/* 子選單靠右時，氣泡改出現在左側，避免貼齊視窗右緣被裁切 */
+.map-page .portal-nav .portal-submenu a[data-coming-soon="true"]::after {
+    left: auto;
+    right: 100%;
+    margin-left: 0;
+    margin-right: 10px;
+    transform: translateY(-50%);
 }
 
 .map-archive-header {

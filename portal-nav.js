@@ -1,12 +1,25 @@
 (() => {
     /**
-     * ── 頁面籌備中：開關方式 ─────────────────────────────────────────
-     * ① 整個檔案先關：COMING_SOON_PAGES 列出主檔名（目前已含長卷／電子書／志源頁／演唱會／典藏／地圖等）。
-     * ② index.html 細到錨點：改 INDEX_NAV_OPEN_HASHES；列在其中的 #才可點，其餘同檔連結為籌備中。
-     * ③ 視覺：「(頁面籌備中)」由 style.css 的 ::after 在 hover／鍵盤 focus 時才顯示，
-     *    title 與 aria-label 供觸控長按／螢幕閱讀器補充說明。
-     * 要開放某連結：從對應 Set 移除檔名或補上錨點後重新整理。
+     * ── 導覽「尚未開放」連結 ─────────────────────────────────────────
+     * ① 整個檔案先關：COMING_SOON_PAGES（目前已含長卷／電子書／志源頁／演唱會／典藏／地圖等）。
+     * ② index.html 細到錨點：INDEX_NAV_OPEN_HASHES。
+     * ③ 文案 NAV_SOON_PHRASES：每次「滑過或鍵盤聚焦」連結時隨機擇一句（不交錯只靠重整）。
+     *    浮層、title 與該次互動同步；無障礙用語固定為「尚無開放」（避免標籤隨機跳動）。
+     * 要調整詞句：改 NAV_SOON_PHRASES 即可。
      */
+    const NAV_SOON_PHRASES = ["奇蹟醞釀中", "感動載入中"];
+
+    function pickSoonPhrase() {
+        return NAV_SOON_PHRASES[Math.floor(Math.random() * NAV_SOON_PHRASES.length)];
+    }
+
+    /** 每次互動重抽，讀者沿導覽滑動時會交錯看到不同字樣 */
+    function rollSoonLabel(link) {
+        const p = pickSoonPhrase();
+        link.style.setProperty("--portal-nav-soon-msg", JSON.stringify(p));
+        link.setAttribute("title", p);
+    }
+
     const COMING_SOON_PAGES = new Set([
         "chronicle.html",
         "ssg2-ebook.html",
@@ -46,8 +59,13 @@
         const visibleTitle = link.textContent.trim();
         link.setAttribute("data-coming-soon", "true");
         link.setAttribute("aria-disabled", "true");
-        link.setAttribute("title", "頁面籌備中");
-        link.setAttribute("aria-label", `${visibleTitle}（頁面籌備中）`);
+        link.setAttribute("aria-label", `${visibleTitle}，尚無開放`);
+
+        const onSoonInteract = () => rollSoonLabel(link);
+        link.addEventListener("pointerenter", onSoonInteract);
+        link.addEventListener("focus", onSoonInteract);
+        link.addEventListener("touchstart", onSoonInteract, { passive: true });
+
         if (!link.dataset.originalHref) {
             link.dataset.originalHref = originalHref;
         }
