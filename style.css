@@ -404,50 +404,94 @@ section {
 
 }
 
-/* 首頁：成立的初衷 — 標題與全站一致置中；其下雙欄（文 7 : 圖 3） */
-.mission-section>.section-title {
-    margin-bottom: 1.5rem;
+/* 首頁：成立的初衷 — 兩列鋸齒（上：Logo｜初衷；下：理念｜黃海）；文案欄 z-index 高於媒體 */
+.mission-section .mission-zigzag {
+    margin-top: 0;
 }
 
-.mission-section .mission-layout {
+.mission-section .mission-row {
     display: grid;
-    grid-template-columns: minmax(200px, 3fr) minmax(0, 7fr);
-    gap: 2rem;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2rem 2.5rem;
     align-items: start;
 }
 
-.mission-content>p,
-.mission-content .logo-concept-media-row>p,
-.mission-content .logo-concept .logo-concept-media-row p {
+.mission-section .mission-row + .mission-row {
+    margin-top: 2.75rem;
+    padding-top: 2.75rem;
+    border-top: 1px solid rgba(255, 204, 0, 0.45);
+}
+
+.mission-section .mission-row__visual {
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+}
+
+.mission-section .mission-row__body {
+    position: relative;
+    z-index: 2;
+    min-width: 0;
+}
+
+.mission-section .mission-lead,
+.mission-section .mission-row__body > p {
     color: #4a4a4a;
     font-size: 1rem;
-    line-height: 1.6;
+    line-height: 1.65;
     text-align: left;
+    margin: 0;
+}
+
+.mission-section h2.section-title.mission-block-title {
+    text-align: left;
+    text-transform: none;
+    letter-spacing: 0.12em;
     margin: 0 0 1rem;
 }
 
-.mission-content .logo-concept {
-    margin-top: 1.75rem;
-    padding-top: 0;
+.mission-section .mission-block-title::after {
+    content: "";
+    display: block;
+    width: 3.25rem;
+    height: 4px;
+    margin: 0.55rem 0 0;
+    background: linear-gradient(90deg, var(--primary), #ffe066);
+    border-radius: 2px;
 }
 
-.mission-content .logo-concept h3 {
+.mission-section .mission-logo-heading {
     font-size: 1.08rem;
     letter-spacing: 0.18em;
     color: var(--primary);
     margin: 0 0 0.85rem;
     font-weight: 800;
     text-transform: uppercase;
+    text-align: center;
     padding: 0.65rem 0;
     border-top: 2px solid rgba(255, 204, 0, 0.5);
     border-bottom: 2px solid rgba(255, 204, 0, 0.5);
 }
 
-.mission-section .logo-concept-media-row {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(240px, 46%);
-    gap: 1.5rem;
-    align-items: start;
+.mission-section .mission-row--concept .mission-row__body > p {
+    text-align: center;
+}
+
+.mission-section .mission-row--intro .logo-wrapper {
+    position: sticky;
+    top: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.mission-section .logo-wrapper img {
+    width: 100%;
+    max-width: min(320px, 100%);
+    height: auto;
+    display: block;
+    object-fit: contain;
 }
 
 .mission-section .mission-gif-frame {
@@ -475,7 +519,7 @@ section {
     min-width: 0;
 }
 
-.mission-section .mission-visual .caption,
+.mission-section .logo-wrapper .caption,
 .mission-section .mission-moment-wrap .caption {
     display: flex;
     flex-direction: row;
@@ -490,7 +534,7 @@ section {
     text-align: left;
 }
 
-.mission-section .mission-visual .arrow-icon,
+.mission-section .logo-wrapper .arrow-icon,
 .mission-section .mission-moment-wrap .arrow-icon {
     flex-shrink: 0;
     font-size: 0.95rem;
@@ -619,43 +663,18 @@ section {
     color: inherit;
 }
 
-.mission-visual {
-    align-self: start;
-}
-
-.mission-visual .logo-wrapper {
-    position: sticky;
-    top: 1.25rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.mission-visual .logo-wrapper img {
-    width: 100%;
-    max-width: min(320px, 100%);
-    height: auto;
-    display: block;
-    object-fit: contain;
-}
-
 @media (max-width: 900px) {
-    .mission-section .mission-layout {
+    .mission-section .mission-row {
         grid-template-columns: 1fr;
         gap: 1.75rem;
     }
 
-    .mission-visual .logo-wrapper {
+    .mission-section .mission-row--intro .logo-wrapper {
         position: static;
     }
 
-    .mission-visual .logo-wrapper img {
+    .mission-section .logo-wrapper img {
         max-width: 260px;
-    }
-
-    .mission-section .logo-concept-media-row {
-        grid-template-columns: 1fr;
     }
 }
 
