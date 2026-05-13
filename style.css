@@ -150,61 +150,75 @@ nav a:hover {
 }
 
 .portal-nav>ul>li.coming-soon>a {
-    position: relative;
-    padding-bottom: 20px;
-    color: #c8a66a !important;
     cursor: not-allowed;
-}
-
-.portal-nav>ul>li.coming-soon>a::after {
-    content: "建置中";
-    position: absolute;
-    left: 50%;
-    bottom: -8px;
-    transform: translateX(-50%);
-    white-space: nowrap;
-    line-height: 1;
-    font-size: 0.72rem;
-    letter-spacing: 0.5px;
-    color: #fff;
-    background: #a66a2d;
-    border-radius: 999px;
-    padding: 4px 10px;
+    opacity: 0.82;
+    color: rgba(212, 196, 150, 0.95);
 }
 
 .portal-nav a[data-coming-soon="true"] {
     cursor: not-allowed;
-    opacity: 0.72;
+    opacity: 0.82;
+    position: relative;
+}
+
+.portal-nav a[data-coming-soon="true"]::after {
+    content: "(頁面籌備中)";
+    position: absolute;
+    z-index: 120;
+    white-space: nowrap;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #6a4818;
+    background: #fff9e6;
+    padding: 5px 11px;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.16s ease;
+}
+
+.portal-nav>ul>li>a[data-coming-soon="true"]::after {
+    left: 50%;
+    top: calc(100% + 4px);
+    transform: translateX(-50%);
+}
+
+.portal-nav .portal-submenu a[data-coming-soon="true"]::after {
+    left: 50%;
+    top: calc(100% + 2px);
+    transform: translateX(-50%);
+}
+
+.portal-nav>ul>li>a[data-coming-soon="true"]:hover,
+.portal-nav>ul>li>a[data-coming-soon="true"]:focus-visible {
+    color: rgba(212, 196, 150, 0.95);
+}
+
+.portal-nav .portal-submenu a[data-coming-soon="true"]:hover,
+.portal-nav .portal-submenu a[data-coming-soon="true"]:focus-visible {
+    background-color: transparent;
+    color: #5f5f5f;
+}
+
+@media (hover: hover) {
+
+    .portal-nav a[data-coming-soon="true"]:hover::after,
+    .portal-nav a[data-coming-soon="true"]:focus-visible::after {
+        opacity: 1;
+    }
+}
+
+@media (hover: none) {
+    .portal-nav a[data-coming-soon="true"]:active::after {
+        opacity: 1;
+        transition: opacity 0.08s ease;
+    }
 }
 
 .portal-nav li.coming-soon>.portal-submenu {
     display: none !important;
-}
-
-.portal-nav .portal-submenu a[data-coming-soon="true"] {
-    position: relative;
-}
-
-.portal-nav .portal-submenu a[data-coming-soon="true"]::after {
-    content: "建置中";
-    position: absolute;
-    top: 50%;
-    right: -78px;
-    transform: translateY(-50%);
-    font-size: 0.72rem;
-    letter-spacing: 0.5px;
-    color: #fff;
-    background: #a66a2d;
-    border-radius: 999px;
-    padding: 4px 10px;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.18s ease;
-}
-
-.portal-nav .portal-submenu a[data-coming-soon="true"]:hover::after,
-.portal-nav .portal-submenu a[data-coming-soon="true"]:focus-visible::after {
-    opacity: 1;
 }
 
 .portal-nav li:hover>.portal-submenu,
@@ -936,6 +950,17 @@ footer {
 .map-page .portal-nav .portal-submenu a:hover {
     background: #fff8df;
     color: #3a300a;
+}
+
+.map-page .portal-nav>ul>li>a[data-coming-soon="true"]:hover,
+.map-page .portal-nav>ul>li>a[data-coming-soon="true"]:focus-visible {
+    color: rgba(212, 196, 150, 0.95);
+}
+
+.map-page .portal-nav .portal-submenu a[data-coming-soon="true"]:hover,
+.map-page .portal-nav .portal-submenu a[data-coming-soon="true"]:focus-visible {
+    background-color: transparent;
+    color: #5f5f5f;
 }
 
 .map-archive-header {
