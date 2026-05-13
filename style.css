@@ -1570,3 +1570,184 @@ body.ebook-ssg2-page .ebook-back-link {
     text-align: center;
     margin: 0 0 2.5rem;
 }
+
+/* totoga2.html — 六六歌2 整合（影片／電子書／長文＋網漫／分頁） */
+body.totoga2-page .totoga2-hub-controls {
+    max-width: 1200px;
+    margin: 24px auto 10px;
+    padding: 0 14px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+body.totoga2-page .bilivideo-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+body.totoga2-page .bilivideo-block h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.1rem;
+    color: #2a2a2a;
+}
+
+body.totoga2-page .bilivideo-placeholder-note {
+    font-size: 0.88rem;
+    color: #666;
+    margin: 0 0 0.5rem;
+}
+
+body.totoga2-page .bilivideo-frame {
+    position: relative;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding-top: 56.25%;
+    height: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 204, 0, 0.25);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+    background: #0a0a0a;
+}
+
+body.totoga2-page .bilivideo-frame iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+body.totoga2-page .totoga2-reader-hub {
+    padding-bottom: 2rem;
+}
+
+body.totoga2-page .totoga2-plot {
+    margin: 0 auto 1.5rem;
+}
+
+body.totoga2-page .totoga2-plot .intro-text {
+    text-align: center;
+    color: #4a4a4a;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+}
+
+body.totoga2-page .totoga2-plot .intro-text a {
+    color: var(--dark-yellow);
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+body.totoga2-page #totoga2-chapter-indicator {
+    min-width: 64px;
+    text-align: center;
+    font-weight: 700;
+    color: #f6d66f;
+}
+
+body.totoga2-page .ebook-back-link {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+/* site-guide.html — 全站導覽索引 */
+body.site-guide-page .site-guide-main {
+    padding: 28px 14px 56px;
+    max-width: 1100px;
+}
+
+body.site-guide-page .site-guide-lead {
+    text-align: center;
+    max-width: 42rem;
+    margin: 0 auto 2rem;
+    color: #444;
+    line-height: 1.75;
+    font-size: 1rem;
+}
+
+body.site-guide-page .site-guide-group {
+    margin-bottom: 2.75rem;
+}
+
+body.site-guide-page .site-guide-grid {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+}
+
+body.site-guide-page .site-guide-card {
+    background: linear-gradient(135deg, var(--surface-soft) 0%, #fff 100%);
+    border-radius: 14px;
+    padding: 1.25rem 1.35rem;
+    border: 1px solid rgba(255, 204, 0, 0.18);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+body.site-guide-page .site-guide-card h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1.12rem;
+}
+
+body.site-guide-page .site-guide-card h3 a {
+    color: var(--dark-yellow);
+    font-weight: 800;
+    text-decoration: none;
+}
+
+body.site-guide-page .site-guide-card h3 a:hover {
+    text-decoration: underline;
+}
+
+body.site-guide-page .site-guide-meta {
+    font-size: 0.82rem;
+    color: #666;
+    margin: 0 0 0.45rem;
+}
+
+body.site-guide-page .site-guide-meta cite {
+    font-style: normal;
+    color: #555;
+}
+
+body.site-guide-page .site-guide-note {
+    font-size: 0.88rem;
+    color: #555;
+    margin: 0 0 0.65rem;
+    line-height: 1.55;
+}
+
+body.site-guide-page .site-guide-card h4 {
+    margin: 0.85rem 0 0.4rem;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #888;
+}
+
+body.site-guide-page .site-guide-card ul {
+    margin: 0;
+    padding-left: 1.15rem;
+    color: #3a3a3a;
+    font-size: 0.9rem;
+    line-height: 1.55;
+}
+
+body.site-guide-page .site-guide-card ul a {
+    color: #5c4810;
+    font-weight: 700;
+}
+
+body.site-guide-page .site-guide-card code {
+    font-size: 0.85em;
+    background: rgba(0, 0, 0, 0.06);
+    padding: 0.1em 0.35em;
+    border-radius: 4px;
+}

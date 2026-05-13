@@ -131,6 +131,7 @@
             <li><a href="index.html#story">傳奇的轉折</a></li>
             <li><a href="chronicle.html">傳奇紀實長卷</a></li>
             <li><a href="ssg2-ebook.html">六六歌2 電子書</a></li>
+            <li><a href="totoga2.html">六六歌2 整合專區</a></li>
         </ul>
     </li>
     <li><a href="jiwon.html">瘋子與天才</a>
