@@ -21,8 +21,24 @@ body.njtw5-page .main-header {
     max-width: min(1000px, 100%);
     box-sizing: border-box;
     text-align: center;
-    padding: 0 clamp(4px, 2vw, 12px);
-    background: none;
+    padding: clamp(28px, 5vw, 52px) clamp(16px, 3vw, 28px);
+    min-height: clamp(140px, 26vw, 220px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* 圖檔與此 CSS 同資料夾（variety/NJTW/） */
+    background-color: var(--surface-soft, #fff9e8);
+    background-image:
+        linear-gradient(
+            180deg,
+            rgba(255, 249, 232, 0.72) 0%,
+            rgba(255, 249, 232, 0.88) 100%
+        ),
+        url("1538075001_cu.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     border: none;
     border-radius: 0;
     box-shadow: none;
@@ -35,15 +51,17 @@ body.njtw5-page .main-header h1 {
     color: var(--dark-yellow, #4e492b);
     line-height: 1.25;
     letter-spacing: 0.02em;
+    text-shadow: 0 0 12px rgba(255, 253, 247, 0.95), 0 1px 0 rgba(255, 253, 247, 0.8);
 }
 
 body.njtw5-page .main-header .intro {
     margin: 0;
     font-size: clamp(0.9rem, 2.3vw, 1.05rem);
-    color: #444;
+    color: #333;
     line-height: 1.65;
     max-width: 42em;
     margin-inline: auto;
+    text-shadow: 0 0 10px rgba(255, 253, 247, 0.92), 0 1px 0 rgba(255, 253, 247, 0.75);
 }
 
 body.njtw5-page .container {
