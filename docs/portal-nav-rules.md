@@ -1,16 +1,16 @@
-# 全站導覽列規則（`portal-nav.js`）
+# 全站導覽列規則（`assets/js/portal-nav.js`）
 
-之後**每新增一個要上線、可點的 HTML 頁面**，請一併完成導覽更新；規則都集中在 **`portal-nav.js`**。
+之後**每新增一個要上線、可點的 HTML 頁面**，請一併完成導覽更新；規則都集中在 **`assets/js/portal-nav.js`**。
 
 ---
 
 ## 1. 必做：把頁面掛進導覽 HTML
 
-在 **`buildPortalNavInnerHTML`**（`portal-nav.js`）裡維護連結：
+在 **`buildPortalNavInnerHTML`**（`assets/js/portal-nav.js`）裡維護連結：
 
 - 依資訊架構放在對應的 **`<li>`** 底下；需要子選單時用 **`portal-submenu`**。
 - `href` 使用**站根相對路徑**（腳本會依當前頁深度加上前綴 `rp`）：例如 `` `${rp}variety/variety.html` ``、`` `${rp}index.html#section` ``。
-- Logo 列：`` `${rp}index.html` `` 與 `` `${rp}images/logov.svg` ``。
+- Logo 列：`` `${rp}index.html` `` 與 `` `${rp}assets/images/logov.svg` ``。
 
 新增或調整完後，所有帶 **`data-portal-nav`** 的 `<nav class="portal-nav">` 都會在載入腳本時被注入同一份 HTML。
 
@@ -27,10 +27,10 @@
 
 | 需求 | 做法 |
 |------|------|
-| 新頁要**正式開放** | 寫進 `PORTAL_NAV_INNER_HTML`，並**確認檔名不在** `COMING_SOON_PAGES`。若曾暫時關閉，記得從 Set **刪除**該檔名。 |
+| 新頁要**正式開放** | 寫進 `buildPortalNavInnerHTML`（`assets/js/portal-nav.js`），並**確認檔名不在** `COMING_SOON_PAGES`。若曾暫時關閉，記得從 Set **刪除**該檔名。 |
 | 新頁先**占位、不開放** | 可選擇：仍寫進導覽，但把檔名**加進** `COMING_SOON_PAGES`；或暫時不要放進導覽。 |
 
-（目前 Set 內含哪些檔，以 `portal-nav.js` 為準；例如 `totoga2.html` 若已開放，就不應出現在 Set 裡。）
+（目前 Set 內含哪些檔，以 `assets/js/portal-nav.js` 為準；例如 `totoga2.html` 若已開放，就不應出現在 Set 裡。）
 
 ---
 
@@ -54,16 +54,22 @@
 - 在 `</body>` 前載入（順序可與現有頁一致）：
 
   ```html
-  <script src="portal-nav.js"></script>
+  <script src="assets/js/portal-nav.js"></script>
   ```
 
-- 若該頁有 **`particles.js`**／共用樣式，比照其他內頁一併引入即可。
+  內頁（例如 `extra/`、`variety/` 下）請用相對站根深度，例如：
+
+  ```html
+  <script src="../assets/js/portal-nav.js"></script>
+  ```
+
+- 若該頁有 **`assets/js/particles.js`**／共用樣式（`assets/css/style.css` 等），比照其他內頁一併引入即可。
 
 ---
 
 ## 5. 刻意不進導覽的頁面
 
-若某頁只給自己用（例如站內索引、草稿），**不要**寫進 `PORTAL_NAV_INNER_HTML` 即可；不必改 `COMING_SOON_PAGES`。
+若某頁只給自己用（例如站內索引、草稿），**不要**寫進 `buildPortalNavInnerHTML` 即可；不必改 `COMING_SOON_PAGES`。
 
 ---
 
@@ -86,7 +92,7 @@
 
 | 檔案 | 用途 |
 |------|------|
-| `portal-nav.js` | `PORTAL_NAV_INNER_HTML`、`COMING_SOON_PAGES`、`INDEX_NAV_OPEN_HASHES`、籌備中邏輯 |
-| `style.css` | `.portal-nav`、子選單、`.nav-current` 等樣式 |
+| `assets/js/portal-nav.js` | `buildPortalNavInnerHTML`、`COMING_SOON_PAGES`、`INDEX_NAV_OPEN_HASHES`、籌備中邏輯 |
+| `assets/css/style.css` | `.portal-nav`、子選單、`.nav-current` 等樣式 |
 
 （導覽文案隨機句：`NAV_SOON_PHRASES`，僅影響籌備中連結的提示，與新頁是否開放無關。）

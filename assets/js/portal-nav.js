@@ -121,7 +121,7 @@
 
     /**
      * 站根與 `portal-nav.js` 同層；依腳本路徑與當前頁路徑計算回到站根的相對前綴（如 `../`）。
-     * 子資料夾內頁面之導覽連結必須帶此前綴，否則 `./images`、`index.html` 會錯層。
+     * 子資料夾內頁面之導覽連結必須帶此前綴，否則 `./assets/images`、`index.html` 會錯層。
      */
     function portalNavRootPrefix() {
         const el =
@@ -150,7 +150,7 @@
     /** 全站導覽 HTML — `rp` 為站根相對前綴；僅修改此模板即可同步所有頁面 */
     function buildPortalNavInnerHTML(rp) {
         return `
-<a class="logo" href="${rp}index.html"><img src="${rp}images/logov.svg" alt="SECHSKIES Logo"></a>
+<a class="logo" href="${rp}index.html"><img src="${rp}assets/images/logov.svg" alt="SECHSKIES Logo"></a>
 <ul>
     <li><a href="${rp}index.html#origin">淪陷瞬間</a>
         <ul class="portal-submenu">

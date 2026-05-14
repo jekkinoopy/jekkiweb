@@ -7,10 +7,10 @@ alwaysApply: true
 
 ## 預設只做「被點名」的範圍
 
-- 使用者若只提某頁（例如 **`minister_ge.html`**）、某區塊、某句文案：**只改該處**，不順手改 `index.html`、`minister.html`、`portal-nav.js`、`style.css` 全站區、或 **`index.css`** 裡與首頁共用的規則。
+- 使用者若只提某頁（例如 **`minister_ge.html`**）、某區塊、某句文案：**只改該處**，不順手改 `index.html`、`minister.html`、`assets/js/portal-nav.js`、`assets/css/style.css` 全站區、或 **`assets/css/index.css`** 裡與首頁共用的規則。
 - **未寫到的檔案＝不開、不刪、不重構**；需要動到時，先用**一句話**說明「為何必須動」並等使用者確認，或改在回覆裡列出將被波及的檔案請使用者選是否要做。
 
-## 共用樣式（`style.css`、全站 class）
+## 共用樣式（`assets/css/style.css`、全站 class）
 
 - **禁止**因為某一頁要對齊視覺，就擅自改掉全站 class（例如 `.slogan-quote`、`.mark_b`、`section` 預設）在**其他頁**的呈現。
 - **金句已分流**：覺醒稿用 **`slogan-quote slogan-quote--awakening`**（副標語彙：雙線＋中置小字），首頁使命稿用 **`slogan-quote slogan-quote--mission`**（獨立奶油卡）；基底 **`.slogan-quote` 不帶視覺**，**禁止**再只改基底就套兩種金句。
