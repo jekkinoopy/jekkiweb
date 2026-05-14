@@ -2148,54 +2148,7 @@ body.ebook-ssg2-page .ebook-back-link {
     margin: 0 0 2.5rem;
 }
 
-/* totoga2.html — 六六歌2 整合（影片／電子書／長文＋網漫／分頁） */
-body.totoga2-page .map-archive-header .main-content-title {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.35rem;
-    margin-top: clamp(12px, 2.5vw, 22px);
-}
-
-body.totoga2-page .map-archive-header .highlight-text {
-    font-size: clamp(1.45rem, 4vw, 2.65rem);
-    font-weight: 800;
-    color: #fff;
-    letter-spacing: 0.1em;
-    line-height: 1.2;
-    text-shadow: 0 2px 22px rgba(0, 0, 0, 0.5);
-}
-
-body.totoga2-page .map-archive-header .eng-title {
-    font-size: clamp(0.72rem, 2vw, 0.95rem);
-    letter-spacing: 0.26em;
-    color: var(--yellow);
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-body.totoga2-page .map-archive-header .subtitle-wrap {
-    flex-direction: column;
-    gap: 0.4rem;
-    margin-top: clamp(14px, 2.5vw, 24px);
-}
-
-body.totoga2-page .map-archive-header .subtitle-wrap::before,
-body.totoga2-page .map-archive-header .subtitle-wrap::after {
-    display: none;
-}
-
-body.totoga2-page .map-archive-header .sub-title {
-    margin: 0;
-}
-
-body.totoga2-page .map-archive-header .event-date {
-    display: block;
-    font-size: 0.72rem;
-    letter-spacing: 0.22em;
-    color: #c8c8c8;
-    font-weight: 600;
-}
+/* totoga2 整合／複本頁：頂部結構與其他 map-archive-header 內頁一致（僅 main-title + subtitle-wrap） */
 
 body.totoga2-page .totoga2-hub-controls {
     max-width: 1200px;
@@ -2206,23 +2159,106 @@ body.totoga2-page .totoga2-hub-controls {
     flex-wrap: wrap;
 }
 
-body.totoga2-page .bilivideo-stack {
+body.totoga2-page.totoga2-video-copy-page .map-archive-header {
+    height: auto;
+    min-height: 0;
+    padding: clamp(1rem, 2.8vw, 1.75rem) 20px clamp(1.1rem, 3vw, 1.9rem);
+    background-size: cover;
+}
+
+body.totoga2-page.totoga2-video-copy-page .ebook-intro.section {
+    margin-bottom: 1.5rem;
+}
+
+body.totoga2-page.totoga2-video-copy-page .ebook-intro.section .bilivideo-tabs {
+    margin-top: 0.5rem;
+}
+
+body.totoga2-page.totoga2-video-copy-page {
+    overflow-x: hidden;
+}
+
+/* 節目影片複本：三集＝同一殼內分頁；非使用中 panel 不占版面（避免被 flex display 蓋掉 hidden） */
+body.totoga2-page.totoga2-video-copy-page .bilivideo-tabs {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+body.totoga2-page.totoga2-video-copy-page .bilivideo-tabs__shell {
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 204, 0, 0.38);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.18);
+    background: #070707;
+}
+
+body.totoga2-page.totoga2-video-copy-page .bilivideo-tabs__list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+    margin: 0;
+    padding: 0;
+}
+
+body.totoga2-page.totoga2-video-copy-page .bilivideo-tabs__tab {
+    margin: 0;
+    padding: 0.75rem 0.5rem;
+    border: none;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 700;
+    font-size: clamp(0.88rem, 2.1vw, 1rem);
+    text-align: center;
+    color: #e8e4dc;
+    background: #151515;
+    letter-spacing: 0.12em;
+}
+
+body.totoga2-page.totoga2-video-copy-page .bilivideo-tabs__tab:last-child {
+    border-right: none;
+}
+
+body.totoga2-page.totoga2-video-copy-page .bilivideo-tabs__tab:hover {
+    background: #1f1f1f;
+    color: #fff;
+}
+
+body.totoga2-page.totoga2-video-copy-page .bilivideo-tabs__tab:focus-visible {
+    outline: 2px solid #ffcc00;
+    outline-offset: -2px;
+    position: relative;
+    z-index: 1;
+}
+
+body.totoga2-page.totoga2-video-copy-page .bilivideo-tabs__tab--active {
+    background: linear-gradient(180deg, #ffe566 0%, #ffcc00 100%);
+    color: #1a1406;
+}
+
+body.totoga2-page.totoga2-video-copy-page .bilivideo-tabs__panels {
+    overflow: hidden;
+    background: #000;
+}
+
+body.totoga2-page.totoga2-video-copy-page .bilivideo-tabs__panel {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    margin-bottom: 2rem;
+    align-items: stretch;
 }
 
-body.totoga2-page .bilivideo-block h3 {
-    margin: 0 0 0.5rem;
-    font-size: 1.1rem;
-    color: #2a2a2a;
+body.totoga2-page.totoga2-video-copy-page .bilivideo-tabs__panel[hidden] {
+    display: none !important;
 }
 
-body.totoga2-page .bilivideo-placeholder-note {
-    font-size: 0.88rem;
-    color: #666;
-    margin: 0 0 0.5rem;
+body.totoga2-page.totoga2-video-copy-page .bilivideo-tabs__shell .bilivideo-frame {
+    margin: 0;
+    max-width: none;
+    width: 100%;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
 }
 
 body.totoga2-page .bilivideo-frame {
@@ -2293,7 +2329,7 @@ body.totoga2-page .ebook-back-link {
     gap: 12px;
 }
 
-/* extra/totoga2 copy.html — 複本改為三獨立頁後的總覽；子頁共用 .totoga2-split-crossnav */
+/* extra/totoga2 copy.html — 複本改為三獨立頁後的總覽；主檔 fallen/totoga2.html；子頁共用 .totoga2-split-crossnav */
 body.totoga2-page .totoga2-split-crossnav {
     margin-top: 0.75rem;
 }
@@ -2313,7 +2349,7 @@ body.totoga2-page .totoga2-copy-hub-anchor-hint {
     font-size: 0.95rem;
 }
 
-/* extra/member.html — 黑白水晶交錯格（2×4）與懸賞令海報 */
+/* member/member.html — 黑白水晶交錯格（2×4）與懸賞令海報 */
 body.member-crystal-page .member-crystal-main {
     padding: 1.75rem 14px 3rem;
     max-width: 1240px;

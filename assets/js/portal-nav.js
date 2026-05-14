@@ -3,7 +3,7 @@
      * ── 導覽「尚未開放」連結 ─────────────────────────────────────────
      * 【兩個世界】① 僅 `extra/site-guide.html`：`<nav data-portal-nav data-portal-nav-all-open>` → 不套用籌備中，
      *    頂欄全可點；`main.site-guide-main` 內 `<a>` 腳本不改寫（站主自用索引）。② 其餘每一頁：一律套用籌備中。
-     * 【totoga2 整合頁】`totoga2.html` 在 COMING_SOON_PAGES 內＝訪客頂欄「傳奇的轉折」不可點進；站主沒明講開放不得從 Set 刪除。
+     * 【totoga2 整合頁】`fallen/totoga2.html`（檔名仍為 totoga2.html）在 COMING_SOON_PAGES 內＝訪客頂欄「傳奇的轉折」不可點進；站主沒明講開放不得從 Set 刪除。
      * 【硬規則】檔案在 repo ≠ 可開放；未同意不得從 Set 刪名、不得擴白名單、不得在模板新增可點項。
      * 文案 NAV_SOON_PHRASES：籌備中連結提示用。
      * 完整條文：`.cursor/rules/portal-nav-rules.mdc` + `user-scope-and-nav.mdc`
@@ -33,6 +33,7 @@
     const COMING_SOON_PAGES = new Set([
         "albums.html",
         "map.html",
+        "member.html",
         "minister.html",
         "minister_ge.html",
         "totoga2.html",
@@ -173,7 +174,7 @@
     <li><a target="_blank" rel="noopener noreferrer" href="${rp}index.html"><span class="portal-nav__label">淪陷瞬間</span><span class="portal-nav__sub">六顆永恆的水晶 · 左右命運的傳奇</span></a>
         <ul class="portal-submenu">
             <li><a target="_blank" rel="noopener noreferrer" href="${rp}index.html"><span class="portal-nav__label">初心與軌跡</span><span class="portal-nav__sub">我們現在：從好奇觀看到淪陷的起點</span></a></li>
-            <li><a target="_blank" rel="noopener noreferrer" href="${rp}extra/totoga2.html"><span class="portal-nav__label">傳奇的轉折</span><span class="portal-nav__sub">六六歌2 紀實與重逢敘事主線</span></a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="${rp}fallen/totoga2.html"><span class="portal-nav__label">傳奇的轉折</span><span class="portal-nav__sub">六六歌2 紀實與重逢敘事主線</span></a></li>
             <li class="portal-nav__subgroup">
                 <span class="portal-nav__subgroup-head"><span class="portal-nav__label">全員發瘋</span><span class="portal-nav__sub">原來我是個正常人啊！團綜與失控現場</span></span>
                 <ul class="portal-submenu-nested" aria-label="全員發瘋">
@@ -188,7 +189,7 @@
             </li>
         </ul>
     </li>
-    <li><a target="_blank" rel="noopener noreferrer" href="${rp}extra/member.html"><span class="portal-nav__label">完整的六顆</span><span class="portal-nav__sub">六顆水晶 · 黑白分流</span></a></li>
+    <li><a target="_blank" rel="noopener noreferrer" href="${rp}member/member.html"><span class="portal-nav__label">完整的六顆</span><span class="portal-nav__sub">六顆水晶 · 黑白分流</span></a></li>
     <li><a target="_blank" rel="noopener noreferrer" href="${rp}concert/concert.html"><span class="portal-nav__label">現場的震撼</span><span class="portal-nav__sub">SECHSKIES CONCERT ARCHIVE</span></a>
         <ul class="portal-submenu">
             <li><a target="_blank" rel="noopener noreferrer" href="${rp}concert/concert.html"><span class="portal-nav__label">集結水晶</span><span class="portal-nav__sub">團體演唱會</span></a></li>
@@ -201,10 +202,10 @@
             <li><a target="_blank" rel="noopener noreferrer" href="${rp}albums/albums.html#classic"><span class="portal-nav__label">輝煌全盛期</span><span class="portal-nav__sub">1997–1999 年表</span></a></li>
         </ul>
     </li>
-    <li><a target="_blank" rel="noopener noreferrer" href="${rp}map/map.html"><span class="portal-nav__label">Yellow Note</span><span class="portal-nav__sub">視覺進化論 · 聖地巡禮</span></a>
+    <li><a target="_blank" rel="noopener noreferrer" href="${rp}yellow-note/map.html"><span class="portal-nav__label">Yellow Note</span><span class="portal-nav__sub">視覺進化論 · 聖地巡禮</span></a>
         <ul class="portal-submenu">
-            <li><a target="_blank" rel="noopener noreferrer" href="${rp}extra/minister.html"><span class="portal-nav__label">視覺進化論</span><span class="portal-nav__sub">FROM CURIOSITY TO FULL-STACK</span></a></li>
-            <li><a target="_blank" rel="noopener noreferrer" href="${rp}map/map.html"><span class="portal-nav__label">聖地巡禮</span><span class="portal-nav__sub">SECHSKIES TAIWAN ARCHIVE</span></a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="${rp}yellow-note/minister.html"><span class="portal-nav__label">視覺進化論</span><span class="portal-nav__sub">FROM CURIOSITY TO FULL-STACK</span></a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="${rp}yellow-note/map.html"><span class="portal-nav__label">聖地巡禮</span><span class="portal-nav__sub">SECHSKIES TAIWAN ARCHIVE</span></a></li>
         </ul>
     </li>
 </ul>

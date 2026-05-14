@@ -25,9 +25,9 @@ alwaysApply: true
 - **不得**因為「內容已搬到某頁」就自行推論「導覽也應該開放」——導覽是否開放**只聽使用者口述**。
 - 若使用者只要求搬內容、刪檔、改站內某段文案，**預設不改** `assets/js/portal-nav.js` 的開放狀態與連結目標。
 
-## 「傳奇的轉折」與 `extra/totoga2.html`（特別記牢）
+## 「傳奇的轉折」與 `fallen/totoga2.html`（特別記牢）
 
-- 頂欄模板裡「傳奇的轉折」連到 **`extra/totoga2.html`**（見 `buildPortalNavInnerHTML`）。
+- 頂欄模板裡「傳奇的轉折」連到 **`fallen/totoga2.html`**（見 `buildPortalNavInnerHTML`）。
 - 使用者**沒有明講對外開放整合頁**時：`totoga2.html` **必須**在 **`COMING_SOON_PAGES`** 裡 → 訪客頂欄該項為籌備中、**不可點進**。
 - **禁止**在未獲同意下：從 Set **移除** `totoga2.html`、或改成連到其他頁並當成已開放。
 - 首頁錨點另依 **`INDEX_NAV_OPEN_HASHES`**；與「傳奇的轉折／totoga2」分開判斷。

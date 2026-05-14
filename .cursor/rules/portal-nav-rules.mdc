@@ -20,7 +20,7 @@ alwaysApply: true
 
 1. **未經站主逐句同意**：不得從 `COMING_SOON_PAGES` **刪**檔名、不得擴充 `INDEX_NAV_OPEN_HASHES`、不得在 `buildPortalNavInnerHTML` **新增**可點項、不得把籌備中改成真 `href`、不得刪站主已同意列入頂欄的項。
 2. **「檔案在 repo」≠「可開放導覽」**；不得自行推論。
-3. **`extra/totoga2.html`（整合頁）**、**`variety/variety.html`**：站主**沒有明講對外開放**時，檔名**必須**留在 `COMING_SOON_PAGES`（訪客頂欄不可點進）。要開放時**只**能等站主說了再從 Set 移除。
+3. **`fallen/totoga2.html`（整合頁）**、**`variety/variety.html`**：站主**沒有明講對外開放**時，檔名**必須**留在 `COMING_SOON_PAGES`（訪客頂欄不可點進）。要開放時**只**能等站主說了再從 Set 移除。
 4. **「刪除／拿掉／不要了」**：若未寫明是**單一檔案**、**頂欄某一列**、**整段子選單**還是**整個資料夾**，**一律先問站主**，禁止自行擴大刪除範圍。
 5. **不確定**是否開放、連哪、是否例外：**先問站主再改**，不要猜。
 6. 站主說要刪的是 **`某頁#錨點`**（頁內區塊）時：先改該頁 DOM，再修死錨連結；**不要**只動導覽、也不要把「刪區塊」擴成刪頂欄整段。細節見 **`user-scope-and-nav.mdc`**（§ 頁面錨點刪除）。
@@ -93,7 +93,7 @@ alwaysApply: true
   <script src="assets/js/portal-nav.js"></script>
   ```
 
-  內頁（例如 `extra/`、`variety/` 下）請用相對站根深度，例如：
+  內頁（例如 `extra/`、`fallen/`、`member/`、`yellow-note/`、`variety/` 下）請用相對站根深度，例如：
 
   ```html
   <script src="../assets/js/portal-nav.js"></script>
@@ -133,6 +133,6 @@ alwaysApply: true
 | `.cursor/rules/user-scope-and-nav.mdc` | 意圖與導覽開放（與本規則搭配） |
 | `.cursor/rules/ai-change-boundaries.mdc` | 變更範圍與共用 CSS 邊界 |
 | `docs/CHANGESET-review.md` | 歷次變更檢查清單筆記（非程式真值來源） |
-| `docs/sql/sql_plan.md` | SQL 練習／筆記 |
+| `docs/sql/` | SQL 練習／筆記（`sql_plan.md`、`.sql` 腳本與匯出） |
 
 （導覽文案隨機句：`NAV_SOON_PHRASES`，僅影響籌備中連結的提示，與新頁是否開放無關。）

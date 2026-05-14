@@ -68,14 +68,14 @@
 
 1. `<article class="story-node">` 追加 modifier：`story-node--ebook-ssg2`。
 2. 在該篇 `<p>…</p>` 之後新增：
-   - `<a href="extra/totoga2.html#ebook" class="timeline-ebook-cta">`
+   - `<a href="fallen/totoga2.html#ebook" class="timeline-ebook-cta">`
    - Font Awesome：`fa-solid fa-hand-pointer`（`aria-hidden="true"`）
    - 文案：「點這裡翻開《六六歌2》紀實電子書」
 
 ### 相依性（請檢查）
 
 - 頁面須已載入 Font Awesome（與現有 `<link>` 一致），否則圖示不顯示。
-- `extra/totoga2.html` 須存在；`assets/js/totoga2.js` 會辨識網址列 `#ebook` 並切換至電子書模式。
+- `fallen/totoga2.html` 須存在；`assets/js/totoga2.js` 會辨識網址列 `#ebook` 並切換至電子書模式。
 
 ---
 

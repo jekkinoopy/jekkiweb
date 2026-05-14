@@ -217,6 +217,11 @@ img {
     color: #333;
 }
 
+/* 暫隱：九十年代「燦爛的最初」整區；要對外顯示時刪除此規則即可 */
+#stage-past {
+    display: none !important;
+}
+
 /* 燦爛的最初：小節標（對齊隔壁「一張大卡＋多個場次列」） */
 #stage-past .stage-past-era {
     margin-top: 2.25rem;
