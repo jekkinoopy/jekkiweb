@@ -29,7 +29,7 @@
     const COMING_SOON_PAGES = new Set([
         "jiwon.html",
         "concert.html",
-        "archive.html",
+        "albums.html",
         "map.html",
         "minister.html",
         "minister_ge.html",
@@ -143,10 +143,10 @@
             <li><a href="concert.html#stage-past">燦爛的最初</a></li>
         </ul>
     </li>
-    <li><a href="archive.html">黃色留聲機</a>
+    <li><a href="albums.html">黃色留聲機</a>
         <ul class="portal-submenu">
-            <li><a href="archive.html#new">啟動新篇章</a></li>
-            <li><a href="archive.html#classic">輝煌全盛期</a></li>
+            <li><a href="albums.html#new">啟動新篇章</a></li>
+            <li><a href="albums.html#classic">輝煌全盛期</a></li>
         </ul>
     </li>
     <li><a href="map.html">聖地巡禮</a>

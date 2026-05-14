@@ -1,20 +1,20 @@
 # 變更檢查清單（工作區 vs `HEAD`）
 
-> **說明：** 此為對話當初「第一批」完整筆記存檔（五檔：`archive`／`index.css`／`index.html`／`style.css`／`portal-nav`）。**目前工作區是否仍為下列每一項，請以 `git diff` 與實際檔案為準**，本文不作為程式真值來源。
+> **說明：** 此為對話當初「第一批」完整筆記存檔（五檔：`albums`（原 `archive`）／`index.css`／`index.html`／`style.css`／`portal-nav`）。**目前工作區是否仍為下列每一項，請以 `git diff` 與實際檔案為準**，本文不作為程式真值來源。
 
 本文依 **`git diff`** 對照 **`HEAD`** 整理，方便逐項核對；不含未在本 diff 出現之檔案或臆測內容。
 
-**涉及檔案（5）**：`archive.html`、`index.css`、`index.html`、`portal-nav.js`、`style.css`  
+**涉及檔案（5）**：`albums.html`、`index.css`、`index.html`、`portal-nav.js`、`style.css`  
 **統計**：以 `git diff --stat` 為準（以下內容對應該批變更初版筆記）。
 
 ---
 
-## 1. `archive.html`
+## 1. `albums.html`
 
 ### 目的
 
 - 年表區塊（「啟動新篇章」「輝煌全盛期」）每一資料列：**點列上非連結區域**時，於新分頁開對應 **Spotify 專輯**。
-- 列內既有 `<a>`（本站 `lyrics.html`、`concert.html`、`archive.html#classic`）維持原行為。
+- 列內既有 `<a>`（本站 `lyrics.html`、`concert.html`、`albums.html#classic`）維持原行為。
 
 ### 標記與無障礙
 
@@ -122,8 +122,8 @@
 
 ## 建議檢查步驟（逐項勾選）
 
-1. **`archive.html`**：每列空白處／封面／年份點擊 → 新分頁 Spotify 正確專輯；點列內本站連結 → 仍進本站、不開 Spotify。
-2. **`archive.html`**：鍵盤 Tab 聚焦列後 Enter／空白 → 開 Spotify；聚焦在 `<a>` 上時 Enter → 遵循連結。
+1. **`albums.html`**：每列空白處／封面／年份點擊 → 新分頁 Spotify 正確專輯；點列內本站連結 → 仍進本站、不開 Spotify。
+2. **`albums.html`**：鍵盤 Tab 聚焦列後 Enter／空白 → 開 Spotify；聚焦在 `<a>` 上時 Enter → 遵循連結。
 3. **`index.html` + `style.css`**：2016 卡片外觀與 CTA 按鈕、`hover`、`focus-visible`、縮減動態偏好設定下手勢動畫關閉。
 4. **`portal-nav.js`**：全站注入後選單無「消失的真相」；改 `true` 後該項回來。
 5. **跨頁**：任意頁載入 `portal-nav.js` 後行為一致。
