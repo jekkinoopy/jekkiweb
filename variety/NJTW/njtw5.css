@@ -17,12 +17,17 @@ body.njtw5-page {
 }
 
 body.njtw5-page .main-header {
-    width: 100%;
-    max-width: min(1000px, 100%);
+    /* 視窗全寬（不受 body 置中與下方網格 max-width 限制） */
+    width: 100vw;
+    max-width: none;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
     box-sizing: border-box;
     text-align: center;
-    padding: clamp(28px, 5vw, 52px) clamp(16px, 3vw, 28px);
-    min-height: clamp(140px, 26vw, 220px);
+    /* 與 1538075001_cu.jpg 實際比例一致（1280×706），全寬時高度與圖等比例 */
+    aspect-ratio: 1280 / 706;
+    min-height: 0;
+    padding: 0 clamp(16px, 3vw, 28px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -30,13 +35,11 @@ body.njtw5-page .main-header {
     /* 圖檔與此 CSS 同資料夾（variety/NJTW/） */
     background-color: var(--surface-soft, #fff9e8);
     background-image:
-        linear-gradient(
-            180deg,
+        linear-gradient(180deg,
             rgba(255, 249, 232, 0.72) 0%,
-            rgba(255, 249, 232, 0.88) 100%
-        ),
+            rgba(255, 249, 232, 0.88) 100%),
         url("1538075001_cu.jpg");
-    background-size: cover;
+    background-size: cover, cover;
     background-position: center;
     background-repeat: no-repeat;
     border: none;
@@ -108,18 +111,18 @@ body.njtw5-page .member-image {
 
 /* 各卡：background-size、background-position 可逐張微調（圖檔見 .member-image） */
 body.njtw5-page .m1 .member-image {
-    background-size: 600% auto;
-    background-position: 47% 48%;
+    background-size: 250% auto;
+    background-position: 52% 58%;
 }
 
 body.njtw5-page .m2 .member-image {
-    background-size: 600% auto;
-    background-position: 16% 81%;
+    background-size: 359% auto;
+    background-position: 10% 85%;
 }
 
 body.njtw5-page .m3 .member-image {
-    background-size: 600% auto;
-    background-position: 92% 18%;
+    background-size: 381% auto;
+    background-position: 96% 18%;
 }
 
 body.njtw5-page .m4 .member-image {
