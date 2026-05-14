@@ -10,7 +10,7 @@
 
 - 依資訊架構放在對應的 **`<li>`** 底下；需要子選單時用 **`portal-submenu`**。
 - `href` 使用**站根相對路徑**（腳本會依當前頁深度加上前綴 `rp`）：例如 `` `${rp}variety/variety.html` ``、`` `${rp}index.html#section` ``。
-- Logo 列：`` `${rp}index.html` `` 與 `` `${rp}img/logov.svg` ``。
+- Logo 列：`` `${rp}index.html` `` 與 `` `${rp}images/logov.svg` ``。
 
 新增或調整完後，所有帶 **`data-portal-nav`** 的 `<nav class="portal-nav">` 都會在載入腳本時被注入同一份 HTML。
 

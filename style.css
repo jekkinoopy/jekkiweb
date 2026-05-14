@@ -48,7 +48,7 @@ header {
     width: 100%;
     height: 100vh;
     min-height: 100dvh;
-    background-image: url('img/header.jpg');
+    background-image: url('images/header.jpg');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 108%;
@@ -1084,7 +1084,7 @@ footer a .mark_b {
     width: 100%;
     height: 100vh;
     min-height: 100dvh;
-    background-image: url('img/header.jpg');
+    background-image: url('images/header.jpg');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 108%;

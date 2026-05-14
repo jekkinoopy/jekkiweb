@@ -180,7 +180,7 @@
         width: min(100%, 440px);
     }
 
-    .concert-page img[src*="img/concert/"] {
+    .concert-page img[src*="images/concert/"] {
         width: min(560px, 88%);
         max-width: 100%;
     }
