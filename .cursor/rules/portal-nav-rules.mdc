@@ -9,12 +9,27 @@ alwaysApply: true
 
 ---
 
-## 0. 站主同意（最高優先）
+## 0. 兩個世界（最高優先，實作前必讀）
 
-- **未經站主明確同意**，不得自行：從 `COMING_SOON_PAGES` 移除檔名、擴充 `INDEX_NAV_OPEN_HASHES`、在 `buildPortalNavInnerHTML` **新增**導覽項目、**刪除站主已同意列入頂欄**的項目、或把籌備中連結改成可點（**例外見下**）。
-- 「檔案已在 repo 裡」**不代表**可以開放導覽或當成已上線。
-- **`extra/site-guide.html`（全站導覽索引頁）**：頂欄 `<nav>` 使用 **`data-portal-nav-all-open`** 時，腳本**不套用**籌備中，頂欄內連結**全部可點**（僅此頁；站內其他頁**禁止**加此屬性）。
-- 頂欄模板**不含**未同意掛列的頁；該頁仍可由 `site-guide` 卡片或網址直開。
+| 誰在看 | 哪一頁／哪塊 | 行為 |
+|--------|----------------|------|
+| **站主自己** | 僅 **`extra/site-guide.html`** | 頂欄必須 **`data-portal-nav data-portal-nav-all-open`**。腳本**不**對該頁頂欄套用籌備中；**不**對 `<main class="site-guide-main">` 內任何 `<a href>` 改寫。表上連結**全部要點得進**（由站主在 HTML 維護）。 |
+| **訪客／大家** | **除上列以外**的每一頁 | 頂欄一律套用 `applyComingSoonToNav`：`COMING_SOON_PAGES`、`INDEX_NAV_OPEN_HASHES` 說不能點就不能點。**禁止**在其他頁加 `data-portal-nav-all-open`。 |
+
+**硬規則（違反＝做錯）**
+
+1. **未經站主逐句同意**：不得從 `COMING_SOON_PAGES` **刪**檔名、不得擴充 `INDEX_NAV_OPEN_HASHES`、不得在 `buildPortalNavInnerHTML` **新增**可點項、不得把籌備中改成真 `href`、不得刪站主已同意列入頂欄的項。
+2. **「檔案在 repo」≠「可開放導覽」**；不得自行推論。
+3. **`extra/totoga2.html`（整合頁）**、**`variety/variety.html`**：站主**沒有明講對外開放**時，檔名**必須**留在 `COMING_SOON_PAGES`（訪客頂欄不可點進）。要開放時**只**能等站主說了再從 Set 移除。
+4. **「刪除／拿掉／不要了」**：若未寫明是**單一檔案**、**頂欄某一列**、**整段子選單**還是**整個資料夾**，**一律先問站主**，禁止自行擴大刪除範圍。
+5. **不確定**是否開放、連哪、是否例外：**先問站主再改**，不要猜。
+6. 站主說要刪的是 **`某頁#錨點`**（頁內區塊）時：先改該頁 DOM，再修死錨連結；**不要**只動導覽、也不要把「刪區塊」擴成刪頂欄整段。細節見 **`user-scope-and-nav.mdc`**（§ 頁面錨點刪除）。
+
+## 0.1 站主同意（細項）
+
+- **未經站主明確同意**，不得自行：從 `COMING_SOON_PAGES` 移除檔名、擴充 `INDEX_NAV_OPEN_HASHES`、在 `buildPortalNavInnerHTML` **新增**導覽項目、**刪除站主已同意列入頂欄**的項目、或把籌備中連結改成可點（**全站導覽頁頂欄例外見 §0**）。
+- **`extra/site-guide.html`**：站主自用；條件同 §0 表格。（僅此頁可加 `data-portal-nav-all-open`。）
+- 頂欄模板**不含**未同意掛列的頁；該頁仍可由 `site-guide` 主文或網址直開（站主自用）。
 
 ---
 
@@ -44,7 +59,7 @@ alwaysApply: true
 | 新頁要**正式開放** | 寫進 `buildPortalNavInnerHTML`（`assets/js/portal-nav.js`），並**確認檔名不在** `COMING_SOON_PAGES`。若曾暫時關閉，記得從 Set **刪除**該檔名。 |
 | 新頁先**占位、不開放** | 可選擇：仍寫進導覽，但把檔名**加進** `COMING_SOON_PAGES`；或暫時不要放進導覽。 |
 
-（目前 Set 內含哪些檔，以 `assets/js/portal-nav.js` 為準；例如 `totoga2.html` 若已開放，就不應出現在 Set 裡。）
+（目前 Set 內含哪些檔，以 `assets/js/portal-nav.js` 為準；站主明講開放後才從 Set 移除該檔名，例如 `totoga2.html`。）
 
 ---
 
@@ -59,7 +74,7 @@ alwaysApply: true
 
 ## 3.1 索引頁頂欄全開（僅 `site-guide.html`）
 
-- **`extra/site-guide.html`** 的 `<nav>` 使用 **`data-portal-nav data-portal-nav-all-open`** 時：注入後**不套用**籌備中，頂欄連結維持真實 `href`（含 `#story` 等）。
+- **`extra/site-guide.html`** 的 `<nav>` 使用 **`data-portal-nav data-portal-nav-all-open`** 時：注入後**不套用**籌備中，頂欄連結維持真實 `href`。主文 `main.site-guide-main` 內連結不由腳本改寫。
 - **禁止**在 `site-guide.html` 以外的頁面使用 `data-portal-nav-all-open`。
 
 ---

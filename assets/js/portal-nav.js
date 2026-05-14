@@ -1,15 +1,12 @@
 (() => {
     /**
      * ── 導覽「尚未開放」連結 ─────────────────────────────────────────
-     * ① 頂欄 `buildPortalNavInnerHTML`：僅列站主同意掛在頂欄的分類（**不含**未同意的頁）。
-     * ② `COMING_SOON_PAGES`／`INDEX_NAV_OPEN_HASHES`：在 Set／白名單外＝籌備中（`href` 改 `#`）。
-     * ③ **唯一例外**：`extra/site-guide.html` 的 `<nav data-portal-nav data-portal-nav-all-open>` **不套用**籌備中（索引頁預覽用，頂欄連結全可點）；**其他任何頁**不得加 `data-portal-nav-all-open`。
-     * ④ 文案 NAV_SOON_PHRASES：滑過／聚焦時隨機一句；無障礙固定「尚無開放」。
-     *
-     * ⚠️ 站主規則（必守）：未經站主**逐項口頭／文字同意**，不得自行
-     *    從 COMING_SOON_PAGES 移除檔名、擴充 INDEX_NAV_OPEN_HASHES、或在導覽模板新增／改為可點連結。
-     *    「頁面已存在」≠ 可開放導覽。
-     * 完整條文與檢查清單：`.cursor/rules/portal-nav-rules.mdc`（Cursor 會讀取）。
+     * 【兩個世界】① 僅 `extra/site-guide.html`：`<nav data-portal-nav data-portal-nav-all-open>` → 不套用籌備中，
+     *    頂欄全可點；`main.site-guide-main` 內 `<a>` 腳本不改寫（站主自用索引）。② 其餘每一頁：一律套用籌備中。
+     * 【totoga2 整合頁】`totoga2.html` 在 COMING_SOON_PAGES 內＝訪客頂欄「傳奇的轉折」不可點進；站主沒明講開放不得從 Set 刪除。
+     * 【硬規則】檔案在 repo ≠ 可開放；未同意不得從 Set 刪名、不得擴白名單、不得在模板新增可點項。
+     * 文案 NAV_SOON_PHRASES：籌備中連結提示用。
+     * 完整條文：`.cursor/rules/portal-nav-rules.mdc` + `user-scope-and-nav.mdc`
      */
     const NAV_SOON_PHRASES = ["奇蹟醞釀中", // 頁面準備中，呼應黃色奇蹟的誕生
         "感動載入中", // 資料讀取中，連結入坑時的悸動
@@ -38,6 +35,8 @@
         "map.html",
         "minister.html",
         "minister_ge.html",
+        "totoga2.html",
+        "variety.html",
     ]);
 
     /**
@@ -100,17 +99,20 @@
         return false;
     }
 
-    /** 將籌備中規則套用至單一導覽列 */
-    function applyComingSoonToNav(nav) {
-        const pageKeysSoon = new Set(
-            [...COMING_SOON_PAGES].map((p) => normalizePageKey(String(p))).filter(Boolean),
-        );
+    function getPageKeysSoon() {
+        return new Set([...COMING_SOON_PAGES].map((p) => normalizePageKey(String(p))).filter(Boolean));
+    }
 
-        nav.querySelectorAll('a[href]').forEach((link) => {
+    /** 將籌備中規則套用至容器內錨點（僅由 `applyComingSoonToNav` 呼叫頂欄） */
+    function applyComingSoonToAnchorElements(container) {
+        const pageKeysSoon = getPageKeysSoon();
+
+        container.querySelectorAll("a[href]").forEach((link) => {
             if (link.classList.contains("logo")) return;
 
             const href = link.getAttribute("href");
             if (!href || href === "#") return;
+            if (/^https?:\/\//i.test(href)) return;
 
             const pageKey = normalizePageKey(href);
             if (!pageKey) return;
@@ -119,6 +121,11 @@
 
             markLinkComingSoon(link, href);
         });
+    }
+
+    /** 將籌備中規則套用至單一導覽列（含頂層 li 樣式） */
+    function applyComingSoonToNav(nav) {
+        applyComingSoonToAnchorElements(nav);
 
         nav.querySelectorAll(":scope > ul > li").forEach((li) => {
             const trigger = li.querySelector(":scope > a[href]");
@@ -170,7 +177,7 @@
             <li class="portal-nav__subgroup">
                 <span class="portal-nav__subgroup-head"><span class="portal-nav__label">全員發瘋</span><span class="portal-nav__sub">原來我是個正常人啊！團綜與失控現場</span></span>
                 <ul class="portal-submenu-nested" aria-label="全員發瘋">
-                    <li><a target="_blank" rel="noopener noreferrer" href="${rp}variety/variety.html#stage"><span class="portal-nav__label">隊長帶弟弟</span><span class="portal-nav__sub">控場與隊內互動</span></a></li>
+                    <li><a target="_blank" rel="noopener noreferrer" href="${rp}variety/variety.html#variety"><span class="portal-nav__label">隊長帶弟弟</span><span class="portal-nav__sub">控場與隊內互動</span></a></li>
                     <li class="portal-nav__subgroup portal-nav__subgroup--nested">
                         <span class="portal-nav__subgroup-head portal-nav__subgroup-head--nested"><span class="portal-nav__label">各自暴走</span><span class="portal-nav__sub">獨立內頁籌備中</span></span>
                         <ul class="portal-submenu-nested portal-submenu-nested--tier3" aria-label="各自暴走">
@@ -212,6 +219,16 @@
         }
     });
 
+    const blockNavigation = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+    };
+
+    document.querySelectorAll('a[data-coming-soon="true"]').forEach((link) => {
+        link.addEventListener("click", blockNavigation);
+        link.addEventListener("auxclick", blockNavigation);
+    });
+
     const navs = Array.from(document.querySelectorAll(".portal-nav"));
     if (!navs.length) return;
 
@@ -220,23 +237,6 @@
     navs.forEach((nav) => {
         /* 僅頂層主欄；子選單內巢狀 li 不綁 open，否則會關閉整欄下拉 */
         const items = Array.from(nav.querySelectorAll(":scope > ul > li"));
-        const soonLinks = Array.from(nav.querySelectorAll('a[data-coming-soon="true"]'));
-
-        const blockNavigation = (event) => {
-            event.preventDefault();
-            event.stopPropagation();
-        };
-        soonLinks.forEach((link) => {
-            link.addEventListener("click", blockNavigation);
-            link.addEventListener("auxclick", blockNavigation);
-            if (!link.dataset.portalNavSoonRoll) {
-                link.dataset.portalNavSoonRoll = "1";
-                const onSoonInteract = () => rollSoonLabel(link);
-                link.addEventListener("pointerenter", onSoonInteract);
-                link.addEventListener("focus", onSoonInteract);
-                link.addEventListener("touchstart", onSoonInteract, { passive: true });
-            }
-        });
 
         items.forEach((item) => {
             const trigger = item.querySelector(":scope > a");
