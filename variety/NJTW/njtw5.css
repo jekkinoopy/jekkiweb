@@ -16,7 +16,13 @@ body.njtw5-page {
     box-sizing: border-box;
 }
 
-body.njtw5-page .main-header {
+body.njtw5-page header.main-header {
+    /* 此頁專用：抵消 assets/css/style.css 裡裸選取器 header { … }（僅當 body 為 .njtw5-page 時套用，不修改 style.css） */
+    height: auto;
+    min-height: unset;
+    max-height: none;
+    overflow: visible;
+    flex-shrink: 0;
     /* 視窗全寬（不受 body 置中與下方網格 max-width 限制） */
     width: 100vw;
     max-width: none;
@@ -26,7 +32,6 @@ body.njtw5-page .main-header {
     text-align: center;
     /* 與 1538075001_cu.jpg 實際比例一致（1280×706），全寬時高度與圖等比例 */
     aspect-ratio: 1280 / 706;
-    min-height: 0;
     padding: 0 clamp(16px, 3vw, 28px);
     display: flex;
     flex-direction: column;
