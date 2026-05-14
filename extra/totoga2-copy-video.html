@@ -25,14 +25,6 @@
     <canvas id="particles"></canvas>
 
     <div id="bilivideo-tabs" class="bilivideo-hub">
-        <nav class="ebook-back-link content-container totoga2-split-crossnav bilivideo-episode-nav" role="tablist" aria-label="節目影片集數">
-            <button type="button" class="btn bilivideo-episode-nav__tab bilivideo-episode-nav__tab--active" role="tab" id="bilivideo-tab-1"
-                aria-controls="bilivideo-panel-1" aria-selected="true">上集</button>
-            <button type="button" class="btn bilivideo-episode-nav__tab" role="tab" id="bilivideo-tab-2"
-                aria-controls="bilivideo-panel-2" aria-selected="false" tabindex="-1">中集</button>
-            <button type="button" class="btn bilivideo-episode-nav__tab" role="tab" id="bilivideo-tab-3"
-                aria-controls="bilivideo-panel-3" aria-selected="false" tabindex="-1">下集</button>
-        </nav>
         <p class="totoga2-copy-sibling-links content-container" aria-label="六六歌2 其他複本入口">
             <a href="totoga2-copy-ebook.html">紀實電子書</a>
             <span class="totoga2-copy-sibling-links__sep" aria-hidden="true">·</span>
@@ -46,24 +38,41 @@
                 <h2 class="section-title" id="ebook-bilivideo-heading">節目影片</h2>
 
                 <div class="bilivideo-tabs__shell">
+                    <nav class="bilivideo-episode-nav" role="tablist" aria-label="節目影片集數">
+                        <button type="button" class="btn bilivideo-episode-nav__tab bilivideo-episode-nav__tab--active"
+                            role="tab" id="bilivideo-tab-1" aria-controls="bilivideo-panel-1"
+                            aria-selected="true">上集</button>
+                        <button type="button" class="btn bilivideo-episode-nav__tab" role="tab" id="bilivideo-tab-2"
+                            aria-controls="bilivideo-panel-2" aria-selected="false" tabindex="-1">中集</button>
+                        <button type="button" class="btn bilivideo-episode-nav__tab" role="tab" id="bilivideo-tab-3"
+                            aria-controls="bilivideo-panel-3" aria-selected="false" tabindex="-1">下集</button>
+                    </nav>
                     <div class="bilivideo-tabs__panels">
-                        <div class="bilivideo-tabs__panel" role="tabpanel" id="bilivideo-panel-1" aria-labelledby="bilivideo-tab-1">
+                        <div class="bilivideo-tabs__panel" role="tabpanel" id="bilivideo-panel-1"
+                            aria-labelledby="bilivideo-tab-1">
                             <div class="bilivideo-frame">
                                 <iframe title="無限挑戰 六六歌2 上集"
                                     src="//player.bilibili.com/player.html?isOutside=true&aid=12288323&bvid=BV1Yx411B7TC&cid=20353565&p=1"
-                                    scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+                                    scrolling="no" border="0" frameborder="no" framespacing="0"
+                                    allowfullscreen="true"></iframe>
                             </div>
                         </div>
-                        <div class="bilivideo-tabs__panel" role="tabpanel" id="bilivideo-panel-2" aria-labelledby="bilivideo-tab-2" hidden>
+                        <div class="bilivideo-tabs__panel" role="tabpanel" id="bilivideo-panel-2"
+                            aria-labelledby="bilivideo-tab-2" hidden>
                             <div class="bilivideo-frame">
-                                <iframe title="無限挑戰 六六歌2 中集" data-src="//player.bilibili.com/player.html?isOutside=true&aid=12288323&bvid=BV1Yx411B7TC&cid=20353561&p=2"
-                                    scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+                                <iframe title="無限挑戰 六六歌2 中集"
+                                    data-src="//player.bilibili.com/player.html?isOutside=true&aid=12288323&bvid=BV1Yx411B7TC&cid=20353561&p=2"
+                                    scrolling="no" border="0" frameborder="no" framespacing="0"
+                                    allowfullscreen="true"></iframe>
                             </div>
                         </div>
-                        <div class="bilivideo-tabs__panel" role="tabpanel" id="bilivideo-panel-3" aria-labelledby="bilivideo-tab-3" hidden>
+                        <div class="bilivideo-tabs__panel" role="tabpanel" id="bilivideo-panel-3"
+                            aria-labelledby="bilivideo-tab-3" hidden>
                             <div class="bilivideo-frame">
-                                <iframe title="無限挑戰 六六歌2 下集" data-src="//player.bilibili.com/player.html?isOutside=true&aid=12288323&bvid=BV1Yx411B7TC&cid=20353562&p=3"
-                                    scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+                                <iframe title="無限挑戰 六六歌2 下集"
+                                    data-src="//player.bilibili.com/player.html?isOutside=true&aid=12288323&bvid=BV1Yx411B7TC&cid=20353562&p=3"
+                                    scrolling="no" border="0" frameborder="no" framespacing="0"
+                                    allowfullscreen="true"></iframe>
                             </div>
                         </div>
                     </div>

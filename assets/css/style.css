@@ -793,7 +793,7 @@ section {
 }
 
 /* 金句放在「成立的初衷」段落下、右欄填空（與左欄 Logo 對齊節奏） */
-.mission-section .mission-row--intro .mission-row__body > .slogan-quote--mission {
+.mission-section .mission-row--intro .mission-row__body>.slogan-quote--mission {
     margin: 1.35rem 0 0;
     max-width: none;
     width: 100%;
@@ -801,7 +801,7 @@ section {
     text-align: left;
 }
 
-.mission-section .mission-row--intro .mission-row__body > .slogan-quote--mission .slogan-quote__inner {
+.mission-section .mission-row--intro .mission-row__body>.slogan-quote--mission .slogan-quote__inner {
     text-align: left;
 }
 
@@ -841,7 +841,7 @@ section {
 }
 
 /* 第二行：左縮排約一字／「i」寬，與上行「↑」後正文對齊 */
-.mission-section .mission-row--intro .logo-wrapper .caption > .caption__line:not(.caption__line--title) {
+.mission-section .mission-row--intro .logo-wrapper .caption>.caption__line:not(.caption__line--title) {
     margin-left: 1ch;
 }
 
@@ -1581,7 +1581,7 @@ footer a .mark_b {
 .map-archive-header .main-title {
     font-size: clamp(2rem, 4.5vw, 3.2rem);
     font-weight: 900;
-    color: var(--yellow);
+    color: var(--yellow, var(--primary));
     letter-spacing: 6px;
     text-transform: uppercase;
     margin: 0;
@@ -2178,7 +2178,7 @@ body.totoga2-page.totoga2-video-copy-page {
     overflow-x: hidden;
 }
 
-/* 節目影片複本：頂列為上／中／下集（獨立 .btn）；播放器外殼內僅 iframe */
+/* 節目影片複本：上／中／下集在播放器外殼內、緊貼 iframe 上方；維持全站 .btn 黃膠囊 */
 body.totoga2-page.totoga2-video-copy-page .bilivideo-hub .bilivideo-tabs__shell {
     max-width: 960px;
     margin-left: auto;
@@ -2188,7 +2188,7 @@ body.totoga2-page.totoga2-video-copy-page .bilivideo-hub .bilivideo-tabs__shell 
 body.totoga2-page.totoga2-video-copy-page .totoga2-copy-sibling-links {
     text-align: center;
     font-size: 0.9rem;
-    margin: 0.35rem auto 0.85rem;
+    margin: 0.5rem auto 0.85rem;
     color: #555;
 }
 
@@ -2208,13 +2208,26 @@ body.totoga2-page.totoga2-video-copy-page .totoga2-copy-sibling-links__sep {
     opacity: 0.55;
 }
 
-body.totoga2-page.totoga2-video-copy-page .bilivideo-episode-nav .btn {
-    opacity: 0.9;
+body.totoga2-page.totoga2-video-copy-page .bilivideo-tabs__shell .bilivideo-episode-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px 14px;
+    margin: 0;
+    background: #0a0a0a;
+    border-bottom: 1px solid rgba(255, 204, 0, 0.28);
 }
 
-body.totoga2-page.totoga2-video-copy-page .bilivideo-episode-nav .bilivideo-episode-nav__tab--active {
+body.totoga2-page.totoga2-video-copy-page .bilivideo-tabs__shell .bilivideo-episode-nav .btn {
+    margin: 0;
+    opacity: 0.92;
+}
+
+body.totoga2-page.totoga2-video-copy-page .bilivideo-tabs__shell .bilivideo-episode-nav .bilivideo-episode-nav__tab--active {
     opacity: 1;
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.28);
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.32);
 }
 
 body.totoga2-page.totoga2-video-copy-page .bilivideo-tabs__shell {
@@ -2629,7 +2642,7 @@ body.site-guide-page .site-guide-group--nav-hero {
     box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
 }
 
-body.site-guide-page .site-guide-group--nav-hero > .section-title {
+body.site-guide-page .site-guide-group--nav-hero>.section-title {
     margin-bottom: 0.5rem;
 }
 
