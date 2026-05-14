@@ -676,6 +676,12 @@ section {
     align-items: start;
 }
 
+/* 成立的初衷列：左圖 3、右文 7；左欄與右欄垂直置中 */
+.mission-section .mission-row--intro {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 7fr);
+    align-items: center;
+}
+
 .mission-section .mission-row+.mission-row {
     margin-top: 2.75rem;
     padding-top: 2.75rem;
@@ -743,8 +749,8 @@ section {
     top: 1.25rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
 }
 
 .mission-section .logo-wrapper img {
@@ -780,6 +786,25 @@ section {
     min-width: 0;
 }
 
+/* 理念列右欄：黃海框寬度上限，避免寬螢幕 16:9 拉得過高 */
+.mission-section .mission-row--concept .mission-gif-frame {
+    width: min(100%, 26rem);
+    margin-inline: auto;
+}
+
+/* 金句放在「成立的初衷」段落下、右欄填空（與左欄 Logo 對齊節奏） */
+.mission-section .mission-row--intro .mission-row__body > .slogan-quote--mission {
+    margin: 1.35rem 0 0;
+    max-width: none;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.mission-section .mission-row--intro .mission-row__body > .slogan-quote--mission .slogan-quote__inner {
+    text-align: left;
+}
+
 .mission-section .logo-wrapper .caption,
 .mission-section .mission-moment-wrap .caption {
     display: flex;
@@ -793,6 +818,31 @@ section {
     color: #6a6a6a;
     max-width: 16rem;
     text-align: left;
+}
+
+/* 首頁 intro：圖說直向兩行、置左對齊 */
+.mission-section .mission-row--intro .logo-wrapper .caption {
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
+    justify-content: flex-start;
+    text-align: left;
+    gap: 0.3rem;
+}
+
+.mission-section .mission-row--intro .logo-wrapper .caption .caption__line {
+    display: block;
+    width: 100%;
+}
+
+.mission-section .mission-row--intro .logo-wrapper .caption .caption__line--title {
+    font-weight: 700;
+    color: #5a5a5a;
+}
+
+/* 第二行：左縮排約一字／「i」寬，與上行「↑」後正文對齊 */
+.mission-section .mission-row--intro .logo-wrapper .caption > .caption__line:not(.caption__line--title) {
+    margin-left: 1ch;
 }
 
 .mission-section .logo-wrapper .arrow-icon,
@@ -972,6 +1022,11 @@ a {
     overflow: hidden;
 }
 
+/* 首頁時間軸：外凸氣泡（與頂欄籌備中同系）勿被裁切 */
+#timeline.story-archive {
+    overflow: visible;
+}
+
 /* 備註：移除主軸上方獨立鑽石後，將主軸上下邊界微調 4px，保留你要的留白節奏 */
 .merged-storyline {
     position: relative;
@@ -1117,6 +1172,49 @@ a {
     border: 2px solid rgba(255, 255, 255, 0.9);
     box-shadow: 0 4px 16px rgba(230, 184, 0, 0.42);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    cursor: default;
+    box-sizing: border-box;
+}
+
+/* 同頂欄 .portal-submenu a[data-coming-soon]::after 氣泡（文案固定為「傳奇書寫中」） */
+.merged-storyline .timeline-ebook-cta::after {
+    content: "傳奇書寫中";
+    position: absolute;
+    z-index: 120;
+    white-space: nowrap;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #6a4818;
+    background: #fff9e6;
+    padding: 5px 11px;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.16s ease;
+    left: 100%;
+    right: auto;
+    top: 50%;
+    bottom: auto;
+    margin-left: 10px;
+    transform: translateY(-50%);
+}
+
+@media (hover: hover) {
+
+    .merged-storyline .timeline-ebook-cta:hover::after,
+    .merged-storyline .timeline-ebook-cta:focus-visible::after {
+        opacity: 1;
+    }
+}
+
+@media (hover: none) {
+    .merged-storyline .timeline-ebook-cta:active::after {
+        opacity: 1;
+        transition: opacity 0.08s ease;
+    }
 }
 
 .merged-storyline .timeline-ebook-cta:hover {
@@ -1171,31 +1269,30 @@ a {
     margin: 0 0 10px;
 }
 
-/* 時間軸內文：外站連結（例：Disney+ 劇集） */
+/* 時間軸內文：外站補充連結（配角語境，不搶主敘事視覺） */
 .merged-storyline .story-external-inline {
     display: inline-flex;
     align-items: center;
-    gap: 0.35em;
-    font-weight: 700;
-    color: var(--dark-yellow);
-    text-decoration: underline;
-    text-decoration-color: currentColor;
-    text-underline-offset: 0.22em;
-    text-decoration-thickness: 2px;
-    text-underline-position: from-font;
+    gap: 0.1em;
+    margin-inline-end: 0.2em;
+    font-weight: 600;
+    color: #6a5d48;
+    text-decoration: none;
+    border-bottom: none;
+    padding-bottom: 0;
 }
 
 .merged-storyline .story-external-inline:hover,
 .merged-storyline .story-external-inline:focus-visible {
-    color: var(--primary);
-    text-decoration-thickness: 2px;
+    color: var(--dark-yellow);
 }
 
 .merged-storyline .story-external-inline i {
-    font-size: 0.78em;
-    opacity: 0.88;
+    font-size: 0.72em;
+    opacity: 0.65;
     line-height: 1;
     flex-shrink: 0;
+    align-self: center;
 }
 
 @media (max-width: 900px) {
