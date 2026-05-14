@@ -27,7 +27,7 @@
     }
 
     const COMING_SOON_PAGES = new Set([
-        "jiwon.html",
+        "variety.html",
         "concert.html",
         "albums.html",
         "map.html",
@@ -160,10 +160,10 @@
             <li><a href="${rp}index.html#story">傳奇的轉折</a></li>
         </ul>
     </li>
-    <li><a href="${rp}jiwon/jiwon.html">瘋子與天才</a>
+    <li><a href="${rp}variety/variety.html">瘋子與天才</a>
         <ul class="portal-submenu">
-            <li><a href="${rp}jiwon/jiwon.html#variety">瘋狂出演中</a></li>
-            <li><a href="${rp}jiwon/jiwon.html#stage">隊長的氣場</a></li>
+            <li><a href="${rp}variety/variety.html#variety">瘋狂出演中</a></li>
+            <li><a href="${rp}variety/variety.html#stage">隊長的氣場</a></li>
         </ul>
     </li>
     <li><a href="${rp}concert/concert.html">現場的震撼</a>
