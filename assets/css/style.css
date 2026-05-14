@@ -113,6 +113,54 @@ nav a:hover {
 .portal-nav {
     position: relative;
     z-index: 60;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+}
+
+.portal-nav>ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: clamp(8px, 1.4vw, 18px);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+    flex: 1 1 200px;
+}
+
+.portal-nav>ul>li>a {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 2px;
+    line-height: 1.15;
+    text-decoration: none;
+    color: var(--primary);
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    padding: 2px 4px;
+}
+
+.portal-nav__label {
+    font-weight: 700;
+}
+
+.portal-nav__sub {
+    display: block;
+    max-width: 12.5rem;
+    font-size: 0.55rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    line-height: 1.25;
+    opacity: 0.82;
+    white-space: normal;
 }
 
 .portal-nav .portal-submenu {
@@ -120,7 +168,7 @@ nav a:hover {
     position: absolute;
     top: calc(100% - 2px);
     left: 0;
-    min-width: 220px;
+    min-width: 248px;
     padding: 10px;
     border-radius: 12px;
     background: #ffffff;
@@ -134,13 +182,25 @@ nav a:hover {
 }
 
 .portal-nav .portal-submenu a {
-    display: block;
-    padding: 6px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    padding: 8px 10px;
     border-radius: 8px;
     color: #5f5f5f;
     font-size: 0.84rem;
     font-weight: 500;
     letter-spacing: 0;
+}
+
+.portal-nav .portal-submenu .portal-nav__sub {
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    line-height: 1.3;
+    opacity: 0.78;
+    max-width: 18rem;
 }
 
 .portal-nav .portal-submenu a:hover {
@@ -150,6 +210,11 @@ nav a:hover {
 
 .portal-nav a.nav-current {
     color: #ffffff;
+}
+
+.portal-nav a.nav-current .portal-nav__sub {
+    color: rgba(255, 255, 255, 0.82);
+    opacity: 1;
 }
 
 .portal-nav>ul>li.coming-soon>a {
@@ -1009,12 +1074,15 @@ footer a .mark_b {
 }
 
 .map-page .portal-nav>ul>li>a {
-    display: inline-block;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    white-space: normal;
     color: var(--primary);
     text-decoration: none;
     font-size: 0.95rem;
     letter-spacing: 1px;
-    white-space: nowrap;
     padding: 4px 2px;
     border-bottom: 0;
     transition: color 0.2s ease;
@@ -1047,8 +1115,12 @@ footer a .mark_b {
 }
 
 .map-page .portal-nav .portal-submenu a {
-    display: block;
-    padding: 6px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    gap: 2px;
+    padding: 8px 10px;
     border-radius: 8px;
     font-size: 0.84rem;
     color: #5f5f5f;
@@ -1509,6 +1581,8 @@ footer a .mark_b {
     padding-bottom: 48px;
 }
 
+/* variety/NJTW/NJTW5.html — 樣式改為同資料夾 njtw5.css，避免與全站 style 雙重定義 */
+
 /* Chronicle (webcomic-like reader) */
 .chronicle-controls {
     max-width: 1200px;
@@ -1667,6 +1741,54 @@ body.ebook-ssg2-page .ebook-back-link {
 }
 
 /* totoga2.html — 六六歌2 整合（影片／電子書／長文＋網漫／分頁） */
+body.totoga2-page .map-archive-header .main-content-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: clamp(12px, 2.5vw, 22px);
+}
+
+body.totoga2-page .map-archive-header .highlight-text {
+    font-size: clamp(1.45rem, 4vw, 2.65rem);
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 0.1em;
+    line-height: 1.2;
+    text-shadow: 0 2px 22px rgba(0, 0, 0, 0.5);
+}
+
+body.totoga2-page .map-archive-header .eng-title {
+    font-size: clamp(0.72rem, 2vw, 0.95rem);
+    letter-spacing: 0.26em;
+    color: var(--yellow);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+body.totoga2-page .map-archive-header .subtitle-wrap {
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: clamp(14px, 2.5vw, 24px);
+}
+
+body.totoga2-page .map-archive-header .subtitle-wrap::before,
+body.totoga2-page .map-archive-header .subtitle-wrap::after {
+    display: none;
+}
+
+body.totoga2-page .map-archive-header .sub-title {
+    margin: 0;
+}
+
+body.totoga2-page .map-archive-header .event-date {
+    display: block;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    color: #c8c8c8;
+    font-weight: 600;
+}
+
 body.totoga2-page .totoga2-hub-controls {
     max-width: 1200px;
     margin: 24px auto 10px;
@@ -1751,6 +1873,265 @@ body.totoga2-page .ebook-back-link {
     flex-wrap: wrap;
     justify-content: center;
     gap: 12px;
+}
+
+/* extra/member.html — 黑白水晶交錯格（2×4）與懸賞令海報 */
+body.member-crystal-page .member-crystal-main {
+    padding: 1.75rem 14px 3rem;
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+body.member-crystal-page .member-crystal-lead {
+    text-align: center;
+    max-width: 46rem;
+    margin: 0 auto 1.75rem;
+    color: #3d3d3d;
+    line-height: 1.75;
+    font-size: 1rem;
+}
+
+body.member-crystal-page .member-crystal-board {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(14px, 2vw, 22px);
+    align-items: stretch;
+    grid-template-areas:
+        "b1 b2 b3 ib"
+        "iw w1 w2 w3";
+}
+
+body.member-crystal-page .member-crystal-cell[data-area="b1"] {
+    grid-area: b1;
+}
+
+body.member-crystal-page .member-crystal-cell[data-area="b2"] {
+    grid-area: b2;
+}
+
+body.member-crystal-page .member-crystal-cell[data-area="b3"] {
+    grid-area: b3;
+}
+
+body.member-crystal-page .member-crystal-cell[data-area="intro-black"] {
+    grid-area: ib;
+}
+
+body.member-crystal-page .member-crystal-cell[data-area="intro-white"] {
+    grid-area: iw;
+}
+
+body.member-crystal-page .member-crystal-cell[data-area="w1"] {
+    grid-area: w1;
+}
+
+body.member-crystal-page .member-crystal-cell[data-area="w2"] {
+    grid-area: w2;
+}
+
+body.member-crystal-page .member-crystal-cell[data-area="w3"] {
+    grid-area: w3;
+}
+
+body.member-crystal-page .member-crystal-intro {
+    height: 100%;
+    min-height: 280px;
+    padding: 1.25rem 1.2rem;
+    border-radius: 12px;
+    border: 3px solid #3a2a18;
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+        0 10px 26px rgba(0, 0, 0, 0.18);
+    background:
+        linear-gradient(165deg, rgba(255, 248, 230, 0.95) 0%, #e8d8bc 48%, #d2bfa3 100%);
+    color: #2b2118;
+    line-height: 1.65;
+    font-size: 0.92rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+body.member-crystal-page .member-crystal-intro--black {
+    border-color: #1f1410;
+    background:
+        linear-gradient(165deg, #4a3a32 0%, #2d2420 55%, #1a1412 100%);
+    color: #f2e6d8;
+}
+
+body.member-crystal-page .member-crystal-intro--white {
+    border-color: #5c4a38;
+}
+
+body.member-crystal-page .member-crystal-intro__title {
+    margin: 0 0 0.2rem;
+    font-size: clamp(1.35rem, 2.6vw, 1.75rem);
+    font-weight: 900;
+    letter-spacing: 0.12em;
+}
+
+body.member-crystal-page .member-crystal-intro--black .member-crystal-intro__title {
+    color: var(--yellow);
+}
+
+body.member-crystal-page .member-crystal-intro__en {
+    margin: 0 0 0.75rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    opacity: 0.88;
+}
+
+body.member-crystal-page .member-crystal-intro p {
+    margin: 0 0 0.65rem;
+}
+
+body.member-crystal-page .member-crystal-intro p:last-child {
+    margin-bottom: 0;
+}
+
+body.member-crystal-page .member-poster {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 4px solid #5c4030;
+    box-shadow:
+        0 0 0 2px #c9a574,
+        0 14px 32px rgba(0, 0, 0, 0.22);
+    background: linear-gradient(180deg, #8b6f52 0%, #5c4030 100%);
+}
+
+body.member-crystal-page .member-poster--white {
+    border-color: #6e5a48;
+    box-shadow:
+        0 0 0 2px #e6d2b2,
+        0 14px 32px rgba(0, 0, 0, 0.18);
+    background: linear-gradient(180deg, #b9a08a 0%, #7d6854 100%);
+}
+
+body.member-crystal-page .member-poster__wanted {
+    text-align: center;
+    font-weight: 900;
+    letter-spacing: 0.35em;
+    font-size: clamp(0.68rem, 1.6vw, 0.82rem);
+    padding: 0.45rem 0.35rem;
+    color: #f8eecf;
+    text-shadow: 0 1px 0 #1a120e;
+    background: linear-gradient(180deg, #2a1f1a 0%, #120d0b 100%);
+}
+
+body.member-crystal-page .member-poster--white .member-poster__wanted {
+    color: #2a2118;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
+    background: linear-gradient(180deg, #efe2cf 0%, #cbb59d 100%);
+}
+
+body.member-crystal-page .member-poster__sheet {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0.65rem 0.55rem 0.85rem;
+    background: linear-gradient(180deg, #f4e8d4 0%, #dec9ae 55%, #c9b198 100%);
+    color: #1f1814;
+}
+
+body.member-crystal-page .member-poster__photo {
+    width: 100%;
+    max-width: 220px;
+    aspect-ratio: 4 / 5;
+    margin: 0 auto 0.45rem;
+    border: 3px solid #2a2118;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #2a2118;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+body.member-crystal-page .member-poster__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+}
+
+body.member-crystal-page .member-poster__role {
+    margin: 0 0 0.15rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #4a3b32;
+}
+
+body.member-crystal-page .member-poster__name {
+    margin: 0;
+    font-size: clamp(1.15rem, 2.4vw, 1.45rem);
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    line-height: 1.15;
+}
+
+body.member-crystal-page .member-poster__name-en {
+    margin: 0.15rem 0 0.35rem;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: #5c4a40;
+}
+
+body.member-crystal-page .member-poster__stamp {
+    margin: 0.25rem 0 0;
+    align-self: flex-end;
+    font-size: 0.58rem;
+    letter-spacing: 0.22em;
+    font-weight: 800;
+    color: #6a5244;
+}
+
+@media (max-width: 960px) {
+    body.member-crystal-page .member-crystal-board {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-areas:
+            "ib ib"
+            "b1 b2"
+            "b3 b3"
+            "iw iw"
+            "w1 w2"
+            "w3 w3";
+    }
+
+    body.member-crystal-page .member-crystal-cell[data-area="b3"],
+    body.member-crystal-page .member-crystal-cell[data-area="w3"] {
+        justify-self: center;
+        max-width: min(100%, 360px);
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    body.member-crystal-page .member-crystal-board {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "ib"
+            "b1"
+            "b2"
+            "b3"
+            "iw"
+            "w1"
+            "w2"
+            "w3";
+    }
+
+    body.member-crystal-page .member-crystal-cell[data-area="b3"],
+    body.member-crystal-page .member-crystal-cell[data-area="w3"] {
+        justify-self: stretch;
+        max-width: none;
+    }
 }
 
 /* site-guide.html — 全站導覽索引 */

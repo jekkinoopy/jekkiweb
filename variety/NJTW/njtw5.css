@@ -1,0 +1,166 @@
+/**
+ * NJTW5 專用（與 NJTW5.html 同資料夾）
+ * 長條圖、各卡裁切位置請只改此檔。
+ */
+body.njtw5-page {
+    background-color: var(--surface-soft, #fff9e8);
+    color: var(--text-color, #333);
+    font-family: 'Noto Sans TC', system-ui, sans-serif;
+    margin: 0;
+    padding: clamp(16px, 4vw, 40px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(20px, 3.5vw, 32px);
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+body.njtw5-page .main-header {
+    width: 100%;
+    max-width: min(1000px, 100%);
+    box-sizing: border-box;
+    text-align: center;
+    padding: 0 clamp(4px, 2vw, 12px);
+    background: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+body.njtw5-page .main-header h1 {
+    margin: 0 0 0.65rem;
+    font-size: clamp(1.35rem, 4vw, 1.85rem);
+    font-weight: 800;
+    color: var(--dark-yellow, #4e492b);
+    line-height: 1.25;
+    letter-spacing: 0.02em;
+}
+
+body.njtw5-page .main-header .intro {
+    margin: 0;
+    font-size: clamp(0.9rem, 2.3vw, 1.05rem);
+    color: #444;
+    line-height: 1.65;
+    max-width: 42em;
+    margin-inline: auto;
+}
+
+body.njtw5-page .container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(12px, 2.5vw, 20px);
+    width: 100%;
+    max-width: min(1000px, 100%);
+    box-sizing: border-box;
+}
+
+body.njtw5-page .member-card {
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    background-color: var(--surface, #fffdf7);
+    border: 1px solid rgba(255, 204, 0, 0.38);
+    border-radius: 15px;
+    /* 勿對整卡 hidden，否則底部 .nickname 可能被裁掉、像「看不到」 */
+    overflow: visible;
+    text-align: center;
+    box-shadow: 0 8px 0 rgba(255, 204, 0, 0.28), 0 12px 24px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease;
+}
+
+body.njtw5-page .member-card:hover {
+    transform: translateY(-5px);
+}
+
+body.njtw5-page .member-image {
+    width: 100%;
+    height: clamp(200px, 32vw, 280px);
+    box-sizing: border-box;
+    background-color: #1a1812;
+    /* 長條圖檔與此 CSS 同資料夾；檔名不同請改 url */
+    background-image: url("1538074991_Fm.jpg");
+    /* background-size 改由各 .m1–.m6 單獨設定 */
+    background-repeat: no-repeat;
+    border-bottom: 1px solid rgba(255, 204, 0, 0.4);
+    border-radius: 14px 14px 0 0;
+    overflow: hidden;
+}
+
+/* 各卡：background-size、background-position 可逐張微調（圖檔見 .member-image） */
+body.njtw5-page .m1 .member-image {
+    background-size: 600% auto;
+    background-position: 47% 48%;
+}
+
+body.njtw5-page .m2 .member-image {
+    background-size: 600% auto;
+    background-position: 16% 81%;
+}
+
+body.njtw5-page .m3 .member-image {
+    background-size: 600% auto;
+    background-position: 92% 18%;
+}
+
+body.njtw5-page .m4 .member-image {
+    background-size: 600% auto;
+    background-position: 64% 8%;
+}
+
+body.njtw5-page .m5 .member-image {
+    background-size: 600% auto;
+    background-position: 0% 17%;
+}
+
+body.njtw5-page .m6 .member-image {
+    background-size: 600% auto;
+    background-position: 25% 0%;
+}
+
+body.njtw5-page .info {
+    padding: clamp(10px, 2vw, 15px);
+    min-width: 0;
+}
+
+body.njtw5-page .name {
+    font-size: clamp(1.1rem, 3.2vw, 1.5rem);
+    font-weight: 800;
+    color: var(--dark-yellow, #4e492b);
+    margin: 0 0 0.35rem;
+    line-height: 1.2;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+}
+
+body.njtw5-page .role {
+    font-size: clamp(0.85rem, 2.2vw, 1rem);
+    color: #555;
+    background: rgba(255, 204, 0, 0.16);
+    display: inline-block;
+    max-width: 100%;
+    padding: 0.2rem 0.55rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 204, 0, 0.35);
+    line-height: 1.35;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    body.njtw5-page .container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body.njtw5-page .member-card {
+        transition: none;
+    }
+
+    body.njtw5-page .member-card:hover {
+        transform: none;
+    }
+}

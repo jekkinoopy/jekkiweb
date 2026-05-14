@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水晶男孩｜六顆水晶 · 黑白分流</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/tablet.css">
+</head>
+
+<body class="member-crystal-page">
+    <header class="map-archive-header">
+        <div class="header-inner">
+            <h1 class="main-title">六顆水晶</h1>
+            <div class="subtitle-wrap">
+                <span class="sub-title">BLACK KIES · WHITE KIES</span>
+            </div>
+        </div>
+    </header>
+
+    <nav class="portal-nav" aria-label="水晶男孩推廣部導覽" data-portal-nav></nav>
+
+    <canvas id="particles"></canvas>
+
+    <main class="content-container member-crystal-main" id="crystal-board">
+        <p class="member-crystal-lead">
+            團名源自德語「六顆水晶」：六位成員依聲線與舞台角色分為<strong>黑水晶</strong>（Rap／舞蹈）與<strong>白水晶</strong>（主唱），並排成經典的黑白分流印象。
+        </p>
+
+        <!-- 2×4 交錯：上排左三黑水晶、右一介紹；下排左一介紹、右三白水晶 -->
+        <div class="member-crystal-board" role="region" aria-label="黑水晶與白水晶成員配置">
+            <div class="member-crystal-cell member-crystal-cell--poster" data-area="b1">
+                <article class="member-poster member-poster--black" aria-labelledby="poster-ejw">
+                    <div class="member-poster__wanted">BLACK</div>
+                    <div class="member-poster__sheet">
+                        <div class="member-poster__photo">
+                            <img src="../assets/images/Eun Ji Won.jpeg" alt="殷志源肖像" width="280" height="340" loading="lazy">
+                        </div>
+                        <p class="member-poster__role">Leader · Rap · Dance</p>
+                        <h2 class="member-poster__name" id="poster-ejw">殷志源</h2>
+                        <p class="member-poster__name-en">EUN JI WON</p>
+                        <p class="member-poster__stamp">BLACK KIES</p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="member-crystal-cell member-crystal-cell--poster" data-area="b2">
+                <article class="member-poster member-poster--black" aria-labelledby="poster-ljj">
+                    <div class="member-poster__wanted">BLACK</div>
+                    <div class="member-poster__sheet">
+                        <div class="member-poster__photo">
+                            <img src="../assets/images/member/1595330620293.jpg" alt="李宰鎮肖像" width="280" height="340" loading="lazy">
+                        </div>
+                        <p class="member-poster__role">Rap · Dance</p>
+                        <h2 class="member-poster__name" id="poster-ljj">李宰鎮</h2>
+                        <p class="member-poster__name-en">LEE JAE JIN</p>
+                        <p class="member-poster__stamp">BLACK KIES</p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="member-crystal-cell member-crystal-cell--poster" data-area="b3">
+                <article class="member-poster member-poster--black" aria-labelledby="poster-kjd">
+                    <div class="member-poster__wanted">BLACK</div>
+                    <div class="member-poster__sheet">
+                        <div class="member-poster__photo">
+                            <img src="../assets/images/member/4c0e013b341e85622979475bc230719b.jpg" alt="金在德肖像" width="280" height="340" loading="lazy">
+                        </div>
+                        <p class="member-poster__role">Rap · Dance</p>
+                        <h2 class="member-poster__name" id="poster-kjd">金在德</h2>
+                        <p class="member-poster__name-en">KIM JAE DUC</p>
+                        <p class="member-poster__stamp">BLACK KIES</p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="member-crystal-cell member-crystal-cell--intro member-crystal-cell--intro-black" data-area="intro-black">
+                <div class="member-crystal-intro member-crystal-intro--black">
+                    <h2 class="member-crystal-intro__title">黑水晶</h2>
+                    <p class="member-crystal-intro__en">Black Kies</p>
+                    <p>殷志源、李宰鎮、金在德：偏重節奏與舞台張力的路線，Rap 與舞蹈撐起現場骨架，也是團體在舞曲與嘻哈語彙上最容易被第一眼認出的「深色稜線」。</p>
+                    <p>視覺上常以俐落、酷感與強烈節拍感與白水晶區隔；在編曲結構裡，常負責推進段落與製造記憶點的「引擎室」。</p>
+                </div>
+            </div>
+
+            <div class="member-crystal-cell member-crystal-cell--intro member-crystal-cell--intro-white" data-area="intro-white">
+                <div class="member-crystal-intro member-crystal-intro--white">
+                    <h2 class="member-crystal-intro__title">白水晶</h2>
+                    <p class="member-crystal-intro__en">White Kies</p>
+                    <p>姜成勳、高志溶、張水院：以主唱與和聲線條為核心，負責旋律的延展與情緒堆疊；許多主打裡讓人一聽就忘不掉的副歌與高音色彩，多半與這條「亮色聲帶」有關。</p>
+                    <p>與黑水晶並列時，剛好形成「節奏骨架 × 旋律羽翼」的經典分工想像，也是團名裡「水晶」雙色對照最常見的說法來源。</p>
+                </div>
+            </div>
+
+            <div class="member-crystal-cell member-crystal-cell--poster" data-area="w1">
+                <article class="member-poster member-poster--white" aria-labelledby="poster-ksh">
+                    <div class="member-poster__wanted">WHITE</div>
+                    <div class="member-poster__sheet">
+                        <div class="member-poster__photo">
+                            <img src="../assets/images/member/92599-502183.jpg" alt="姜成勳肖像" width="280" height="340" loading="lazy">
+                        </div>
+                        <p class="member-poster__role">Main Vocal</p>
+                        <h2 class="member-poster__name" id="poster-ksh">姜成勳</h2>
+                        <p class="member-poster__name-en">KANG SUNG HOON</p>
+                        <p class="member-poster__stamp">WHITE KIES</p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="member-crystal-cell member-crystal-cell--poster" data-area="w2">
+                <article class="member-poster member-poster--white" aria-labelledby="poster-kjy">
+                    <div class="member-poster__wanted">WHITE</div>
+                    <div class="member-poster__sheet">
+                        <div class="member-poster__photo">
+                            <img src="../assets/images/member/noona7273___Bt7EZHRAGgs___.jpg" alt="高志溶肖像" width="280" height="340" loading="lazy">
+                        </div>
+                        <p class="member-poster__role">Vocal</p>
+                        <h2 class="member-poster__name" id="poster-kjy">高志溶</h2>
+                        <p class="member-poster__name-en">KO JI YONG</p>
+                        <p class="member-poster__stamp">WHITE KIES</p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="member-crystal-cell member-crystal-cell--poster" data-area="w3">
+                <article class="member-poster member-poster--white" aria-labelledby="poster-jsw">
+                    <div class="member-poster__wanted">WHITE</div>
+                    <div class="member-poster__sheet">
+                        <div class="member-poster__photo">
+                            <img src="../assets/images/member/seven7lai_1___BuRBxcPAIsP___.jpg" alt="張水院肖像" width="280" height="340" loading="lazy">
+                        </div>
+                        <p class="member-poster__role">Vocal</p>
+                        <h2 class="member-poster__name" id="poster-jsw">張水院</h2>
+                        <p class="member-poster__name-en">JANG SU WON</p>
+                        <p class="member-poster__stamp">WHITE KIES</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>SECHSKIES Fanpage &copy; 2026 — 六顆水晶 · 黑白分流</p>
+        <a href="https://jekkinoopy.github.io/Portfolio/" class="studio-link" target="_blank" rel="noopener noreferrer">
+            Design by <span class="mark_b">Jekkinoopy Studio</span>
+        </a>
+    </footer>
+
+    <script src="../assets/js/portal-nav.js"></script>
+    <script src="../assets/js/particles.js"></script>
+</body>
+
+</html>

@@ -94,5 +94,9 @@
 |------|------|
 | `assets/js/portal-nav.js` | `buildPortalNavInnerHTML`、`COMING_SOON_PAGES`、`INDEX_NAV_OPEN_HASHES`、籌備中邏輯 |
 | `assets/css/style.css` | `.portal-nav`、子選單、`.nav-current` 等樣式 |
+| `.cursor/rules/user-scope-and-nav.mdc` | 與本頁對齊的 Cursor 規則（意圖／導覽開放） |
+| `.cursor/rules/ai-change-boundaries.mdc` | 變更範圍與共用 CSS 邊界 |
+| `docs/CHANGESET-review.md` | 歷次變更檢查清單筆記 |
+| `docs/sql/sql_plan.md` | SQL 練習／筆記 |
 
 （導覽文案隨機句：`NAV_SOON_PHRASES`，僅影響籌備中連結的提示，與新頁是否開放無關。）

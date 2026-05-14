@@ -1,7 +1,7 @@
 (() => {
     /**
      * ── 導覽「尚未開放」連結 ─────────────────────────────────────────
-     * ① 整個檔案先關：COMING_SOON_PAGES（目前已含志源頁／演唱會／典藏／地圖／視覺進化論等）。
+     * ① 整個檔案先關：COMING_SOON_PAGES（目前已含演唱會／典藏／地圖／視覺進化論等；綜藝主頁已開以利子選單）。
      * ② index.html 細到錨點：INDEX_NAV_OPEN_HASHES。
      * ③ 文案 NAV_SOON_PHRASES：每次「滑過或鍵盤聚焦」連結時隨機擇一句（不交錯只靠重整）。
      *    浮層、title 與該次互動同步；無障礙用語固定為「尚無開放」（避免標籤隨機跳動）。
@@ -27,7 +27,6 @@
     }
 
     const COMING_SOON_PAGES = new Set([
-        "variety.html",
         "concert.html",
         "albums.html",
         "map.html",
@@ -62,7 +61,8 @@
     }
 
     function markLinkComingSoon(link, originalHref) {
-        const visibleTitle = link.textContent.trim();
+        const labelEl = link.querySelector(".portal-nav__label");
+        const visibleTitle = labelEl ? labelEl.textContent.trim() : link.textContent.trim();
         link.setAttribute("data-coming-soon", "true");
         link.setAttribute("aria-disabled", "true");
         link.setAttribute("aria-label", `${visibleTitle}，尚無開放`);
@@ -152,36 +152,42 @@
         return `
 <a class="logo" href="${rp}index.html"><img src="${rp}assets/images/logov.svg" alt="SECHSKIES Logo"></a>
 <ul>
-    <li><a href="${rp}index.html#origin">淪陷瞬間</a>
+    <li><a href="${rp}index.html#origin"><span class="portal-nav__label">淪陷瞬間</span><span class="portal-nav__sub">六顆永恆的水晶 · 左右命運的傳奇</span></a>
         <ul class="portal-submenu">
-            <li><a href="${rp}index.html#start">好奇的開端</a></li>
-            <li><a href="${rp}index.html#mission">成立的初衷</a></li>
-            <li><a href="${rp}index.html#timeline">跨時空軌跡</a></li>
-            <li><a href="${rp}index.html#story">傳奇的轉折</a></li>
+            <li><a href="${rp}index.html#start"><span class="portal-nav__label">好奇的開端</span><span class="portal-nav__sub">從好奇觀看到淪陷的起點</span></a></li>
+            <li><a href="${rp}index.html#mission"><span class="portal-nav__label">成立的初衷</span><span class="portal-nav__sub">推廣部與黃色奇蹟</span></a></li>
+            <li><a href="${rp}index.html#timeline"><span class="portal-nav__label">跨時空軌跡</span><span class="portal-nav__sub">年表與作品節點</span></a></li>
+            <li><a href="${rp}index.html#story"><span class="portal-nav__label">傳奇的轉折</span><span class="portal-nav__sub">重逢與敘事主線</span></a></li>
         </ul>
     </li>
-    <li><a href="${rp}variety/variety.html">瘋子與天才</a>
+    <li><a href="${rp}variety/variety.html"><span class="portal-nav__label">瘋子與天才</span><span class="portal-nav__sub">EUN JI-WON × VARIETY GRAVITY</span></a>
         <ul class="portal-submenu">
-            <li><a href="${rp}variety/variety.html#variety">瘋狂出演中</a></li>
-            <li><a href="${rp}variety/variety.html#stage">隊長的氣場</a></li>
+            <li><a href="${rp}variety/variety.html#variety"><span class="portal-nav__label">瘋狂出演中</span><span class="portal-nav__sub">綜藝鏡頭與名場面</span></a></li>
+            <li><a href="${rp}variety/variety.html#stage"><span class="portal-nav__label">隊長的氣場</span><span class="portal-nav__sub">控場與隊內互動</span></a></li>
+            <li><a href="${rp}variety/NJTW/NJTW5.html"><span class="portal-nav__label">新西遊記</span><span class="portal-nav__sub">成員介紹 · MEMBER GUIDE</span></a></li>
         </ul>
     </li>
-    <li><a href="${rp}concert/concert.html">現場的震撼</a>
+    <li><a href="${rp}concert/concert.html"><span class="portal-nav__label">現場的震撼</span><span class="portal-nav__sub">SECHSKIES CONCERT ARCHIVE</span></a>
         <ul class="portal-submenu">
-            <li><a href="${rp}concert/concert.html#stage-now">永恆的重逢</a></li>
-            <li><a href="${rp}concert/concert.html#stage-past">燦爛的最初</a></li>
+            <li><a href="${rp}concert/concert.html#stage-now"><span class="portal-nav__label">永恆的重逢</span><span class="portal-nav__sub">近年與重聚舞台</span></a></li>
+            <li><a href="${rp}concert/concert.html#stage-past"><span class="portal-nav__label">燦爛的最初</span><span class="portal-nav__sub">全盛期經典場次</span></a></li>
         </ul>
     </li>
-    <li><a href="${rp}albums/albums.html">黃色留聲機</a>
+    <li><a href="${rp}albums/albums.html"><span class="portal-nav__label">黃色留聲機</span><span class="portal-nav__sub">YELLOW PHONOGRAPH</span></a>
         <ul class="portal-submenu">
-            <li><a href="${rp}albums/albums.html#new">啟動新篇章</a></li>
-            <li><a href="${rp}albums/albums.html#classic">輝煌全盛期</a></li>
+            <li><a href="${rp}albums/albums.html#new"><span class="portal-nav__label">啟動新篇章</span><span class="portal-nav__sub">重啟後作品與單曲</span></a></li>
+            <li><a href="${rp}albums/albums.html#classic"><span class="portal-nav__label">輝煌全盛期</span><span class="portal-nav__sub">1997–1999 年表</span></a></li>
         </ul>
     </li>
-    <li><a href="${rp}map/map.html">聖地巡禮</a>
+    <li><a href="${rp}map/map.html"><span class="portal-nav__label">聖地巡禮</span><span class="portal-nav__sub">SECHSKIES TAIWAN ARCHIVE</span></a>
         <ul class="portal-submenu">
-            <li><a href="${rp}map/map.html#taipei">台北聖地</a></li>
-            <li><a href="${rp}map/map.html#global">海外遠征</a></li>
+            <li><a href="${rp}map/map.html#taipei"><span class="portal-nav__label">台北聖地</span><span class="portal-nav__sub">行程與地點整理</span></a></li>
+            <li><a href="${rp}map/map.html#global"><span class="portal-nav__label">海外遠征</span><span class="portal-nav__sub">跨國足跡</span></a></li>
+        </ul>
+    </li>
+    <li><a href="${rp}extra/member.html"><span class="portal-nav__label">六顆水晶</span><span class="portal-nav__sub">BLACK KIES · WHITE KIES</span></a>
+        <ul class="portal-submenu">
+            <li><a href="${rp}extra/member.html#crystal-board"><span class="portal-nav__label">黑白分流</span><span class="portal-nav__sub">海報牆與分組介紹</span></a></li>
         </ul>
     </li>
 </ul>
