@@ -76,16 +76,12 @@ body.njtw5-page .main-header .intro {
     border-radius: 14px;
     /* 透明黑底：上淺下深＋內光，與標題圖區分層次 */
     background:
-        linear-gradient(
-            180deg,
+        linear-gradient(180deg,
             rgba(255, 255, 255, 0.06) 0%,
-            rgba(255, 255, 255, 0) 40%
-        ),
-        linear-gradient(
-            180deg,
+            rgba(255, 255, 255, 0) 40%),
+        linear-gradient(180deg,
             rgba(0, 0, 0, 0.38) 0%,
-            rgba(0, 0, 0, 0.58) 100%
-        );
+            rgba(0, 0, 0, 0.58) 100%);
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-top-color: rgba(255, 220, 120, 0.22);
     box-shadow:
@@ -104,6 +100,18 @@ body.njtw5-page .container {
     width: 100%;
     max-width: min(1000px, 100%);
     box-sizing: border-box;
+}
+
+body.njtw5-page .container .section-title {
+    grid-column: 1 / -1;
+    margin: 0 0 clamp(4px, 1vw, 10px);
+    padding-bottom: clamp(10px, 2vw, 14px);
+    font-size: clamp(1.2rem, 3.2vw, 1.55rem);
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-align: center;
+    color: var(--dark-yellow, #4e492b);
+
 }
 
 body.njtw5-page .member-card {
@@ -199,6 +207,7 @@ body.njtw5-page .role {
     overflow-wrap: anywhere;
     box-sizing: border-box;
 }
+
 
 @media (max-width: 768px) {
     body.njtw5-page .container {
