@@ -16,6 +16,9 @@ body.njtw5-page {
     --njtw-wine-soft: rgba(156, 69, 72, 0.28);
     --njtw-ink: #5c3a32;
     --njtw-shadow: rgba(72, 38, 28, 0.08);
+    /* 視窗 ≤ --njtw-member-zoom-max-px 起套用 zoom；除數略大於該值，寬度剛好等於斷點時 zoom 仍 < 1，避免龍珠壓字 */
+    --njtw-member-zoom-max-px: 1556;
+    --njtw-member-zoom-divisor-px: 1588;
 
     background:
         radial-gradient(ellipse 85% 55% at 50% -8%, rgba(255, 220, 170, 0.35) 0%, transparent 52%),
@@ -28,11 +31,14 @@ body.njtw5-page {
     padding: 0 clamp(16px, 4vw, 40px) clamp(16px, 4vw, 40px);
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* 勿用 center：column flex 的 cross-axis 是「寬」，center 會把子塊收成內容寬，
+     * 下面 .container 即使寫 width:100% 也會跟著變窄（往父層找就卡在這裡）。stretch 才會撐滿可視內容寬。 */
+    align-items: stretch;
     gap: clamp(20px, 3.5vw, 32px);
     overflow-x: hidden;
     box-sizing: border-box;
 }
+
 body.njtw5-page header.main-header {
     /* 此頁專用：抵消 assets/css/style.css 裡裸選取器 header { … }（僅當 body 為 .njtw5-page 時套用，不修改 style.css） */
     height: auto;
@@ -105,43 +111,62 @@ body.njtw5-page .main-header .intro {
     -webkit-backdrop-filter: blur(10px) saturate(1.12);
     text-shadow: 0 1px 2px rgba(30, 10, 12, 0.35);
 }
+
 body.njtw5-page .container {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: clamp(12px, 2.5vw, 20px);
+    /* 寬度：本檔規定。已拿掉舊的 max-width: min(1200px,100%)（會在大螢幕把主區卡死在 1200px）。現在吃滿 body 內容寬（再扣 body 自己的左右 padding）。 */
     width: 100%;
-    max-width: min(1200px, 100%);
+    max-width: 100%;
     box-sizing: border-box;
 }
 
-/* 成員 2×4 表格：必須為 table > tbody > tr > td，不可把 tr 直接放在 div 裡 */
+/* 成員 2×4：語意用 table 排版；勿沿用 assets/css 裡 table 的白底、陰影、大間距。 */
 body.njtw5-page .njtw-member-table-wrap {
     grid-column: 1 / -1;
     width: 100%;
-    min-width: 0;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
 }
 
 body.njtw5-page .njtw-member-table {
-    width: max-content;
-    min-width: 100%;
-    border-collapse: separate;
-    border-spacing: clamp(10px, 2vw, 18px);
-    table-layout: auto;
+    table-layout: fixed;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: visible;
 }
 
 body.njtw5-page .njtw-member-table td {
-    padding: 0;
+    width: 25%;
+    padding: clamp(4px, 0.6vw, 8px);
     vertical-align: top;
+    box-sizing: border-box;
+    border: 0;
+    border-bottom: none;
+    background: transparent;
+    text-align: start;
+    color: inherit;
 }
 
-body.njtw5-page .njtw-member-table td:not(.njtw-layout-slot) {
-    min-width: clamp(220px, 24vw, 300px);
+body.njtw5-page .njtw-member-table .member-card.parchment-card {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 body.njtw5-page .njtw-member-table .njtw-layout-slot {
-    width: 1%;
     white-space: nowrap;
     vertical-align: middle;
     text-align: center;
@@ -205,6 +230,7 @@ body.njtw5-page .member-card {
         0 12px 24px var(--njtw-shadow);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
 body.njtw5-page .member-card:hover {
     transform: translateY(-5px);
 }
@@ -222,6 +248,7 @@ body.njtw5-page .member-image {
     border-radius: 14px 14px 0 0;
     overflow: hidden;
 }
+
 /* 各卡：background-size、background-position 可逐張微調（圖檔見 .member-image） */
 body.njtw5-page .m1 .member-image {
     background-size: 250% auto;
@@ -239,18 +266,18 @@ body.njtw5-page .m3 .member-image {
 }
 
 body.njtw5-page .m4 .member-image {
-    background-size: 600% auto;
-    background-position: 64% 8%;
+    background-size: 321% auto;
+    background-position: 69% 0%;
 }
 
 body.njtw5-page .m5 .member-image {
-    background-size: 500% auto;
+    background-size: 400% auto;
     background-position: 0% 16%;
 }
 
 body.njtw5-page .m6 .member-image {
-    background-size: 600% auto;
-    background-position: 25% 0%;
+    background-size: 310% auto;
+    background-position: 24% 0%;
 }
 
 body.njtw5-page .info {
@@ -282,6 +309,7 @@ body.njtw5-page .role {
     overflow-wrap: anywhere;
     box-sizing: border-box;
 }
+
 /* 羊皮紙角色卡：卡片上加 class="parchment-card" 即可；長條裁切仍用 .m1 / .m2… 的 .member-image 規則 */
 body.njtw5-page .member-card.parchment-card {
     background:
@@ -306,6 +334,7 @@ body.njtw5-page .member-card.parchment-card:hover {
         0 4px 0 rgba(200, 110, 80, 0.28),
         0 14px 26px rgba(72, 38, 28, 0.1);
 }
+
 body.njtw5-page .parchment-card .parchment-inner {
     padding: clamp(12px, 2.4vw, 18px) clamp(10px, 2vw, 14px) clamp(14px, 2.8vw, 20px);
     box-sizing: border-box;
@@ -322,6 +351,7 @@ body.njtw5-page .parchment-card .parchment-logo {
     color: transparent;
     filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.55));
 }
+
 body.njtw5-page .parchment-card .parchment-logo-num {
     display: inline-block;
     margin-left: 0.08em;
@@ -360,6 +390,7 @@ body.njtw5-page .parchment-card .parchment-byline {
     line-height: 1.4;
     opacity: 0.95;
 }
+
 body.njtw5-page .parchment-card .parchment-figure {
     margin: 0 0 clamp(12px, 2.2vw, 16px);
     border-radius: 8px;
@@ -370,6 +401,7 @@ body.njtw5-page .parchment-card .parchment-figure {
         0 3px 10px rgba(72, 38, 28, 0.1);
     background: #2a2018;
 }
+
 body.njtw5-page .parchment-card .member-image {
     width: 100%;
     height: clamp(200px, 34vw, 280px);
@@ -382,11 +414,15 @@ body.njtw5-page .parchment-card .parchment-stats {
     text-align: left;
     margin: 0;
     padding: 0 clamp(4px, 1vw, 8px);
+    overflow: visible;
+    /* 龍珠統一尺度的基準：同一 .parchment-stats 內所有列共用，避免「球多的列被 flex 壓扁、球少的列仍大顆」 */
+    font-size: clamp(9px, 1.75vw, 12px);
 }
 
+/* 龍珠：單行不換行；球徑只看 .parchment-stats 的 font-size + em，全卡一致 */
 body.njtw5-page .parchment-card .parchment-stat-row {
     display: grid;
-    grid-template-columns: auto minmax(min-content, 1fr);
+    grid-template-columns: auto minmax(0, 1fr);
     align-items: center;
     gap: 8px 10px;
     margin-bottom: clamp(8px, 1.6vw, 12px);
@@ -404,25 +440,28 @@ body.njtw5-page .parchment-card .parchment-stat-label {
     white-space: nowrap;
     flex-shrink: 0;
 }
+
 body.njtw5-page .parchment-card .parchment-stat-balls {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: flex-end;
     align-items: center;
-    gap: 4px;
-    min-width: min-content;
-    overflow-x: visible;
-    overflow-y: visible;
+    gap: 3px;
+    min-width: 0;
+    max-width: 100%;
+    overflow: visible;
     padding-bottom: 2px;
 }
 
 body.njtw5-page .parchment-card .parchment-stat-balls img {
     display: block;
-    width: clamp(20px, 4.2vw, 26px);
-    height: auto;
-    aspect-ratio: 1;
-    object-fit: contain;
+    box-sizing: border-box;
+    width: 2.15em;
+    height: 2.15em;
+    min-width: 2.15em;
+    max-width: 2.15em;
     flex-shrink: 0;
+    object-fit: contain;
     filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.25));
 }
 
@@ -437,10 +476,12 @@ body.njtw5-page .parchment-card .parchment-tags {
     text-align: center;
     word-break: break-word;
     overflow-wrap: anywhere;
-}/* 影片區：與羊皮紙、logo 調性一致（淡金邊、柔陰影） */
+}
+
+/* 影片區：與羊皮紙、logo 調性一致（淡金邊、柔陰影） */
 body.njtw5-page .video-container {
     width: 100%;
-    max-width: min(1200px, 100%);
+    max-width: 100%;
     box-sizing: border-box;
     margin-inline: auto;
     padding: clamp(18px, 3.2vw, 28px);
@@ -466,6 +507,7 @@ body.njtw5-page .video-container .video-wrapper {
         inset 0 0 0 1px var(--njtw-gold-soft),
         inset 0 12px 36px rgba(0, 0, 0, 0.35);
 }
+
 body.njtw5-page .video-container .video-embed {
     position: absolute;
     inset: 0;
@@ -473,6 +515,32 @@ body.njtw5-page .video-container .video-embed {
     height: 100%;
     border: 0;
     display: block;
+}
+
+.shinmyohan {
+    width: 100%;
+}
+
+.shinmyohan img {
+    width: 33%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.OB img {
+    float: right;
+}
+
+.YB img {
+    float: left;
+}
+
+@media (max-width: 1556px) {
+
+    /* 斷點與 --njtw-member-zoom-max-px 同步（單位 px 寫在 media，因 @media 無法用 var） */
+    body.njtw5-page .njtw-member-table-wrap {
+        zoom: calc(100vw / (var(--njtw-member-zoom-divisor-px) * 1px));
+    }
 }
 
 @media (max-width: 768px) {
