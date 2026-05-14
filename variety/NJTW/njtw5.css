@@ -1,10 +1,27 @@
 /**
  * NJTW5 專用（與 NJTW5.html 同資料夾）
  * 長條圖、各卡裁切位置請只改此檔。
+ * 整頁調性：參考《新西遊記》logo 金／橘／酒紅，刻意做淡（與羊皮紙卡一致）。
  */
 body.njtw5-page {
-    background-color: var(--surface-soft, #fff9e8);
-    color: var(--text-color, #333);
+    /* 頁面色票：亮而不濃 */
+    --njtw-cream: #fdf6ea;
+    --njtw-parchment: #faf0e0;
+    --njtw-peach: #fde8d4;
+    --njtw-gold: #d9a050;
+    --njtw-gold-soft: rgba(217, 160, 80, 0.35);
+    --njtw-ember: #e8884a;
+    --njtw-ember-soft: rgba(232, 136, 74, 0.22);
+    --njtw-wine: #9c4548;
+    --njtw-wine-soft: rgba(156, 69, 72, 0.28);
+    --njtw-ink: #5c3a32;
+    --njtw-shadow: rgba(72, 38, 28, 0.08);
+
+    background:
+        radial-gradient(ellipse 85% 55% at 50% -8%, rgba(255, 220, 170, 0.35) 0%, transparent 52%),
+        radial-gradient(ellipse 70% 45% at 100% 20%, rgba(255, 200, 160, 0.12) 0%, transparent 45%),
+        linear-gradient(180deg, var(--njtw-cream) 0%, var(--njtw-peach) 48%, #f3e0cc 100%);
+    color: var(--njtw-ink);
     font-family: 'Noto Sans TC', system-ui, sans-serif;
     margin: 0;
     /* 頂部不留空，標題背景貼齊視窗上緣；左右與底部維持內距 */
@@ -16,7 +33,6 @@ body.njtw5-page {
     overflow-x: hidden;
     box-sizing: border-box;
 }
-
 body.njtw5-page header.main-header {
     /* 此頁專用：抵消 assets/css/style.css 裡裸選取器 header { … }（僅當 body 為 .njtw5-page 時套用，不修改 style.css） */
     height: auto;
@@ -54,10 +70,13 @@ body.njtw5-page .main-header h1 {
     margin: 0 0 0.65rem;
     font-size: clamp(1.35rem, 4vw, 1.85rem);
     font-weight: 800;
-    color: rgba(255, 255, 255, 0.96);
+    color: #fffaf4;
     line-height: 1.25;
-    letter-spacing: 0.02em;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55), 0 0 24px rgba(0, 0, 0, 0.35);
+    letter-spacing: 0.04em;
+    text-shadow:
+        0 0 20px rgba(255, 200, 120, 0.35),
+        0 1px 3px rgba(60, 24, 18, 0.45),
+        0 0 1px rgba(120, 40, 30, 0.4);
 }
 
 body.njtw5-page .main-header .intro {
@@ -69,30 +88,23 @@ body.njtw5-page .main-header .intro {
     padding: clamp(14px, 2.4vw, 20px) clamp(18px, 3.2vw, 30px);
     font-size: clamp(0.95rem, 2.5vw, 1.12rem);
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.98);
+    color: rgba(255, 252, 248, 0.97);
     line-height: 1.65;
     letter-spacing: 0.02em;
     text-align: center;
     border-radius: 14px;
-    /* 透明黑底：上淺下深＋內光，與標題圖區分層次 */
     background:
-        linear-gradient(180deg,
-            rgba(255, 255, 255, 0.06) 0%,
-            rgba(255, 255, 255, 0) 40%),
-        linear-gradient(180deg,
-            rgba(0, 0, 0, 0.38) 0%,
-            rgba(0, 0, 0, 0.58) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-top-color: rgba(255, 220, 120, 0.22);
+        linear-gradient(180deg, rgba(255, 230, 200, 0.12) 0%, transparent 42%),
+        linear-gradient(180deg, rgba(90, 36, 42, 0.38) 0%, rgba(48, 22, 28, 0.5) 100%);
+    border: 1px solid rgba(255, 200, 140, 0.35);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.1),
-        0 10px 36px rgba(0, 0, 0, 0.35),
-        0 2px 8px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(10px) saturate(1.15);
-    -webkit-backdrop-filter: blur(10px) saturate(1.15);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+        inset 0 1px 0 rgba(255, 240, 210, 0.2),
+        0 8px 28px rgba(40, 16, 20, 0.22),
+        0 0 0 1px rgba(232, 136, 74, 0.12);
+    backdrop-filter: blur(10px) saturate(1.12);
+    -webkit-backdrop-filter: blur(10px) saturate(1.12);
+    text-shadow: 0 1px 2px rgba(30, 10, 12, 0.35);
 }
-
 body.njtw5-page .container {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -102,16 +114,41 @@ body.njtw5-page .container {
     box-sizing: border-box;
 }
 
+body.njtw5-page .container .section-title,
+body.njtw5-page .video-container .video-title {
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-align: center;
+    color: var(--njtw-ink);
+    border-bottom: none;
+    box-shadow: none;
+    position: relative;
+}
+
 body.njtw5-page .container .section-title {
     grid-column: 1 / -1;
     margin: 0 0 clamp(4px, 1vw, 10px);
-    padding-bottom: clamp(10px, 2vw, 14px);
+    padding-bottom: clamp(12px, 2.2vw, 18px);
     font-size: clamp(1.2rem, 3.2vw, 1.55rem);
-    font-weight: 800;
-    letter-spacing: 0.06em;
-    text-align: center;
-    color: var(--dark-yellow, #4e492b);
+}
 
+body.njtw5-page .video-container .video-title {
+    margin: 0 0 clamp(14px, 2.5vw, 20px);
+    padding-bottom: clamp(12px, 2.2vw, 18px);
+    font-size: clamp(1.15rem, 3vw, 1.45rem);
+}
+
+/* 與原第二條線同調：淺紅棕短線，不要整寬漸層與外層長陰影 */
+body.njtw5-page .container .section-title::after,
+body.njtw5-page .video-container .video-title::after {
+    content: "";
+    display: block;
+    width: min(3.5rem, 26%);
+    max-width: 5.5rem;
+    height: 4px;
+    margin: clamp(10px, 1.8vw, 14px) auto 0;
+    border-radius: 2px;
+    background: rgba(168, 120, 108, 0.55);
 }
 
 body.njtw5-page .member-card {
@@ -119,16 +156,17 @@ body.njtw5-page .member-card {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
-    background-color: var(--surface, #fffdf7);
-    border: 1px solid rgba(255, 204, 0, 0.38);
+    background-color: var(--njtw-parchment);
+    border: 1px solid var(--njtw-gold-soft);
     border-radius: 15px;
     /* 勿對整卡 hidden，否則底部 .nickname 可能被裁掉、像「看不到」 */
     overflow: visible;
     text-align: center;
-    box-shadow: 0 8px 0 rgba(255, 204, 0, 0.28), 0 12px 24px rgba(0, 0, 0, 0.08);
-    transition: transform 0.2s ease;
+    box-shadow:
+        0 6px 0 var(--njtw-ember-soft),
+        0 12px 24px var(--njtw-shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
 body.njtw5-page .member-card:hover {
     transform: translateY(-5px);
 }
@@ -137,16 +175,15 @@ body.njtw5-page .member-image {
     width: 100%;
     height: clamp(200px, 32vw, 280px);
     box-sizing: border-box;
-    background-color: #1a1812;
+    background-color: #2a2018;
     /* 長條圖檔與此 CSS 同資料夾；檔名不同請改 url */
     background-image: url("1538074991_Fm.jpg");
     /* background-size 改由各 .m1–.m6 單獨設定 */
     background-repeat: no-repeat;
-    border-bottom: 1px solid rgba(255, 204, 0, 0.4);
+    border-bottom: 1px solid var(--njtw-gold-soft);
     border-radius: 14px 14px 0 0;
     overflow: hidden;
 }
-
 /* 各卡：background-size、background-position 可逐張微調（圖檔見 .member-image） */
 body.njtw5-page .m1 .member-image {
     background-size: 250% auto;
@@ -186,7 +223,7 @@ body.njtw5-page .info {
 body.njtw5-page .name {
     font-size: clamp(1.1rem, 3.2vw, 1.5rem);
     font-weight: 800;
-    color: var(--dark-yellow, #4e492b);
+    color: var(--njtw-ink);
     margin: 0 0 0.35rem;
     line-height: 1.2;
     word-break: keep-all;
@@ -195,31 +232,30 @@ body.njtw5-page .name {
 
 body.njtw5-page .role {
     font-size: clamp(0.85rem, 2.2vw, 1rem);
-    color: #555;
-    background: rgba(255, 204, 0, 0.16);
+    color: #5a4540;
+    background: var(--njtw-ember-soft);
     display: inline-block;
     max-width: 100%;
     padding: 0.2rem 0.55rem;
     border-radius: 20px;
-    border: 1px solid rgba(255, 204, 0, 0.35);
+    border: 1px solid var(--njtw-gold-soft);
     line-height: 1.35;
     word-break: keep-all;
     overflow-wrap: anywhere;
     box-sizing: border-box;
 }
-
 /* 羊皮紙角色卡：卡片上加 class="parchment-card" 即可；長條裁切仍用 .m1 / .m2… 的 .member-image 規則 */
 body.njtw5-page .member-card.parchment-card {
     background:
-        radial-gradient(ellipse 120% 80% at 50% -20%, rgba(255, 255, 255, 0.35) 0%, transparent 55%),
-        linear-gradient(165deg, #f7ebd4 0%, #ecd9b8 35%, #e0cfa8 70%, #d4c39a 100%);
-    border: 3px solid #9e2222;
+        radial-gradient(ellipse 120% 80% at 50% -20%, rgba(255, 255, 255, 0.4) 0%, transparent 55%),
+        linear-gradient(165deg, #faf0e0 0%, #f0dcc0 38%, #e8d2b4 72%, #dfc8a8 100%);
+    border: 2px solid var(--njtw-wine-soft);
     border-radius: 10px;
     box-shadow:
-        inset 0 0 0 1px rgba(255, 250, 235, 0.55),
-        inset 0 -18px 36px rgba(120, 50, 30, 0.06),
-        0 4px 0 #7a1818,
-        0 10px 24px rgba(0, 0, 0, 0.12);
+        inset 0 0 0 1px rgba(255, 250, 240, 0.65),
+        inset 0 -14px 28px rgba(120, 50, 40, 0.04),
+        0 3px 0 rgba(180, 90, 70, 0.22),
+        0 10px 22px var(--njtw-shadow);
     text-align: center;
     padding: 0;
 }
@@ -227,12 +263,11 @@ body.njtw5-page .member-card.parchment-card {
 body.njtw5-page .member-card.parchment-card:hover {
     transform: translateY(-4px);
     box-shadow:
-        inset 0 0 0 1px rgba(255, 250, 235, 0.55),
-        inset 0 -18px 36px rgba(120, 50, 30, 0.06),
-        0 5px 0 #7a1818,
-        0 14px 28px rgba(0, 0, 0, 0.14);
+        inset 0 0 0 1px rgba(255, 250, 240, 0.65),
+        inset 0 -14px 28px rgba(120, 50, 40, 0.04),
+        0 4px 0 rgba(200, 110, 80, 0.28),
+        0 14px 26px rgba(72, 38, 28, 0.1);
 }
-
 body.njtw5-page .parchment-card .parchment-inner {
     padding: clamp(12px, 2.4vw, 18px) clamp(10px, 2vw, 14px) clamp(14px, 2.8vw, 20px);
     box-sizing: border-box;
@@ -243,13 +278,12 @@ body.njtw5-page .parchment-card .parchment-logo {
     font-weight: 900;
     letter-spacing: 0.12em;
     margin: 0 0 0.35rem;
-    background: linear-gradient(180deg, #e85a28 0%, #c73d18 45%, #9e2a12 100%);
+    background: linear-gradient(180deg, #f0a060 0%, #d97840 42%, #c4583a 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.65));
+    filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.55));
 }
-
 body.njtw5-page .parchment-card .parchment-logo-num {
     display: inline-block;
     margin-left: 0.08em;
@@ -266,17 +300,17 @@ body.njtw5-page .parchment-card .parchment-name {
     margin: 0 0 0.2rem;
     font-size: clamp(1.25rem, 3.6vw, 1.65rem);
     font-weight: 900;
-    color: #7a1b1b;
+    color: #7a3838;
     line-height: 1.2;
     letter-spacing: 0.04em;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
 body.njtw5-page .parchment-card .parchment-role {
     margin: 0 0 0.35rem;
     font-size: 1.2rem;
     font-weight: 700;
-    color: #7a1b1b;
+    color: #7a3838;
     line-height: 1.35;
 }
 
@@ -284,22 +318,20 @@ body.njtw5-page .parchment-card .parchment-byline {
     margin: 0;
     font-size: 1rem;
     font-weight: 700;
-    color: #6b1818;
+    color: #6b4040;
     line-height: 1.4;
     opacity: 0.95;
 }
-
 body.njtw5-page .parchment-card .parchment-figure {
     margin: 0 0 clamp(12px, 2.2vw, 16px);
     border-radius: 8px;
     overflow: hidden;
-    border: 2px solid rgba(122, 27, 27, 0.45);
+    border: 1px solid var(--njtw-wine-soft);
     box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, 0.25),
-        0 3px 10px rgba(60, 20, 10, 0.18);
-    background: #1a1812;
+        inset 0 0 0 1px rgba(255, 248, 235, 0.35),
+        0 3px 10px rgba(72, 38, 28, 0.1);
+    background: #2a2018;
 }
-
 body.njtw5-page .parchment-card .member-image {
     width: 100%;
     height: clamp(200px, 34vw, 280px);
@@ -329,12 +361,11 @@ body.njtw5-page .parchment-card .parchment-stat-row:last-of-type {
 body.njtw5-page .parchment-card .parchment-stat-label {
     font-size: clamp(0.88rem, 2.1vw, 1rem);
     font-weight: 800;
-    color: #7a1b1b;
+    color: #7a4040;
     letter-spacing: 0.06em;
     white-space: nowrap;
     flex-shrink: 0;
 }
-
 body.njtw5-page .parchment-card .parchment-stat-balls {
     display: flex;
     flex-wrap: nowrap;
@@ -362,55 +393,43 @@ body.njtw5-page .parchment-card .parchment-stat-balls img {
 body.njtw5-page .parchment-card .parchment-tags {
     margin: clamp(12px, 2vw, 16px) 0 0;
     padding-top: clamp(10px, 1.8vw, 14px);
-    border-top: 1px dashed rgba(122, 27, 27, 0.35);
+    border-top: 1px dashed var(--njtw-wine-soft);
     font-size: max(13px, 0.88rem);
     font-weight: 700;
-    color: #5c2414;
+    color: #6a4538;
     line-height: 1.45;
     text-align: center;
     word-break: break-word;
     overflow-wrap: anywhere;
-}
-/* 影片區：與成員卡同語彙（米底、金邊、沈底放映框） */
+}/* 影片區：與羊皮紙、logo 調性一致（淡金邊、柔陰影） */
 body.njtw5-page .video-container {
     width: 100%;
     max-width: min(1200px, 100%);
     box-sizing: border-box;
     margin-inline: auto;
     padding: clamp(18px, 3.2vw, 28px);
-    background-color: var(--surface, #fffdf7);
-    border: 1px solid rgba(255, 204, 0, 0.38);
-    border-radius: 18px;
+    background:
+        radial-gradient(ellipse 100% 80% at 50% 0%, rgba(255, 235, 200, 0.45) 0%, transparent 55%),
+        linear-gradient(175deg, var(--njtw-parchment) 0%, #f2e4d2 100%);
+    border: 2px solid var(--njtw-wine-soft);
+    border-radius: 14px;
     box-shadow:
-        0 8px 0 rgba(255, 204, 0, 0.22),
-        0 14px 32px rgba(0, 0, 0, 0.08);
-}
-
-body.njtw5-page .video-container .video-title {
-    margin: 0 0 clamp(14px, 2.5vw, 20px);
-    padding-bottom: clamp(10px, 2vw, 14px);
-    font-size: clamp(1.15rem, 3vw, 1.45rem);
-    font-weight: 800;
-    letter-spacing: 0.06em;
-    text-align: center;
-    color: var(--dark-yellow, #4e492b);
-    border-bottom: 2px solid rgba(255, 204, 0, 0.45);
-    box-shadow: 0 6px 0 -4px rgba(255, 204, 0, 0.18);
+        inset 0 1px 0 rgba(255, 255, 255, 0.55),
+        0 4px 0 var(--njtw-ember-soft),
+        0 14px 28px var(--njtw-shadow);
 }
 
 body.njtw5-page .video-container .video-wrapper {
     position: relative;
     width: 100%;
     aspect-ratio: 16 / 9;
-    border-radius: 14px;
+    border-radius: 12px;
     overflow: hidden;
-    background:
-        linear-gradient(145deg, #2a2618 0%, #0f0e0a 50%, #1a1812 100%);
+    background: linear-gradient(145deg, #322a22 0%, #1c1814 55%, #241c18 100%);
     box-shadow:
-        inset 0 0 0 1px rgba(255, 204, 0, 0.2),
-        inset 0 12px 40px rgba(0, 0, 0, 0.45);
+        inset 0 0 0 1px var(--njtw-gold-soft),
+        inset 0 12px 36px rgba(0, 0, 0, 0.35);
 }
-
 body.njtw5-page .video-container .video-embed {
     position: absolute;
     inset: 0;
