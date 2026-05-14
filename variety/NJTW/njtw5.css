@@ -7,7 +7,8 @@ body.njtw5-page {
     color: var(--text-color, #333);
     font-family: 'Noto Sans TC', system-ui, sans-serif;
     margin: 0;
-    padding: clamp(16px, 4vw, 40px);
+    /* 頂部不留空，標題背景貼齊視窗上緣；左右與底部維持內距 */
+    padding: 0 clamp(16px, 4vw, 40px) clamp(16px, 4vw, 40px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,6 +29,7 @@ body.njtw5-page header.main-header {
     max-width: none;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
+    margin-top: 0;
     box-sizing: border-box;
     text-align: center;
     /* 與 1538075001_cu.jpg 實際比例一致（1280×706），全寬時高度與圖等比例 */
@@ -41,8 +43,8 @@ body.njtw5-page header.main-header {
     background-color: var(--surface-soft, #fff9e8);
     background-image:
         linear-gradient(180deg,
-            rgba(255, 249, 232, 0.72) 0%,
-            rgba(255, 249, 232, 0.88) 100%),
+            rgba(255, 249, 232, 0.6) 0%,
+            rgba(255, 249, 232, 0.8) 100%),
         url("1538075001_cu.jpg");
     background-size: cover, cover;
     background-position: center;
