@@ -9,28 +9,71 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/tablet.css">
     <style>
-        /* 預設列高（無圖示範用）；含圖列改由下方 :has(img) 覆寫為隨圖比例 */
-        .container {
-            width: 100%;
-            height: 25vh;
-            background-color: #ccc;
-            clear: both;
+        /* 僅本頁 main：加寬、取消左右內距（覆寫 .chronicle-reader / .content-container 的 padding） */
+        body.totoga2-page main#totoga2-reader.chronicle-reader {
+            max-width: min(1280px, 96vw);
+            padding-left: 0;
+            padding-right: 0;
+            position: relative;
+            z-index: 1;
         }
 
-        /* 電子書跨頁圖：列高不可寫死 vh，內層也不可 height:100%，否則圖片無法依欄寬維持長寬比 */
-        body.totoga2-page .chronicle-reader .container:has(img) {
+        /* 覆寫全站 .container（1200px／置中／大 padding），此頁圖列專用。
+         * 勿沿用全站 header,nav,.container 的 z-index:1，否則圖列會疊在後方 h2、p 內文之上。 */
+        body.totoga2-page #totoga2-reader .container {
+            width: 100%;
+            max-width: none;
+            margin: 0;
+            padding: 0;
+            height: auto;
+            min-height: 0;
+            background-color: #ccc;
+            clear: both;
+            box-sizing: border-box;
+            position: static;
+            z-index: auto;
+        }
+
+        /* 章節卡 .chronicle-chapter 有左右 padding；直屬 .container 負邊距拉出 → 貼滿 main 內寬 */
+        body.totoga2-page #totoga2-reader .chronicle-chapter {
+            --totoga-chapter-pad-inline: 20px;
+            overflow: visible;
+            display: flow-root;
+        }
+
+        body.totoga2-page #totoga2-reader .chronicle-chapter > h2,
+        body.totoga2-page #totoga2-reader .chronicle-chapter > p {
+            clear: both;
+            position: relative;
+            z-index: 1;
+        }
+
+        body.totoga2-page #totoga2-reader .chronicle-chapter > .container {
+            width: calc(100% + 2 * var(--totoga-chapter-pad-inline));
+            margin-left: calc(-1 * var(--totoga-chapter-pad-inline));
+            margin-right: calc(-1 * var(--totoga-chapter-pad-inline));
+        }
+
+        @media (max-width: 640px) {
+            body.totoga2-page #totoga2-reader .chronicle-chapter {
+                --totoga-chapter-pad-inline: 14px;
+            }
+        }
+
+        /* 含圖列：必須寫在含 #totoga2-reader 的選取器上，否則會輸給上一段 #totoga2-reader .container 的 height，圖會溢出蓋住後文 */
+        body.totoga2-page #totoga2-reader.chronicle-reader .container:has(img) {
             height: auto;
             min-height: 0;
             overflow: visible;
         }
 
-        body.totoga2-page .chronicle-reader .container:has(img)::after {
+        body.totoga2-page #totoga2-reader.chronicle-reader .container:has(img)::after {
             content: "";
             display: table;
             clear: both;
         }
 
-        body.totoga2-page .chronicle-reader .container:has(img)>[class^="container"] {
+        body.totoga2-page #totoga2-reader.chronicle-reader .container:has(img)>[class^="container"] {
             height: auto;
             min-height: 0;
             overflow: visible;
@@ -139,13 +182,11 @@
         <article class="chronicle-chapter active" id="challenge" data-title="無限挑戰">
             <!-- 序號一：第一列 container21（右欄 float:right）+ container22（左欄 float:left）→ 畫面左 01、右 02 -->
             <div class="container">
-                <div class="container21">
-                    <img src="../assets/images/totoga2/jpg/2023_電子書_無限挑戰六六歌2_final跨頁_頁面_02.jpg"
-                        alt="六六歌2 電子書跨頁圖（序號一 · 右）">
-                </div>
                 <div class="container22">
+                </div>
+                <div class="container21">
                     <img src="../assets/images/totoga2/jpg/2023_電子書_無限挑戰六六歌2_final跨頁_頁面_01.jpg"
-                        alt="六六歌2 電子書跨頁圖（序號一 · 左）">
+                        alt="六六歌2 電子書跨頁圖（序號一 · 右）">
                 </div>
             </div>
             <!-- 序號二：第二列單一全寬 container11 -->
