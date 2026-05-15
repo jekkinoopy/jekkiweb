@@ -1,6 +1,6 @@
-# 筆記：`extra/totoga2-copy-video.html`（站主／編輯用，不對讀者顯示）
+# 筆記：`extra/totoga2-video.html`（站主／編輯用，不對讀者顯示）
 
-對應檔案：`extra/totoga2-copy-video.html`。
+對應檔案：`extra/totoga2-video.html`。
 
 - 以下為 Bilibili 嵌入播放器（16：9）。請用上集／中集／下集分頁切換；若無法播放請至站內搜尋同一 BV 號。中集、下集可將 iframe 的 `bvid` 換成分集連結。
 - 中集、下集 iframe 使用 `data-src`，第一次切到該分頁時由頁內 script 寫入 `src`；改連結時請改 `data-src`（或已寫入後的 `src`）。

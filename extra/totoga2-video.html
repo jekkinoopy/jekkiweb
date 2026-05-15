@@ -38,6 +38,7 @@
                 <h2 class="section-title" id="ebook-bilivideo-heading">節目影片</h2>
 
                 <div class="bilivideo-tabs__shell">
+                    <!-- tablist 在 DOM 上須先於 iframe，否則 B 站播放器合成層易蓋住下方按鈕文字；畫面順序改由 CSS flex order 控制 -->
                     <nav class="bilivideo-episode-nav" role="tablist" aria-label="節目影片集數">
                         <button type="button" class="btn bilivideo-episode-nav__tab bilivideo-episode-nav__tab--active"
                             role="tab" id="bilivideo-tab-1" aria-controls="bilivideo-panel-1"

@@ -61,8 +61,8 @@ header {
     position: relative;
 }
 
-/* 導覽列 */
-nav {
+/* 導覽列（排除 portal、B 站分集 tab 等自帶版面之 nav，避免 space-between／大 padding 破壞） */
+nav:not(.portal-nav):not(.bilivideo-episode-nav) {
     background-color: var(--black);
     padding: 0.8rem;
     display: flex;
@@ -86,23 +86,18 @@ nav {
 
 }
 
-nav ul {
+nav:not(.portal-nav):not(.bilivideo-episode-nav) ul {
     list-style: none;
     display: flex;
     justify-content: center;
     gap: 24px;
 }
 
+/* 不寫 color：主色／hover 交給 .portal-nav 與全站 `a {}`；避免黃字規則意外影響可及元件 */
 nav a {
-    color: var(--primary);
     text-decoration: none;
     font-size: 0.95rem;
     letter-spacing: 1px;
-}
-
-
-nav a:hover {
-    color: white;
 }
 
 .portal-nav li {
@@ -2119,7 +2114,7 @@ body.ebook-ssg2-page .ebook-intro.section {
 body.ebook-ssg2-page .flip-ebook-shell {
     position: relative;
     width: 100%;
-    max-width: 1100px;
+    max-width: min(1000px, 96vw);
     margin: 0 auto 2rem;
     border-radius: 14px;
     overflow: hidden;
@@ -2141,6 +2136,63 @@ body.ebook-ssg2-page .flip-ebook-aspect iframe {
     height: 100%;
     left: 0;
     top: 0;
+}
+
+/* PDF.js + PageFlip：與 iframe 相同，填滿 padding-top 預留區，否則父層 height:0 會看不到內容 */
+body.ebook-ssg2-page .flip-ebook-aspect > #my-flipbook {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+body.ebook-ssg2-page .flip-ebook-aspect .ebook-pdf-error {
+    margin: 0;
+    padding: 1rem 1.25rem;
+    color: #5c3d00;
+    background: #fff7da;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    line-height: 1.55;
+}
+
+body.ebook-ssg2-page .flip-ebook-aspect .ebook-pdf-error code {
+    font-size: 0.85em;
+    word-break: break-all;
+}
+
+/* PageFlip + PDF.js：不用 iframe 的 padding-top 比例盒，避免書被壓小、擠扁 */
+body.ebook-ssg2-page .flip-ebook-aspect.flip-ebook-aspect--pageflip {
+    height: auto;
+    padding-top: 0;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(12px, 2vw, 20px);
+    background: #0a0a0a;
+}
+
+body.ebook-ssg2-page .flip-ebook-aspect--pageflip > #my-flipbook {
+    position: static;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    overflow: visible;
+}
+
+body.ebook-ssg2-page #my-flipbook .page {
+    background: #fff;
+}
+
+body.ebook-ssg2-page #my-flipbook .page canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 body.ebook-ssg2-page .ebook-back-link {
@@ -2178,7 +2230,7 @@ body.totoga2-page.totoga2-video-copy-page {
     overflow-x: hidden;
 }
 
-/* 節目影片複本：上／中／下集在播放器外殼內、緊貼 iframe 上方；維持全站 .btn 黃膠囊 */
+/* 節目影片複本：上／中／下集在播放器外殼內、緊貼 iframe 下方；維持全站 .btn 黃膠囊 */
 body.totoga2-page.totoga2-video-copy-page .bilivideo-hub .bilivideo-tabs__shell {
     max-width: 960px;
     margin-left: auto;
@@ -2208,29 +2260,48 @@ body.totoga2-page.totoga2-video-copy-page .totoga2-copy-sibling-links__sep {
     opacity: 0.55;
 }
 
-body.totoga2-page.totoga2-video-copy-page .bilivideo-tabs__shell .bilivideo-episode-nav {
+/* DOM 上 tablist 在 panels 前（見 totoga2-video.html）；order 讓畫面仍為「影片在上、分集在下」 */
+body.totoga2-page.totoga2-video-copy-page .bilivideo-tabs__shell nav.bilivideo-episode-nav {
+    order: 2;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    padding: 12px 14px 14px;
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+    padding: 14px 14px 12px;
     margin: 0;
     background: #0a0a0a;
-    border-bottom: 1px solid rgba(255, 204, 0, 0.28);
+    border-top: 1px solid rgba(255, 204, 0, 0.28);
+    flex-shrink: 0;
 }
 
-body.totoga2-page.totoga2-video-copy-page .bilivideo-tabs__shell .bilivideo-episode-nav .btn {
+body.totoga2-page.totoga2-video-copy-page .bilivideo-tabs__shell nav.bilivideo-episode-nav .btn {
     margin: 0;
+    flex: 0 0 auto;
     opacity: 0.92;
+    color: #141414;
+    -webkit-text-fill-color: #141414;
+    font-family: inherit;
 }
 
-body.totoga2-page.totoga2-video-copy-page .bilivideo-tabs__shell .bilivideo-episode-nav .bilivideo-episode-nav__tab--active {
+body.totoga2-page.totoga2-video-copy-page .bilivideo-tabs__shell nav.bilivideo-episode-nav .btn:hover,
+body.totoga2-page.totoga2-video-copy-page .bilivideo-tabs__shell nav.bilivideo-episode-nav .btn:focus-visible {
+    color: #141414;
+    -webkit-text-fill-color: #141414;
+}
+
+body.totoga2-page.totoga2-video-copy-page .bilivideo-tabs__shell nav.bilivideo-episode-nav .bilivideo-episode-nav__tab--active {
     opacity: 1;
     box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.32);
 }
 
 body.totoga2-page.totoga2-video-copy-page .bilivideo-tabs__shell {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
     border-radius: 14px;
     overflow: hidden;
     border: 1px solid rgba(255, 204, 0, 0.38);
@@ -2239,6 +2310,9 @@ body.totoga2-page.totoga2-video-copy-page .bilivideo-tabs__shell {
 }
 
 body.totoga2-page.totoga2-video-copy-page .bilivideo-tabs__panels {
+    order: 1;
+    flex: 0 0 auto;
+    min-width: 0;
     overflow: hidden;
     background: #000;
 }
