@@ -36,10 +36,20 @@
 
 ---
 
-## 5. 相關規則檔
+## 5. 2026-05 慘痛教訓（務必讀 `agent-must-ask.mdc`）
+
+- 用 PowerShell 批次改全站 HTML **沒 UTF-8** → 首頁中文全毀、`</span>` 露出；已 `git checkout` 還原 HTML。
+- **擅自**把 `map-archive-header` 改成 `inner-page-header`（站主沒點頭、沒給名字）。
+- 站主說先電子書 + dev `center 78%`，助手卻自加 `clamp`／全站 `100vh`／又全站改掉。
+- 頂欄擅自「傳奇的轉折（六六歌2）」— 已改回「傳奇的轉折」；以後 nav 文案不自擴。
+
+---
+
+## 6. 相關規則檔
 
 | 檔案 | 用途 |
 |------|------|
+| `.cursor/rules/agent-must-ask.mdc` | **必問再改**、禁止批次毀 UTF-8、header／nav 勿擅自改名 |
 | `.cursor/rules/ai-change-boundaries.mdc` | 變更範圍、共用 CSS |
 | `.cursor/rules/user-scope-and-nav.mdc` | 導覽開放、錨點刪除 |
 | `.cursor/rules/portal-nav-rules.mdc` | `portal-nav.js` 技術細節 |

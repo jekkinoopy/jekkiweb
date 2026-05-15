@@ -44,7 +44,7 @@ body {
     line-height: 1.6;
 }
 
-/* 首頁 Hero 全屏；內頁 banner 見 .map-archive-header／.concert-archive-header */
+/* 首頁 Hero 全屏；內頁 banner 僅 .map-archive-header（全站共用一 class） */
 header#origin {
     width: 100%;
     height: 100vh;
@@ -488,7 +488,7 @@ a.btn[data-coming-soon="true"],
     pointer-events: none;
 }
 
-header:not(.map-archive-header):not(.concert-archive-header),
+header:not(.map-archive-header),
 nav:not(.portal-nav),
 .container,
 footer {
@@ -1543,12 +1543,11 @@ footer a .mark_b {
     transform: translateY(-50%);
 }
 
-/* 內頁頂部 banner：全屏 100vh（首頁 Hero 僅 header#origin） */
-.map-archive-header,
-.concert-archive-header {
+/* 內頁頂部 banner（全站 .map-archive-header 同電子書複本；首頁僅 header#origin 全屏） */
+header.map-archive-header {
     width: 100%;
-    height: 100vh;
-    min-height: 100dvh;
+    height: auto;
+    min-height: clamp(14rem, 38vh, 24rem);
     background-image: url('../images/header.jpg');
     background-position: center 78%;
     background-repeat: no-repeat;
@@ -1558,14 +1557,13 @@ footer a .mark_b {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 0 20px;
+    padding: clamp(1.75rem, 4vh, 2.75rem) 20px;
     overflow: hidden;
     position: relative;
     box-sizing: border-box;
 }
 
-.map-archive-header .main-title,
-.concert-archive-header .main-title {
+.map-archive-header .main-title {
     font-size: clamp(2rem, 4.5vw, 3.2rem);
     font-weight: 900;
     color: var(--yellow, var(--primary));
@@ -1575,22 +1573,18 @@ footer a .mark_b {
     text-shadow: 0 0 30px rgba(255, 221, 0, 0.75);
 }
 
-.map-archive-header .subtitle-wrap,
-.concert-archive-header .subtitle-wrap {
+.map-archive-header .subtitle-wrap {
     margin-top: 20px;
 }
 
 .map-archive-header .subtitle-wrap::before,
-.map-archive-header .subtitle-wrap::after,
-.concert-archive-header .subtitle-wrap::before,
-.concert-archive-header .subtitle-wrap::after {
+.map-archive-header .subtitle-wrap::after {
     height: 3px;
     background-color: #ffcc00;
     max-width: 56px;
 }
 
-.map-archive-header .sub-title,
-.concert-archive-header .sub-title {
+.map-archive-header .sub-title {
     font-size: 0.92rem;
     letter-spacing: 4px;
     color: #d4d4d4;
@@ -1898,8 +1892,7 @@ footer a .mark_b {
 }
 
 @media (max-width: 920px) {
-    .map-archive-header .main-title,
-    .concert-archive-header .main-title {
+    .map-archive-header .main-title {
         letter-spacing: 4px;
     }
 
@@ -2284,8 +2277,6 @@ body.ebook-ssg2-page.totoga2-ebook-copy-page #my-flipbook .page {
     overflow: hidden;
     border-radius: 0;
 }
-
-/* totoga2 整合／複本頁：頂部結構與其他 map-archive-header 內頁一致（僅 main-title + subtitle-wrap） */
 
 body.totoga2-page .totoga2-hub-controls {
     max-width: 1200px;

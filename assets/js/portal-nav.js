@@ -216,8 +216,8 @@
     <li><a target="_blank" rel="noopener noreferrer" href="${rp}index.html"><span class="portal-nav__label">淪陷瞬間</span></a>
         <ul class="portal-submenu">
             <li class="portal-nav__subgroup">
-                <span class="portal-nav__subgroup-head"><span class="portal-nav__label">傳奇的轉折（六六歌2）</span></span>
-                <ul class="portal-submenu-nested" aria-label="傳奇的轉折（六六歌2）">
+                <span class="portal-nav__subgroup-head"><span class="portal-nav__label">傳奇的轉折</span></span>
+                <ul class="portal-submenu-nested" aria-label="傳奇的轉折">
                     <li><a target="_blank" rel="noopener noreferrer" href="${rp}extra/totoga2-copy-timeline.html"><span class="portal-nav__label">時間軸</span></a></li>
                     <li><a target="_blank" rel="noopener noreferrer" href="${rp}extra/totoga2-copy-ebook.html"><span class="portal-nav__label">電子書</span></a></li>
                     <li><a target="_blank" rel="noopener noreferrer" href="${rp}fallen/totoga2.html"><span class="portal-nav__label">圖文好讀版</span></a></li>

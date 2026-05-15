@@ -134,8 +134,7 @@
         padding: clamp(18px, 4vw, 22px);
     }
 
-    .map-archive-header .main-title,
-    .concert-archive-header .main-title {
+    .map-archive-header .main-title {
         letter-spacing: clamp(3px, 1vw, 6px);
     }
 
