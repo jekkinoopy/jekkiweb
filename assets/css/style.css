@@ -44,7 +44,8 @@ body {
     line-height: 1.6;
 }
 
-header {
+/* 首頁 Hero 全屏；內頁 banner 見 .map-archive-header／.concert-archive-header */
+header#origin {
     width: 100%;
     height: 100vh;
     min-height: 100dvh;
@@ -102,23 +103,43 @@ nav a {
 
 .portal-nav li {
     position: relative;
+}
+
+/* 主欄每項同高墊腳（含無子選單的「完整的六顆」），避免僅 :has 子選單者才墊高而單項偏低 */
+.portal-nav>ul>li {
     padding-bottom: 8px;
 }
 
+.portal-nav .logo {
+    align-self: center;
+    flex-shrink: 0;
+    transform: translateY(3px);
+}
+
+/* 全站頂欄：對齊 concert.html — 全寬黑底、黏頂、較高層（site-guide 僅連結開放邏輯不同，見 portal-nav.js） */
 .portal-nav {
-    position: relative;
-    z-index: 60;
+    width: 100%;
+    margin: 0 0 14px;
+    padding: 0.8rem 100px;
+    background-color: var(--black);
+    border-radius: 0;
+    box-shadow: none;
+    overflow: visible;
+    position: sticky;
+    top: 0;
+    z-index: 100;
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
     gap: 0.5rem 1rem;
+    box-sizing: border-box;
 }
 
 .portal-nav>ul {
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-end;
+    align-items: center;
     justify-content: flex-end;
     gap: clamp(8px, 1.4vw, 18px);
     list-style: none;
@@ -130,7 +151,7 @@ nav a {
 
 .portal-nav>ul>li:hover,
 .portal-nav>ul>li:focus-within {
-    z-index: 70;
+    z-index: 105;
 }
 
 .portal-nav>ul>li>a {
@@ -467,8 +488,8 @@ a.btn[data-coming-soon="true"],
     pointer-events: none;
 }
 
-header,
-nav,
+header:not(.map-archive-header):not(.concert-archive-header),
+nav:not(.portal-nav),
 .container,
 footer {
     position: relative;
@@ -1342,9 +1363,7 @@ footer a .mark_b {
     color: var(--primary);
 }
 
-/* map.html */
-.map-page .map-archive-header,
-.map-page .portal-nav,
+/* map.html — 主內容層；頂欄見全站 .portal-nav */
 .map-page .member-tabs,
 .map-page #itinerary-search,
 .map-page .map-layout,
@@ -1353,44 +1372,11 @@ footer a .mark_b {
     z-index: 1;
 }
 
-.concert-page .concert-archive-header,
 .concert-page .search-section,
 .concert-page .concert-container,
 .concert-page footer {
     position: relative;
     z-index: 1;
-}
-
-/* 演唱會頁：勿與主內容同層 z-index:1（會被後方 DOM 蓋住）；對齊 map-page 黏頂＋較高層 */
-.concert-page .portal-nav {
-    width: 100%;
-    margin: 0 0 14px;
-    padding: 0.8rem 100px;
-    background-color: var(--black);
-    border-radius: 0;
-    box-shadow: none;
-    overflow: visible;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-.concert-page .portal-nav>ul>li:hover,
-.concert-page .portal-nav>ul>li:focus-within {
-    z-index: 105;
-}
-
-.map-page .portal-nav {
-    width: 100%;
-    margin: 0 0 14px;
-    padding: 0.8rem 100px;
-    background-color: var(--black);
-    border-radius: 0;
-    box-shadow: none;
-    overflow: visible;
-    position: sticky;
-    top: 0;
-    z-index: 30;
 }
 
 .map-page .portal-nav ul {
@@ -1412,11 +1398,6 @@ footer a .mark_b {
 .map-page .portal-nav>ul>li {
     position: relative;
     line-height: 1;
-}
-
-.map-page .portal-nav>ul>li:hover,
-.map-page .portal-nav>ul>li:focus-within {
-    z-index: 35;
 }
 
 .map-page .portal-nav>ul>li>a {
@@ -1562,14 +1543,16 @@ footer a .mark_b {
     transform: translateY(-50%);
 }
 
-.map-archive-header {
+/* 內頁頂部 banner：全屏 100vh（首頁 Hero 僅 header#origin） */
+.map-archive-header,
+.concert-archive-header {
     width: 100%;
     height: 100vh;
     min-height: 100dvh;
     background-image: url('../images/header.jpg');
-    background-position: center center;
+    background-position: center 78%;
     background-repeat: no-repeat;
-    background-size: 108%;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1578,9 +1561,11 @@ footer a .mark_b {
     padding: 0 20px;
     overflow: hidden;
     position: relative;
+    box-sizing: border-box;
 }
 
-.map-archive-header .main-title {
+.map-archive-header .main-title,
+.concert-archive-header .main-title {
     font-size: clamp(2rem, 4.5vw, 3.2rem);
     font-weight: 900;
     color: var(--yellow, var(--primary));
@@ -1590,18 +1575,22 @@ footer a .mark_b {
     text-shadow: 0 0 30px rgba(255, 221, 0, 0.75);
 }
 
-.map-archive-header .subtitle-wrap {
+.map-archive-header .subtitle-wrap,
+.concert-archive-header .subtitle-wrap {
     margin-top: 20px;
 }
 
 .map-archive-header .subtitle-wrap::before,
-.map-archive-header .subtitle-wrap::after {
+.map-archive-header .subtitle-wrap::after,
+.concert-archive-header .subtitle-wrap::before,
+.concert-archive-header .subtitle-wrap::after {
     height: 3px;
     background-color: #ffcc00;
     max-width: 56px;
 }
 
-.map-archive-header .sub-title {
+.map-archive-header .sub-title,
+.concert-archive-header .sub-title {
     font-size: 0.92rem;
     letter-spacing: 4px;
     color: #d4d4d4;
@@ -1909,12 +1898,8 @@ footer a .mark_b {
 }
 
 @media (max-width: 920px) {
-    .map-archive-header {
-        background-size: cover;
-        padding: 0 16px;
-    }
-
-    .map-archive-header .main-title {
+    .map-archive-header .main-title,
+    .concert-archive-header .main-title {
         letter-spacing: 4px;
     }
 
@@ -1927,8 +1912,9 @@ footer a .mark_b {
         gap: 16px;
     }
 
-    .map-page .portal-nav {
-        padding: 0.8rem 16px;
+    .portal-nav {
+        padding-top: 0.8rem;
+        padding-bottom: 0.8rem;
     }
 
     .map-page .portal-nav .portal-submenu {
@@ -2308,13 +2294,6 @@ body.totoga2-page .totoga2-hub-controls {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
-}
-
-body.totoga2-page .map-archive-header {
-    height: auto;
-    min-height: clamp(15rem, 42vh, 26rem);
-    padding: clamp(2rem, 5vh, 3.25rem) 20px;
-    background-size: cover;
 }
 
 body.totoga2-page.totoga2-video-copy-page .ebook-intro.section {

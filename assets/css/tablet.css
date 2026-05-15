@@ -2,22 +2,25 @@
 
 @media (max-width: 1180px) {
 
-    html:has(body.map-page) {
+    html:has(.portal-nav) {
         scroll-padding-top: clamp(52px, 12vw, 76px);
     }
 
-    nav,
+    nav:not(.portal-nav) {
+        padding-left: clamp(14px, 2vw + 10px, 32px) !important;
+        padding-right: clamp(14px, 2vw + 10px, 32px) !important;
+    }
+
     .portal-nav {
         padding-left: clamp(14px, 2vw + 10px, 32px) !important;
         padding-right: clamp(14px, 2vw + 10px, 32px) !important;
         row-gap: 12px;
         flex-wrap: wrap;
-        align-items: flex-start;
+        align-items: center;
     }
 
-    .map-page .portal-nav {
-        padding-left: clamp(14px, 2vw + 10px, 32px) !important;
-        padding-right: clamp(14px, 2vw + 10px, 32px) !important;
+    .portal-nav>ul {
+        align-items: center;
     }
 
     .portal-nav .logo {

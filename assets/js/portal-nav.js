@@ -46,7 +46,7 @@
 
     /**
      * 首頁僅下列錨點可點；其餘（如 #story）維持籌備中，須站主同意後才可加入。
-     * 空字串：連到 index.html 且無 # 片段時視為可點（淪陷瞬間 · 初心與軌跡）。
+     * 空字串：連到 index.html 且無 # 片段時視為可點（淪陷瞬間主項）。
      */
     const INDEX_NAV_OPEN_HASHES = new Set(["", "#origin", "#start", "#mission", "#timeline"]);
 
@@ -215,7 +215,6 @@
 <ul>
     <li><a target="_blank" rel="noopener noreferrer" href="${rp}index.html"><span class="portal-nav__label">淪陷瞬間</span></a>
         <ul class="portal-submenu">
-            <li><a target="_blank" rel="noopener noreferrer" href="${rp}index.html"><span class="portal-nav__label">初心與軌跡</span></a></li>
             <li class="portal-nav__subgroup">
                 <span class="portal-nav__subgroup-head"><span class="portal-nav__label">傳奇的轉折（六六歌2）</span></span>
                 <ul class="portal-submenu-nested" aria-label="傳奇的轉折（六六歌2）">

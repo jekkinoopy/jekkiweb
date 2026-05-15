@@ -1,30 +1,10 @@
-body {
-    background-color: var(--);
-}
-
-.concert-page {
-    background-color: var(--deep-black);
+body.concert-page {
+    background-color: var(--deep-black, #0a0a0a);
     margin: 0;
     padding: 0;
 }
 
-.concert-archive-header {
-    width: 100%;
-    height: 100vh;
-    min-height: 100dvh;
-    background-image: url('../images/header.jpg');
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: 108%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 0 20px;
-    overflow: hidden;
-    position: relative;
-}
+/* 頂部 banner 版面見 style.css .concert-archive-header（與 .map-archive-header 共用） */
 
 .main-title {
     font-size: 3.5rem;
@@ -60,10 +40,7 @@ body {
     margin: 0 25px;
 }
 
-body {
-    background-color: #fcfaf2;
-    /* 溫潤米白背景 */
-    margin: 0;
+.concert-page .concert-container {
     padding: 50px 0;
     font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
 }
