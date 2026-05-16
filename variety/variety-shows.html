@@ -14,24 +14,36 @@
             padding-bottom: 48px;
         }
 
-        body.variety-shows-page .variety-shows-lead {
-            max-width: 44rem;
-            margin: 0 auto 1.25rem;
-            text-align: left;
-            color: #4a4a4a;
-            line-height: 1.75;
+        body.variety-shows-page .search-section {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin: 0 0 1.25rem;
+            position: relative;
+            z-index: 1;
         }
 
-        body.variety-shows-page .variety-shows-section {
-            margin-top: 2rem;
+        body.variety-shows-page .search-input {
+            width: min(100%, 400px);
+            padding: 12px 25px;
+            border: 2px solid #ddd;
+            border-radius: 30px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+            background-color: #fff;
+            color: #333;
+            box-sizing: border-box;
         }
 
-        body.variety-shows-page .variety-shows-section>h3 {
-            margin: 0 0 0.75rem;
-            font-size: 1.05rem;
-            font-weight: 800;
-            color: #303030;
-            text-align: left;
+        body.variety-shows-page .search-input:hover {
+            border-color: #bbb;
+        }
+
+        body.variety-shows-page .search-input:focus {
+            border-color: #ffcc00;
+            box-shadow: 0 4px 15px rgba(255, 204, 0, 0.25);
+            transform: translateY(-2px);
         }
 
         body.variety-shows-page .variety-wiki-table-wrap {
@@ -144,15 +156,13 @@
 
     <main class="content-container variety-page-main variety-shows-main chronicle-reader">
         <section id="variety-shows" class="variety-block" aria-labelledby="variety-shows-title">
-            <h2 class="section-title" id="variety-shows-title">大家上過的綜藝</h2>
-            <p class="intro-text variety-shows-lead">
-                依播出期間整理固定出演紀錄，欄位對照常見維基表格式：日期、頻道、節目、成員、集數。合併儲存格表示同一頻道／同一位成員連續多檔；其餘區塊會陸續補上。
-            </p>
-
-            <section class="variety-shows-section" aria-labelledby="fixed-2016-2020">
-                <h3 id="fixed-2016-2020">固定出演（2016－2020）</h3>
-                <div class="variety-wiki-table-wrap">
-                    <table class="variety-wiki-table">
+            <h2 class="section-title" id="variety-shows-title">隊長帶弟弟</h2>
+            <div class="search-section">
+                <input type="search" id="variety-shows-search" class="search-input" placeholder="搜尋成員或節目…"
+                    autocomplete="off" aria-controls="variety-shows-table" aria-label="搜尋成員或節目">
+            </div>
+            <div class="variety-wiki-table-wrap">
+                <table class="variety-wiki-table" id="variety-shows-table">
                         <thead>
                             <tr>
                                 <th scope="col">播出日期</th>
@@ -300,8 +310,7 @@
                         </tbody>
                     </table>
                 </div>
-                <p class="variety-shows-note">資料整理自公開播出紀錄，集數與譯名若有出入以實際播出版本為準；歡迎之後逐列補上主持、嘉賓等區塊。</p>
-            </section>
+            <p class="variety-shows-note">資料整理自公開播出紀錄，集數與譯名若有出入以實際播出版本為準；歡迎之後逐列補上主持、嘉賓等區塊。</p>
 
             <a class="variety-shows-back" href="variety.html#variety"><i class="fa-solid fa-arrow-left"
                     aria-hidden="true"></i> 返回瘋子與天才</a>
@@ -317,6 +326,21 @@
 
     <script src="../assets/js/portal-nav.js"></script>
     <script src="../assets/js/particles.js"></script>
+    <script>
+        (function () {
+            const input = document.getElementById("variety-shows-search");
+            const rows = document.querySelectorAll("#variety-shows-table tbody tr");
+            if (!input || !rows.length) return;
+
+            input.addEventListener("input", () => {
+                const q = input.value.trim().toLowerCase();
+                rows.forEach((row) => {
+                    const text = row.textContent.replace(/\s+/g, " ").trim().toLowerCase();
+                    row.hidden = Boolean(q) && !text.includes(q);
+                });
+            });
+        })();
+    </script>
 </body>
 
 </html>
