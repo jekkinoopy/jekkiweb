@@ -481,13 +481,14 @@ nav a {
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
         background-color: var(--black);
-        display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: auto minmax(0, 1fr);
+        grid-template-rows: auto auto minmax(0, 1fr);
         grid-template-areas:
-            "head"
+            "logo"
+            "toggle"
             "menu";
-        row-gap: 1.25rem;
+        row-gap: 0.65rem;
+        justify-items: center;
         align-content: start;
         box-sizing: border-box;
     }
@@ -498,14 +499,8 @@ nav a {
     }
 
     .portal-nav.portal-nav--open .logo {
-        grid-area: head;
         justify-self: center;
-        align-self: start;
-        width: min(260px, calc(100% - 3.5rem));
-        max-width: 100%;
-        margin: 0 auto;
-        padding: 0 2.75rem 0.25rem;
-        box-sizing: border-box;
+        width: min(240px, 72vw);
         transform: none;
     }
 
@@ -523,15 +518,13 @@ nav a {
         justify-content: center;
         grid-area: toggle;
         justify-self: end;
+        align-self: center;
         margin-left: 0;
     }
 
     .portal-nav.portal-nav--open .portal-nav__menu-toggle {
-        position: absolute;
-        top: max(0.85rem, env(safe-area-inset-top, 0px));
-        right: clamp(14px, 2vw + 10px, 32px);
-        z-index: 2;
-        grid-area: unset;
+        justify-self: center;
+        align-self: center;
     }
 
     .portal-nav>ul {
@@ -553,12 +546,14 @@ nav a {
         display: flex;
         flex: 1 1 auto;
         min-height: 0;
-        margin-top: 0;
+        width: 100%;
+        margin-top: 0.5rem;
         padding-top: 1rem;
         padding-bottom: 1.5rem;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
         justify-content: flex-start;
+        justify-self: stretch;
         border-top: 1px solid rgba(255, 204, 0, 0.2);
     }
 
