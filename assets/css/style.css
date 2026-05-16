@@ -479,13 +479,12 @@ nav a {
         z-index: 10000;
         overflow: hidden;
         background-color: var(--black);
-        grid-template-columns: 1fr auto;
+        grid-template-columns: 1fr;
         grid-template-rows: auto minmax(0, 1fr);
         grid-template-areas:
-            "logo toggle"
-            "menu menu";
+            "top"
+            "menu";
         row-gap: 1.75rem;
-        column-gap: 0.75rem;
         align-content: start;
         box-sizing: border-box;
     }
@@ -504,9 +503,10 @@ nav a {
     }
 
     .portal-nav.portal-nav--open .logo {
-        justify-self: start;
+        grid-area: top;
+        justify-self: center;
         align-self: center;
-        width: min(240px, calc(100% - 3.25rem));
+        width: min(240px, calc(100% - 3.5rem));
         transform: none;
     }
 
@@ -516,6 +516,7 @@ nav a {
         height: auto;
         max-height: 3.25rem;
         object-fit: contain;
+        margin-inline: auto;
     }
 
     .portal-nav__menu-toggle {
@@ -529,9 +530,9 @@ nav a {
     }
 
     .portal-nav.portal-nav--open .portal-nav__menu-toggle {
-        grid-area: toggle;
+        grid-area: top;
         justify-self: end;
-        align-self: start;
+        align-self: center;
     }
 
     .portal-nav>ul {
@@ -552,6 +553,8 @@ nav a {
     .portal-nav.portal-nav--open>ul {
         display: flex;
         flex: 1 1 auto;
+        flex-direction: column;
+        align-items: center;
         min-height: 0;
         width: 100%;
         margin-top: 0;
@@ -567,7 +570,8 @@ nav a {
 
     .portal-nav.portal-nav--open>ul>li {
         width: 100%;
-        max-width: 100%;
+        max-width: 22rem;
+        align-self: center;
         position: relative;
         padding-bottom: 0;
     }
@@ -575,6 +579,7 @@ nav a {
     .portal-nav.portal-nav--open>ul>li>a {
         min-height: 40px;
         padding: 6px 12px;
+        width: 100%;
     }
 
     .portal-nav>ul>li {
@@ -634,7 +639,8 @@ nav a {
         top: auto;
         left: auto;
         right: auto;
-        width: min(100%, 20rem);
+        width: 100%;
+        max-width: 20rem;
         min-width: 0;
         margin: 4px auto 0;
         padding: 8px 12px 10px;
@@ -642,6 +648,7 @@ nav a {
         border-radius: 10px;
         background: rgba(255, 255, 255, 0.06);
         box-sizing: border-box;
+        align-self: center;
     }
 
     .portal-nav .portal-submenu .portal-nav__subgroup {
