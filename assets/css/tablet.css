@@ -133,10 +133,24 @@
         right: auto;
     }
 
-    .merged-storyline .story-node::after {
+    .merged-storyline .story-node::after,
+    .merged-storyline .story-node:nth-of-type(odd)::after,
+    .merged-storyline .story-node:nth-of-type(even)::after {
         left: 14px;
         right: auto;
+        top: -14px;
         transform: rotate(-8deg);
+    }
+
+    .merged-storyline .story-node:nth-of-type(odd)::before,
+    .merged-storyline .story-node:nth-of-type(even)::before {
+        left: -39px;
+        right: auto;
+    }
+
+    .merged-storyline .story-node:nth-of-type(odd),
+    .merged-storyline .story-node:nth-of-type(even) {
+        margin-top: 28px;
     }
 
     /* 紀實長卷／pillar 段落 */
