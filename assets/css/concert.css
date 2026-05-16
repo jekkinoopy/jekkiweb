@@ -4,41 +4,7 @@ body.concert-page {
     padding: 0;
 }
 
-/* 頂部 banner 版面見 style.css .concert-archive-header（與 .map-archive-header 共用） */
-
-.main-title {
-    font-size: 3.5rem;
-    font-weight: 900;
-    color: var(--yellow);
-    margin: 0;
-    letter-spacing: 8px;
-    text-transform: uppercase;
-    text-shadow: 0 0 30px rgba(255, 221, 0, 0.75);
-}
-
-.subtitle-wrap {
-    margin-top: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.subtitle-wrap::before,
-.subtitle-wrap::after {
-    content: "";
-    flex: 1;
-    height: 3px;
-    background-color: #ffcc00;
-    /* 水晶黃 */
-    max-width: 60px;
-}
-
-.sub-title {
-    font-size: 1rem;
-    color: #d4d4d4;
-    letter-spacing: 6px;
-    margin: 0 25px;
-}
+/* 頂部 banner 主標／副標：style.css .site-header-inner（HTML 加在 .header-inner 上） */
 
 .concert-page .concert-container {
     padding: 50px 0;

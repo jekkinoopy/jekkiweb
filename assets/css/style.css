@@ -513,12 +513,7 @@ footer {
     padding: 0.5rem;
 }
 
-.hero h1 {
-    font-size: 2.5rem;
-    line-height: 1.2;
-    color: var(--primary);
-    text-shadow: 0 0 30px rgba(255, 221, 0, 0.8);
-}
+/* 頂欄主標／副標字級與色見 .site-header-inner（對齊 extra/totoga2-copy-ebook.html） */
 
 .hero p {
     font-size: 1.2rem;
@@ -1563,7 +1558,8 @@ header.map-archive-header {
     box-sizing: border-box;
 }
 
-.map-archive-header .main-title {
+/* 全站頂欄標題語彙（母本：extra/totoga2-copy-ebook.html → .header-inner.site-header-inner） */
+.site-header-inner .main-title {
     font-size: clamp(2rem, 4.5vw, 3.2rem);
     font-weight: 900;
     color: var(--yellow, var(--primary));
@@ -1573,21 +1569,27 @@ header.map-archive-header {
     text-shadow: 0 0 30px rgba(255, 221, 0, 0.75);
 }
 
-.map-archive-header .subtitle-wrap {
+.site-header-inner .subtitle-wrap {
     margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.map-archive-header .subtitle-wrap::before,
-.map-archive-header .subtitle-wrap::after {
+.site-header-inner .subtitle-wrap::before,
+.site-header-inner .subtitle-wrap::after {
+    content: "";
+    flex: 1;
     height: 3px;
     background-color: #ffcc00;
     max-width: 56px;
 }
 
-.map-archive-header .sub-title {
+.site-header-inner .sub-title {
     font-size: 0.92rem;
     letter-spacing: 4px;
     color: #d4d4d4;
+    margin: 0;
 }
 
 .map-layout {
@@ -1892,7 +1894,7 @@ header.map-archive-header {
 }
 
 @media (max-width: 920px) {
-    .map-archive-header .main-title {
+    .site-header-inner .main-title {
         letter-spacing: 4px;
     }
 

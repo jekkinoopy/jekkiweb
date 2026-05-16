@@ -134,7 +134,7 @@
         padding: clamp(18px, 4vw, 22px);
     }
 
-    .map-archive-header .main-title {
+    .site-header-inner .main-title {
         letter-spacing: clamp(3px, 1vw, 6px);
     }
 
