@@ -1568,35 +1568,38 @@ a {
     display: block;
 }
 
-/* 備註：改用奇偶自動分邊，新增中間節點時不需要手動加 class */
-.merged-storyline .story-node:nth-of-type(odd) {
-    margin-right: auto;
-    margin-top: 30px;
-}
+/* 備註：奇偶分邊僅桌面（≥1181px）；平板／手機見 tablet.css、下方 ≤900px */
+@media (min-width: 1181px) {
 
-.merged-storyline .story-node:nth-of-type(odd)::before {
-    right: -49px;
-}
+    .merged-storyline .story-node:nth-of-type(odd) {
+        margin-right: auto;
+        margin-top: 30px;
+    }
 
-.merged-storyline .story-node:nth-of-type(odd)::after {
-    right: -10px;
-    top: -20px;
-    transform: rotate(30deg);
-}
+    .merged-storyline .story-node:nth-of-type(odd)::before {
+        right: -49px;
+    }
 
-.merged-storyline .story-node:nth-of-type(even) {
-    margin-left: auto;
-    margin-top: 10px;
-}
+    .merged-storyline .story-node:nth-of-type(odd)::after {
+        right: -10px;
+        top: -20px;
+        transform: rotate(30deg);
+    }
 
-.merged-storyline .story-node:nth-of-type(even)::before {
-    left: -49px;
-}
+    .merged-storyline .story-node:nth-of-type(even) {
+        margin-left: auto;
+        margin-top: 10px;
+    }
 
-.merged-storyline .story-node:nth-of-type(even)::after {
-    left: -10px;
-    top: -20px;
-    transform: rotate(-30deg);
+    .merged-storyline .story-node:nth-of-type(even)::before {
+        left: -49px;
+    }
+
+    .merged-storyline .story-node:nth-of-type(even)::after {
+        left: -10px;
+        top: -20px;
+        transform: rotate(-30deg);
+    }
 }
 
 /* 跨時空軌跡：2016 六六歌節點 — 強調電子書 CTA */
@@ -1786,10 +1789,16 @@ a {
     .merged-storyline .story-node::after,
     .merged-storyline .story-node:nth-of-type(odd)::after,
     .merged-storyline .story-node:nth-of-type(even)::after {
-        left: 14px;
+        left: 12px;
         right: auto;
         top: -14px;
         transform: rotate(-8deg);
+        transform-origin: center center;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1.2;
+        padding: 4px 9px;
     }
 
     .merged-storyline .story-node:nth-of-type(odd)::before,
@@ -1800,7 +1809,7 @@ a {
 
     .merged-storyline .story-node:nth-of-type(odd),
     .merged-storyline .story-node:nth-of-type(even) {
-        margin-top: 28px;
+        margin-top: 35px;
     }
 }
 

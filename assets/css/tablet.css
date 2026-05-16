@@ -136,10 +136,16 @@
     .merged-storyline .story-node::after,
     .merged-storyline .story-node:nth-of-type(odd)::after,
     .merged-storyline .story-node:nth-of-type(even)::after {
-        left: 14px;
+        left: 12px;
         right: auto;
         top: -14px;
         transform: rotate(-8deg);
+        transform-origin: center center;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1.2;
+        padding: 4px 9px;
     }
 
     .merged-storyline .story-node:nth-of-type(odd)::before,
@@ -150,7 +156,7 @@
 
     .merged-storyline .story-node:nth-of-type(odd),
     .merged-storyline .story-node:nth-of-type(even) {
-        margin-top: 28px;
+        margin-top: 35px;
     }
 
     /* 紀實長卷／pillar 段落 */
