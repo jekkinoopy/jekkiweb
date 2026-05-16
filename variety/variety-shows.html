@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>水晶男孩｜綜藝出演總表</title>
+    <title>水晶男孩｜全員發瘋</title>
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/tablet.css">
@@ -118,6 +118,30 @@
             line-height: 1.6;
         }
 
+        body.variety-shows-page .variety-shows-subsection {
+            margin-top: 2rem;
+        }
+
+        body.variety-shows-page .variety-shows-subsection:first-of-type {
+            margin-top: 0;
+        }
+
+        body.variety-shows-page .variety-shows-subsection>h3 {
+            margin: 0 0 0.75rem;
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: #303030;
+            text-align: left;
+        }
+
+        body.variety-shows-page .variety-shows-placeholder {
+            margin: 0;
+            text-align: left;
+            color: #6a6a6a;
+            font-size: 0.92rem;
+            line-height: 1.65;
+        }
+
         body.variety-shows-page .variety-shows-back {
             display: inline-flex;
             align-items: center;
@@ -143,9 +167,9 @@
 <body class="chronicle-page variety-shows-page">
     <header class="map-archive-header">
         <div class="header-inner site-header-inner">
-            <h1 class="main-title">綜藝出演總表</h1>
+            <h1 class="main-title">全員發瘋</h1>
             <div class="subtitle-wrap">
-                <span class="sub-title">VARIETY APPEARANCE ARCHIVE</span>
+                <span class="sub-title">VARIETY · ALL OUT</span>
             </div>
         </div>
     </header>
@@ -156,13 +180,17 @@
 
     <main class="content-container variety-page-main variety-shows-main chronicle-reader">
         <section id="variety-shows" class="variety-block" aria-labelledby="variety-shows-title">
-            <h2 class="section-title" id="variety-shows-title">隊長帶弟弟</h2>
-            <div class="search-section">
-                <input type="search" id="variety-shows-search" class="search-input" placeholder="搜尋成員或節目…"
-                    autocomplete="off" aria-controls="variety-shows-table" aria-label="搜尋成員或節目">
-            </div>
-            <div class="variety-wiki-table-wrap">
-                <table class="variety-wiki-table" id="variety-shows-table">
+            <h2 class="section-title" id="variety-shows-title">全員發瘋</h2>
+
+            <section class="variety-shows-subsection" id="captain-brothers" aria-labelledby="captain-brothers-title">
+                <h3 id="captain-brothers-title">隊長帶弟弟</h3>
+                <p class="variety-shows-placeholder">團綜節目：多人一起上的固定出演與合體綜藝。</p>
+                <div class="search-section">
+                    <input type="search" id="variety-captain-search" class="search-input" placeholder="搜尋成員或節目…"
+                        autocomplete="off" aria-controls="variety-captain-table" aria-label="搜尋隊長帶弟弟區的成員或節目">
+                </div>
+                <div class="variety-wiki-table-wrap">
+                    <table class="variety-wiki-table" id="variety-captain-table">
                         <thead>
                             <tr>
                                 <th scope="col">播出日期</th>
@@ -310,7 +338,35 @@
                         </tbody>
                     </table>
                 </div>
-            <p class="variety-shows-note">資料整理自公開播出紀錄，集數與譯名若有出入以實際播出版本為準；歡迎之後逐列補上主持、嘉賓等區塊。</p>
+            </section>
+
+            <section class="variety-shows-subsection" id="each-rampage" aria-labelledby="each-rampage-title">
+                <h3 id="each-rampage-title">各自暴走</h3>
+                <p class="variety-shows-placeholder">個人綜藝：成員各自上的節目，之後在此分表整理。</p>
+                <div class="search-section">
+                    <input type="search" id="variety-solo-search" class="search-input" placeholder="搜尋成員或節目…"
+                        autocomplete="off" aria-controls="variety-solo-table" aria-label="搜尋各自暴走區的成員或節目">
+                </div>
+                <div class="variety-wiki-table-wrap">
+                    <table class="variety-wiki-table" id="variety-solo-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">播出日期</th>
+                                <th scope="col">頻道</th>
+                                <th scope="col">節目名稱</th>
+                                <th scope="col">出演成員</th>
+                                <th scope="col">集數</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="5">陸續補上；站內專頁例：<a class="variety-wiki-table__link--site"
+                                        href="NJTW/NJTW5.html">《新西遊記5》</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
 
             <a class="variety-shows-back" href="variety.html#variety"><i class="fa-solid fa-arrow-left"
                     aria-hidden="true"></i> 返回瘋子與天才</a>
@@ -328,17 +384,20 @@
     <script src="../assets/js/particles.js"></script>
     <script>
         (function () {
-            const input = document.getElementById("variety-shows-search");
-            const rows = document.querySelectorAll("#variety-shows-table tbody tr");
-            if (!input || !rows.length) return;
-
-            input.addEventListener("input", () => {
-                const q = input.value.trim().toLowerCase();
-                rows.forEach((row) => {
-                    const text = row.textContent.replace(/\s+/g, " ").trim().toLowerCase();
-                    row.hidden = Boolean(q) && !text.includes(q);
+            function bindTableSearch(inputId, tableId) {
+                const input = document.getElementById(inputId);
+                const rows = document.querySelectorAll(`#${tableId} tbody tr`);
+                if (!input || !rows.length) return;
+                input.addEventListener("input", () => {
+                    const q = input.value.trim().toLowerCase();
+                    rows.forEach((row) => {
+                        const text = row.textContent.replace(/\s+/g, " ").trim().toLowerCase();
+                        row.hidden = Boolean(q) && !text.includes(q);
+                    });
                 });
-            });
+            }
+            bindTableSearch("variety-captain-search", "variety-captain-table");
+            bindTableSearch("variety-solo-search", "variety-solo-table");
         })();
     </script>
 </body>
