@@ -3,10 +3,10 @@
      * ── 導覽「尚未開放」連結 ─────────────────────────────────────────
      * 【兩個世界】① 僅 `extra/site-guide.html`：`<nav data-portal-nav-all-open>` 頂欄全可點；`main.site-guide-main` 內 `<a>` 不改寫。
      *    ② 其餘每一頁：頂欄＋**頁內所有連結**（含 totoga2 分頁列、首頁內文）皆依 COMING_SOON／INDEX 白名單鎖定。
-     * 【totoga2】頂欄四入口：時間軸（`totoga2-copy-timeline.html`）、圖文好讀版（`totoga2.html`）在 Set；電子書／影片可點。未同意不得從 Set 刪除或擅自開放。
+     * 【totoga2】頂欄四入口：時間軸（`timeline.html`）、圖文好讀版（`readable.html`）在 Set；電子書／影片可點。未同意不得從 Set 刪除或擅自開放。
      * 【硬規則】檔案在 repo ≠ 可開放；未同意不得從 Set 刪名、不得擴白名單、不得在模板新增可點項。
      * 【未公開】href 改 #、不可點。頂欄與頁內按鈕：NAV_SOON_PHRASES 滑過隨機氣泡（同 ::after）；無障礙 aria「尚無開放」；不加可見「（籌備中）」文字後綴。
-     * 【totoga2 開放】`extra/totoga2-copy-ebook.html`、`extra/totoga2-video.html` 可點；`totoga2-copy-timeline.html` 與 `fallen/totoga2.html` 在 Set 內。
+     * 【totoga2 開放】`totoga2/ebook.html`、`totoga2/video.html` 可點；`timeline.html` 與 `totoga2/readable.html` 在 Set 內。
      * 頂欄勿加 `portal-nav__sub`（站主未要求）；曾用副標見 `.cursor/portal-nav-optimization-backlog.md`。
      * 完整條文：`.cursor/rules/portal-nav-rules.mdc` + `user-scope-and-nav.mdc`
      */
@@ -65,8 +65,8 @@
         "member.html",
         "minister.html",
         "minister_ge.html",
-        "totoga2.html",
-        "totoga2-copy-timeline.html",
+        "readable.html",
+        "timeline.html",
         "variety.html",
     ]);
 
@@ -251,10 +251,10 @@
             <li class="portal-nav__subgroup">
                 <span class="portal-nav__subgroup-head"><span class="portal-nav__label">傳奇的轉折</span></span>
                 <ul class="portal-submenu-nested" aria-label="傳奇的轉折">
-                    <li><a target="_blank" rel="noopener noreferrer" href="${rp}extra/totoga2-copy-timeline.html"><span class="portal-nav__label">時間軸</span></a></li>
-                    <li><a target="_blank" rel="noopener noreferrer" href="${rp}extra/totoga2-copy-ebook.html"><span class="portal-nav__label">電子書</span></a></li>
-                    <li><a target="_blank" rel="noopener noreferrer" href="${rp}fallen/totoga2.html"><span class="portal-nav__label">圖文好讀版</span></a></li>
-                    <li><a target="_blank" rel="noopener noreferrer" href="${rp}extra/totoga2-video.html"><span class="portal-nav__label">影片</span></a></li>
+                    <li><a target="_blank" rel="noopener noreferrer" href="${rp}totoga2/timeline.html"><span class="portal-nav__label">時間軸</span></a></li>
+                    <li><a target="_blank" rel="noopener noreferrer" href="${rp}totoga2/ebook.html"><span class="portal-nav__label">電子書</span></a></li>
+                    <li><a target="_blank" rel="noopener noreferrer" href="${rp}totoga2/readable.html"><span class="portal-nav__label">圖文好讀版</span></a></li>
+                    <li><a target="_blank" rel="noopener noreferrer" href="${rp}totoga2/video.html"><span class="portal-nav__label">影片</span></a></li>
                 </ul>
             </li>
             <li class="portal-nav__subgroup">
