@@ -28,22 +28,75 @@
             overflow: hidden;
         }
 
-        body.variety-shows-page .variety-shows-heading {
-            display: block;
-            margin: 0 0 1.25rem;
-            font-size: clamp(1.15rem, 2.5vw, 1.5rem);
-            font-weight: 900;
-            text-align: center;
-            color: #333;
-            letter-spacing: 0.04em;
-        }
-
-        body.variety-shows-page .variety-shows-tabs {
+        body.variety-shows-page .variety-shows-toolbar {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 12px 16px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 1;
+        }
+
+        body.variety-shows-page .variety-shows-toolbar .variety-shows-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
             gap: 10px;
-            margin: 0 0 1.5rem;
+            margin: 0;
+            flex: 0 1 auto;
+        }
+
+        body.variety-shows-page .variety-shows-toolbar .search-input {
+            width: auto;
+            flex: 1 1 220px;
+            max-width: 400px;
+            min-width: 160px;
+            margin: 0 0 0 auto;
+        }
+
+        body.variety-shows-page .variety-shows-year-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            gap: 8px;
+            margin: 0 0 1.25rem;
+            padding: 0;
+            list-style: none;
+        }
+
+        body.variety-shows-page .variety-shows-year-nav button {
+            border: 1px solid #e0e0e0;
+            background: #fafafa;
+            color: #333;
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 8px 14px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        body.variety-shows-page .variety-shows-year-nav button:hover,
+        body.variety-shows-page .variety-shows-year-nav button:focus-visible {
+            border-color: #ffcc00;
+            background: #fff9e0;
+            outline: none;
+        }
+
+        body.variety-shows-page .variety-shows-year-nav button.is-active {
+            border-color: #ffcc00;
+            background: #ffcc00;
+            color: #2f2f2f;
+        }
+
+        body.variety-shows-page .variety-shows-year-nav[hidden] {
+            display: none;
         }
 
         body.variety-shows-page .variety-shows-table-slot[hidden] {
@@ -267,24 +320,29 @@
 
     <canvas id="particles"></canvas>
 
-    <div class="search-section">
+    <div class="variety-shows-toolbar search-section">
+        <div class="variety-shows-tabs" role="tablist" aria-label="綜藝分類">
+            <button type="button" class="tab-btn active" role="tab" id="variety-tab-all" data-tab="all"
+                aria-selected="true" aria-controls="variety-shows-panels">全部</button>
+            <button type="button" class="tab-btn" role="tab" id="variety-tab-captain" data-tab="captain"
+                aria-selected="false" aria-controls="variety-shows-panels">隊長帶弟弟</button>
+            <button type="button" class="tab-btn" role="tab" id="variety-tab-solo" data-tab="solo"
+                aria-selected="false" aria-controls="variety-shows-panels">各自暴走</button>
+        </div>
         <input type="search" id="variety-shows-search" class="search-input" placeholder="搜尋成員或節目…"
             autocomplete="off" aria-label="搜尋成員或節目">
     </div>
 
     <main class="concert-container variety-shows-container">
-        <section id="variety-shows" class="variety-shows-archive" aria-labelledby="variety-shows-title">
+        <section id="variety-shows" class="variety-shows-archive" aria-label="全員發瘋">
             <div class="variety-shows-archive-card">
-            <h2 class="variety-shows-heading" id="variety-shows-title">全員發瘋</h2>
-
-            <div class="variety-shows-tabs" role="tablist" aria-label="綜藝分類">
-                <button type="button" class="tab-btn active" role="tab" id="variety-tab-all" data-tab="all"
-                    aria-selected="true" aria-controls="variety-shows-panels">全員發瘋</button>
-                <button type="button" class="tab-btn" role="tab" id="variety-tab-captain" data-tab="captain"
-                    aria-selected="false" aria-controls="variety-shows-panels">隊長帶弟弟</button>
-                <button type="button" class="tab-btn" role="tab" id="variety-tab-solo" data-tab="solo"
-                    aria-selected="false" aria-controls="variety-shows-panels">各自暴走</button>
-            </div>
+            <nav class="variety-shows-year-nav" aria-label="年份">
+                <button type="button" data-year="2016">2016</button>
+                <button type="button" data-year="2017">2017</button>
+                <button type="button" data-year="2018">2018</button>
+                <button type="button" data-year="2019">2019</button>
+                <button type="button" data-year="2020">2020</button>
+            </nav>
 
             <div id="variety-shows-panels" class="variety-shows-panels">
                 <div class="variety-shows-table-slot" id="captain-brothers" data-show-tabs="all captain">
@@ -715,6 +773,10 @@
             const tabBtns = document.querySelectorAll(".variety-shows-tabs .tab-btn");
             const slots = document.querySelectorAll(".variety-shows-table-slot");
             const input = document.getElementById("variety-shows-search");
+            const yearNav = document.querySelector(".variety-shows-year-nav");
+            const yearNavBtns = yearNav
+                ? yearNav.querySelectorAll("button[data-year]")
+                : [];
             const hashToTab = {
                 "captain-brothers": "captain",
                 "each-rampage": "solo",
@@ -732,6 +794,35 @@
                 btn.setAttribute("aria-expanded", open ? "true" : "false");
                 panel.hidden = !open;
                 yearRow.classList.toggle("is-open", open);
+            }
+
+            function visibleSlotWithYears() {
+                return Array.from(slots).find(
+                    (slot) => !slot.hidden && slot.querySelector(".variety-table__year-row")
+                );
+            }
+
+            function setActiveYearNav(year) {
+                yearNavBtns.forEach((btn) => {
+                    btn.classList.toggle("is-active", btn.dataset.year === year);
+                });
+            }
+
+            function openYear(year) {
+                const slot = visibleSlotWithYears();
+                if (!slot) return;
+                const yearRow = slot.querySelector(
+                    `.variety-table__year-row[data-year="${year}"]`
+                );
+                if (!yearRow) return;
+                setYearOpen(yearRow, true);
+                setActiveYearNav(year);
+                yearRow.scrollIntoView({ behavior: "smooth", block: "nearest" });
+            }
+
+            function updateYearNavVisibility(tab) {
+                if (!yearNav) return;
+                yearNav.hidden = tab === "solo";
             }
 
             function filterVisibleRows() {
@@ -767,7 +858,14 @@
                     const yearRow = btn.closest(".variety-table__year-row");
                     const open = btn.getAttribute("aria-expanded") !== "true";
                     setYearOpen(yearRow, open);
+                    if (open && yearRow.dataset.year) {
+                        setActiveYearNav(yearRow.dataset.year);
+                    }
                 });
+            });
+
+            yearNavBtns.forEach((btn) => {
+                btn.addEventListener("click", () => openYear(btn.dataset.year));
             });
 
             function showTab(tab) {
@@ -780,6 +878,8 @@
                     const keys = (slot.dataset.showTabs || "").split(/\s+/);
                     slot.hidden = !keys.includes(tab);
                 });
+                updateYearNavVisibility(tab);
+                if (tab === "solo") setActiveYearNav("");
                 filterVisibleRows();
             }
 
