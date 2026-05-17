@@ -25,7 +25,8 @@
             border: 1px solid rgba(0, 0, 0, 0.02);
             position: relative;
             z-index: 1;
-            overflow: hidden;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         body.variety-shows-page .variety-shows-toolbar {
@@ -60,25 +61,14 @@
             margin: 0 0 0 auto;
         }
 
-        body.variety-shows-page .variety-shows-table-slot[hidden] {
+        body.variety-shows-page .variety-shows-archive-card>.variety-table[data-show-tabs][hidden] {
             display: none;
         }
 
-        body.variety-shows-page .variety-shows-table-slot+.variety-shows-table-slot {
+        body.variety-shows-page .variety-shows-archive-card>.variety-table[data-show-tabs]+.variety-table[data-show-tabs] {
             margin-top: 2rem;
             padding-top: 2rem;
             border-top: 1px solid #eee;
-        }
-
-        body.variety-shows-page .variety-table-wrap {
-            width: 100%;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            margin: 0;
-            background: transparent;
-            border: none;
-            box-shadow: none;
-            border-radius: 0;
         }
 
         body.variety-shows-page .variety-table {
@@ -269,11 +259,11 @@
     <div class="variety-shows-toolbar search-section">
         <div class="variety-shows-tabs" role="tablist" aria-label="綜藝分類">
             <button type="button" class="tab-btn active" role="tab" id="variety-tab-all" data-tab="all"
-                aria-selected="true" aria-controls="variety-shows-panels">全部</button>
+                aria-selected="true" aria-controls="variety-shows">全部</button>
             <button type="button" class="tab-btn" role="tab" id="variety-tab-captain" data-tab="captain"
-                aria-selected="false" aria-controls="variety-shows-panels">隊長帶弟弟</button>
+                aria-selected="false" aria-controls="variety-shows">隊長帶弟弟</button>
             <button type="button" class="tab-btn" role="tab" id="variety-tab-solo" data-tab="solo"
-                aria-selected="false" aria-controls="variety-shows-panels">各自暴走</button>
+                aria-selected="false" aria-controls="variety-shows">各自暴走</button>
         </div>
         <input type="search" id="variety-shows-search" class="search-input" placeholder="搜尋成員或節目…"
             autocomplete="off" aria-label="搜尋成員或節目">
@@ -282,10 +272,7 @@
     <main class="concert-container variety-shows-container">
         <section id="variety-shows" class="variety-shows-archive" aria-label="全員發瘋">
             <div class="variety-shows-archive-card">
-            <div id="variety-shows-panels" class="variety-shows-panels">
-                <div class="variety-shows-table-slot" id="captain-brothers" data-show-tabs="all captain">
-                    <div class="variety-table-wrap">
-                        <table class="variety-table" id="variety-captain-table">
+                <table class="variety-table" id="captain-brothers" data-show-tabs="all captain">
                             <thead>
                                 <tr>
                                     <th scope="col">播出日期</th>
@@ -629,13 +616,9 @@
                                                                 aria-hidden="true"></i>&nbsp;10＋導演版</td>
                                                     </tr>
                             </tbody>
-                        </table>
-                    </div>
-                </div>
+                </table>
 
-                <div class="variety-shows-table-slot" id="each-rampage" data-show-tabs="all solo">
-                    <div class="variety-table-wrap">
-                        <table class="variety-table" id="variety-solo-table">
+                <table class="variety-table" id="each-rampage" data-show-tabs="all solo">
                             <thead>
                                 <tr>
                                     <th scope="col">播出日期</th>
@@ -651,10 +634,7 @@
                                             href="NJTW/NJTW5.html">新西遊記5</a></td>
                                 </tr>
                             </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+                </table>
 
             <a class="variety-shows-back" href="variety.html#variety"><i class="fa-solid fa-arrow-left"
                     aria-hidden="true"></i> 返回瘋子與天才</a>
@@ -674,7 +654,9 @@
     <script>
         (function () {
             const tabBtns = document.querySelectorAll(".variety-shows-tabs .tab-btn");
-            const slots = document.querySelectorAll(".variety-shows-table-slot");
+            const slots = document.querySelectorAll(
+                ".variety-shows-archive-card .variety-table[data-show-tabs]"
+            );
             const input = document.getElementById("variety-shows-search");
             const hashToTab = {
                 "captain-brothers": "captain",
@@ -733,7 +715,7 @@
                 if (!btn) return;
                 btn.setAttribute("aria-expanded", open ? "true" : "false");
                 yearRow.classList.toggle("is-open", open);
-                const slot = yearRow.closest(".variety-shows-table-slot");
+                const slot = yearRow.closest("table[data-show-tabs]");
                 if (slot) syncYearRows(slot);
             }
 
