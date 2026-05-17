@@ -133,13 +133,27 @@
             transition: background-color 0.15s ease;
         }
 
-        body.variety-shows-page .variety-table__year-toggle {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            gap: 12px;
+        body.variety-shows-page .variety-table__year-bar {
+            padding: 0;
+            vertical-align: middle;
+        }
+
+        body.variety-shows-page .variety-table__year-bar-inner {
+            position: relative;
+            display: block;
             width: 100%;
             min-height: 48px;
+            box-sizing: border-box;
+        }
+
+        body.variety-shows-page .variety-table__year-toggle {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             margin: 0;
             padding: 12px 16px;
             border: none;
@@ -148,14 +162,22 @@
             cursor: pointer;
             font: inherit;
             color: #333;
-            text-align: left;
+            text-align: center;
+            white-space: nowrap;
+            transform: translate(-50%, -50%);
             box-sizing: border-box;
         }
 
         body.variety-shows-page .variety-table__year-tail {
-            padding: 12px 16px;
-            text-align: right;
-            vertical-align: middle;
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            z-index: 2;
+            display: inline-flex;
+            align-items: center;
+            gap: 0;
+            padding: 0;
+            transform: translateY(-50%);
             white-space: nowrap;
             cursor: pointer;
         }
@@ -173,6 +195,7 @@
             font-weight: 800;
             font-size: clamp(1rem, 2vw, 1.12rem);
             color: #333;
+            white-space: nowrap;
         }
 
         body.variety-shows-page .variety-table__year-meta {
@@ -188,7 +211,7 @@
             transition: transform 0.2s ease;
         }
 
-        body.variety-shows-page .variety-table__year-row.is-open .variety-table__year-chevron {
+        body.variety-shows-page .variety-table__year-row.is-open .variety-table__year-tail .variety-table__year-chevron {
             transform: rotate(180deg);
         }
 
@@ -301,6 +324,13 @@
         <section id="variety-shows" class="variety-shows-archive" aria-label="全員發瘋">
             <div class="variety-shows-archive-card">
                 <table class="variety-table" id="captain-brothers" data-show-tabs="all captain">
+                            <colgroup>
+                                <col class="variety-table__col-air">
+                                <col class="variety-table__col-channel">
+                                <col class="variety-table__col-program">
+                                <col class="variety-table__col-member">
+                                <col class="variety-table__col-eps">
+                            </colgroup>
                             <thead>
                                 <tr>
                                     <th scope="col">播出日期</th>
@@ -310,23 +340,18 @@
                                     <th scope="col">集數</th>
                                 </tr>
                             </thead>
-                            <colgroup>
-                                <col class="variety-table__col-air">
-                                <col class="variety-table__col-channel">
-                                <col class="variety-table__col-program">
-                                <col class="variety-table__col-member">
-                                <col class="variety-table__col-eps">
-                            </colgroup>
 <tbody class="variety-table__year-list">
-                                                                <tr class="variety-table__year-row" data-year="2016">
-                                    <td colspan="4" class="variety-table__year-head">
+                                                                                                <tr class="variety-table__year-row" data-year="2016">
+                                    <td colspan="5" class="variety-table__year-bar">
+                                        <div class="variety-table__year-bar-inner">
                                         <button type="button" class="variety-table__year-toggle" aria-expanded="false" id="captain-year-2016-btn">
                                             <span class="variety-table__year-label">2016</span>
                                         </button>
-                                    </td>
-                                    <td class="variety-table__year-tail">
-                                        <span class="variety-table__year-meta">6 檔</span>
-                                        <i class="fa-solid fa-chevron-down variety-table__year-chevron" aria-hidden="true"></i>
+                                        <div class="variety-table__year-tail">
+                                            <span class="variety-table__year-meta">6 檔</span>
+                                            <i class="fa-solid fa-chevron-down variety-table__year-chevron" aria-hidden="true"></i>
+                                        </div>
+                                        </div>
                                     </td>
                                 </tr>
 <tr class="variety-table__show-row" data-year="2016" hidden>
@@ -413,15 +438,17 @@
                                                                 class="fa-solid fa-circle-right variety-table__range-arrow"
                                                                 aria-hidden="true"></i>&nbsp;02</td>
                                                     </tr>
-                                                                <tr class="variety-table__year-row" data-year="2017">
-                                    <td colspan="4" class="variety-table__year-head">
+                                                                                                <tr class="variety-table__year-row" data-year="2017">
+                                    <td colspan="5" class="variety-table__year-bar">
+                                        <div class="variety-table__year-bar-inner">
                                         <button type="button" class="variety-table__year-toggle" aria-expanded="false" id="captain-year-2017-btn">
                                             <span class="variety-table__year-label">2017</span>
                                         </button>
-                                    </td>
-                                    <td class="variety-table__year-tail">
-                                        <span class="variety-table__year-meta">4 檔</span>
-                                        <i class="fa-solid fa-chevron-down variety-table__year-chevron" aria-hidden="true"></i>
+                                        <div class="variety-table__year-tail">
+                                            <span class="variety-table__year-meta">4 檔</span>
+                                            <i class="fa-solid fa-chevron-down variety-table__year-chevron" aria-hidden="true"></i>
+                                        </div>
+                                        </div>
                                     </td>
                                 </tr>
 <tr class="variety-table__show-row" data-year="2017" hidden>
@@ -480,15 +507,17 @@
                                                                 class="fa-solid fa-circle-right variety-table__range-arrow"
                                                                 aria-hidden="true"></i>&nbsp;05＋導演版</td>
                                                     </tr>
-                                                                <tr class="variety-table__year-row" data-year="2018">
-                                    <td colspan="4" class="variety-table__year-head">
+                                                                                                <tr class="variety-table__year-row" data-year="2018">
+                                    <td colspan="5" class="variety-table__year-bar">
+                                        <div class="variety-table__year-bar-inner">
                                         <button type="button" class="variety-table__year-toggle" aria-expanded="false" id="captain-year-2018-btn">
                                             <span class="variety-table__year-label">2018</span>
                                         </button>
-                                    </td>
-                                    <td class="variety-table__year-tail">
-                                        <span class="variety-table__year-meta">3 檔</span>
-                                        <i class="fa-solid fa-chevron-down variety-table__year-chevron" aria-hidden="true"></i>
+                                        <div class="variety-table__year-tail">
+                                            <span class="variety-table__year-meta">3 檔</span>
+                                            <i class="fa-solid fa-chevron-down variety-table__year-chevron" aria-hidden="true"></i>
+                                        </div>
+                                        </div>
                                     </td>
                                 </tr>
 <tr class="variety-table__show-row" data-year="2018" hidden>
@@ -535,15 +564,17 @@
                                                                 class="fa-solid fa-circle-right variety-table__range-arrow"
                                                                 aria-hidden="true"></i>&nbsp;05＋導演版</td>
                                                     </tr>
-                                                                <tr class="variety-table__year-row" data-year="2019">
-                                    <td colspan="4" class="variety-table__year-head">
+                                                                                                <tr class="variety-table__year-row" data-year="2019">
+                                    <td colspan="5" class="variety-table__year-bar">
+                                        <div class="variety-table__year-bar-inner">
                                         <button type="button" class="variety-table__year-toggle" aria-expanded="false" id="captain-year-2019-btn">
                                             <span class="variety-table__year-label">2019</span>
                                         </button>
-                                    </td>
-                                    <td class="variety-table__year-tail">
-                                        <span class="variety-table__year-meta">5 檔</span>
-                                        <i class="fa-solid fa-chevron-down variety-table__year-chevron" aria-hidden="true"></i>
+                                        <div class="variety-table__year-tail">
+                                            <span class="variety-table__year-meta">5 檔</span>
+                                            <i class="fa-solid fa-chevron-down variety-table__year-chevron" aria-hidden="true"></i>
+                                        </div>
+                                        </div>
                                     </td>
                                 </tr>
 <tr class="variety-table__show-row" data-year="2019" hidden>
@@ -616,15 +647,17 @@
                                                                 class="fa-solid fa-circle-right variety-table__range-arrow"
                                                                 aria-hidden="true"></i>&nbsp;11</td>
                                                     </tr>
-                                                                <tr class="variety-table__year-row" data-year="2020">
-                                    <td colspan="4" class="variety-table__year-head">
+                                                                                                <tr class="variety-table__year-row" data-year="2020">
+                                    <td colspan="5" class="variety-table__year-bar">
+                                        <div class="variety-table__year-bar-inner">
                                         <button type="button" class="variety-table__year-toggle" aria-expanded="false" id="captain-year-2020-btn">
                                             <span class="variety-table__year-label">2020</span>
                                         </button>
-                                    </td>
-                                    <td class="variety-table__year-tail">
-                                        <span class="variety-table__year-meta">2 檔</span>
-                                        <i class="fa-solid fa-chevron-down variety-table__year-chevron" aria-hidden="true"></i>
+                                        <div class="variety-table__year-tail">
+                                            <span class="variety-table__year-meta">2 檔</span>
+                                            <i class="fa-solid fa-chevron-down variety-table__year-chevron" aria-hidden="true"></i>
+                                        </div>
+                                        </div>
                                     </td>
                                 </tr>
 <tr class="variety-table__show-row" data-year="2020" hidden>
