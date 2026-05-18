@@ -2686,11 +2686,16 @@ body.ebook-ssg2-page .ebook-main p {
     line-height: 1.7;
 }
 
-body.ebook-ssg2-page .ebook-intro.section p+p {
-    margin-top: -0.5rem;
+/* 註解段用小字；勿用 p+p（會把連續 ebook-intro-lead 第 2 段起全縮小） */
+body.ebook-ssg2-page .ebook-intro.section p.ebook-intro-note {
+    margin: 0.35rem 0 0;
     font-size: 0.88rem;
     color: #777;
     line-height: 1.5;
+}
+
+body.ebook-ssg2-page .ebook-intro.section p.ebook-intro-lead + p.ebook-intro-note {
+    margin-top: -0.5rem;
 }
 
 body.ebook-ssg2-page .ebook-intro-notes {
