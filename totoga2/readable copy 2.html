@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/tablet.css">
     <style>
-        /* 圖列 container：僅 flex。內文須在 .ebook-main 內且包 .ebook-intro.section（與 ebook.html 同選擇器鏈） */
+        /* 圖列 container：僅 flex。內文 class 與 ebook.html 相同，字級／邊界交 style.css，勿覆寫置中與 max-width */
         body.ebook-ssg2-page.totoga2-page .ebook-main main#totoga2-reader.chronicle-reader {
             max-width: min(1280px, 96vw);
-            padding: 24px 20px;
+            padding: 1.5rem 1.25rem;
             margin: 0 auto 2rem;
             position: relative;
             z-index: 1;
@@ -68,46 +68,56 @@
             object-fit: cover;
         }
 
+        /* 圖欄仍多欄；內文欄改全寬（自帶 ebook-intro 或子層有 ebook-intro，與 container11 同列） */
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container > [class^="container"].ebook-intro.section,
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container > [class^="container"]:has(> .ebook-intro.section) {
+            flex: 1 1 100%;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        body.ebook-ssg2-page.totoga2-page .ebook-main .ebook-intro.section h2.section-title {
+            font-size: 1.5rem;
+        }
+
         body.ebook-ssg2-page.totoga2-page .ebook-main #totoga2-reader .ebook-intro.section h2.section-title {
-            color: var(--primary);
-            text-align: left;
-            font-size: 1.35rem;
-            letter-spacing: 3px;
-            margin: 0 0 20px;
-            text-transform: uppercase;
+            text-align: center;
         }
 
         body.ebook-ssg2-page.totoga2-page .ebook-main #totoga2-reader .ebook-intro.section h2.section-title::after {
-            content: "";
-            display: block;
-            width: 50px;
-            height: 3px;
-            background: var(--primary);
-            margin: 15px 0 0;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         body.ebook-ssg2-page.totoga2-page .ebook-main #totoga2-reader .ebook-intro.section p.ebook-intro-lead {
-            text-align: left;
-            max-width: none;
-            margin: 0 0 1.25rem;
-            color: #4a4a4a;
+            max-width: 42rem;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 1.25rem;
             line-height: 1.7;
-            font-size: inherit;
         }
 
         body.ebook-ssg2-page.totoga2-page .ebook-main #totoga2-reader .ebook-intro.section p.ebook-intro-note {
-            margin: 0.35rem 0 0;
-            text-align: right;
-            font-size: 0.88rem;
-            color: #777;
-            line-height: 1.5;
+            max-width: 42rem;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         body.ebook-ssg2-page.totoga2-page .ebook-main #totoga2-reader .ebook-intro.section h3 {
-            margin: 0 0 12px;
-            color: #252525;
-            letter-spacing: 1px;
-            font-size: 1.05rem;
+            max-width: 42rem;
+            margin: 0.5rem auto 0.875rem;
+            padding-left: 0.75rem;
+            border-left: 3px solid var(--primary);
+            color: #2a2a2a;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            line-height: 1.4;
+        }
+
+        body.ebook-ssg2-page.totoga2-page .ebook-main #totoga2-reader .ebook-intro.section[style*="background-color: var(--black)"] h3,
+        body.ebook-ssg2-page.totoga2-page .ebook-main #totoga2-reader .ebook-intro.section[style*="background-color: var(--primary)"] h3 {
+            border-left-color: currentColor;
         }
 
         @media (max-width: 768px) {
@@ -118,7 +128,7 @@
 
         @media (max-width: 640px) {
             body.ebook-ssg2-page.totoga2-page .ebook-main main#totoga2-reader.chronicle-reader {
-                padding: 18px 14px;
+                padding: 1.125rem 0.875rem;
             }
         }
     </style>
@@ -456,7 +466,7 @@
                     </p>
                     <p class="ebook-intro-lead" style="font-weight: bold; color: var(--dark-yellow);">
                         六個人一起跳著舞，聽著他們的歌曲沉浸在幸福中，這是世界上最讓他們感動的結局！本特輯搞笑又感動，長久羈絆的情感令人動容，千萬不要錯過。</p>
-                    <p class="ebook-intro-lead" style="text-align: center; margin-top: 20px; font-size: 16px; letter-spacing: 2px;">
+                    <p class="ebook-intro-lead" style="text-align: center; margin-top: 1.25rem; font-size: 1rem; letter-spacing: 0.12em;">
                         <strong>2000 年的缺憾，2016 年來彌補。謝謝無限挑戰，謝謝水晶男孩。</strong>
                     </p>
                     <p class="ebook-intro-note">圖片來源：MBC</p>
