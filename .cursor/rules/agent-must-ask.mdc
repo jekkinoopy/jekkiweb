@@ -21,20 +21,7 @@ alwaysApply: true
 
 ## Git：改完末尾附 commit
 
-每做完**一項**改動並已寫入檔案，回覆末尾附（**勿**為此反覆跑 `git status`／`git diff`）：
-
-```bash
-git add .
-git commit -m "類型 修改重點"
-```
-
-| 項目 | 約定 |
-|------|------|
-| 類型 | `feat`｜`fix`｜`style` 三選一 |
-| 重點 | **15 字以內**（標點計入） |
-| add | **一律 `git add .`**，禁止只 add 單檔 |
-
-- 只說「檢查」、未改檔 → 不附 commit。多項獨立交辦 → 每項各附一段。
+見 **`git-commit-required.mdc`**（格式、死線、禁止為 commit 跑終端機檢查）。
 
 ## Git：禁止擅自 push
 
