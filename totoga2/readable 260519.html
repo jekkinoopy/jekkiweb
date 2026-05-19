@@ -92,12 +92,6 @@
             overflow: visible;
         }
 
-        /* 好讀版內所有圖一致圓角（含 section 內）；overlap-style 除外 */
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.overlap-style) img,
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .containers > section.ebook-section img {
-            border-radius: 10px;
-        }
-
         body.ebook-ssg2-page.totoga2-page #totoga2-reader.chronicle-reader .container:has(img) {
             height: auto;
             min-height: 0;
@@ -206,7 +200,7 @@
             margin-right: 0;
         }
 
-        /* 圖片：隨欄寬等比縮放（不裁切、不拉扁） */
+        /* 圖片：隨欄寬等比縮放；#totoga2-reader 內一律 10px 圓角（含 section／四欄內） */
         body.ebook-ssg2-page.totoga2-page #totoga2-reader.chronicle-reader img {
             width: 100%;
             max-width: 100%;
@@ -215,6 +209,8 @@
             object-position: center center;
             display: block;
             box-sizing: border-box;
+            border-radius: 10px;
+            overflow: hidden;
         }
 
         /* 僅圖欄置中：限二／三欄 flex 列，不影響 overlap、四欄 float */
@@ -476,6 +472,12 @@
             content: "";
             display: block;
             clear: both;
+        }
+
+        /* overlap 三張重疊圖維持直角（其餘好讀版圖片見上方 chronicle-reader img） */
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.overlap-style img {
+            border-radius: 0;
+            overflow: visible;
         }
     </style>
     <link rel="stylesheet" href="split-nav.css">
