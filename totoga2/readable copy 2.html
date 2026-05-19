@@ -208,11 +208,15 @@
             margin-right: 0;
         }
 
+        /* 圖片：隨欄寬等比縮放（不裁切、不拉扁） */
         body.ebook-ssg2-page.totoga2-page #totoga2-reader.chronicle-reader img {
             width: 100%;
             max-width: 100%;
             height: auto;
+            object-fit: contain;
+            object-position: center center;
             display: block;
+            box-sizing: border-box;
         }
 
         /* 二欄列：父層 flex 等高（欄位改 flex 分寬，不再只靠 50% float 寬） */
@@ -244,11 +248,13 @@
 
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container21):has(> .container22)>.container21>img,
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container21):has(> .container22)>.container22>img {
-            flex: 1 1 auto;
+            flex: 0 1 auto;
             width: 100%;
-            height: 100%;
-            min-height: 100%;
-            object-fit: cover;
+            max-width: 100%;
+            height: auto;
+            min-height: 0;
+            object-fit: contain;
+            align-self: flex-start;
         }
 
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container21):has(> .container22)>.container21>section.ebook-intro.section,
@@ -266,11 +272,12 @@
         }
 
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .readable-col-2--stack>img {
-            flex: 1 1 0;
+            flex: 0 1 auto;
             width: 100%;
+            max-width: 100%;
             min-height: 0;
             height: auto;
-            object-fit: cover;
+            object-fit: contain;
         }
 
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container21):has(> .container22)>.readable-col-2--stack>img {
@@ -357,11 +364,13 @@
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container31):has(> .container32):has(> .container33)>.container31>img,
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container31):has(> .container32):has(> .container33)>.container32>img,
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container31):has(> .container32):has(> .container33)>.container33>img {
-            flex: 1 1 auto;
+            flex: 0 1 auto;
             width: 100%;
-            height: 100%;
-            min-height: 100%;
-            object-fit: cover;
+            max-width: 100%;
+            height: auto;
+            min-height: 0;
+            object-fit: contain;
+            align-self: flex-start;
         }
 
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container31):has(> .container32):has(> .container33)>.container31>section.ebook-intro.section,
@@ -396,11 +405,13 @@
         }
 
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container41):has(> .container42):has(> .container43):has(> .container44)>[class^="container4"]>img {
-            flex: 1 1 auto;
+            flex: 0 1 auto;
             width: 100%;
-            height: 100%;
-            min-height: 100%;
-            object-fit: cover;
+            max-width: 100%;
+            height: auto;
+            min-height: 0;
+            object-fit: contain;
+            align-self: flex-start;
         }
 
         /* 全寬單一 section：維持獨立卡片，避免與列卡雙重 margin */
@@ -437,8 +448,9 @@
 
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .readable-homework-block .box-content img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
             display: block;
         }
 
@@ -511,9 +523,9 @@
 
                 <div class="container">
                     <div class="container11 readable-col-1">
-                        <img src="/totoga2/readable/7-2_160416_0_02_35水晶男孩.jpg" alt="水晶男孩 COM' BACK">
+                        <img src="/totoga2/readable/07-2_160416_0_02_35水晶男孩.jpg" alt="水晶男孩 COM' BACK">
                         <section class="ebook-intro section">
-                            <h2 class="section-title">世紀末的追星狂狂熱，你聽過那場驚天動地的「黃色奇蹟」嗎？</h2>
+                            <h2 class="section-title">世紀末的追星狂熱，你聽過那場驚天動地的「黃色奇蹟」嗎？</h2>
                             <p class="ebook-intro-lead">在大韓民國綜藝史上，MBC《無限挑戰》締造了無數眼淚與歡笑，而其中最傳奇的企劃，莫過於將 90
                                 年代叱吒風雲的傳奇歌手們重新召集回舞台的「星期六星期六是歌手」（簡稱六六歌）。受邀歌手必須先在 KTV 唱歌通過測試，成績超過 95 分才能擁有登台資格。</p>
                             <p class="ebook-intro-lead">當時，創下無數輝輝煌紀錄、卻在 2000
@@ -521,10 +533,11 @@
                                 Turbo、S.E.S.、Jinusean 等歌手引爆熱潮，而無數粉絲期盼的水晶男孩只能抱憾缺席。</p>
                             <p class="ebook-intro-lead"><strong>傳奇不該就此謝幕。</strong></p>
                             <p class="ebook-intro-lead">於是，六六歌於 2016 年 4 月開啟了第二季的篇章。</p>
-                            <p class="ebook-intro-note">圖片來源：MBC</p>
+
                         </section>
                     </div>
                 </div>
+
 
                 <div class="container">
                     <div class="container22 readable-col-2 readable-col-2--left">
@@ -540,7 +553,7 @@
                                 無限挑戰中原本的五名主持卻只來兩位，原來是因為這次的企劃是高度機密，為了避免消息走漏讓企劃流局，遺憾的先將另外三名排除在外，由口風較緊的國民主持人劉在錫和 HAHA 參與。接著
                                 HAHA
                                 開始猜測嘉賓，依照身上的裝扮大概念猜到，是不是一開始跳的舞曲〈品生品死〉的原唱，正是第一季曾出演過的水院、在德所屬團體－水晶男孩。</p>
-                            <p class="ebook-intro-note">圖片來源：MBC</p>
+
                         </section>
                     </div>
                 </div>
@@ -556,13 +569,13 @@
                         <p class="ebook-intro-lead">然而 2000 年 5 月 18 日，水晶男孩卻召開記者會，無預警宣布解散...
                             令粉絲陷入莫大的震驚與悲慟。由於水晶男孩在事業巔峰期做出解散的決定，令外界深感意外不解，歌迷更是無法接受，部分激進歌迷群起橫躺街頭抗議，幾乎成為社會事件。解散的 16
                             年間，六人皆未以水晶男孩名義合體演出。</p>
-                        <p class="ebook-intro-note">圖片來源：MBC</p>
+
                     </section>
                 </div>
 
                 <div class="container">
                     <div class="container11 readable-col-1">
-                        <img src="/totoga2/readable/6-1需要極度保密.jpeg" alt="正式交涉高度保密">
+                        <img src="/totoga2/readable/06-1需要極度保密.jpeg" alt="正式交涉高度保密">
                         <section class="ebook-intro section" style="padding-top: 15px;">
                             <h2 class="section-title">正式交涉</h2>
                             <p class="ebook-intro-lead">兩位主持爆笑登場後，互相寒暄近況、簡單介紹一下水晶男孩、也提到當年備受矚目的動作 Back down
@@ -723,7 +736,7 @@
                                 然而水晶男孩當中，有一位成員高志溶已經退出演藝圈十多年，近年來唯一的消息就是三年前和女醫師結婚，從偶像變成企業家，若要全員出演，需要說服離開舞台 16
                                 年的他......
                             </p>
-                            <p class="ebook-intro-note">圖片來源：MBC</p>
+
                         </section>
                     </div>
                     <div class="container21 readable-col-2 readable-col-2--right">
@@ -755,7 +768,7 @@
                             游擊演唱會是臨時聚集觀眾的公演，不能提前公開日程，因此需要和製作組簽訂一個保密協議。如果在演唱會之前消息走漏，將會取消演唱會，實行
                             <strong>B計劃：愛做不做公演</strong>。此計劃內容為不管是什麼場地，只要觀眾需要，就必須去演出。
                         </p>
-                        <p class="ebook-intro-note">圖片來源：MBC</p>
+
                     </section>
                 </div>
 
@@ -938,7 +951,7 @@
                             style="text-align: center; margin-top: 1.25rem; font-size: 1rem; letter-spacing: 0.12em;">
                             <strong>2000 年的缺憾，2016 年來彌補。謝謝無限挑戰，謝謝水晶男孩。</strong>
                         </p>
-                        <p class="ebook-intro-note">圖片來源：MBC</p>
+
                     </section>
                 </div>
 
