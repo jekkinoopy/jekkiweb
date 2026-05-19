@@ -264,6 +264,49 @@
             margin-bottom: 0;
         }
 
+        /* 文繞圖：float + shape-outside（依圖 alpha 輪廓；底需透明 PNG 才非矩形） */
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.readable-text-wrap {
+            display: block;
+            width: 100%;
+        }
+
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.readable-text-wrap::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.readable-text-wrap>section.ebook-intro.section {
+            clear: none;
+            overflow: visible;
+        }
+
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.readable-text-wrap>section.ebook-intro.section::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.readable-text-wrap .readable-text-wrap__figure {
+            float: left;
+            width: min(42%, 18rem);
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+            margin: 0.25rem 0 0.75rem 0;
+            border-radius: 10px;
+            shape-outside: url("/totoga2/readable/04-2_totoka.png");
+            -webkit-shape-outside: url("/totoga2/readable/04-2_totoka.png");
+            shape-margin: 0.65rem;
+            shape-image-threshold: 0.5;
+        }
+
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.readable-text-wrap>section.ebook-intro.section>h3 {
+            text-align: center;
+            clear: both;
+            margin-bottom: 0.75rem;
+        }
+
         /* container22 內兩張圖上下排列 */
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .readable-col-2--stack {
             display: flex;
