@@ -36,53 +36,65 @@
 
         /* 同列共用奶油底、外框與欄間距（內文 section 仍保留 padding，不重複底色） */
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container {
+            margin-block: 30px;
             padding: 0.75rem;
         }
 
-        /* 同列共用奶油底、外框與欄間距（內文 section 仍保留 padding，不重複底色） */
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container11),
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container21):has(> .container22),
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container31):has(> .container32):has(> .container33),
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container41):has(> .container42):has(> .container43):has(> .container44) {
+        /* 整列一張卡（排除 overlap-style）；欄內不再各自一張 */
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container11):not(.overlap-style),
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container21):has(> .container22):not(.overlap-style),
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container31):has(> .container32):has(> .container33):not(.overlap-style),
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container41):has(> .container42):has(> .container43):has(> .container44):not(.overlap-style) {
             gap: 0.75rem;
+            padding: 0.75rem;
+            background: var(--surface);
+            border: 1px solid rgba(255, 204, 0, 0.15);
             border-radius: 16px;
+            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.15);
             overflow: hidden;
         }
 
-        /* 多欄內 ebook-intro：避免雙重底；ebook-section 保留奶油卡片 */
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader [class^="container"] section.ebook-intro.section {
+        /* overlap-style：維持重疊 float，不套列卡／flex 等高 */
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.overlap-style {
+            display: block;
+            padding: 0;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            overflow: visible;
+            gap: 0;
+        }
+
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.overlap-style>[class^="container"] {
+            display: block;
+            flex: none;
+            align-self: auto;
+            justify-content: flex-start;
+            align-items: stretch;
+        }
+
+        /* 欄內透明（蓋過全站 section 預設底與陰影）；overlap 內欄不套用 */
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.overlap-style) [class^="container"] section.ebook-intro.section,
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.overlap-style) [class^="container"] section.ebook-section {
             background: transparent;
             border: none;
             box-shadow: none;
             margin-top: 0;
             margin-bottom: 0;
+            padding: 0.25rem 0.5rem;
         }
 
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader [class^="container"] section.ebook-section {
-            background: var(--surface);
-            border: 1px solid rgba(255, 204, 0, 0.15);
-            border-radius: 16px;
-            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.15);
-            padding: 1.25rem 1rem;
-            margin-top: 0;
-            margin-bottom: 0;
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.overlap-style) [class^="container"]:has(> img):not(:has(> section)) {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            padding: 0;
+            overflow: visible;
         }
 
-        /* 純圖欄：與文字卡同套外觀 */
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader [class^="container"]:has(> img):not(:has(> section)) {
-            background: var(--surface);
-            border: 1px solid rgba(255, 204, 0, 0.15);
-            border-radius: 16px;
-            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.15);
-            padding: 0.75rem;
-            box-sizing: border-box;
-            overflow: hidden;
-        }
-
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container11)>.container11>img,
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container21)>[class^="container2"]>img,
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container31)>[class^="container3"]>img,
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container41)>[class^="container4"]>img {
+        /* 好讀版內所有圖一致圓角（含 section 內）；overlap-style 除外 */
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.overlap-style) img,
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .containers > section.ebook-section img {
             border-radius: 10px;
         }
 
@@ -98,7 +110,7 @@
             clear: both;
         }
 
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader.chronicle-reader .container:has(img)>[class^="container"] {
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader.chronicle-reader .container:has(img):not(.overlap-style)>[class^="container"] {
             height: auto;
             min-height: 0;
             overflow: visible;
@@ -205,27 +217,17 @@
             box-sizing: border-box;
         }
 
-        /* 僅圖欄：在等高 container 內上下置中 */
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block) [class^="container"]:has(> img):not(:has(> section)) {
+        /* 僅圖欄置中：限二／三欄 flex 列，不影響 overlap、四欄 float */
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container21):has(> .container22) [class^="container2"]:has(> img):not(:has(> section)),
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container31):has(> .container32):has(> .container33) [class^="container3"]:has(> img):not(:has(> section)) {
             justify-content: center;
             align-items: center;
-        }
-
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block) [class^="container"]>img {
-            flex: 0 1 auto;
-            max-height: 100%;
-            min-height: 0;
-        }
-
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block) [class^="container"]:has(> img):not(:has(> section))>img {
-            align-self: center;
-            margin-block: auto;
         }
 
         /* ─── 修正關鍵：排除作業區（.readable-homework-block），不讓 Flex 破壞作業 ─── */
 
         /* 二欄列：僅在非作業區使用 Flex 佈局 */
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container21):has(> .container22) {
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container21):has(> .container22) {
             display: flex;
             align-items: stretch;
             width: 100%;
@@ -237,12 +239,12 @@
             gap: 0.75rem;
         }
 
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container21):has(> .container22)::after {
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container21):has(> .container22)::after {
             display: none;
         }
 
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container21):has(> .container22)>.container21,
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container21):has(> .container22)>.container22 {
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container21):has(> .container22)>.container21,
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container21):has(> .container22)>.container22 {
             width: auto;
             flex: 1 1 50%;
             min-width: 0;
@@ -250,10 +252,10 @@
             flex-direction: column;
         }
 
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container21):has(> .container22)>.container21>section.ebook-intro.section,
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container21):has(> .container22)>.container22>section.ebook-intro.section,
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container21):has(> .container22)>.container21>section.ebook-section,
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container21):has(> .container22)>.container22>section.ebook-section {
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container21):has(> .container22)>.container21>section.ebook-intro.section,
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container21):has(> .container22)>.container22>section.ebook-intro.section,
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container21):has(> .container22)>.container21>section.ebook-section,
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container21):has(> .container22)>.container22>section.ebook-section {
             flex: 1 1 auto;
             align-self: stretch;
             min-height: 100%;
@@ -262,25 +264,22 @@
             box-sizing: border-box;
         }
 
-        /* 多欄 flex 列：子欄撐滿列高；img 與 ebook-section 視覺等高（不動 float） */
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container21):has(> .container22)>[class^="container2"],
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container31):has(> .container32):has(> .container33)>[class^="container3"],
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container41):has(> .container42):has(> .container43):has(> .container44)>[class^="container4"] {
+        /* 二／三欄 flex 等高（不動 float；四欄維持 float 25%；排除 overlap-style） */
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container21):has(> .container22)>[class^="container2"],
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container31):has(> .container32):has(> .container33)>[class^="container3"] {
             align-self: stretch;
             align-items: stretch;
             justify-content: flex-start;
         }
 
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader.chronicle-reader .container:not(.readable-homework-block):has(> .container21):has(> .container22):has(img)>[class^="container2"],
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader.chronicle-reader .container:not(.readable-homework-block):has(> .container31):has(> .container32):has(> .container33):has(img)>[class^="container3"],
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader.chronicle-reader .container:not(.readable-homework-block):has(> .container41):has(> .container42):has(> .container43):has(> .container44):has(img)>[class^="container4"] {
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader.chronicle-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container21):has(> .container22):has(img)>[class^="container2"],
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader.chronicle-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container31):has(> .container32):has(> .container33):has(img)>[class^="container3"] {
             height: auto;
             min-height: 0;
         }
 
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container21):has(> .container22)>[class^="container2"]>img,
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container31):has(> .container32):has(> .container33)>[class^="container3"]>img,
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container41):has(> .container42):has(> .container43):has(> .container44)>[class^="container4"]>img {
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container21):has(> .container22)>[class^="container2"]>img,
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container31):has(> .container32):has(> .container33)>[class^="container3"]>img {
             flex: 1 1 auto;
             align-self: stretch;
             width: 100%;
@@ -291,8 +290,7 @@
             object-fit: contain;
         }
 
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container31):has(> .container32):has(> .container33)>[class^="container3"]>section.ebook-section,
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container41):has(> .container42):has(> .container43):has(> .container44)>[class^="container4"]>section.ebook-section {
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container31):has(> .container32):has(> .container33)>[class^="container3"]>section.ebook-section {
             flex: 1 1 auto;
             align-self: stretch;
             min-height: 100%;
@@ -344,20 +342,20 @@
             margin-bottom: 0.75rem;
         }
 
-        /* 三欄列：僅在非作業區使用 Flex 佈局 */
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container31):has(> .container32):has(> .container33) {
+        /* 三欄列：flex 等高（排除 overlap-style） */
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container31):has(> .container32):has(> .container33) {
             display: flex;
             align-items: stretch;
             width: 100%;
         }
 
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container31):has(> .container32):has(> .container33)::after {
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container31):has(> .container32):has(> .container33)::after {
             display: none;
         }
 
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container31):has(> .container32):has(> .container33)>.container31,
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container31):has(> .container32):has(> .container33)>.container32,
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container31):has(> .container32):has(> .container33)>.container33 {
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container31):has(> .container32):has(> .container33)>.container31,
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container31):has(> .container32):has(> .container33)>.container32,
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container31):has(> .container32):has(> .container33)>.container33 {
             width: auto;
             flex: 1 1 33.33%;
             min-width: 0;
@@ -366,25 +364,11 @@
             margin-top: 0;
         }
 
-        /* 四欄列：僅在非作業區使用 Flex 佈局 */
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container41):has(> .container42):has(> .container43):has(> .container44) {
-            display: flex;
-            align-items: stretch;
-            width: 100%;
-        }
-
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container41):has(> .container42):has(> .container43):has(> .container44)::after {
-            display: none;
-        }
-
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container41):has(> .container42):has(> .container43):has(> .container44)>.container41,
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container41):has(> .container42):has(> .container43):has(> .container44)>.container42,
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container41):has(> .container42):has(> .container43):has(> .container44)>.container43,
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container41):has(> .container42):has(> .container43):has(> .container44)>.container44 {
-            width: auto;
-            min-width: 0;
-            display: flex;
-            flex-direction: column;
+        /* 四欄列：維持 float 25%／33% 寬，不套 flex（避免蓋掉 container4x 寬度） */
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container41):has(> .container42):has(> .container43):has(> .container44)::after {
+            content: "";
+            display: table;
+            clear: both;
         }
 
         /* 全寬單一 section */
@@ -532,9 +516,10 @@
                     <div class="container">
                         <div class="container11">
                             <section class="ebook-section">
-                                <img src="/totoga2/readable/07-2_160416_0_02_35水晶男孩.jpg" alt="水晶男孩 COM' BACK">
                                 <h2 class="section-title">世紀末的追星狂熱，你聽過那場驚天動地的「黃色奇蹟」嗎？</h2>
-                                <p class="ebook-intro-lead">在大韓民國綜藝史上，MBC《無限挑戰》締造了無數眼淚與歡笑，而其中最傳奇的企劃，莫過於將 90
+                                <img src="/totoga2/readable/07-2_160416_0_02_35水晶男孩.jpg" alt="水晶男孩 COM' BACK">
+                                <p class="ebook-intro-lead" style="margin-top: 30px;">
+                                    在大韓民國綜藝史上，MBC《無限挑戰》締造了無數眼淚與歡笑，而其中最傳奇的企劃，莫過於將 90
                                     年代叱吒風雲的傳奇歌手們重新召集回舞台的「星期六星期六是歌手」（簡稱六六歌）。受邀歌手必須先在 KTV 唱歌通過測試，成績超過 95 分才能擁有登台資格。</p>
                                 <p class="ebook-intro-lead">當時，創下無數輝輝煌紀錄、卻在 2000
                                     年事業巔峰期無預警解散的超級男團——<strong>「水晶男孩（SECHSKIES）」</strong>，成員金在德、張水院曾受邀參與第一季。兩人雖通過測試，但皆認為若要以水晶男孩名義踏上舞台，必須要以「完整體」參加才有意義。可惜當時未能集結六顆水晶，第一季由
@@ -565,7 +550,7 @@
                             </section>
                         </div>
                     </div>
-                    <div class="container">
+                    <!-- <div class="container">
                         <section class="ebook-section">
                             <h2 class="section-title">傳奇男團：水晶男孩（SECHSKIES）</h2>
                             <p class="ebook-intro-lead">1997 年 4 月 15 日出道，一出道就和 H.O.T（韓國第一支男孩團體，「韓流」的開山鼻祖）平分秋色，為 90
@@ -578,7 +563,7 @@
                                 年間，六人皆未以水晶男孩名義合體演出。</p>
 
                         </section>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="containers">
