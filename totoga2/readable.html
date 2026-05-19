@@ -390,10 +390,10 @@
             margin-bottom: 0.75rem;
         }
 
-        /* 三欄列：flex 全寬（排除 overlap-style） */
+        /* 三欄列：flex 全寬，同列上下置中（排除 overlap-style） */
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container31):has(> .container32):has(> .container33) {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             justify-content: flex-start;
             width: 100%;
             max-width: 100%;
@@ -412,11 +412,11 @@
             flex: 1 1 33.33%;
             min-width: 0;
             height: auto;
+            align-self: center;
             display: flex;
             flex-direction: column;
-            align-items: stretch;
-            align-self: flex-start;
-            justify-content: flex-start;
+            align-items: center;
+            justify-content: center;
             margin-top: 0;
             box-sizing: border-box;
         }
@@ -426,10 +426,11 @@
             border-radius: 10px;
             overflow: hidden;
             line-height: 0;
+            width: 100%;
         }
 
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container31):has(> .container32):has(> .container33)>.container32 {
-            align-self: center;
+            align-items: stretch;
             overflow: visible;
         }
 
