@@ -55,7 +55,7 @@
             border: 1px solid rgba(255, 204, 0, 0.15);
             border-radius: 16px;
             box-shadow: 0 14px 34px rgba(0, 0, 0, 0.15);
-            overflow: hidden;
+            overflow: visible;
         }
 
         /* overlap-style：維持左右 float，中欄脫離排版不推擠左右 */
@@ -208,12 +208,13 @@
             width: 100%;
             max-width: 100%;
             height: auto;
+            max-height: none;
             object-fit: contain;
-            object-position: center center;
+            object-position: center top;
             display: block;
             box-sizing: border-box;
             border-radius: 10px;
-            overflow: hidden;
+            overflow: visible;
         }
 
         /* 僅圖欄置中：限二／三欄 flex 列，不影響 overlap、四欄 float */
@@ -311,7 +312,7 @@
         }
 
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container31):has(> .container32):has(> .container33)>[class^="container3"]>img {
-            flex: 0 1 auto;
+            flex: 0 0 auto;
             align-self: center;
             width: 100%;
             height: auto;
@@ -319,6 +320,11 @@
             min-height: 0;
             margin-block: 0;
             object-fit: contain;
+            object-position: center top;
+        }
+
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container31):has(> .container32):has(> .container33) [class^="container3"]:has(> img):not(:has(> section)) {
+            overflow: visible;
         }
 
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container31):has(> .container32):has(> .container33)>[class^="container3"]>section.ebook-section {
@@ -377,8 +383,8 @@
         /* 三欄列：flex 全寬（排除 overlap-style） */
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container31):has(> .container32):has(> .container33) {
             display: flex;
-            align-items: center;
-            justify-content: center;
+            align-items: flex-start;
+            justify-content: flex-start;
             width: 100%;
             max-width: 100%;
             margin-inline: auto;
@@ -398,10 +404,16 @@
             height: auto;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            align-items: stretch;
+            align-self: flex-start;
+            justify-content: flex-start;
             margin-top: 0;
             box-sizing: border-box;
+            overflow: visible;
+        }
+
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container31):has(> .container32):has(> .container33)>.container32 {
+            align-self: center;
         }
 
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container21):has(> .container22)>.container21,
@@ -543,7 +555,7 @@
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.readable-text-then-images:not(.readable-text-then-images--single) {
             display: flex;
             flex-wrap: wrap;
-            align-items: stretch;
+            align-items: flex-start;
             justify-content: flex-start;
             width: 100%;
             gap: 0.75rem;
@@ -574,21 +586,23 @@
             display: flex;
             flex-direction: column;
             align-items: stretch;
-            align-self: stretch;
-            justify-content: center;
+            align-self: flex-start;
+            justify-content: flex-start;
+            overflow: visible;
         }
 
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.readable-text-then-images:not(.readable-text-then-images--single)>.container31 img,
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.readable-text-then-images:not(.readable-text-then-images--single)>.container33 img {
             width: 100%;
             max-width: 100%;
-            height: 100%;
-            flex: 1 1 auto;
+            height: auto;
+            max-height: none;
+            flex: 0 0 auto;
             min-height: 0;
             display: block;
             margin-inline: 0;
             object-fit: contain;
-            object-position: center center;
+            object-position: center top;
         }
 
         /* 文字在上、單圖在下，整塊置中 */
