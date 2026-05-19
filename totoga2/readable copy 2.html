@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/tablet.css">
     <style>
-        /* 圖列 .container：float 排版（作業要求） */
         body.ebook-ssg2-page.totoga2-page main#totoga2-reader.chronicle-reader {
             max-width: min(1280px, 96vw);
             padding-left: 0;
@@ -167,7 +166,6 @@
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container44 section.ebook-intro.section {
             width: 100%;
             max-width: 100%;
-            float: none;
             clear: both;
             box-sizing: border-box;
             margin-bottom: 1.25rem;
@@ -219,8 +217,27 @@
             box-sizing: border-box;
         }
 
-        /* 二欄列：父層 flex 等高（欄位改 flex 分寬，不再只靠 50% float 寬） */
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container21):has(> .container22) {
+        /* 僅圖欄：在等高 container 內上下置中 */
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block) [class^="container"]:has(> img):not(:has(> section)) {
+            justify-content: center;
+            align-items: center;
+        }
+
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block) [class^="container"] > img {
+            flex: 0 1 auto;
+            max-height: 100%;
+            min-height: 0;
+        }
+
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block) [class^="container"]:has(> img):not(:has(> section)) > img {
+            align-self: center;
+            margin-block: auto;
+        }
+
+        /* ─── 修正關鍵：排除作業區（.readable-homework-block），不讓 Flex 破壞作業 ─── */
+
+        /* 二欄列：僅在非作業區使用 Flex 佈局 */
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container21):has(> .container22) {
             display: flex;
             align-items: stretch;
             width: 100%;
@@ -232,13 +249,12 @@
             gap: 0.75rem;
         }
 
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container21):has(> .container22)::after {
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container21):has(> .container22)::after {
             display: none;
         }
 
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container21):has(> .container22)>.container21,
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container21):has(> .container22)>.container22 {
-            float: none;
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container21):has(> .container22)>.container21,
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container21):has(> .container22)>.container22 {
             width: auto;
             flex: 1 1 50%;
             min-width: 0;
@@ -246,25 +262,25 @@
             flex-direction: column;
         }
 
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container21):has(> .container22)>.container21>img,
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container21):has(> .container22)>.container22>img {
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container21):has(> .container22)>.container21>img,
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container21):has(> .container22)>.container22>img {
             flex: 0 1 auto;
             width: 100%;
             max-width: 100%;
             height: auto;
             min-height: 0;
+            max-height: 100%;
             object-fit: contain;
-            align-self: flex-start;
         }
 
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container21):has(> .container22)>.container21>section.ebook-intro.section,
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container21):has(> .container22)>.container22>section.ebook-intro.section {
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container21):has(> .container22)>.container21>section.ebook-intro.section,
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container21):has(> .container22)>.container22>section.ebook-intro.section {
             flex: 1 1 auto;
             min-height: 100%;
             margin-bottom: 0;
         }
 
-        /* 文繞圖：float + shape-outside（依圖 alpha 輪廓；底需透明 PNG 才非矩形） */
+        /* 文繞圖：float + shape-outside */
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.readable-text-wrap {
             display: block;
             width: 100%;
@@ -307,96 +323,20 @@
             margin-bottom: 0.75rem;
         }
 
-        /* container22 內兩張圖上下排列 */
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .readable-col-2--stack {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .readable-col-2--stack>img {
-            flex: 0 1 auto;
-            width: 100%;
-            max-width: 100%;
-            min-height: 0;
-            height: auto;
-            object-fit: contain;
-        }
-
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container21):has(> .container22)>.readable-col-2--stack>img {
-            flex: 1 1 0;
-            min-height: 0;
-            height: auto;
-        }
-
-        /* 上：container22 雙圖直排；下：container11 全寬文（無 container21） */
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .readable-col-2--stack):has(> .container11):not(:has(> .container21)) {
-            display: flex;
-            flex-wrap: wrap;
-            row-gap: 1rem;
-        }
-
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .readable-col-2--stack):has(> .container11):not(:has(> .container21))>.readable-col-2--stack {
-            flex: 0 0 100%;
-            width: 100%;
-            max-width: 100%;
-            float: none;
-        }
-
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .readable-col-2--stack):has(> .container11):not(:has(> .container21))>.container11 {
-            flex: 0 0 100%;
-            width: 100%;
-            max-width: 100%;
-            min-width: 100%;
-            float: none;
-            clear: both;
-        }
-
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .readable-col-2--stack):has(> .container11):not(:has(> .container21))>.container11>section.ebook-intro.section {
-            margin-bottom: 0;
-        }
-
-        /* 上二圖 + 下全寬文：同一張列卡內換行（其他區塊仍用 container11） */
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container22):has(> .container21):has(> .container11) {
-            flex-wrap: wrap;
-            column-gap: 1rem;
-            row-gap: 1rem;
-        }
-
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container22):has(> .container21):has(> .container11)>.container22,
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container22):has(> .container21):has(> .container11)>.container21 {
-            flex: 1 1 calc(50% - 0.5rem);
-            max-width: calc(50% - 0.5rem);
-        }
-
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container22):has(> .container21):has(> .container11)>.container11 {
-            flex: 0 0 100%;
-            width: 100%;
-            max-width: 100%;
-            min-width: 100%;
-            float: none;
-            clear: both;
-        }
-
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container22):has(> .container21):has(> .container11)>.container11>section.ebook-intro.section {
-            margin-bottom: 0;
-        }
-
-        /* 三欄列：同上等高 */
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container31):has(> .container32):has(> .container33) {
+        /* 三欄列：僅在非作業區使用 Flex 佈局 */
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container31):has(> .container32):has(> .container33) {
             display: flex;
             align-items: stretch;
             width: 100%;
         }
 
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container31):has(> .container32):has(> .container33)::after {
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container31):has(> .container32):has(> .container33)::after {
             display: none;
         }
 
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container31):has(> .container32):has(> .container33)>.container31,
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container31):has(> .container32):has(> .container33)>.container32,
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container31):has(> .container32):has(> .container33)>.container33 {
-            float: none;
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container31):has(> .container32):has(> .container33)>.container31,
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container31):has(> .container32):has(> .container33)>.container32,
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container31):has(> .container32):has(> .container33)>.container33 {
             width: auto;
             flex: 1 1 33.33%;
             min-width: 0;
@@ -404,60 +344,28 @@
             flex-direction: column;
         }
 
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container31):has(> .container32):has(> .container33)>.container31>img,
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container31):has(> .container32):has(> .container33)>.container32>img,
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container31):has(> .container32):has(> .container33)>.container33>img {
-            flex: 0 1 auto;
-            width: 100%;
-            max-width: 100%;
-            height: auto;
-            min-height: 0;
-            object-fit: contain;
-            align-self: flex-start;
-        }
-
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container31):has(> .container32):has(> .container33)>.container31>section.ebook-intro.section,
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container31):has(> .container32):has(> .container33)>.container32>section.ebook-intro.section,
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container31):has(> .container32):has(> .container33)>.container33>section.ebook-intro.section {
-            flex: 1 1 auto;
-            min-height: 100%;
-            margin-bottom: 0;
-        }
-
-        /* 四欄列：flex 等高 */
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container41):has(> .container42):has(> .container43):has(> .container44) {
+        /* 四欄列：僅在非作業區使用 Flex 佈局 */
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container41):has(> .container42):has(> .container43):has(> .container44) {
             display: flex;
             align-items: stretch;
             width: 100%;
         }
 
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container41):has(> .container42):has(> .container43):has(> .container44)::after {
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container41):has(> .container42):has(> .container43):has(> .container44)::after {
             display: none;
         }
 
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container41):has(> .container42):has(> .container43):has(> .container44)>.container41,
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container41):has(> .container42):has(> .container43):has(> .container44)>.container42,
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container41):has(> .container42):has(> .container43):has(> .container44)>.container43,
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container41):has(> .container42):has(> .container43):has(> .container44)>.container44 {
-            float: none;
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container41):has(> .container42):has(> .container43):has(> .container44)>.container41,
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container41):has(> .container42):has(> .container43):has(> .container44)>.container42,
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container41):has(> .container42):has(> .container43):has(> .container44)>.container43,
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):has(> .container41):has(> .container42):has(> .container43):has(> .container44)>.container44 {
             width: auto;
-            flex: 1 1 25%;
             min-width: 0;
             display: flex;
             flex-direction: column;
         }
 
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container41):has(> .container42):has(> .container43):has(> .container44)>[class^="container4"]>img {
-            flex: 0 1 auto;
-            width: 100%;
-            max-width: 100%;
-            height: auto;
-            min-height: 0;
-            object-fit: contain;
-            align-self: flex-start;
-        }
-
-        /* 全寬單一 section：維持獨立卡片，避免與列卡雙重 margin */
+        /* 全寬單一 section */
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> section.ebook-intro.section):not(:has(> [class^="container"])) {
             margin-bottom: 0;
             padding: 0;
@@ -467,47 +375,29 @@
             overflow: visible;
         }
 
-        /* 作業 float 區：只套 .readable-homework-block 內，不動全站 body／header */
+        /* ─── 核心關鍵：將你的「作業範例 CSS」集中管理在下方，且高度完全由你指定（35vh） ─── */
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .readable-homework-block .container {
             width: 100%;
             height: 35vh;
+            /* 這邊可以任意調整你要的作業高度，例如 25vh 或 35vh */
             clear: both;
             margin-bottom: 20px;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .readable-homework-block .box-content {
-            padding: 20px;
-            height: 100%;
-            overflow: visible;
-        }
-
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .readable-homework-block .box-content h2,
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .readable-homework-block .box-content h3,
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .readable-homework-block .box-content h4 {
-            margin-bottom: 10px;
-        }
-
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .readable-homework-block .box-content img {
-            width: 100%;
-            max-width: 100%;
-            height: auto;
-            object-fit: contain;
+            background-color: #ccc;
+            border-radius: 0;
+            /* 移除外層圓角，回歸乾淨的作業驗證樣式 */
+            box-shadow: none;
+            padding: 0;
             display: block;
+            /* 強制回歸 Block 排版 */
         }
 
-        /* 作業區沿用上方二／三／四欄規則（scoped 於 .readable-homework-block） */
 
-        /* 與全站 section 同款：main 內勿用 div，且勿與 container21 等 float 綁同一元素 */
         body.ebook-ssg2-page.totoga2-page #totoga2-reader section.ebook-intro.section {
             clear: both;
             width: 100%;
-            float: none;
             box-sizing: border-box;
         }
 
-        /* 只調字級；對齊／42rem 閱讀欄與頂部 intro 同用 style.css（勿改 text-align、max-width） */
         body.ebook-ssg2-page.totoga2-page .ebook-main .ebook-intro.section h2.section-title {
             font-size: 1.5rem;
         }
@@ -522,11 +412,6 @@
             font-weight: 700;
             letter-spacing: 0.04em;
             line-height: 1.4;
-        }
-
-        body.ebook-ssg2-page.totoga2-page .ebook-main #totoga2-reader .ebook-intro.section[style*="background-color: var(--black)"] h3,
-        body.ebook-ssg2-page.totoga2-page .ebook-main #totoga2-reader .ebook-intro.section[style*="background-color: var(--primary)"] h3 {
-            border-left-color: currentColor;
         }
     </style>
     <link rel="stylesheet" href="split-nav.css">
@@ -628,10 +513,7 @@
                 </div>
 
                 <div class="container">
-                    <div class="container21 readable-col-2 readable-col-2--right">
-                        <img src="/totoga2/readable/11-1_冷凍人.jpeg" alt="冷凍美男姜成勳">
-                    </div>
-                    <div class="container22 readable-col-2 readable-col-2--left">
+                    <div class="container22 readable-col-2">
                         <section class="ebook-intro section">
                             <h3>冷凍美男－姜成勳</h3>
                             <p class="ebook-intro-lead">印象深刻的是主唱姜成勳擁有和 20 年前一樣的驚人外貌，堪稱冷凍人級別！還被張水院虧說到 70 歲還是會繼續留這個髮型！</p>
@@ -640,16 +522,17 @@
                             </p>
                         </section>
                     </div>
+                    <div class="container21 readable-col-2">
+                        <img src="/totoga2/readable/11-1_冷凍人.jpeg" alt="冷凍美男姜成勳">
+                    </div>
                 </div>
 
                 <div class="container">
-                    <div class="container22 readable-col-2 readable-col-2--left">
-                        <img src="/totoga2/readable/11-2_無法輕易征服的高山 宰鎮.jpeg" alt="無法輕易征服的高山 宰鎮">
+                    <div class="container21 readable-col-3 readable-col-3--left">
+                        <img src="/totoga2/readable/11-3_160416_0_03.png" alt="清楚表達才聽得懂的極端 O 型">
                     </div>
-                    <div class="container21 readable-col-2 readable-col-2--right">
-                        <img src="/totoga2/readable/11-4_160416_0_08.jpeg" alt="綜藝感爆發">
-                    </div>
-                    <div class="container11 readable-col-1">
+
+                    <div class="container22 readable-col-1">
                         <section class="ebook-intro section">
                             <h3>魔性魅力－李宰鎮</h3>
                             <p class="ebook-intro-lead">節目剛開始時，大家高興地彼此問候，唯獨被嚇壞的李宰鎮問為什麼要這樣歡迎，性格似乎有點與眾不同。訪問輪到他時，就連劉在錫和
@@ -660,19 +543,18 @@
                 </div>
 
                 <div class="container">
-                    <div class="container31 readable-col-3 readable-col-3--left">
-                        <img src="/totoga2/readable/11-3_160416_0_03.png" alt="無法輕易征服的高山">
+                    <div class="container22 readable-col-2 readable-col-2--left">
+                        <img src="/totoga2/readable/11-2_無法輕易征服的高山 宰鎮.jpeg" alt="無法輕易征服的高山 宰鎮">
                     </div>
-                    <div class="container32 readable-col-3 readable-col-3--left">
+
+                    <div class="container21 readable-col-3 readable-col-3--left">
                         <section class="ebook-intro section">
                             <h3>無法輕易征服的高山</h3>
                             <p class="ebook-intro-lead">面對這座高山，主持人們頻頻在李宰鎮獨特的思考迴路中迷失方向。他是必須要「清楚表達才聽得懂的極端 O
                                 型」人格，不按綜藝套路出牌，讓劉在錫讚嘆這絕對是自己「生平第一次看到的角色」！</p>
                         </section>
                     </div>
-                    <div class="container33 readable-col-3 readable-col-3--right">
-                        <img src=alt="初登場畫面">
-                    </div>
+
                 </div>
 
                 <div class="container">
@@ -692,10 +574,10 @@
                     <div class="container31 readable-col-3 readable-col-3--left">
                         <img src="/totoga2/readable/12-1_160416_0_06.png" alt="宰鎮突然大笑">
                     </div>
-                    <div class="container32 readable-col-3 readable-col-3--left">
+                    <div class="container33 readable-col-3 readable-col-3--left">
                         <img src="/totoga2/readable/12-2_160416_0_07.png" alt="HAHA被嚇到">
                     </div>
-                    <div class="container33 readable-col-3 readable-col-3--right">
+                    <div class="container32 readable-col-3 readable-col-3--right" style="float: left;">
                         <section class="ebook-intro section">
                             <h3>無預警爆發的魔性笑聲</h3>
                             <p class="ebook-intro-lead">聊天聊到一半，他常常因為腦海中的突發奇想，突然獨自放聲大笑「嗯哈哈哈哈～」。那毫無防備的突發笑彈，讓坐在一旁的
