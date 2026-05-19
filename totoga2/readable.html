@@ -259,10 +259,15 @@
             box-sizing: border-box;
         }
 
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container21):has(> .container22)>.container21:has(> section.ebook-section),
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container21):has(> .container22)>.container22:has(> section.ebook-section) {
+            align-items: stretch;
+        }
+
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container21):has(> .container22)>.container21>section.ebook-section h3,
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container21):has(> .container22)>.container22>section.ebook-section h3 {
             width: 100%;
-            text-align: center;
+            text-align: left;
         }
 
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.readable-homework-block):not(.overlap-style):has(> .container21):has(> .container22)>.container21>section.ebook-intro.section,
@@ -364,7 +369,7 @@
         }
 
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.readable-text-wrap>section.ebook-intro.section>h3 {
-            text-align: center;
+            text-align: left;
             clear: both;
             margin-bottom: 0.75rem;
         }
@@ -501,6 +506,21 @@
             font-weight: 700;
             letter-spacing: 0.04em;
             line-height: 1.4;
+            text-align: left;
+        }
+
+        /* 好讀版：標題與內文同側對齊 */
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .ebook-section p.ebook-intro-lead,
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .ebook-intro.section p.ebook-intro-lead {
+            text-align: left;
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:has(> .container11)>.container11,
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.overlap-style) [class^="container2"]:has(> section.ebook-section),
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container:not(.overlap-style) [class^="container3"]:has(> section.ebook-section) {
+            align-items: stretch;
         }
 
         /* ─── 大區塊視覺分隔 ─── */
@@ -540,8 +560,8 @@
             clear: both;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            align-items: stretch;
+            justify-content: flex-start;
         }
 
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.readable-text-then-images:not(.readable-text-then-images--single)>.container31,
@@ -570,8 +590,7 @@
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.readable-text-then-images.readable-text-then-images--single {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            text-align: center;
+            align-items: stretch;
         }
 
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.readable-text-then-images.readable-text-then-images--single::after {
@@ -582,12 +601,10 @@
             width: 100%;
             max-width: 42rem;
             margin-inline: auto;
+            align-items: stretch;
         }
 
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.readable-text-then-images.readable-text-then-images--single>.container11 section.ebook-section h3 {
-            text-align: center;
-        }
-
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.readable-text-then-images.readable-text-then-images--single>.container11 section.ebook-section h3,
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.readable-text-then-images.readable-text-then-images--single>.container11 section.ebook-section p.ebook-intro-lead {
             text-align: left;
         }
