@@ -444,7 +444,45 @@
             /* border-left: 5px solid var(--primary); */
         }
 
-        /* overlap：左／右欄各 50%（float）；中圖 absolute 置中放大、不佔欄寬 */
+        /* 文字在上、左右圖在下（不套用三欄 flex） */
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.readable-text-then-images {
+            display: block;
+            width: 100%;
+        }
+
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.readable-text-then-images::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.readable-text-then-images>.container11 {
+            width: 100%;
+            float: none;
+            clear: both;
+        }
+
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.readable-text-then-images>.container31 {
+            float: left;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.readable-text-then-images>.container33 {
+            float: right;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.readable-text-then-images>.container31 img,
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.readable-text-then-images>.container33 img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* overlap：float 三欄相疊；左右各 50%；中圖用 margin 四向微調（勿改寫成僅 margin-left） */
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.overlap-style .container31 {
             float: left;
             width: 50%;
@@ -462,15 +500,12 @@
         }
 
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.overlap-style .container32 {
-            position: absolute;
-            left: 50%;
-            top: 0;
-            transform: translateX(-50%);
-            width: auto;
-            max-width: none;
+            float: left;
+            width: 46%;
+            position: relative;
             z-index: 3;
-            margin: 0;
-            pointer-events: none;
+            margin-left: -12%;
+            margin-right: -8%;
         }
 
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.overlap-style::after {
@@ -490,16 +525,15 @@
         }
 
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.overlap-style .container32 img {
-            width: auto;
-            max-width: min(52vw, 22rem);
+            width: 42%;
+            max-width: none;
             height: auto;
             display: block;
-            margin: 0;
-            transform: scale(1.15);
-            transform-origin: center top;
+            position: relative;
+            z-index: 3;
+            margin: -2.5rem 0 0 0;
             border-radius: 0;
             overflow: visible;
-            pointer-events: auto;
         }
     </style>
     <link rel="stylesheet" href="split-nav.css">
@@ -736,11 +770,8 @@
                             </section>
                         </div>
                     </div>
-                    <div class="container">
-                        <div class="container31">
-                            <img src="/totoga2/readable/13-2哥得自己畫!.jpeg" alt="哥得自己畫截圖">
-                        </div>
-                        <div class="container32">
+                    <div class="container readable-text-then-images">
+                        <div class="container11">
                             <section class="ebook-section">
                                 <h3>隊長幫腔聯手逗弄</h3>
                                 <p class="ebook-intro-lead">
@@ -752,8 +783,10 @@
                                 </p>
                             </section>
                         </div>
+                        <div class="container31">
+                            <img src="/totoga2/readable/13-2哥得自己畫!.jpeg" alt="哥得自己畫截圖">
+                        </div>
                         <div class="container33">
-
                             <img src="/totoga2/readable/13-31779025232670.jpg" alt="哥得自己畫截圖">
                         </div>
                     </div>
@@ -787,6 +820,29 @@
                         <div class="container44">
                             <img src="./readable/28-4_要多上一點.jpg">
                             <img src="./readable/28-5_托隊長的福.jpg">
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <div class="container22">
+                            <section class="ebook-section">
+                                <h3>我是水晶男孩的高志溶</h3>
+                                <p class="ebook-intro-lead">
+                                    表演完〈請記得我〉，台下瘋狂揮舞著氣球，大喊著高志溶。高志溶在台上正式問候：「大家好，我是水晶男孩的高志溶！」小黃們聲嘶力竭地大喊著：「我們很想你！」</p>
+                                <p class="ebook-intro-lead">
+                                    看著台下小黃，高志溶無法輕易回答，想到小黃苦苦地等待，他不禁紅了眼眶，久久說不出話來...台下小黃安慰地應援著：「不要哭！高志溶！」「沒關係！高志溶！」當高志溶每次想開口時都和忍著哭的粉絲對視，所以一直說不出話...
+                                </p>
+                            </section>
+                        </div>
+                        <div class="container21">
+                            <section class="ebook-section">
+                                <h3>殷隊的體貼與釋懷</h3>
+                                <p class="ebook-intro-lead">殷志源為了讓他緩和，主動開口：「志溶在各位的喜愛下度過了 20
+                                    代初期，但他現在跟大家一樣過著平凡的生活...他能做出這個艱難的決定，我們都很感謝...他現在百感交集說不出話...」</p>
+                                <p class="ebook-intro-lead">準備好開口後，高志溶說：「剛才心情非常複雜，和大家重逢真的很開心，沒想到現在還有這麼多人會來呢！16
+                                    年來，好像第一次六個人同台，讓我想起了最後的舞台...」小黃們發出了不捨的嘆息聲。聽到了短暫的心得後，殷志源逗著他說：「不管怎麽說，我想他要多上一點節目才行！」讓高志溶笑出來緩解緊張感。
+                                </p>
+                            </section>
                         </div>
                     </div>
 
@@ -980,29 +1036,6 @@
                             年的等候終於再次重逢，〈請記住我〉也從離別的歌變成幸福回憶。看著高志溶穿著西裝出場，就像歌詞的最後一句：「雖然我會說句再見就此離開，但請你們不要忘記我們相愛過的回憶...」歌曲結束後六位成員合體鞠躬，原本久未見到高志溶的傲膠李宰鎮，嘴巴上說男人之間幹嘛摟摟抱抱的他，此時卻趁著氣氛偷抱高志溶！
                         </p>
                     </section>
-                </div>
-
-                <div class="container">
-                    <div class="container22">
-                        <section class="ebook-section">
-                            <h3>我是水晶男孩的高志溶</h3>
-                            <p class="ebook-intro-lead">
-                                表演完〈請記得我〉，台下瘋狂揮舞著氣球，大喊著高志溶。高志溶在台上正式問候：「大家好，我是水晶男孩的高志溶！」小黃們聲嘶力竭地大喊著：「我們很想你！」</p>
-                            <p class="ebook-intro-lead">
-                                看著台下小黃，高志溶無法輕易回答，想到小黃苦苦地等待，他不禁紅了眼眶，久久說不出話來...台下小黃安慰地應援著：「不要哭！高志溶！」「沒關係！高志溶！」當高志溶每次想開口時都和忍著哭的粉絲對視，所以一直說不出話...
-                            </p>
-                        </section>
-                    </div>
-                    <div class="container21">
-                        <section class="ebook-section">
-                            <h3>殷隊的體貼與釋懷</h3>
-                            <p class="ebook-intro-lead">殷志源為了讓他緩和，主動開口：「志溶在各位的喜愛下度過了 20
-                                代初期，但他現在跟大家一樣過著平凡的生活...他能做出這個艱難的決定，我們都很感謝...他現在百感交集說不出話...」</p>
-                            <p class="ebook-intro-lead">準備好開口後，高志溶說：「剛才心情非常複雜，和大家重逢真的很開心，沒想到現在還有這麼多人會來呢！16
-                                年來，好像第一次六個人同台，讓我想起了最後的舞台...」小黃們發出了不捨的嘆息聲。聽到了短暫的心得後，殷志源逗著他說：「不管怎麽說，我想他要多上一點節目才行！」讓高志溶笑出來緩解緊張感。
-                            </p>
-                        </section>
-                    </div>
                 </div>
 
                 <div class="container">
