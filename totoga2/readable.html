@@ -539,12 +539,12 @@
             /* border-left: 5px solid var(--primary); */
         }
 
-        /* 文字在上、左右圖在下：flex 同列上下置中 */
+        /* 文字在上、圖在下（單圖／雙圖共用；雙圖同列等高） */
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.readable-text-then-images:not(.readable-text-then-images--single) {
             display: flex;
             flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
+            align-items: stretch;
+            justify-content: flex-start;
             width: 100%;
             gap: 0.75rem;
         }
@@ -567,12 +567,14 @@
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.readable-text-then-images:not(.readable-text-then-images--single)>.container31,
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.readable-text-then-images:not(.readable-text-then-images--single)>.container33 {
             float: none;
-            flex: 1 1 calc(50% - 0.5rem);
+            flex: 1 1 calc(50% - 0.375rem);
             min-width: 0;
-            max-width: 50%;
+            max-width: none;
             box-sizing: border-box;
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            align-items: stretch;
+            align-self: stretch;
             justify-content: center;
         }
 
@@ -580,10 +582,13 @@
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.readable-text-then-images:not(.readable-text-then-images--single)>.container33 img {
             width: 100%;
             max-width: 100%;
-            height: auto;
+            height: 100%;
+            flex: 1 1 auto;
+            min-height: 0;
             display: block;
-            margin-inline: auto;
+            margin-inline: 0;
             object-fit: contain;
+            object-position: center center;
         }
 
         /* 文字在上、單圖在下，整塊置中 */
@@ -599,8 +604,8 @@
 
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.readable-text-then-images.readable-text-then-images--single>.container11 {
             width: 100%;
-            max-width: 42rem;
-            margin-inline: auto;
+            max-width: none;
+            margin-inline: 0;
             align-items: stretch;
         }
 
@@ -612,15 +617,22 @@
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.readable-text-then-images.readable-text-then-images--single>.container31 {
             float: none;
             width: 100%;
-            max-width: 36rem;
-            margin-inline: auto;
+            max-width: none;
+            margin-inline: 0;
             display: flex;
+            flex-direction: column;
+            align-items: stretch;
             justify-content: center;
-            align-items: center;
         }
 
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.readable-text-then-images.readable-text-then-images--single>.container31 img {
-            margin-inline: auto;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-inline: 0;
+            object-fit: contain;
+            object-position: center center;
         }
 
         /* overlap：三欄皆 float:left 30／46／30＋中欄負 margin（對齊粉線參考橫排相疊） */
@@ -887,15 +899,17 @@
                             </section>
                         </div>
                     </div>
-                    <div class="container">
+                    <div class="container readable-text-then-images readable-text-then-images--single">
                         <div class="container11">
                             <section class="ebook-section">
                                 <h3>絕對所有權！</h3>
                                 <p class="ebook-intro-lead">
-                                    好不容易在現場畫完了畫，當在錫哥理所當然地伸手準備拿走時，李宰鎮卻像個護著玩具的小孩，理直氣壯地一把護住自己的作品，神色認真地回絕：「不行，為什麼你要拿走？那是我畫的！所以是我的！」
+                                    好不容易在現場畫完了畫，當在錫哥理所當然地伸手準備拿走時，李宰鎮卻像個護著玩具的小孩，理直氣壯地一把護住自己的作品，神色認真地回絕：<strong>「不行，為什麼你要拿走？那是我畫的！所以是我的！」</strong>
                                 </p>
-                                <img src="./readable/13-1_那是我畫的!所以是我的!.jpeg" alt="那是我畫的所以是我的">
                             </section>
+                        </div>
+                        <div class="container31">
+                            <img src="./readable/13-1_那是我畫的!所以是我的!.jpeg" alt="那是我畫的所以是我的">
                         </div>
                     </div>
                     <div class="container readable-text-then-images">
@@ -903,10 +917,10 @@
                             <section class="ebook-section">
                                 <h3>隊長幫腔聯手逗弄</h3>
                                 <p class="ebook-intro-lead">
-                                    坐在一旁的隊長殷志源，看到在錫哥被宰鎮逼到牆角，完全進入了看戲加煽風點火的模式。非但沒有幫主持人解圍，順著宰鎮那無厘頭的耿直邏輯，笑著在錫哥說：「（在錫）哥要是想拿走，你得自己畫！」
+                                    坐在一旁的隊長殷志源，看到在錫哥被宰鎮逼到牆角，完全進入了看戲加煽風點火的模式。非但沒有幫主持人解圍，順著宰鎮那無厘頭的耿直邏輯，笑著在錫哥說：<strong>「（在錫）哥要是想拿走，你得自己畫！」</strong>
 
-                                    平常在節目上就是「初丁弟弟」的志源，配上完全活在自己純真世界裡的宰鎮，兩個人一搭一唱、天衣無縫，直接把縱橫綜藝界的國民 MC
-                                    逗得毫無還手之力。這種毫無包袱、又充滿兄弟默契的可愛互動，瞬間讓全場陷入一片笑海。
+                                    平常在節目上就是「初丁弟弟」的志源，配上完全活在自己純真世界裡的宰鎮，兩個人<strong>一搭一唱、天衣無縫</strong>，直接把縱橫綜藝界的國民 MC
+                                    <strong>逗得毫無還手之力</strong>。這種毫無包袱、又充滿兄弟默契的可愛互動，瞬間<strong>讓全場陷入一片笑海</strong>。
 
                                 </p>
                             </section>
