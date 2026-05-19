@@ -54,9 +54,10 @@
             overflow: hidden;
         }
 
-        /* overlap-style：維持重疊 float，不套列卡／flex 等高 */
+        /* overlap-style：維持左右 float，中欄脫離排版不推擠左右 */
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.overlap-style {
             display: block;
+            position: relative;
             padding: 0;
             background: transparent;
             border: none;
@@ -443,28 +444,33 @@
             /* border-left: 5px solid var(--primary); */
         }
 
-        /* overlap 三圖相疊（維持 float；欄位 margin 左右皆有，不鎖 img 單邊 margin） */
+        /* overlap：左／右欄各 50%（float）；中圖 absolute 置中放大、不佔欄寬 */
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.overlap-style .container31 {
             float: left;
-            width: 30%;
+            width: 50%;
             position: relative;
             z-index: 1;
-        }
-
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.overlap-style .container32 {
-            float: left;
-            width: 46%;
-            position: relative;
-            z-index: 2;
-            margin-left: -12%;
-            margin-right: -8%;
+            box-sizing: border-box;
         }
 
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.overlap-style .container33 {
-            float: left;
-            width: 30%;
+            float: right;
+            width: 50%;
             position: relative;
             z-index: 1;
+            box-sizing: border-box;
+        }
+
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.overlap-style .container32 {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: auto;
+            max-width: none;
+            z-index: 3;
+            margin: 0;
+            pointer-events: none;
         }
 
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.overlap-style::after {
@@ -473,18 +479,27 @@
             clear: both;
         }
 
-        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.overlap-style img {
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.overlap-style .container31 img,
+        body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.overlap-style .container33 img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            display: block;
             border-radius: 0;
             overflow: visible;
         }
 
         body.ebook-ssg2-page.totoga2-page #totoga2-reader .container.overlap-style .container32 img {
-            width: 42%;
-            max-width: none;
+            width: auto;
+            max-width: min(52vw, 22rem);
             height: auto;
             display: block;
-            position: relative;
-            z-index: 2;
+            margin: 0;
+            transform: scale(1.15);
+            transform-origin: center top;
+            border-radius: 0;
+            overflow: visible;
+            pointer-events: auto;
         }
     </style>
     <link rel="stylesheet" href="split-nav.css">
@@ -722,10 +737,10 @@
                         </div>
                     </div>
                     <div class="container">
-                        <div class="container21">
+                        <div class="container31">
                             <img src="/totoga2/readable/13-2哥得自己畫!.jpeg" alt="哥得自己畫截圖">
                         </div>
-                        <div class="container22">
+                        <div class="container32">
                             <section class="ebook-section">
                                 <h3>隊長幫腔聯手逗弄</h3>
                                 <p class="ebook-intro-lead">
@@ -736,6 +751,10 @@
 
                                 </p>
                             </section>
+                        </div>
+                        <div class="container33">
+
+                            <img src="/totoga2/readable/13-31779025232670.jpg" alt="哥得自己畫截圖">
                         </div>
                     </div>
                     <div class="container overlap-style">
