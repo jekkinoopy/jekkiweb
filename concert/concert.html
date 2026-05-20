@@ -9,6 +9,37 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/tablet.css">
+    <!-- 本頁：#stage-now＝同一奶油區（全站 section 外殼）；con-1～4 白卡疊在區內 -->
+    <style>
+        body.concert-page #stage-now {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0 !important;
+        }
+
+        body.concert-page #stage-now > .con-1,
+        body.concert-page #stage-now > .con-2,
+        body.concert-page #stage-now > .con-3,
+        body.concert-page #stage-now > .con-4 {
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            flex: 0 0 auto;
+        }
+
+        body.concert-page #stage-now > .con-4:last-child {
+            margin-bottom: 0;
+        }
+
+        body.concert-page .con-4.con-access-denied[data-tour="ACCESS"]::before {
+            z-index: 4;
+        }
+
+        body.concert-page .con-4[data-tour="ACCESS"]::after {
+            z-index: 5;
+        }
+    </style>
 </head>
 
 <body class="concert-page">
@@ -347,66 +378,66 @@
                     <label for="expand-con-2-5" class="expand-btn"></label>
                 </div>
             </div>
+            <!-- 演唱會 03 -->
+            <div class="con-3" data-tour="NOW・HERE・AGAIN.">
+                <span class="title">2018&nbsp;&nbsp;|&nbsp;&nbsp;NOW・HERE・AGAIN</span>
+                <img src="../assets/images/concert/2018.jpg" alt="">
+                <div class="con-3-1 attended" data-date1="10.13" data-date2="10.14">
+                    <span class="location">首爾：首爾奧林匹克體操競技場</span>
+                    <input type="checkbox" id="expand-con-3-1" class="expand-trigger">
+                    <div class="track-list">
+                        <div class="track-item"><span class="track">약속된 운명（아마게돈） / 約定的命運</span></div>
+                        <div class="track-item"><span class="track">FLYING LOVE（천상비애）/ 天上飛愛</span></div>
+                        <div class="track-item"><span class="track">무모한 사랑（RECKLESS LOVE）/ 不可能的愛</span></div>
+                        <div class="track-item"><span class="track">COM' BACK</span></div>
+                        <div class="track-item"><span class="track">학원별곡（RISE UP）/ 學園別曲</span></div>
+                        <div class="track-item"><span class="track">ROAD FIGHTER</span></div>
+                        <div class="track-item"><span class="track">LAST</span></div>
+                        <div class="track-item"><span class="track">세 단어（THREE WORDS）/ 三個詞</span></div>
+                        <div class="track-item"><span class="track">少女 － 張水院</span></div>
+                        <div class="track-item"><span class="track">Now － 殷志源</span></div>
+                        <div class="track-item"><span class="track">Egoist － 李宰鎮</span></div>
+                        <div class="track-item"><span class="track">Solo舞蹈：We Still In This Bitch － 金在德</span></div>
+                        <div class="track-item"><span class="track">오랜만이에요（IT'S BEEN A WHILE）</span></div>
+                        <div class="track-item"><span class="track">네겐 보일수 없었던 세상 / 不能讓你看到的世界</span></div>
+                        <div class="track-item"><span class="track">슬픈 노래（SAD SONG）/ 悲歌</span></div>
+                        <div class="track-item"><span class="track">특별해（SOMETHING SPECIAL）</span></div>
+                        <div class="track-item"><span class="track">느낌이 와（FEELING）</span></div>
+                        <div class="track-item"><span class="track">현기증（VERTIGO）</span></div>
+                        <div class="track-item"><span class="track">아프지마요（BE WELL）</span></div>
+                        <div class="track-item"><span class="track">ENCORE：</span></div>
+                        <div class="track-item"><span class="track">예감（GOT A FEELING）/ 預感</span></div>
+                        <div class="track-item"><span class="track">그대로 멈춰 / 就那樣停止</span></div>
+                        <div class="track-item"><span class="track">커플（COUPLE）/ 戀人</span></div>
+                        <div class="track-item"><span class="track">사랑하는 너에게 （DEAR LOVE）/ 給親愛的你（10月14日）</span></div>
+                        <div class="track-item"><span class="track">그날까지（TOGETHER FOREVER）/ 直到那一天（10月14日）</span></div>
+                    </div>
+                    <label for="expand-con-3-1" class="expand-btn"></label>
+                </div>
+            </div>
+            <!-- 演唱會 04：與 con-2／con-3 同結構 — title → img → con-4-1；ACCESS 樣式用 con-access-denied；CANCELED 水印為 ::before（::after 保留給 data-tour 緞帶） -->
+            <div class="con-4 con-access-denied" data-tour="ACCESS">
+                <span class="title">2020&nbsp;&nbsp;|&nbsp;&nbsp;CONCERT [ACCESS]</span>
+                <img src="../assets/images/concert/2020.jpg" alt="">
 
+                <div class="con-4-1 canceled" data-date1="03.06" data-date2="03.08">
+                    <span class="location">首爾：慶熙大學 平和殿堂</span>
+
+                    <div class="track-list access-denied-message">
+                        <div class="track-item denied-text">
+                            <span>系統錯誤：無法建立連結 (Connection Failed)</span>
+                        </div>
+                        <div class="track-item denied-text">
+                            <span>原因：COVID-19 疫情擴散致演場會取消</span>
+                        </div>
+                        <div class="track-item denied-text">
+                            <span>STATUS: 403 FORBIDDEN - ACCESS DENIED</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
-        <!-- 演唱會 03 -->
-        <div class="con-3" data-tour="NOW・HERE・AGAIN.">
-            <span class="title">2018&nbsp;&nbsp;|&nbsp;&nbsp;NOW・HERE・AGAIN</span>
-            <img src="../assets/images/concert/2018.jpg" alt="">
-            <div class="con-3-1 attended" data-date1="10.13" data-date2="10.14">
-                <span class="location">首爾：首爾奧林匹克體操競技場</span>
-                <input type="checkbox" id="expand-con-3-1" class="expand-trigger">
-                <div class="track-list">
-                    <div class="track-item"><span class="track">약속된 운명（아마게돈） / 約定的命運</span></div>
-                    <div class="track-item"><span class="track">FLYING LOVE（천상비애）/ 天上飛愛</span></div>
-                    <div class="track-item"><span class="track">무모한 사랑（RECKLESS LOVE）/ 不可能的愛</span></div>
-                    <div class="track-item"><span class="track">COM' BACK</span></div>
-                    <div class="track-item"><span class="track">학원별곡（RISE UP）/ 學園別曲</span></div>
-                    <div class="track-item"><span class="track">ROAD FIGHTER</span></div>
-                    <div class="track-item"><span class="track">LAST</span></div>
-                    <div class="track-item"><span class="track">세 단어（THREE WORDS）/ 三個詞</span></div>
-                    <div class="track-item"><span class="track">少女 － 張水院</span></div>
-                    <div class="track-item"><span class="track">Now － 殷志源</span></div>
-                    <div class="track-item"><span class="track">Egoist － 李宰鎮</span></div>
-                    <div class="track-item"><span class="track">Solo舞蹈：We Still In This Bitch － 金在德</span></div>
-                    <div class="track-item"><span class="track">오랜만이에요（IT'S BEEN A WHILE）</span></div>
-                    <div class="track-item"><span class="track">네겐 보일수 없었던 세상 / 不能讓你看到的世界</span></div>
-                    <div class="track-item"><span class="track">슬픈 노래（SAD SONG）/ 悲歌</span></div>
-                    <div class="track-item"><span class="track">특별해（SOMETHING SPECIAL）</span></div>
-                    <div class="track-item"><span class="track">느낌이 와（FEELING）</span></div>
-                    <div class="track-item"><span class="track">현기증（VERTIGO）</span></div>
-                    <div class="track-item"><span class="track">아프지마요（BE WELL）</span></div>
-                    <div class="track-item"><span class="track">ENCORE：</span></div>
-                    <div class="track-item"><span class="track">예감（GOT A FEELING）/ 預感</span></div>
-                    <div class="track-item"><span class="track">그대로 멈춰 / 就那樣停止</span></div>
-                    <div class="track-item"><span class="track">커플（COUPLE）/ 戀人</span></div>
-                    <div class="track-item"><span class="track">사랑하는 너에게 （DEAR LOVE）/ 給親愛的你（10月14日）</span></div>
-                    <div class="track-item"><span class="track">그날까지（TOGETHER FOREVER）/ 直到那一天（10月14日）</span></div>
-                </div>
-                <label for="expand-con-3-1" class="expand-btn"></label>
-            </div>
-        </div>
-        <!-- 演唱會 04：與 con-2／con-3 同結構 — title → img → con-4-1；ACCESS 樣式用 con-access-denied；CANCELED 水印為 ::before（::after 保留給 data-tour 緞帶） -->
-        <div class="con-4 con-access-denied" data-tour="ACCESS">
-            <span class="title">2020&nbsp;&nbsp;|&nbsp;&nbsp;CONCERT [ACCESS]</span>
-            <img src="../assets/images/concert/2020.jpg" alt="">
 
-            <div class="con-4-1 canceled" data-date1="03.06" data-date2="03.08">
-                <span class="location">首爾：慶熙大學 平和殿堂</span>
-
-                <div class="track-list access-denied-message">
-                    <div class="track-item denied-text">
-                        <span>系統錯誤：無法建立連結 (Connection Failed)</span>
-                    </div>
-                    <div class="track-item denied-text">
-                        <span>原因：COVID-19 疫情擴散致演場會取消</span>
-                    </div>
-                    <div class="track-item denied-text">
-                        <span>STATUS: 403 FORBIDDEN - ACCESS DENIED</span>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!-- 燦爛的最初（九十年代）／錨點 #stage-past -->
         <section id="stage-past" aria-label="燦爛的最初">

@@ -411,7 +411,7 @@ img {
 /* --- 2020 ACCESS：與其餘大卡同層級（title → img → con-X-1）；::after＝緞帶，CANCELED 水印用 ::before --- */
 
 .con-4.con-access-denied[data-tour="ACCESS"] {
-    overflow: visible;
+    overflow: hidden;
 }
 
 .con-4[data-tour="ACCESS"]::after {
@@ -440,7 +440,7 @@ img {
     font-weight: bold;
     padding: 2px 4px;
     border-radius: 4px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
     z-index: 100;
     border: 2px solid #fff;
     background-color: #999 !important;
