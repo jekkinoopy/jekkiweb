@@ -265,6 +265,13 @@ nav a {
     list-style: none;
 }
 
+/* 子選單第一項（如淪陷瞬間／傳奇的轉折）上方不畫分隔線 */
+.portal-nav .portal-submenu > li.portal-nav__subgroup:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+}
+
 .portal-nav .portal-submenu .portal-nav__subgroup:hover {
     z-index: 4;
 }
