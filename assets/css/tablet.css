@@ -64,9 +64,16 @@
         gap: clamp(12px, 2vw, 20px);
     }
 
-    header {
+    header#origin {
+        height: clamp(11rem, 56.25vw, 100dvh);
         background-size: cover;
         background-position: center center;
+    }
+
+    header.inner-page-header {
+        height: clamp(10rem, 35vw, 19rem);
+        background-size: cover;
+        background-position: center 78%;
     }
 
     header#origin .hero .site-header-inner .main-title {
