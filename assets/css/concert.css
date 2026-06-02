@@ -541,3 +541,62 @@ img {
     white-space: nowrap;
     opacity: 1;
 }
+
+@keyframes access-canceled-breathe {
+
+    0%,
+    100% {
+        opacity: 0.7;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes concert-stamp-before {
+    0% {
+        opacity: 0;
+        transform: rotate(-12deg) scale(1.18);
+    }
+
+    100% {
+        opacity: 1;
+        transform: rotate(-12deg) scale(1);
+    }
+}
+
+@keyframes concert-stamp-after {
+    0% {
+        opacity: 0;
+        transform: rotate(8deg) scale(1.18);
+    }
+
+    100% {
+        opacity: 1;
+        transform: rotate(8deg) scale(1);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .con-4.con-access-denied[data-tour="ACCESS"]::before {
+        animation: access-canceled-breathe 2.6s ease-in-out infinite;
+    }
+
+    .attended::before {
+        animation: concert-stamp-before 0.5s ease-out backwards;
+    }
+
+    .attended::after {
+        animation: concert-stamp-after 0.5s ease-out 0.14s backwards;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .con-4.con-access-denied[data-tour="ACCESS"]::before,
+    .attended::before,
+    .attended::after {
+        animation: none;
+    }
+}

@@ -448,3 +448,67 @@ header#origin .site-header-inner .subtitle-wrap::after {
     margin: 0;
     white-space: nowrap;
 }
+
+/* 入坑歷程：波浪底線平移＋箭頭輕推（僅首頁 #start） */
+@keyframes fan-journey-wave-drift {
+    0% {
+        background-position: left 0 bottom 3px;
+    }
+
+    100% {
+        background-position: left 280px bottom 3px;
+    }
+}
+
+@keyframes fan-journey-arrow-nudge {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(3px);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .home-page #start .fan-journey-wave {
+        animation: fan-journey-wave-drift 14s linear infinite;
+    }
+
+    .home-page #start .fan-journey-wave i {
+        animation: fan-journey-arrow-nudge 1.35s ease-in-out infinite;
+    }
+}
+
+/* 成立的初衷：↑ 指示輕跳（僅首頁 #mission） */
+@keyframes mission-arrow-bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+
+    .home-page #mission .logo-wrapper .arrow-icon,
+    .home-page #mission .mission-moment-wrap .arrow-icon {
+        display: inline-block;
+        animation: mission-arrow-bounce 1.85s ease-in-out infinite;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .home-page #start .fan-journey-wave,
+    .home-page #start .fan-journey-wave i,
+    .home-page #mission .logo-wrapper .arrow-icon,
+    .home-page #mission .mission-moment-wrap .arrow-icon {
+        animation: none;
+    }
+}
