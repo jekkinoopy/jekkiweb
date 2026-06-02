@@ -43,11 +43,11 @@ body {
     line-height: 1.6;
 }
 
-/* 首頁 Hero：高度隨寬度 16:9 等比縮放（上限一屏），cover 不留上下黑邊 */
+/* 首頁 Hero：滿版 cover（勿用 108%／vw 限高，否則上下留黑） */
 header#origin {
     width: 100%;
-    height: clamp(12rem, 56.25vw, 100dvh);
-    min-height: 0;
+    height: 100dvh;
+    min-height: 100dvh;
     background-image: url('../images/header.jpg');
     background-position: center center;
     background-repeat: no-repeat;
@@ -2100,8 +2100,8 @@ footer a .mark_b {
 /* 內頁頂部 banner（全站 header.inner-page-header；首頁僅 #origin） */
 header.inner-page-header {
     width: 100%;
-    height: clamp(10rem, 35vw, 20rem);
-    min-height: 0;
+    height: auto;
+    min-height: clamp(14rem, 38vh, 24rem);
     background-image: url('../images/header.jpg');
     background-position: center 78%;
     background-repeat: no-repeat;
